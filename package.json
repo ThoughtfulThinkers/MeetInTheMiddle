@@ -9,6 +9,7 @@
     "@exponent/vector-icons": "~4.0.0",
     "eslint-config-rallycoding": "^3.2.0",
     "exponent": "^13.1.0",
+    "lodash": "^4.17.4",
     "firebase": "^3.6.8",
     "react": "~15.4.0",
     "react-native": "https://github.com/exponent/react-native/archive/sdk-13.0.3.tar.gz",
