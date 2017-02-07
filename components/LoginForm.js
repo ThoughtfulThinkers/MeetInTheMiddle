@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, Button } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import MeetupList from './MeetupList';
 
 export default class LoginForm extends Component {
 
@@ -14,6 +15,7 @@ export default class LoginForm extends Component {
         <View>
           <Text>Login Here</Text>
           <Button title={"Test this!"} onPress={this.onButtonPress.bind(this)} />
+          <MeetupList />
         </View>
       );
     }
