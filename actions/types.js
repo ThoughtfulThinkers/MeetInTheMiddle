@@ -10,7 +10,9 @@ export const LOGIN_USER = 'LOGIN_USER'
 /******************************************************
   Meetup Actions
 ******************************************************/
-
+export const FETCH_MEETUPS_SUCCESS = 'FETCH_MEETUPS_SUCCESS'
+export const FETCH_USER_MEETUPS_SUCCESS = 'FETCH_USER_MEETUPS_SUCCESS'
+export const MEETUP_CREATE = 'MEETUP_CREATE'
 /******************************************************
   user Actions
 ******************************************************/
