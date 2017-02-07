@@ -9,8 +9,13 @@
     "@exponent/vector-icons": "~4.0.0",
     "eslint-config-rallycoding": "^3.2.0",
     "exponent": "^13.1.0",
+    "firebase": "^3.6.8",
     "react": "~15.4.0",
     "react-native": "https://github.com/exponent/react-native/archive/sdk-13.0.3.tar.gz",
-    "react-native-router-flux": "^3.37.0"
+    "react-native-gifted-chat": "^0.1.1",
+    "react-native-router-flux": "^3.37.0",
+    "react-redux": "^5.0.2",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0"
   }
 }
