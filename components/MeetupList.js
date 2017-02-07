@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import { ListView } from 'react-native';
-import { meetupFetch } from '../actions';
-import { MeetupListItem } from './MeetupListItem';
+import { meetupsFetch } from '../actions';
+import MeetupListItem from './MeetupListItem';
 
 class MeetupList extends Component {
   componentWillMount() {
-    this.props.meetupFetch();
+    this.props.meetupsFetch('New York');
 
     this.createDataSource(this.props);
   }
@@ -16,16 +16,17 @@ class MeetupList extends Component {
     this.createDataSource(nextProps);
   }
 
-  createDataSource({ employees }) {
+  createDataSource({ meetups }) {
     const ds = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2
     });
 
-    this.dataSource = ds.cloneWithRows(employees);
+    this.dataSource = ds.cloneWithRows(meetups);
   }
 
-  renderRow(employee) {
-      return <MeetupListItem employee={employee} />;
+  renderRow(meetup) {
+    console.log(meetup);
+      return <MeetupListItem meetup={meetup} />;
   }
 
   render() {
@@ -40,11 +41,11 @@ class MeetupList extends Component {
 }
 
 const mapStateToProps = state => {
-  const meetups = _.map(state.meetups, (val, uid) => {
+  const meetups = _.map(state.meetups.cityMeetups, (val, uid) => {
     return { ...val, uid };
   });
-
+    console.log("in mapstate", meetups);
   return { meetups };
 };
 
-export default connect(mapStateToProps, { meetupFetch })(MeetupList);
+export default connect(mapStateToProps, { meetupsFetch })(MeetupList);

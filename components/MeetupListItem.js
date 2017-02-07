@@ -4,6 +4,7 @@ import { CardSection } from './common';
 
 class MeetupListItem extends Component {
   render() {
+    console.log("props meetup", this.props.meetup)
     const { name } = this.props.meetup;
 
     return (
