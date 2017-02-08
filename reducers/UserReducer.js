@@ -1,11 +1,13 @@
 import {
-  FETCH_USER_SUCESS
+  FETCH_USER_SUCCESS,
+  USER_INPUT_UPDATE,
 } from '../actions/types';
 
 const INITIAL_STATE = {
-  name: '',
+  firstName: '',
+  lastName: '',
   image: '',
-  meeetups: {},
+  meetups: {},
   location: {
     street: '',
     city: '',
@@ -15,12 +17,21 @@ const INITIAL_STATE = {
   },
 };
 
-export default (state = INITIAL_STATE, action) {
+export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case FETCH_USER_SUCCESS:
-      return { ...state, action.payload }
+    case USER_INPUT_UPDATE: {
+      // example: action.payload = {prop: 'name', value: 'Will Smith'}
+      // key interpolation -> [prop]
+      const { prop, value } = action.payload;
+      return { ...state, [prop]: value };
+    }
+
+    case FETCH_USER_SUCCESS: {
+      return { ...state, user: action.payload };
+    }
+
     default:
       return state;
 
   }
-}
+};

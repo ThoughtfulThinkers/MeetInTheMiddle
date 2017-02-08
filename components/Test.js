@@ -17,7 +17,7 @@ export default class Test extends Component {
               value={'Thoughtful Thinker'}
             >
               <Text>
-                Next
+                Chat
               </Text>
             </TouchableOpacity>
         </View>

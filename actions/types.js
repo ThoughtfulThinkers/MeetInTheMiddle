@@ -13,10 +13,13 @@ export const LOGIN_USER = 'LOGIN_USER';
 export const FETCH_MEETUPS_SUCCESS = 'FETCH_MEETUPS_SUCCESS';
 export const FETCH_USER_MEETUPS_SUCCESS = 'FETCH_USER_MEETUPS_SUCCESS';
 export const MEETUP_CREATE_SUCCESS = 'MEETUP_CREATE_SUCCESS';
+
 /******************************************************
-  user Actions
+  User Actions
 ******************************************************/
 export const FETCH_USER_SUCCESS = 'FETCH_USER_SUCCESS';
+export const USER_INPUT_UPDATE = 'USER_INPUT_UPDATE';
+
 /******************************************************
   Chat Actions
 ******************************************************/
