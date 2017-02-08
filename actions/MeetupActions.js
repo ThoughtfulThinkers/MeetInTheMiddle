@@ -27,7 +27,6 @@ export const userMeetupsFetch = () => {
   return (dispatch) => {
     dispatch({ type: FETCH_USER_MEETUPS });
     const { currentUser } = firebase.auth();
-        console.log(1);
     if (!currentUser) {
       dispatch({ type: FETCH_USER_MEETUPS_SUCCESS, payload: [] });
       return;
@@ -36,7 +35,6 @@ export const userMeetupsFetch = () => {
       let meetups = _.map(snapshot.val(), (val, uid) => {
         return { ...val, uid };
       });
-      console.log(meetups);
       meetups = meetups.map((meetup) => {
         // console.log('Testing key, ', meetup.key);
         return firebase.database().ref('/meetups').orderByKey().equalTo(meetup.uid);

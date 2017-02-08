@@ -6,6 +6,7 @@ import Chat from './components/Chat';
 import LoginForm from './components/LoginForm';
 import Map from './components/Map';
 import Home from './components/Home';
+import LocationSelector from './components/LocationSelector';
 import Test from './components/Test';
 
 const RouterComponent = () => {
@@ -32,6 +33,7 @@ const RouterComponent = () => {
           onRight={() => Actions.test()}
         />
         <Scene key="test" component={Test} title="Test" />
+        <Scene key="setLocation" component={LocationSelector} title="Select Location" />
       </Scene>
     </Router>
   );

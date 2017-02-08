@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import { View, Text } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { meetupsFetch } from '../actions';
 import MeetupList from './MeetupList';
-import { CardSection, Spinner } from './common';
+import { CardSection, Spinner, Button } from './common';
 
 
 class OpenMeetupListContainer extends Component {
@@ -29,6 +30,7 @@ class OpenMeetupListContainer extends Component {
         <Text style={styles.headerStyle}>Open Meetups</Text>
         <CardSection style={styles.filterStyle}>
           <Text style={styles.filterTextStyle}>Search near New York</Text>
+          <Button onPress={() => Actions.setLocation()}>Change Location</Button>
         </CardSection>
         {listContent}
       </View>
@@ -44,7 +46,8 @@ const styles = {
   },
   filterStyle: {
     backgroundColor: '#007aff',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   filterTextStyle: {
     fontSize: 18,
