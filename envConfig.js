@@ -6,7 +6,6 @@ export const fbConfig = {
   messagingSenderId: '612339050346',
 };
 
-export const googleConfig = {
-  // change API key ... from barley hopper project
-  GOOGLE_API_KEY: 'AIzaSyDzk0eKI5tnKWkSORpDTL32iZ15QjxQxeg'
+export const googlePlacesConfig = {
+  apiKey: 'AIzaSyCuVd-6uX1VisVjL17eVtRdAaHA-dV_ITo'
 };

@@ -1,16 +1,20 @@
 import firebase from 'firebase';
+import _ from 'lodash';
 import { Actions } from 'react-native-router-flux';
 
 import {
+  FETCH_MEETUPS,
   FETCH_MEETUPS_SUCCESS,
+  FETCH_USER_MEETUPS,
   FETCH_USER_MEETUPS_SUCCESS,
   MEETUP_CREATE_SUCCESS
 } from './types';
 
 export const meetupsFetch = (city) => {
-  const { currentUser } = firebase.auth();
-
   return (dispatch) => {
+    dispatch({ type: FETCH_MEETUPS });
+    const { currentUser } = firebase.auth();
+
     const ref = firebase.database().ref('/meetups');
     ref.orderByChild('city').equalTo(city).on('value', (snapshot) => {
       // console.log(snapshot.val());
@@ -20,13 +24,20 @@ export const meetupsFetch = (city) => {
 };
 
 export const userMeetupsFetch = () => {
-  const { currentUser } = firebase.auth();
-
   return (dispatch) => {
+    dispatch({ type: FETCH_USER_MEETUPS });
+    const { currentUser } = firebase.auth();
+    if (!currentUser) {
+      dispatch({ type: FETCH_USER_MEETUPS_SUCCESS, payload: [] });
+      return;
+    }
     firebase.database().ref(`/users/${currentUser}/meetups`).on('child_added', (snapshot) => {
-      const meetups = snapshot.val().map((meetup) => {
+      let meetups = _.map(snapshot.val(), (val, uid) => {
+        return { ...val, uid };
+      });
+      meetups = meetups.map((meetup) => {
         // console.log('Testing key, ', meetup.key);
-        return firebase.database().ref('/meetups').orderByKey().equalTo(meetup.key);
+        return firebase.database().ref('/meetups').orderByKey().equalTo(meetup.uid);
       });
       Promise.all(meetups)
       .then((data) => {
