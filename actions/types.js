@@ -30,3 +30,4 @@ export const MEETUP_CREATE_SUCCESS = 'MEETUP_CREATE_SUCCESS';
 ******************************************************/
 export const FETCH_USER_SUCCESS = 'FETCH_USER_SUCCESS';
 export const USER_INPUT_CHANGED = 'USER_INPUT_CHANGED';
+export const USER_LOCATION_INPUT_CHANGED = 'USER_LOCATION_INPUT_CHANGED';

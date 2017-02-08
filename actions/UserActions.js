@@ -4,6 +4,7 @@ import { Actions } from 'react-native-router-flux';
 import {
   FETCH_USER_SUCESS,
   USER_INPUT_CHANGED,
+  USER_LOCATION_INPUT_CHANGED
 } from './types';
 
 /********************************************
@@ -12,6 +13,11 @@ import {
 
 export const userInputChanged = ({ prop, value }) => ({
   type: USER_INPUT_CHANGED,
+  payload: { prop, value }
+});
+
+export const userLocationInputChanged = ({ prop, value }) => ({
+  type: USER_LOCATION_INPUT_CHANGED,
   payload: { prop, value }
 });
 
