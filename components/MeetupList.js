@@ -38,12 +38,4 @@ class MeetupList extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  const meetups = _.map(state.meetups.cityMeetups, (val, uid) => {
-    return { ...val, uid };
-  });
-    // console.log("in mapstate", meetups);
-  return { meetups };
-};
-
-export default connect(mapStateToProps, { meetupsFetch })(MeetupList);
+export default MeetupList;
