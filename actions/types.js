@@ -17,6 +17,12 @@ export const FETCH_CHAT_MESSAGES = 'fetchChatMessages';
 ******************************************************/
 
 /******************************************************
+  FILTER Actions
+******************************************************/
+export const SET_TEXT = 'SET_TEXT';
+export const SET_LOCATION = 'SET_LOCATION';
+
+/******************************************************
   Meetup Actions
 ******************************************************/
 export const FETCH_MEETUPS = 'FETCH_MEETUPS';
