@@ -5,3 +5,7 @@ export const fbConfig = {
   storageBucket: 'meetup-49273.appspot.com',
   messagingSenderId: '612339050346',
 };
+
+export const googlePlacesConfig = {
+  apiKey: 'AIzaSyCuVd-6uX1VisVjL17eVtRdAaHA-dV_ITo'
+};
