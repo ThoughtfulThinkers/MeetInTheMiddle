@@ -4,7 +4,7 @@ import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import { meetupsFetch } from '../actions';
 import MeetupList from './MeetupList';
-import { CardSection } from './common';
+import { CardSection, Spinner } from './common';
 
 
 class OpenMeetupListContainer extends Component {
@@ -14,8 +14,13 @@ class OpenMeetupListContainer extends Component {
 
   render() {
     let listContent;
-    if (this.props.meetups.length === 0) {
-      listContent = <Text style={styles.textStyle}>There are no meetups scheduled in this city.</Text>;
+    if (this.props.loading) {
+      listContent = <CardSection><Spinner size='small' /></CardSection>;
+    } else if (this.props.meetups.length === 0) {
+      listContent = (
+        <Text style={styles.textStyle}>
+          There are no meetups scheduled in this city.
+        </Text>);
     } else {
       listContent = <MeetupList meetups={this.props.meetups} />;
     }
@@ -55,7 +60,7 @@ const mapStateToProps = state => {
   const meetups = _.map(state.meetups.cityMeetups, (val, uid) => {
     return { ...val, uid };
   });
-  return { meetups };
+  return { meetups, loading: state.meetups.cityLoading };
 };
 
 export default connect(mapStateToProps, { meetupsFetch })(OpenMeetupListContainer);
