@@ -7,4 +7,5 @@ export default combineReducers({
 // replace with actual reducer
   auth: AuthReducer,
   meetups: MeetupReducer,
+  chat: ChatReducer,
 });

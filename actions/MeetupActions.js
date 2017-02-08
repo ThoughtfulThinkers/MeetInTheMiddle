@@ -13,7 +13,7 @@ export const meetupsFetch = (city) => {
   return (dispatch) => {
     const ref = firebase.database().ref('/meetups');
     ref.orderByChild('city').equalTo(city).on('value', (snapshot) => {
-      console.log(snapshot.val());
+      // console.log(snapshot.val());
       dispatch({ type: FETCH_MEETUPS_SUCCESS, payload: snapshot.val() });
     });
   };
@@ -25,12 +25,12 @@ export const userMeetupsFetch = () => {
   return (dispatch) => {
     firebase.database().ref(`/users/${currentUser}/meetups`).on('child_added', (snapshot) => {
       const meetups = snapshot.val().map((meetup) => {
-        console.log('Testing key, ', meetup.key);
+        // console.log('Testing key, ', meetup.key);
         return firebase.database().ref('/meetups').orderByKey().equalTo(meetup.key);
       });
       Promise.all(meetups)
       .then((data) => {
-        console.log('User fetch meetups success: ', data);
+        // console.log('User fetch meetups success: ', data);
         dispatch({ type: FETCH_USER_MEETUPS_SUCCESS, payload: data });
       })
       .catch((err) => {
@@ -47,7 +47,7 @@ export const createMeetup = (meetup) => {
   firebase.database().ref('/meetups')
     .push(meetup)
     .then(({ key }) => {
-      console.log('created meetup: ', key);
+      // console.log('created meetup: ', key);
       dispatch({ type: MEETUP_CREATE_SUCCESS });
       Actions.meetup({ type: 'reset', id: key });
     });
