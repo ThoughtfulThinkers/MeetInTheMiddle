@@ -13,13 +13,19 @@ class OpenMeetupListContainer extends Component {
   }
 
   render() {
+    let listContent;
+    if (this.props.meetups.length === 0) {
+      listContent = <Text style={styles.textStyle}>There are no meetups scheduled in this city.</Text>;
+    } else {
+      listContent = <MeetupList meetups={this.props.meetups} />;
+    }
     return (
       <View>
         <Text style={styles.headerStyle}>Open Meetups</Text>
         <CardSection style={styles.filterStyle}>
           <Text style={styles.filterTextStyle}>Search near New York</Text>
         </CardSection>
-        <MeetupList meetups={this.props.meetups} />
+        {listContent}
       </View>
     );
   }
@@ -38,6 +44,10 @@ const styles = {
   filterTextStyle: {
     fontSize: 18,
     color: 'white',
+  },
+  textStyle: {
+    fontSize: 18,
+    padding: 5
   }
 };
 
