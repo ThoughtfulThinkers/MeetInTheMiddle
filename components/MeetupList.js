@@ -7,8 +7,6 @@ import MeetupListItem from './MeetupListItem';
 
 class MeetupList extends Component {
   componentWillMount() {
-    this.props.meetupsFetch('New York');
-
     this.createDataSource(this.props);
   }
 

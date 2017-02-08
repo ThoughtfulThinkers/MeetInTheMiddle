@@ -1,26 +1,47 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 import { CardSection } from './common';
 
 class MeetupListItem extends Component {
   render() {
-    // console.log("props meetup", this.props.meetup)
-    const { name } = this.props.meetup;
+    const { name, city, start, vote } = this.props.meetup;
 
     return (
-      <CardSection>
-        <Text style={styles.titleStyle}>
-          {name}
-        </Text>
+      <CardSection style={styles.containerStyle}>
+        <View style={styles.rowStyle}>
+          <Text style={styles.titleStyle}>{name}</Text>
+          <Text style={styles.detailStyle}>{start}</Text>
+        </View>
+        <View style={styles.rowStyle}>
+          <Text style={styles.voteStyle}>{vote}</Text>
+          <Text style={styles.detailStyle}>{city}</Text>
+        </View>
       </CardSection>
     );
   }
 }
 
 const styles = {
+  containerStyle: {
+    flexDirection: 'column'
+  },
+  rowStyle: {
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
   titleStyle: {
     fontSize: 18,
-    paddingLeft: 15
+    padding: 5
+  },
+  detailStyle: {
+    fontSize: 15,
+    padding: 5,
+    color: 'grey'
+  },
+  voteStyle: {
+    fontSize: 15,
+    padding: 5,
+    color: '#007aff' //TODO: color and content change based on vote start/end
   }
 };
 
