@@ -8,16 +8,23 @@ export const LOGIN_USER_FAIL = 'LOGIN_USER_FAIL';
 export const LOGIN_USER = 'LOGIN_USER';
 
 /******************************************************
+Chat Actions
+******************************************************/
+export const FETCH_CHAT_MESSAGES = 'fetchChatMessages';
+
+/******************************************************
+  Location Actions
+******************************************************/
+
+/******************************************************
   Meetup Actions
 ******************************************************/
 export const FETCH_MEETUPS_SUCCESS = 'FETCH_MEETUPS_SUCCESS';
 export const FETCH_USER_MEETUPS_SUCCESS = 'FETCH_USER_MEETUPS_SUCCESS';
 export const MEETUP_CREATE_SUCCESS = 'MEETUP_CREATE_SUCCESS';
+
 /******************************************************
-  user Actions
+  User Actions
 ******************************************************/
 export const FETCH_USER_SUCCESS = 'FETCH_USER_SUCCESS';
-/******************************************************
-  Chat Actions
-******************************************************/
-export const FETCH_CHAT_MESSAGES = 'fetchChatMessages';
+export const USER_INPUT_CHANGED = 'USER_INPUT_CHANGED';

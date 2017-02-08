@@ -5,3 +5,8 @@ export const fbConfig = {
   storageBucket: 'meetup-49273.appspot.com',
   messagingSenderId: '612339050346',
 };
+
+export const googleConfig = {
+  // change API key ... from barley hopper project
+  GOOGLE_API_KEY: 'AIzaSyDzk0eKI5tnKWkSORpDTL32iZ15QjxQxeg'
+};

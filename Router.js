@@ -3,9 +3,10 @@ import { Platform } from 'react-native';
 import { Scene, Router, Actions } from 'react-native-router-flux';
 
 import Chat from './components/Chat';
+import Home from './components/Home';
 import LoginForm from './components/LoginForm';
 import Map from './components/Map';
-import Home from './components/Home';
+import ProfileForm from './components/profile/ProfileForm';
 import Test from './components/Test';
 
 const RouterComponent = () => {
@@ -16,8 +17,9 @@ const RouterComponent = () => {
           key="login"
           component={LoginForm}
           title="Login"
-          rightTitle="Home"
-          onRight={() => Actions.meetups()}
+          rightTitle="Profile"
+          onRight={() => Actions.profileForm()}
+
         />
         <Scene key="chat" component={Chat} title="Chat" style={{ paddingBottom: 40 }} />
         <Scene key="map" component={Map} title="Map" />
@@ -26,10 +28,17 @@ const RouterComponent = () => {
           key="meetups"
           component={Home}
           title="Meet In The Middle"
-          leftTitle="Login"
-          onLeft={() => Actions.login()}
+          leftTitle="Settings"
+          onLeft={() => Actions.profileForm()}
           rightTitle="Test"
           onRight={() => Actions.test()}
+        />
+        <Scene
+          key="profileForm"
+          component={ProfileForm}
+          title="Profile"
+          leftTitle="Login"
+          onLeft={() => Actions.login()}
         />
         <Scene key="test" component={Test} title="Test" />
       </Scene>
