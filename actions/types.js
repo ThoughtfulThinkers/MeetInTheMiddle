@@ -16,7 +16,7 @@ export const MEETUP_CREATE_SUCCESS = 'MEETUP_CREATE_SUCCESS';
 /******************************************************
   user Actions
 ******************************************************/
-
+export const FETCH_USER_SUCCESS = 'FETCH_USER_SUCCESS';
 /******************************************************
   Chat Actions
 ******************************************************/

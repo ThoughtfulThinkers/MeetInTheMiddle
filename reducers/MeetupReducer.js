@@ -12,7 +12,7 @@ const INITIAL_STATE = {
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case FETCH_MEETUPS_SUCCESS:
-      console.log('in reducer', action.payload);
+      // console.log('in reducer', action.payload);
       return { ...state, cityMeetups: action.payload };
     default:
       return state;
