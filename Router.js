@@ -6,9 +6,8 @@ import Chat from './components/Chat';
 import Home from './components/Home';
 import LoginForm from './components/LoginForm';
 import Map from './components/Map';
-import Home from './components/Home';
 import LocationSelector from './components/LocationSelector';
-import ProfileForm from './components/profile/ProfileForm';
+import ProfileForm from './components/Profile/ProfileForm';
 import Test from './components/Test';
 
 const RouterComponent = () => {
