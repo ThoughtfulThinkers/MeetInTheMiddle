@@ -4,7 +4,7 @@ import { CardSection } from './common';
 
 class MeetupListItem extends Component {
   render() {
-    const { name, city, start, vote } = this.props.meetup;
+    const { name, state, start, vote } = this.props.meetup;
 
     return (
       <CardSection style={styles.containerStyle}>
@@ -14,7 +14,7 @@ class MeetupListItem extends Component {
         </View>
         <View style={styles.rowStyle}>
           <Text style={styles.voteStyle}>{vote}</Text>
-          <Text style={styles.detailStyle}>{city}</Text>
+          <Text style={styles.detailStyle}>{state}</Text>
         </View>
       </CardSection>
     );

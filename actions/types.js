@@ -17,7 +17,7 @@ export const FETCH_CHAT_MESSAGES = 'fetchChatMessages';
 ******************************************************/
 
 /******************************************************
-  FILTER Actions
+  Filter Actions
 ******************************************************/
 export const SET_TEXT = 'SET_TEXT';
 export const SET_LOCATION = 'SET_LOCATION';
@@ -36,3 +36,8 @@ export const MEETUP_CREATE_SUCCESS = 'MEETUP_CREATE_SUCCESS';
 ******************************************************/
 export const FETCH_USER_SUCCESS = 'FETCH_USER_SUCCESS';
 export const USER_INPUT_CHANGED = 'USER_INPUT_CHANGED';
+
+/******************************************************
+  Meetup Form Actions
+******************************************************/
+export const MEETUP_CHANGED = 'MEETUP_CHANGED';

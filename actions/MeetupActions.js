@@ -16,7 +16,7 @@ export const meetupsFetch = (city) => {
     const { currentUser } = firebase.auth();
 
     const ref = firebase.database().ref('/meetups');
-    ref.orderByChild('city').equalTo(city).on('value', (snapshot) => {
+    ref.orderByChild('state').equalTo(city).on('value', (snapshot) => {
       // console.log(snapshot.val());
       dispatch({ type: FETCH_MEETUPS_SUCCESS, payload: snapshot.val() });
     });

@@ -4,6 +4,7 @@ import ChatReducer from './ChatReducer';
 import MeetupReducer from './MeetupReducer';
 import UserReducer from './UserReducer';
 import FilterReducer from './FilterReducer';
+import MeetupFormReducer from './MeetupFormReducer';
 
 export default combineReducers({
 // replace with actual reducer
@@ -11,5 +12,6 @@ export default combineReducers({
   chat: ChatReducer,
   meetups: MeetupReducer,
   user: UserReducer,
-  filter: FilterReducer
+  filter: FilterReducer,
+  meetupForm: MeetupFormReducer
 });

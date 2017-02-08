@@ -8,6 +8,7 @@ import LoginForm from './components/LoginForm';
 import Map from './components/Map';
 import LocationSelector from './components/LocationSelector';
 import ProfileForm from './components/Profile/ProfileForm';
+import MeetupCreate from './components/MeetupCreate';
 import Test from './components/Test';
 
 const RouterComponent = () => {
@@ -31,8 +32,8 @@ const RouterComponent = () => {
           title="Meet In The Middle"
           leftTitle="Settings"
           onLeft={() => Actions.profileForm()}
-          rightTitle="Test"
-          onRight={() => Actions.test()}
+          rightTitle="Add"
+          onRight={() => Actions.add()}
         />
         <Scene
           key="profileForm"
@@ -42,6 +43,7 @@ const RouterComponent = () => {
           onLeft={() => Actions.login()}
         />
         <Scene key="test" component={Test} title="Test" />
+        <Scene key="add" component={MeetupCreate} title="Add Meetup" />
         <Scene key="setLocation" component={LocationSelector} title="Select Location" />
       </Scene>
     </Router>
