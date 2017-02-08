@@ -8,8 +8,7 @@ import {
 } from '../common';
 
 import {
-  emailChanged, loginUser, passwordChanged,
-  userInputUpdate,
+  emailChanged, loginUser, passwordChanged, userInputChanged,
 } from '../../actions';
 
 class ProfileForm extends Component {
@@ -22,8 +21,9 @@ class ProfileForm extends Component {
   }
 
   onProfileButtonPress() {
-    const { email, password } = this.props;
-    this.props.loginUser({ email, password });
+    // const { email, password } = this.props;
+    // this.props.loginUser({ email, password });
+    console.log('onProfileButtonPress');
   }
 
   renderProfileButton() {
@@ -63,7 +63,7 @@ class ProfileForm extends Component {
             label="First Name"
             placeholder="William"
             value={this.props.firstName}
-            onChangeText={value => this.props.userInputUpdate}
+            onChangeText={value => this.props.userInputChanged({ prop: 'firstName', value })}
           />
         </CardSection>
 
@@ -72,7 +72,7 @@ class ProfileForm extends Component {
             label="Last Name"
             placeholder="Tell"
             value={this.props.lastName}
-            onChangeText={value => this.props.userInputUpdate}
+            onChangeText={value => this.props.userInputChanged({ prop: 'lastName', value })}
           />
         </CardSection>
 
@@ -81,7 +81,7 @@ class ProfileForm extends Component {
             label="Street"
             placeholder="123 Main St"
             value={this.props.location.street}
-            onChangeText={value => this.props.location.street}
+            onChangeText={value => this.props.userInputChanged({ prop: 'location.street', value })}
           />
         </CardSection>
 
@@ -107,8 +107,18 @@ const styles = {
 const mapStateToProps = ({ auth, user }) => {
   const { email, password, error, loading } = auth;
   const { firstName, lastName, image, meetups, location } = user;
+  console.log('User Location: ', location.street);
+  console.log('User First Name: ', location.firstName);
   return {
-    email, password, error, loading, firstName, lastName, image, meetups, location
+    email,
+    password,
+    error,
+    loading,
+    firstName,
+    lastName,
+    image,
+    meetups,
+    location,
   };
 };
 
@@ -116,5 +126,5 @@ export default connect(mapStateToProps, {
   emailChanged,
   loginUser,
   passwordChanged,
-  userInputUpdate,
+  userInputChanged,
 })(ProfileForm);

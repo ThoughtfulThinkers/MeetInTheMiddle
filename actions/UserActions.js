@@ -3,15 +3,15 @@ import { Actions } from 'react-native-router-flux';
 
 import {
   FETCH_USER_SUCESS,
-  USER_INPUT_UPDATE,
+  USER_INPUT_CHANGED,
 } from './types';
 
 /********************************************
   Form Actions
 *********************************************/
 
-export const userInputUpdate = ({ prop, value }) => ({
-  type: USER_INPUT_UPDATE,
+export const userInputChanged = ({ prop, value }) => ({
+  type: USER_INPUT_CHANGED,
   payload: { prop, value }
 });
 
