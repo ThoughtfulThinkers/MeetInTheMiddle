@@ -23,16 +23,23 @@ export const passwordChanged = (text) => {
 };
 
 export const loginUser = ({ email, password }) => {
+  // console.log(`Login User email: ${email} password: ${password}`);
   return (dispatch) => {
     dispatch({ type: LOGIN_USER });
 
     firebase.auth().signInWithEmailAndPassword(email, password)
-      .then(user => loginUserSuccess(dispatch, user))
+      .then(user => {
+        console.log('sign in: ', user);
+        loginUserSuccess(dispatch, user);
+      })
       .catch((error) => {
         console.log(error);
 
         firebase.auth().createUserWithEmailAndPassword(email, password)
-          .then(user => loginUserSuccess(dispatch, user))
+          .then(user => {
+            console.log('create user: ', user);
+            loginUserSuccess(dispatch, user);
+          })
           .catch(() => loginUserFail(dispatch));
       });
   };
@@ -47,6 +54,5 @@ const loginUserSuccess = (dispatch, user) => {
     type: LOGIN_USER_SUCCESS,
     payload: user
   });
-
-  Actions.listMeetups();
+  Actions.meetups();
 };

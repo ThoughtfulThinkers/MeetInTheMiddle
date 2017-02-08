@@ -25,7 +25,7 @@ class MeetupList extends Component {
   }
 
   renderRow(meetup) {
-    console.log(meetup);
+    // console.log(meetup);
       return <MeetupListItem meetup={meetup} />;
   }
 
@@ -44,7 +44,7 @@ const mapStateToProps = state => {
   const meetups = _.map(state.meetups.cityMeetups, (val, uid) => {
     return { ...val, uid };
   });
-    console.log('in mapstate', meetups);
+    // console.log("in mapstate", meetups);
   return { meetups };
 };
 
