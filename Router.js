@@ -5,7 +5,7 @@ import { Scene, Router, Actions } from 'react-native-router-flux';
 import Chat from './components/Chat';
 import LoginForm from './components/LoginForm';
 import Map from './components/Map';
-import MeetupList from './components/MeetupList';
+import Home from './components/Home';
 import Test from './components/Test';
 
 const RouterComponent = () => {
@@ -24,7 +24,7 @@ const RouterComponent = () => {
         <Scene
           initial
           key="meetups"
-          component={MeetupList}
+          component={Home}
           title="Meet In The Middle"
           leftTitle="Login"
           onLeft={() => Actions.login()}
