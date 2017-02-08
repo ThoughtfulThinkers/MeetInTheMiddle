@@ -8,7 +8,8 @@ import {
 } from '../common';
 
 import {
-  emailChanged, loginUser, passwordChanged, userInputChanged,
+  emailChanged, loginUser, passwordChanged,
+  userInputChanged, userLocationInputChanged,
 } from '../../actions';
 
 class ProfileForm extends Component {
@@ -81,7 +82,9 @@ class ProfileForm extends Component {
             label="Street"
             placeholder="123 Main St"
             value={this.props.location.street}
-            onChangeText={value => this.props.userInputChanged({ prop: 'location.street', value })}
+            onChangeText={
+              value => this.props.userLocationInputChanged({ prop: 'location.street', value })
+            }
           />
         </CardSection>
 
@@ -127,4 +130,5 @@ export default connect(mapStateToProps, {
   loginUser,
   passwordChanged,
   userInputChanged,
+  userLocationInputChanged,
 })(ProfileForm);
