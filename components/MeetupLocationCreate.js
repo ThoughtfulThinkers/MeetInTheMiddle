@@ -73,7 +73,7 @@ class MeetupLocationCreate extends Component {
           <Text style={styles.pickerTextStyle}>Vote Start</Text>
           <DatePicker
             style={{ flex: 2 }}
-            date={this.props.start}
+            date={this.props.voteStart}
             mode="datetime"
             format="YYYY-MM-DD HH:mm"
             confirmBtnText="Choose"
@@ -91,7 +91,7 @@ class MeetupLocationCreate extends Component {
           <Text style={styles.pickerTextStyle}>Vote End</Text>
           <DatePicker
             style={{ flex: 2 }}
-            date={this.props.end}
+            date={this.props.voteEnd}
             mode="datetime"
             format="YYYY-MM-DD HH:mm"
             confirmBtnText="Choose"
