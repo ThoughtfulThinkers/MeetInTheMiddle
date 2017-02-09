@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { Text, View, TouchableWithoutFeedback } from 'react-native';
+import { setCurrentMeetup } from '../actions';
 import { CardSection } from './common';
 
 class MeetupListItem extends Component {
   onRowPress() {
+    this.props.setCurrentMeetup(this.props.meetup);
     Actions.meetup({ meetup: this.props.meetup });
   }
 
@@ -54,4 +57,4 @@ const styles = {
   }
 };
 
-export default MeetupListItem;
+export default connect(null, { setCurrentMeetup })(MeetupListItem);
