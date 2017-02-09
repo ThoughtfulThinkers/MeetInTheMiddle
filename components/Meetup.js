@@ -7,7 +7,7 @@ import { CardSection, Card, Button } from './common';
 
 class Meetup extends Component {
   onRSVPPress() {
-    Actions.rsvp({ uid: this.props.meetup.uid });
+    Actions.rsvp({ meetup: this.props.meetup });
   }
 
   onInvitePress() {
