@@ -11,7 +11,7 @@ const INITIAL_STATE = {
 };
 
 export default (state = INITIAL_STATE, action) => {
-  console.log(action)
+  // console.log(action)
   switch (action.type) {
     case CHANGE_RSVP:
       return { ...state, street: action.street, lat: action.lat, lon: action.lon };

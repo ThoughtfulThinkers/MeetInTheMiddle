@@ -8,7 +8,7 @@ import {
 } from '../common';
 
 import {
-  createUser,
+  updateUser,
   emailChanged,
   fetchGeoLocationByFullAddress,
   loginUser,
@@ -17,7 +17,7 @@ import {
   userLocationInputChanged,
 } from '../../actions';
 
-class ProfileForm extends Component {
+class ProfileUpdate extends Component {
   onEmailChange(text) {
     this.props.emailChanged(text);
   }
@@ -26,7 +26,7 @@ class ProfileForm extends Component {
     this.props.passwordChanged(text);
   }
 
-  onProfileButtonPress() {
+  onUpdateProfileButtonPress() {
     // const { email, password } = this.props;
     // this.props.loginUser({ email, password });
     console.log('onProfileButtonPress');
@@ -53,12 +53,12 @@ class ProfileForm extends Component {
     );
   }
 
-  renderProfileButton() {
+  renderUpdateProfileButton() {
     if (this.props.loading) {
       return <Spinner size="large" />;
     }
     return (
-      <Button onPress={this.onProfileButtonPress.bind(this)}>
+      <Button onPress={this.onUpdateProfileButtonPress.bind(this)}>
         Update Profile
       </Button>
     );
@@ -157,7 +157,7 @@ class ProfileForm extends Component {
           {this.renderSaveLocationButton()}
         </CardSection>
         <CardSection>
-          {this.renderProfileButton()}
+          {this.renderUpdateProfileButton()}
         </CardSection>
       </Card>
       </ScrollView>
@@ -195,11 +195,11 @@ const mapStateToProps = ({ auth, user }) => {
 };
 
 export default connect(mapStateToProps, {
-  createUser,
+  updateUser,
   emailChanged,
   fetchGeoLocationByFullAddress,
   loginUser,
   passwordChanged,
   userInputChanged,
   userLocationInputChanged,
-})(ProfileForm);
+})(ProfileUpdate);
