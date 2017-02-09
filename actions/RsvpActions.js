@@ -19,9 +19,11 @@ export const setRsvp = (street, lat, lon, meetupId, users) => {
   return (dispatch) => {
     dispatch({ type: SET_RSVP });
 
-    //do firebase auth for current user in real version!
-      //const { currentUser } = firebase.auth();
-    const currentUser = { uid: 'sg6wGGasLIYbmNdzKdZTrc9mPDu1', firstName: 'Teresa' };
+    const { currentUser } = firebase.auth();
+    if (!currentUser) {
+      Actions.login();
+      return;
+    }
 
     const guest = {
       uid: currentUser.uid,
