@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Text, View } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import DatePicker from 'react-native-datepicker';
 import { meetupChange, addMeetup } from '../actions';
 import { Card, CardSection, Input, Button, Spinner } from './common';
@@ -14,6 +15,10 @@ class MeetupLocationCreate extends Component {
   onButtonPress() {
     const { name, description, start, end, state, venue, voteStart, voteEnd } = this.props;
     this.props.addMeetup({ name, description, start, end, state, venue, voteStart, voteEnd });
+  }
+
+  onStatePress() {
+    Actions.states();
   }
 
   onChange(prop, value) {
@@ -43,12 +48,8 @@ class MeetupLocationCreate extends Component {
       <Card>
         <View><Text>{`1. What state will ${this.props.name} be in?`}</Text></View>
         <CardSection>
-          <Input
-            label="State"
-            placeholder="New York"
-            value={this.props.state}
-            onChangeText={value => this.onChange('state', value)}
-          />
+          <Text style={styles.pickerTextStyle}>{this.props.location}</Text>
+          <Button onPress={this.onStatePress.bind(this)}>Change State</Button>
         </CardSection>
 
         <View><Text>{`2. What kind of place do you want ${this.props.name} to be in?`}</Text></View>
@@ -112,14 +113,17 @@ const styles = {
   pickerTextStyle: {
     fontSize: 18,
     paddingLeft: 20,
-    flex: 1
+    flex: 1,
+    alignSelf: 'center'
   }
 };
 
-const mapStateToProps = ({ meetupForm }) => {
+const mapStateToProps = ({ meetupForm, filter }) => {
   const { name, description, start, end, state, venue, voteStart, voteEnd } = meetupForm;
+  console.log('state', state)
+  const { location } = filter;
   const loading = meetupForm.loading ? true : false;
-  return { name, description, start, end, state, venue, voteStart, voteEnd, loading };
+  return { name, description, start, end, state, venue, voteStart, voteEnd, loading, location };
 };
 
 export default connect(mapStateToProps, { meetupChange, addMeetup })(MeetupLocationCreate);

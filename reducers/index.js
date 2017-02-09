@@ -5,13 +5,14 @@ import MeetupReducer from './MeetupReducer';
 import UserReducer from './UserReducer';
 import FilterReducer from './FilterReducer';
 import MeetupFormReducer from './MeetupFormReducer';
+import RsvpReducer from './RsvpReducer';
 
 export default combineReducers({
-// replace with actual reducer
   auth: AuthReducer,
   chat: ChatReducer,
   meetups: MeetupReducer,
   user: UserReducer,
   filter: FilterReducer,
-  meetupForm: MeetupFormReducer
+  meetupForm: MeetupFormReducer,
+  rsvp: RsvpReducer
 });
