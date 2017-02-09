@@ -15,7 +15,7 @@ class Meetup extends Component {
   }
 
   onMapPress() {
-    Actions.map();
+    Actions.map({ meetup: this.props.meetup });
   }
 
   onChatPress() {
@@ -27,6 +27,15 @@ class Meetup extends Component {
     const guests = _.map(meetup.users, (val, uid) => {
       return { ...val, uid };
     });
+    let map;
+    if (guests.length === 0) {
+      map = <Text />;
+    } else {
+      map = (
+        <Button onPress={this.onMapPress.bind(this)}>
+          View Map
+        </Button>);
+    }
 
     return (
       <Card>
@@ -36,29 +45,21 @@ class Meetup extends Component {
           <Text style={styles.textStyle}>End: {meetup.end}</Text>
           <Text style={styles.textStyle}>Description: {meetup.description}</Text>
         </CardSection>
+
         <CardSection style={{ flexDirection: 'row' }}>
-          <Button
-            onPress={this.onRSVPPress.bind(this)}
-          >
+          <Button onPress={this.onRSVPPress.bind(this)}>
             RSVP
           </Button>
 
-          <Button
-            onPress={this.onInvitePress.bind(this)}
-          >
+          <Button onPress={this.onInvitePress.bind(this)}>
             Invite Friends
           </Button>
         </CardSection>
-        <CardSection style={{ flexDirection: 'row' }}>
-          <Button
-            onPress={this.onMapPress.bind(this)}
-          >
-            View Map
-          </Button>
 
-          <Button
-            onPress={this.onChatPress.bind(this)}
-          >
+        <CardSection style={{ flexDirection: 'row' }}>
+          {map}
+
+          <Button onPress={this.onChatPress.bind(this)}>
             Chat
           </Button>
         </CardSection>
