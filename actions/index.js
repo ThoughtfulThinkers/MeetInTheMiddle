@@ -5,3 +5,4 @@ export * from './UserActions';
 export * from './LocationActions';
 export * from './FilterActions';
 export * from './MeetupFormActions';
+export * from './RsvpActions';

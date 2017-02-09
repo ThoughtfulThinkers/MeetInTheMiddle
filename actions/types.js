@@ -47,3 +47,10 @@ export const ADD_MEETUP_SUCCESS = 'ADD_MEETUP_SUCCESS';
 export const SET_CURRENT_MEETUP = 'SET_CURRENT_MEETUP';
 export const EDIT_MEETUP = 'EDIT_MEETUP';
 export const EDIT_MEETUP_SUCCESS = 'EDIT_MEETUP_SUCCESS';
+
+/******************************************************
+  Rsvp Actions
+******************************************************/
+export const CHANGE_RSVP = 'CHANGE_RSVP';
+export const SET_RSVP = 'SET_RSVP';
+export const SET_RSVP_SUCCESS = 'SET_RSVP_SUCCESS';

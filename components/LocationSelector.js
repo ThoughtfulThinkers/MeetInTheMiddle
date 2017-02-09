@@ -1,30 +1,19 @@
 import React, { Component } from 'react';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { connect } from 'react-redux';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Alert } from 'react-native';
+import { changeRSVP } from '../actions';
 import { Card, CardSection, Input } from './common';
 import { googlePlacesConfig } from '../envConfig';
 
-const homePlace = { description: 'Home', geometry: { location: { lat: 48.8152937, lng: 2.4597668 } } };
-
 class LocationSelector extends Component {
-  onCurrentLocationPress() {
-    console.log('current location');
-  }
-
-  onPreferredLocationPress() {
-    console.log('preferred location');
-  }
-
-  onChange(e) {
-    console.log(e.target.value);
-  }
-
-  onSubmit() {
-    console.log('submitting location');
-  }
 
   render() {
+    const homePlace = {
+      description: this.props.street,
+      geometry: { location: { lat: this.props.lat, lng: this.props.lon } }
+    };
+
     return (
       <GooglePlacesAutocomplete
               placeholder='Search'
@@ -34,8 +23,12 @@ class LocationSelector extends Component {
               fetchDetails
               renderDescription={(row) => row.description} // custom description render
               onPress={(data, details = null) => { // 'details' is provided when fetchDetails = true
-                console.log(data);
-                console.log(details);
+                if (!details) {
+                  Alert.alert('Location latitude and longitude unavailable. Please try again.');
+                } else {
+                  this.props.changeRSVP(details.name, details.geometry.location.lat,
+                      details.geometry.location.lng);
+                }
               }}
               getDefaultValue={() => {
                 return ''; // text input default value
@@ -44,7 +37,6 @@ class LocationSelector extends Component {
                 // available options: https://developers.google.com/places/web-service/autocomplete
                 key: googlePlacesConfig.apiKey,
                 language: 'en', // language of the results
-                types: '(cities)', // default: 'geocode'
               }}
               styles={{
                 description: {
@@ -55,23 +47,10 @@ class LocationSelector extends Component {
                 },
               }}
 
-              currentLocation={true} // Will add a 'Current location' button at the top of the predefined places list
+              currentLocation
               currentLocationLabel="Current location"
-              nearbyPlacesAPI='GooglePlacesSearch' // Which API to use: GoogleReverseGeocoding or GooglePlacesSearch
-              GoogleReverseGeocodingQuery={{
-                // available options for GoogleReverseGeocoding API : https://developers.google.com/maps/documentation/geocoding/intro
-              }}
-              GooglePlacesSearchQuery={{
-                // available options for GooglePlacesSearch API : https://developers.google.com/places/web-service/search
-                rankby: 'distance',
-                types: 'food',
-              }}
-
-
-              filterReverseGeocodingByTypes={['locality', 'administrative_area_level_3']} // filter the reverse geocoding results by types - ['locality', 'administrative_area_level_3'] if you want to display only cities
-
-              predefinedPlaces={[homePlace, workPlace]}
-            />
+              predefinedPlaces={[homePlace]}
+      />
           );
         }
 }
@@ -84,7 +63,11 @@ const styles = {
 };
 
 const mapStateToProps = state => {
-  return {}
+  // const { lat, lon, street } = state.user.location;
+  const lat = 10.234;
+  const lon = 12.456;
+  const street = '130 Cat Street';
+  return { lat, lon, street };
 };
 
-export default connect(mapStateToProps, null)(LocationSelector);
+export default connect(mapStateToProps, { changeRSVP })(LocationSelector);

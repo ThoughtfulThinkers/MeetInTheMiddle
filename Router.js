@@ -16,6 +16,10 @@ import Meetup from './components/Meetup';
 import MeetupEdit from './components/MeetupEdit';
 import Test from './components/Test';
 
+//RSVP
+import LocationSelector from './components/LocationSelector';
+import RSVP from './components/RSVP';
+
 const RouterComponent = () => {
   return (
     <Router sceneStyle={{ paddingTop: 65 }}>
@@ -61,6 +65,8 @@ const RouterComponent = () => {
           onLeft={() => Actions.meetups()}
         />
         <Scene key="states" component={StateSelector} title="Choose State" />
+        <Scene key="rsvp" component={RSVP} title="RSVP" />
+        <Scene key="searchLocation" component={LocationSelector} title="Choose Location" />
       </Scene>
     </Router>
   );
