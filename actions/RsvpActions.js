@@ -6,19 +6,18 @@ import {
   SET_RSVP_SUCCESS
 } from '../actions/types';
 
-export const changeRSVP = (street, lat, lon) => {
+export const changeRSVP = (lat, lon) => {
   return {
     type: CHANGE_RSVP,
-    street,
     lat,
     lon
   };
 };
 
-export const setRsvp = (street, lat, lon, meetupId, users) => {
+export const setRsvp = (lat, lon, meetupId, users, name) => {
   return (dispatch) => {
     dispatch({ type: SET_RSVP });
-    
+
     const { currentUser } = firebase.auth();
     if (!currentUser) {
       Actions.login();
@@ -27,8 +26,7 @@ export const setRsvp = (street, lat, lon, meetupId, users) => {
 
     const guest = {
       uid: currentUser.uid,
-      name: currentUser.firstName,
-      street,
+      name,
       lat,
       lon
     };
@@ -38,7 +36,7 @@ export const setRsvp = (street, lat, lon, meetupId, users) => {
       .push(guest)
       .then(() => {
         firebase.database().ref(`/users/${currentUser.uid}/meetups/${meetupId}`)
-        .set({ street, lat, lon, uid: meetupId })
+        .set({ lat, lon, uid: meetupId })
         .then(() => {
           dispatch({ type: SET_RSVP_SUCCESS });
           Actions.meetups({ type: 'reset' });

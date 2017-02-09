@@ -26,7 +26,7 @@ class LocationSelector extends Component {
                 if (!details) {
                   Alert.alert('Location latitude and longitude unavailable. Please try again.');
                 } else {
-                  this.props.changeRSVP(details.name, details.geometry.location.lat,
+                  this.props.changeRSVP(details.geometry.location.lat,
                       details.geometry.location.lng);
                 }
               }}
@@ -63,10 +63,7 @@ const styles = {
 };
 
 const mapStateToProps = state => {
-  // const { lat, lon, street } = state.user.location;
-  const lat = 10.234;
-  const lon = 12.456;
-  const street = '130 Cat Street';
+  const { lat, lon, street } = state.user.location;
   return { lat, lon, street };
 };
 
