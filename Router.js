@@ -7,12 +7,19 @@ import Home from './components/Home';
 import LocationSelector from './components/LocationSelector';
 import LoginForm from './components/LoginForm';
 import Map from './components/Map';
+
+import StateSelector from './components/StateSelector';
+
 import MeetupCreate from './components/MeetupCreate';
 import MeetupLocationCreate from './components/MeetupLocationCreate';
 import Meetup from './components/Meetup';
 import MeetupEdit from './components/MeetupEdit';
 import ProfileForm from './components/Profile/ProfileForm';
 import Test from './components/Test';
+
+//RSVP
+import LocationSelector from './components/LocationSelector';
+import RSVP from './components/RSVP';
 
 const RouterComponent = () => {
   return (
@@ -60,7 +67,12 @@ const RouterComponent = () => {
           title="Meetup"
           rightTitle="Edit"
           onRight={() => Actions.edit()}
+          leftTitle="Home"
+          onLeft={() => Actions.meetups()}
         />
+        <Scene key="states" component={StateSelector} title="Choose State" />
+        <Scene key="rsvp" component={RSVP} title="RSVP" />
+        <Scene key="searchLocation" component={LocationSelector} title="Choose Location" />
       </Scene>
     </Router>
   );

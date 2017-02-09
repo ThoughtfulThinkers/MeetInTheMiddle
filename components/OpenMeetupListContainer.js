@@ -14,9 +14,7 @@ class OpenMeetupListContainer extends Component {
   }
 
   onPress() {
-    const location = this.props.text;
-    this.props.setLocation(location);
-    this.props.meetupsFetch(location);
+    Actions.states();
   }
 
   render() {
@@ -38,14 +36,7 @@ class OpenMeetupListContainer extends Component {
           <Text style={styles.filterTextStyle}>Events in {this.props.location}</Text>
         </CardSection>
         <CardSection>
-          <Input
-            label="State"
-            value={this.props.text}
-            onChangeText={state => this.props.setText(state)}
-            placeholder="Enter State"
-            secureTextEntry={false}
-          />
-          <Button onPress={this.onPress.bind(this)}>Search</Button>
+          <Button onPress={this.onPress.bind(this)}>Change State</Button>
         </CardSection>
         {listContent}
       </View>
