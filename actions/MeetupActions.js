@@ -47,10 +47,3 @@ export const userMeetupsFetch = () => {
       });
     };
   };
-
-export const userMeetupFetch = (uid) => {
-    firebase.database().ref(`meetups/${uid}`).on('value', (snapshot) => {
-      console.log(snapshot.val());
-      return { ...snapshot.val(), uid };
-    });
-};
