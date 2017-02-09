@@ -6,8 +6,7 @@ import {
   FETCH_MEETUPS,
   FETCH_MEETUPS_SUCCESS,
   FETCH_USER_MEETUPS,
-  FETCH_USER_MEETUPS_SUCCESS,
-  MEETUP_CREATE_SUCCESS
+  FETCH_USER_MEETUPS_SUCCESS
 } from './types';
 
 export const meetupsFetch = (city) => {
@@ -47,20 +46,6 @@ export const userMeetupsFetch = () => {
       .catch((err) => {
         console.log(err);
       });
-    });
-  };
-};
-
-export const createMeetup = (meetup) => {
-  const { currentUser } = firebase.auth();
-
-  return (dispatch) => {
-  firebase.database().ref('/meetups')
-    .push(meetup)
-    .then(({ key }) => {
-      // console.log('created meetup: ', key);
-      dispatch({ type: MEETUP_CREATE_SUCCESS });
-      Actions.meetup({ type: 'reset', id: key });
     });
   };
 };

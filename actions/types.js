@@ -29,7 +29,6 @@ export const FETCH_MEETUPS = 'FETCH_MEETUPS';
 export const FETCH_MEETUPS_SUCCESS = 'FETCH_MEETUPS_SUCCESS';
 export const FETCH_USER_MEETUPS = 'FETCH_USER_MEETUPS';
 export const FETCH_USER_MEETUPS_SUCCESS = 'FETCH_USER_MEETUPS_SUCCESS';
-export const MEETUP_CREATE_SUCCESS = 'MEETUP_CREATE_SUCCESS';
 
 /******************************************************
   User Actions
@@ -41,3 +40,5 @@ export const USER_INPUT_CHANGED = 'USER_INPUT_CHANGED';
   Meetup Form Actions
 ******************************************************/
 export const MEETUP_CHANGED = 'MEETUP_CHANGED';
+export const ADD_MEETUP = 'ADD_MEETUP';
+export const ADD_MEETUP_SUCCESS = 'ADD_MEETUP_SUCCESS';

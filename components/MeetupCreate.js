@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { Text } from 'react-native';
 import DatePicker from 'react-native-datepicker';
@@ -6,13 +7,8 @@ import { meetupChange } from '../actions';
 import { Card, CardSection, Input, Button } from './common';
 
 class MeetupCreate extends Component {
-  constructor() {
-    super();
-    this.onChange = this.onChange.bind(this);
-  }
   onButtonPress() {
-    const { name, description, start, end } = this.props;
-    console.log(name, description, start, end);
+    Actions.addLocation();
   }
 
   onChange(prop, value) {
@@ -33,7 +29,6 @@ class MeetupCreate extends Component {
 
         <CardSection>
           <Input
-           style={{ height: 100 }}
             label="Description"
             placeholder="Bring cake to Judy's house"
             value={this.props.description}
@@ -69,7 +64,7 @@ class MeetupCreate extends Component {
 
         <CardSection>
           <Button
-            onButtonPress={this.onButtonPress()}
+            onPress={this.onButtonPress.bind(this)}
           >
             Next
           </Button>
