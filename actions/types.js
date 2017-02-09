@@ -31,6 +31,8 @@ export const FETCH_MEETUPS = 'FETCH_MEETUPS';
 export const FETCH_MEETUPS_SUCCESS = 'FETCH_MEETUPS_SUCCESS';
 export const FETCH_USER_MEETUPS = 'FETCH_USER_MEETUPS';
 export const FETCH_USER_MEETUPS_SUCCESS = 'FETCH_USER_MEETUPS_SUCCESS';
+export const FETCH_MEETUP = 'FETCH_MEETUPS';
+export const FETCH_MEETUP_SUCCESS = 'FETCH_MEETUPS_SUCCESS';
 
 /******************************************************
   User Actions
