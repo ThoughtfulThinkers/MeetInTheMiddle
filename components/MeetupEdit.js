@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 import DatePicker from 'react-native-datepicker';
+import VenuePicker from './Venues/VenuePicker';
 import { meetupChange, meetupEdit } from '../actions';
 import { Card, CardSection, Input, Button, Spinner } from './common';
 
@@ -17,6 +18,10 @@ class MeetupEdit extends Component {
 
   onStatePress() {
     Actions.states();
+  }
+
+  onVenuePress() {
+    Actions.venues();
   }
 
   render() {
@@ -79,19 +84,15 @@ class MeetupEdit extends Component {
           />
         </CardSection>
 
-        <CardSection>
-          <Text style={styles.pickerTextStyle}>{this.props.location}</Text>
+        <CardSection style={{ alignItems: 'center' }}>
+          <Text style={styles.pickerTextStyle}>{this.props.meetup.state}</Text>
           <Button onPress={this.onStatePress.bind(this)}>Change State</Button>
         </CardSection>
 
-          <CardSection>
-            <Input
-              label="Venue"
-              placeholder="This needs to be a picker or something"
-              value={meetup.venue}
-              onChangeText={value => this.onChange('venue', value)}
-            />
-          </CardSection>
+        <CardSection style={{ alignItems: 'center' }}>
+          <Text style={styles.pickerTextStyle}>{this.props.meetup.venue}</Text>
+          <Button onPress={this.onVenuePress.bind(this)}>Change Venue</Button>
+        </CardSection>
 
           <CardSection style={{ alignItems: 'center' }}>
             <Text style={styles.pickerTextStyle}>Vote Start</Text>

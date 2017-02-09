@@ -21,6 +21,9 @@ import Test from './components/Test';
 import LocationSelector from './components/LocationSelector';
 import RSVP from './components/RSVP';
 
+//Venue
+import VenuePicker from './components/Venues/VenuePicker';
+
 const RouterComponent = () => {
   return (
     <Router sceneStyle={{ paddingTop: 65 }}>
@@ -56,6 +59,7 @@ const RouterComponent = () => {
         />
         <Scene key="states" component={StateSelector} title="Choose State" />
         <Scene key="rsvp" component={RSVP} title="RSVP" />
+        <Scene key="venues" component={VenuePicker} title="Choose Venue" />
         <Scene key="searchLocation" component={LocationSelector} title="Choose Location" />
       </Scene>
     </Router>
