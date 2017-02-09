@@ -120,6 +120,7 @@ const styles = {
 
 const mapStateToProps = ({ meetupForm, filter }) => {
   const { name, description, start, end, state, venue, voteStart, voteEnd } = meetupForm;
+  console.log('state', state)
   const { location } = filter;
   const loading = meetupForm.loading ? true : false;
   return { name, description, start, end, state, venue, voteStart, voteEnd, loading, location };

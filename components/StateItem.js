@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { Text, View, TouchableWithoutFeedback } from 'react-native';
-import { setLocation, meetupsFetch } from '../actions';
+import { setLocation, meetupsFetch, meetupChange } from '../actions';
 import { CardSection } from './common';
 
 class StateItem extends Component {
   onRowPress() {
     this.props.setLocation(this.props.state);
+    this.props.meetupChange('state', this.props.state);
     this.props.meetupsFetch(this.props.state);
     Actions.pop();
   }
@@ -35,4 +36,4 @@ const styles = {
   }
 };
 
-export default connect(null, { setLocation, meetupsFetch })(StateItem);
+export default connect(null, { setLocation, meetupsFetch, meetupChange })(StateItem);

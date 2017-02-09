@@ -57,6 +57,8 @@ const RouterComponent = () => {
           title="Meetup"
           rightTitle="Edit"
           onRight={() => Actions.edit()}
+          leftTitle="Home"
+          onLeft={() => Actions.meetups()}
         />
         <Scene key="states" component={StateSelector} title="Choose State" />
       </Scene>
