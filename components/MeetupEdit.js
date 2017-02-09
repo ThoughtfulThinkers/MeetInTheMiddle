@@ -15,6 +15,10 @@ class MeetupEdit extends Component {
     this.props.meetupChange(prop, value);
   }
 
+  onStatePress() {
+    Actions.states();
+  }
+
   render() {
     const { meetup } = this.props;
 
@@ -75,14 +79,10 @@ class MeetupEdit extends Component {
           />
         </CardSection>
 
-          <CardSection>
-            <Input
-              label="State"
-              placeholder="New York"
-              value={meetup.state}
-              onChangeText={value => this.onChange('state', value)}
-            />
-          </CardSection>
+        <CardSection>
+          <Text style={styles.pickerTextStyle}>{this.props.location}</Text>
+          <Button onPress={this.onStatePress.bind(this)}>Change State</Button>
+        </CardSection>
 
           <CardSection>
             <Input
