@@ -6,7 +6,7 @@ class GuestListItem extends Component {
   render() {
     const { name } = this.props.guest;
     return (
-      <CardSection>
+      <CardSection style={{ justifyContent: 'center' }}>
         <Text style={styles.titleStyle}>
           {name}
         </Text>
@@ -17,8 +17,7 @@ class GuestListItem extends Component {
 
 const styles = {
   titleStyle: {
-    fontSize: 18,
-    paddingLeft: 15
+    fontSize: 18
   }
 };
 
