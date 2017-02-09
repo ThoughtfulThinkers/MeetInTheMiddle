@@ -1,18 +1,28 @@
 import { Actions } from 'react-native-router-flux';
-import { googleConfig } from '../envConfig';
+import 'whatwg-fetch';
+import { googlePlacesConfig } from '../envConfig';
+
+import {
+  FETCH_GEOLOCATION_BY_FULL_ADDRESS_SUCCESS
+} from './types';
 
 /**************************************************
   Google
 **************************************************/
-// const GOOGLE_API_KEY = googleConfig.GOOGLE_API_KEY;
-// export const reverseGeoLocLookup = (lat = '40.732287', lon: '-111.8996689') => dispatch => {
-//   const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lon}&sensor=true&key=${GOOGLE_API_KEY}`
-//   const url2 = `https://maps.googleapis.com/maps/api/geocode/json?latlng=40.64177,-111.4946&key=${GOOGLE_API_KEY}`
-//   fetch(url)
-//     .then(response => response.json())
-//     .then(data => {
-//       const address = data.results[0].formatted_address.split(',')
-//       const location = address[len-3]
-//       dispatch(fetchBreweryLocations(location))
-//     })
-//     .catch(error =>console.log('reverseGeoLocLookup Error: ', error))
+// const GOOGLE_PLACES_API = googlePlacesConfig.apiKey;
+const GOOGLE_API = 'AIzaSyDzk0eKI5tnKWkSORpDTL32iZ15QjxQxeg';
+export const fetchGeoLocationByFullAddress = (street, city, state) => dispatch => {
+  console.log('google api: ', GOOGLE_API);
+  const fullAddress = `${street},${city},${state}`;
+  const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${fullAddress}&key=${GOOGLE_API}`;
+  const url2 = `https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=${GOOGLE_API}`;
+  const url3 = 'https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyDzk0eKI5tnKWkSORpDTL32iZ15QjxQxeg';
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      console.log('location: ', data.results[0].geometry.location);
+      const location = data.results[0].geometry.location;
+      dispatch({ type: FETCH_GEOLOCATION_BY_FULL_ADDRESS_SUCCESS, payload: location });
+    })
+    .catch(error => console.log('fetchGeoLocationByFullAddress error: ', error));
+};

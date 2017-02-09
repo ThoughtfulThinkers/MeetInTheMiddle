@@ -15,6 +15,7 @@ export const FETCH_CHAT_MESSAGES = 'fetchChatMessages';
 /******************************************************
   Location Actions
 ******************************************************/
+export const FETCH_GEOLOCATION_BY_FULL_ADDRESS_SUCCESS = 'FETCH_GEOLOCATION_BY_FULL_ADDRESS_SUCCESS';
 
 /******************************************************
   Filter Actions
@@ -33,10 +34,11 @@ export const FETCH_USER_MEETUPS_SUCCESS = 'FETCH_USER_MEETUPS_SUCCESS';
 /******************************************************
   User Actions
 ******************************************************/
+export const CREATE_USER_SUCCESS = 'CREATE_USER_SUCCESS';
 export const FETCH_USER_SUCCESS = 'FETCH_USER_SUCCESS';
 export const USER_INPUT_CHANGED = 'USER_INPUT_CHANGED';
 export const USER_LOCATION_INPUT_CHANGED = 'USER_LOCATION_INPUT_CHANGED';
-
+export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS';
 
 /******************************************************
   Meetup Form Actions

@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { View, Text } from 'react-native';
+import { View, ScrollView, Text } from 'react-native';
 import {
   Button, Card, CardSection,
   Input, Spinner,
 } from '../common';
 
 import {
-  emailChanged, loginUser, passwordChanged,
-  userInputChanged, userLocationInputChanged,
+  createUser,
+  emailChanged,
+  fetchGeoLocationByFullAddress,
+  loginUser,
+  passwordChanged,
+  userInputChanged,
+  userLocationInputChanged,
 } from '../../actions';
 
 class ProfileForm extends Component {
@@ -25,6 +30,27 @@ class ProfileForm extends Component {
     // const { email, password } = this.props;
     // this.props.loginUser({ email, password });
     console.log('onProfileButtonPress');
+    const { firstName, lastName, image, meetups, location, email, password } = this.props;
+    const data = { firstName, lastName, image, meetups, location, email, password };
+    this.props.createUser(data);
+  }
+
+  onSaveLocationButtonPress() {
+    console.log('get & set location lat/lon');
+    const { location } = this.props;
+    const { street, city, state } = location;
+    this.props.fetchGeoLocationByFullAddress(street, city, state);
+  }
+
+  renderSaveLocationButton() {
+    if (this.props.loading) {
+      return <Spinner size="large" />;
+    }
+    return (
+      <Button onPress={this.onSaveLocationButtonPress.bind(this)}>
+        Set Lat & Lon
+      </Button>
+    );
   }
 
   renderProfileButton() {
@@ -38,8 +64,10 @@ class ProfileForm extends Component {
     );
   }
 
+
   render() {
     return (
+      <ScrollView>
       <Card>
         <CardSection>
           <Input
@@ -83,16 +111,56 @@ class ProfileForm extends Component {
             placeholder="123 Main St"
             value={this.props.location.street}
             onChangeText={
-              value => this.props.userLocationInputChanged({ prop: 'location.street', value })
+              value => this.props.userLocationInputChanged({ prop: 'street', value })
             }
           />
         </CardSection>
 
+        <CardSection>
+          <Input
+            label="City"
+            placeholder="Salt Lake city"
+            value={this.props.location.city}
+            onChangeText={
+              value => this.props.userLocationInputChanged({ prop: 'city', value })
+            }
+          />
+        </CardSection>
+
+
+        <CardSection>
+          <Input
+            label="State"
+            placeholder="UT"
+            value={this.props.location.state}
+            onChangeText={
+              value => this.props.userLocationInputChanged({ prop: 'state', value })
+            }
+          />
+        </CardSection>
+
+
+        <CardSection>
+          <Input
+            label="ZipCode"
+            placeholder="84111"
+            value={this.props.location.zipcode}
+            onChangeText={
+              value => this.props.userLocationInputChanged({ prop: 'zipcode', value })
+            }
+          />
+        </CardSection>
+
+
         <Text style={styles.errorTextStyle}>{this.props.error}</Text>
+        <CardSection>
+          {this.renderSaveLocationButton()}
+        </CardSection>
         <CardSection>
           {this.renderProfileButton()}
         </CardSection>
       </Card>
+      </ScrollView>
     );
   }
 }
@@ -109,10 +177,11 @@ const styles = {
 
 const mapStateToProps = ({ auth, user }) => {
   const { email, password, error, loading } = auth;
-  const { firstName, lastName, image, meetups, location } = user;
+  const { uid, firstName, lastName, image, meetups, location } = user;
   console.log('User Location: ', location.street);
   console.log('User First Name: ', location.firstName);
   return {
+    uid,
     email,
     password,
     error,
@@ -126,7 +195,9 @@ const mapStateToProps = ({ auth, user }) => {
 };
 
 export default connect(mapStateToProps, {
+  createUser,
   emailChanged,
+  fetchGeoLocationByFullAddress,
   loginUser,
   passwordChanged,
   userInputChanged,

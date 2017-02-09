@@ -31,7 +31,6 @@ const RouterComponent = () => {
         <Scene key="chat" component={Chat} title="Chat" style={{ paddingBottom: 40 }} />
         <Scene key="map" component={Map} title="Map" />
         <Scene
-          initial
           key="meetups"
           component={Home}
           title="Meet In The Middle"
@@ -41,11 +40,13 @@ const RouterComponent = () => {
           onRight={() => Actions.add()}
         />
         <Scene
+          initial
           key="profileForm"
           component={ProfileForm}
           title="Profile"
-          leftTitle="Login"
-          onLeft={() => Actions.login()}
+          rightTitle="Login"
+          onRight={() => Actions.login()}
+
         />
         <Scene key="test" component={Test} title="Test" />
         <Scene key="add" component={MeetupCreate} title="Add Meetup" />
