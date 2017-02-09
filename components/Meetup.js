@@ -27,14 +27,36 @@ class Meetup extends Component {
     const guests = _.map(meetup.users, (val, uid) => {
       return { ...val, uid };
     });
+
     let map;
+    let guestList;
     if (guests.length === 0) {
       map = <Text />;
+      guestList = <Text>No one is attending this meetup.</Text>;
     } else {
       map = (
         <Button onPress={this.onMapPress.bind(this)}>
           View Map
         </Button>);
+      guestList = <GuestList guests={guests} />;
+    }
+
+    let rsvp;
+    const today = new Date().getTime();
+    const voteStart = new Date(meetup.voteStart).getTime();
+    if (today >= voteStart) {
+      rsvp = <Text />;
+    } else {
+      rsvp = (
+      <CardSection style={{ flexDirection: 'row' }}>
+        <Button onPress={this.onRSVPPress.bind(this)}>
+          RSVP
+        </Button>
+        <Button onPress={this.onInvitePress.bind(this)}>
+          Invite Friends
+        </Button>
+      </CardSection>
+      );
     }
 
     return (
@@ -46,15 +68,7 @@ class Meetup extends Component {
           <Text style={styles.textStyle}>Description: {meetup.description}</Text>
         </CardSection>
 
-        <CardSection style={{ flexDirection: 'row' }}>
-          <Button onPress={this.onRSVPPress.bind(this)}>
-            RSVP
-          </Button>
-
-          <Button onPress={this.onInvitePress.bind(this)}>
-            Invite Friends
-          </Button>
-        </CardSection>
+          {rsvp}
 
         <CardSection style={{ flexDirection: 'row' }}>
           {map}
@@ -68,7 +82,7 @@ class Meetup extends Component {
         </CardSection>
         <CardSection style={{ flexDirection: 'column' }}>
           <Text style={styles.titleStyle}>Attending</Text>
-          <GuestList guests={guests} />
+          {guestList}
         </CardSection>
       </Card>
     );
