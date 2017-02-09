@@ -9,6 +9,10 @@ import {
   LOGIN_USER
 } from './types';
 
+/*****************************************************************
+  Changes to form Input fields
+*****************************************************************/
+
 export const emailChanged = (text) => {
   return {
     type: EMAIL_CHANGED,
@@ -22,6 +26,10 @@ export const passwordChanged = (text) => {
     payload: text
   };
 };
+
+/*****************************************************************
+    Access Actions
+*****************************************************************/
 
 export const loginUser = ({ email, password }) => {
   // console.log(`Login User email: ${email} password: ${password}`);
@@ -60,6 +68,14 @@ export const logoutUser = () => dispatch => {
     .catch(error => console.log('Sign Out Error ', error));
 };
 
+const loginUserFail = (dispatch) => {
+  dispatch({ type: LOGIN_USER_FAIL });
+};
+
+/*****************************************************************
+    Create New User Account
+*****************************************************************/
+
 export const createNewUserAccount = ({ email, password }) => dispatch => {
   firebase.auth().createUserWithEmailAndPassword(email, password)
     .then(user => {
@@ -77,6 +93,6 @@ const createNewUserAccountSuccess = (dispatch, user, email, password) => {
   Actions.profileForm();
 };
 
-const loginUserFail = (dispatch) => {
-  dispatch({ type: LOGIN_USER_FAIL });
-};
+/*****************************************************************
+    Modify User Account
+*****************************************************************/
