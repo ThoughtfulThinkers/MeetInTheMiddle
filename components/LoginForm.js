@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { Text } from 'react-native';
-import { emailChanged, loginUser, passwordChanged } from '../actions';
+import { ScrollView, Text } from 'react-native';
 import { Button, Card, CardSection, Input, Spinner } from './common';
+import {
+  createNewUserAccount,
+  emailChanged,
+  loginUser,
+  logoutUser,
+  passwordChanged,
+} from '../actions';
 import MeetupList from './MeetupList';
 
 class LoginForm extends Component {
@@ -21,6 +27,16 @@ class LoginForm extends Component {
     this.props.loginUser({ email, password });
   }
 
+  onLogoutButtonPress() {
+    // console.log('TODO: Login Form - Need to setup Logout');
+    this.props.logoutUser();
+  }
+
+  onCreateAccountButtonPress() {
+    const { email, password } = this.props;
+    this.props.createNewUserAccount({ email, password });
+  }
+
   renderLoginButton() {
     if (this.props.loading) {
       return <Spinner size="large" />;
@@ -32,9 +48,31 @@ class LoginForm extends Component {
     );
   }
 
+  renderLogoutButton() {
+    if (this.props.loading) {
+      return <Spinner size="large" />;
+    }
+    return (
+      <Button onPress={this.onLogoutButtonPress.bind(this)}>
+        Log Out
+      </Button>
+    );
+  }
+
+  renderCreateAccountButton() {
+    if (this.props.loading) {
+      return <Spinner size="large" />;
+    }
+    return (
+      <Button onPress={this.onCreateAccountButtonPress.bind(this)}>
+        Create New Account
+      </Button>
+    );
+  }
+
   render() {
     return (
-      <Card>
+      <ScrollView>
         <Card>
           <CardSection>
             <Input
@@ -58,15 +96,14 @@ class LoginForm extends Component {
           <CardSection>
             {this.renderLoginButton()}
           </CardSection>
-        </Card>
-        <Card>
-          <Text>Profile</Text>
           <CardSection>
-            <Text>FirstName</Text>
+            {this.renderLogoutButton()}
+          </CardSection>
+          <CardSection>
+            {this.renderCreateAccountButton()}
           </CardSection>
         </Card>
-      </Card>
-
+      </ScrollView>
     );
   }
 }
@@ -87,7 +124,9 @@ const mapStateToProps = ({ auth }) => {
 };
 
 export default connect(mapStateToProps, {
+  createNewUserAccount,
   emailChanged,
   loginUser,
+  logoutUser,
   passwordChanged
 })(LoginForm);

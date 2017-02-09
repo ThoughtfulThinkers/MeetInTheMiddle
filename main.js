@@ -20,16 +20,17 @@ class App extends Component {
   componentWillMount() {
     firebase.initializeApp(fbConfig);
 
-    // firebase.auth().onAuthStateChanged((user) => {
-    //   console.log("Auth State Changed: ", user)
-    //   // if (user) {
-    //   //   this.setUid(user.uid);
-    //   // } else {
-    //   //   firebase.auth().signInAnonymously().catch((error) => {
-    //   //     console.log(error.message);
-    //   //   });
-    //   // }
-    // });
+    firebase.auth().onAuthStateChanged(user => {
+      console.log('Auth State Changed: ', user);
+      if (user) {
+        // this.setUid(user.uid);
+        console.log('Main uid: ', user.uid)
+      } else {
+        firebase.auth().signInAnonymously().catch((error) => {
+          console.log(error.message);
+        });
+      }
+    });
   }
 
   render() {
