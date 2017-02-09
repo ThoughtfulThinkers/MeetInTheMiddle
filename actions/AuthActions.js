@@ -39,19 +39,14 @@ export const loginUser = ({ email, password }) => {
 
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(user => {
-        console.log('sign in: ', user);
+        // console.log('sign in: ', user);
         loginUserSuccess(dispatch, user);
         dispatch(loadAuthenticatedUserState());
+        return user;
       })
+      .then(user => Actions.profileUpdate(user))
       .catch((error) => {
         console.log(error);
-
-        // firebase.auth().createUserWithEmailAndPassword(email, password)
-        //   .then(user => {
-        //     console.log('create user: ', user);
-        //     loginUserSuccess(dispatch, user);
-        //   })
-        //   .catch(() => loginUserFail(dispatch));
       });
   };
 };
@@ -61,17 +56,17 @@ const loginUserSuccess = (dispatch, user) => {
     type: LOGIN_USER_SUCCESS,
     payload: user
   });
-  Actions.meetups();
 };
 
 export const logoutUser = () => dispatch => {
   firebase.auth().signOut()
-    .then(() => console.log('Signed Out'))
+    .then(() => Actions.meetups())
     .catch(error => console.log('Sign Out Error ', error));
 };
 
 const loginUserFail = (dispatch) => {
   dispatch({ type: LOGIN_USER_FAIL });
+  Actions.login({ type: 'reset' });
 };
 
 export const loadAuthenticatedUserState = () => dispatch => {
@@ -92,7 +87,7 @@ export const loadAuthenticatedUserState = () => dispatch => {
 export const createNewUserAccount = ({ email, password }) => dispatch => {
   firebase.auth().createUserWithEmailAndPassword(email, password)
     .then(user => {
-      console.log('create user: ', user);
+      // console.log('create user: ', user);
       createNewUserAccountSuccess(dispatch, user, email, password);
     })
     .catch(() => loginUserFail(dispatch));
@@ -103,7 +98,7 @@ const createNewUserAccountSuccess = (dispatch, user, email, password) => {
     type: CREATE_NEW_USER_ACCOUNT_SUCCESS,
     payload: { user, email, password }
   });
-  Actions.profileForm();
+  Actions.profileCreate();
 };
 
 /*****************************************************************

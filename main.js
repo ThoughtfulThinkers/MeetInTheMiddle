@@ -21,7 +21,7 @@ class App extends Component {
     firebase.initializeApp(fbConfig);
 
     firebase.auth().onAuthStateChanged(user => {
-      console.log('Auth State Changed: ', user);
+      // console.log('Auth State Changed: ', user);
       if (user) {
         // this.setUid(user.uid);
         console.log('Main uid: ', user.uid);

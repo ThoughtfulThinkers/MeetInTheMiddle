@@ -13,7 +13,8 @@ import MeetupCreate from './components/MeetupCreate';
 import MeetupLocationCreate from './components/MeetupLocationCreate';
 import Meetup from './components/Meetup';
 import MeetupEdit from './components/MeetupEdit';
-import ProfileForm from './components/Profile/ProfileForm';
+import ProfileCreate from './components/Profile/ProfileCreate';
+import ProfileUpdate from './components/Profile/ProfileUpdate';
 import Test from './components/Test';
 
 //RSVP
@@ -24,16 +25,10 @@ const RouterComponent = () => {
   return (
     <Router sceneStyle={{ paddingTop: 65 }}>
       <Scene key="auth">
-        <Scene
-          key="login"
-          component={LoginForm}
-          title="Login"
-          leftTitle="Home"
-          onLeft={() => Actions.meetups()}
-          rightTitle="Profile"
-          onRight={() => Actions.profileForm()}
+        <Scene key="login" component={LoginForm} title="Login" leftTitle="Home" onLeft={() => Actions.meetups()} />
+        <Scene key="profileCreate" component={ProfileCreate} title="Create Profile" leftTitle="Home" onLeft={() => Actions.meetups()} />
+        <Scene key="profileUpdate" component={ProfileUpdate} title="Update Profile" leftTitle="Home" onLeft={() => Actions.meetups()} />
 
-        />
         <Scene key="chat" component={Chat} title="Chat" style={{ paddingBottom: 40 }} />
         <Scene key="map" component={Map} title="Map" />
         <Scene
@@ -45,16 +40,6 @@ const RouterComponent = () => {
           onLeft={() => Actions.login()}
           rightTitle="Add"
           onRight={() => Actions.add()}
-        />
-        <Scene
-          key="profileForm"
-          component={ProfileForm}
-          title="Profile"
-          leftTitle="Home"
-          onLeft={() => Actions.meetups()}
-          rightTitle="Login"
-          onRight={() => Actions.login()}
-
         />
         <Scene key="test" component={Test} title="Test" />
         <Scene key="add" component={MeetupCreate} title="Add Meetup" />

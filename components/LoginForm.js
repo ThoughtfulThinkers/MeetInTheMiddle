@@ -28,7 +28,6 @@ class LoginForm extends Component {
   }
 
   onLogoutButtonPress() {
-    // console.log('TODO: Login Form - Need to setup Logout');
     this.props.logoutUser();
   }
 
