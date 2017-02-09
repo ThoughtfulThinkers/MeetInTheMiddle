@@ -2,14 +2,13 @@ import {
   CREATE_USER_SUCCESS,
   FETCH_GEOLOCATION_BY_FULL_ADDRESS_SUCCESS,
   FETCH_USER_SUCCESS,
+  LOAD_AUTHENTICATED_USER_STATE_SUCCESS,
   USER_INPUT_CHANGED,
   USER_LOCATION_INPUT_CHANGED,
   UPDATE_USER_SUCCESS,
 } from '../actions/types';
 
 const INITIAL_STATE = {
-  uid: '',
-  userKey: '',
   firstName: '',
   lastName: '',
   image: '',
@@ -26,8 +25,13 @@ const INITIAL_STATE = {
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
 
+    case LOAD_AUTHENTICATED_USER_STATE_SUCCESS: {
+      const { firstName, lastName, image, meetups, location } = action.payload;
+      return { ...state, firstName, lastName, image, meetups, location };
+    }
+
     case CREATE_USER_SUCCESS: {
-      console.log('userKey:', action.payload);
+      // console.log('userKey:', action.payload);
       return { ...state, userKey: action.payload };
     }
 
@@ -54,7 +58,7 @@ export default (state = INITIAL_STATE, action) => {
     case FETCH_GEOLOCATION_BY_FULL_ADDRESS_SUCCESS: {
       const lat = action.payload.lat;
       const lon = action.payload.lng;
-      const location = { ...state.locaiton, lon, lat };
+      const location = { ...state.location, lon, lat };
       return { ...state, location };
     }
 
