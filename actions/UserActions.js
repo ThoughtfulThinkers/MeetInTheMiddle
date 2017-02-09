@@ -46,13 +46,16 @@ export const createUser = data => {
 
 export const updateUser = data => {
   const { currentUser } = firebase.auth();
-  console.log('currentUser', currentUser);
-  const { userKey, uid, firstName, lastName, image, meetups, location, email, password } = data;
-  console.log('userKey: ', userKey);
-  const userData = { uid: currentUser.uid, firstName, lastName, image, meetups, location };
-  const emailData = { email, password };
+  // console.log('currentUser', currentUser);
+  const { firstName, lastName, image, location } = data;
+  const userData = { firstName, lastName, image, location };
   return dispatch => {
     firebase.database().ref(`/users/${currentUser.uid}`)
-      .then(response => dispatch({ type: UPDATE_USER_SUCCESS, payload: response }));
+      .update(userData)
+      .then(response => {
+        dispatch({ type: UPDATE_USER_SUCCESS });
+        Actions.meetups();
+      })
+      .catch(error => console.log('updateUser Error: ', error));
   };
 };

@@ -29,10 +29,9 @@ class ProfileUpdate extends Component {
   onUpdateProfileButtonPress() {
     // const { email, password } = this.props;
     // this.props.loginUser({ email, password });
-    console.log('onProfileButtonPress');
     const { firstName, lastName, image, meetups, location, email, password } = this.props;
     const data = { firstName, lastName, image, meetups, location, email, password };
-    this.props.createUser(data);
+    this.props.updateUser(data);
   }
 
   onSaveLocationButtonPress() {
