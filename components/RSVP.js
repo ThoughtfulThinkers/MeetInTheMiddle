@@ -8,10 +8,10 @@ import { CardSection, Card, Button } from './common';
 
 class RSVP extends Component {
   onPress() {
-    const { street, lat, lon, meetup, firstName, lastName } = this.props;
+    const { lat, lon, meetup, firstName, lastName } = this.props;
     const { uid, users } = meetup;
     const name = `${firstName} ${lastName}`;
-    this.props.setRsvp(street, lat, lon, uid, users, name);
+    this.props.setRsvp(lat, lon, uid, users, name);
     Actions.pop();
   }
 
@@ -45,9 +45,9 @@ const styles = {
 };
 
 const mapStateToProps = state => {
-  const { lat, lon, street } = state.rsvp;
+  const { lat, lon } = state.rsvp;
   const { firstName, lastName } = state.user;
-  return { lat, lon, street, firstName, lastName };
+  return { lat, lon, firstName, lastName };
 };
 
 export default connect(mapStateToProps, { setRsvp })(RSVP);
