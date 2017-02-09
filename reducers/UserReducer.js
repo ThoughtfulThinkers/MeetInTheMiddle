@@ -31,8 +31,7 @@ export default (state = INITIAL_STATE, action) => {
     }
 
     case CREATE_USER_SUCCESS: {
-      // console.log('userKey:', action.payload);
-      return { ...state, userKey: action.payload };
+      return state;
     }
 
     case USER_INPUT_CHANGED: {
