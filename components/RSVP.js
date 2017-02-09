@@ -8,8 +8,8 @@ import { CardSection, Card, Button } from './common';
 
 class RSVP extends Component {
   onPress() {
-    const { street, lat, lon } = this.props;
-    this.props.setRsvp(street, lat, lon);
+    const { street, lat, lon, uid } = this.props;
+    this.props.setRsvp(street, lat, lon, uid);
     Actions.pop();
   }
 
@@ -47,4 +47,4 @@ const mapStateToProps = state => {
   return { lat, lon, street };
 };
 
-export default connect(null, { setRsvp })(RSVP);
+export default connect(mapStateToProps, { setRsvp })(RSVP);

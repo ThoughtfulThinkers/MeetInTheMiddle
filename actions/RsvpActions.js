@@ -13,7 +13,7 @@ export const changeRSVP = (street, lat, lon) => {
   };
 };
 
-export const setRsvp = (street, lat, lon) => {
+export const setRsvp = (street, lat, lon, meetupId) => {
   return (dispatch) => {
     dispatch({ type: SET_RSVP });
     console.log(street, lat, lon);
