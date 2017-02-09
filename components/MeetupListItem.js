@@ -5,7 +5,6 @@ import { CardSection } from './common';
 
 class MeetupListItem extends Component {
   onRowPress() {
-    console.log('pressed meetup: ', this.props.meetup.uid);
     Actions.meetup({ meetup: this.props.meetup });
   }
 

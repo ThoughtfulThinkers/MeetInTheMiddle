@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 import { Actions } from 'react-native-router-flux';
 import { Text, View, TouchableWithoutFeedback } from 'react-native';
+import GuestList from './GuestList';
 import { CardSection, Card, Button } from './common';
 
 class Meetup extends Component {
@@ -21,13 +23,18 @@ class Meetup extends Component {
   }
 
   render() {
+    const { meetup } = this.props;
+    const guests = _.map(meetup.users, (val, uid) => {
+      return { ...val, uid };
+    });
+
     return (
       <Card>
         <CardSection style={{ flexDirection: 'column' }}>
-          <Text style={styles.titleStyle}>{this.props.meetup.name}</Text>
-          <Text style={styles.textStyle}>Start: {this.props.meetup.start}</Text>
-          <Text style={styles.textStyle}>End: {this.props.meetup.end}</Text>
-          <Text style={styles.textStyle}>Description: {this.props.meetup.description}</Text>
+          <Text style={styles.titleStyle}>{meetup.name}</Text>
+          <Text style={styles.textStyle}>Start: {meetup.start}</Text>
+          <Text style={styles.textStyle}>End: {meetup.end}</Text>
+          <Text style={styles.textStyle}>Description: {meetup.description}</Text>
         </CardSection>
         <CardSection style={{ flexDirection: 'row' }}>
           <Button
@@ -58,8 +65,9 @@ class Meetup extends Component {
         <CardSection>
           <Text style={styles.titleStyle}>Voting Here</Text>
         </CardSection>
-        <CardSection>
-          <Text style={styles.titleStyle}>Guest List Here</Text>
+        <CardSection style={{ flexDirection: 'column' }}>
+          <Text style={styles.titleStyle}>Attending</Text>
+          <GuestList guests={guests} />
         </CardSection>
       </Card>
     );
