@@ -8,8 +8,9 @@ import { CardSection, Card, Button } from './common';
 
 class RSVP extends Component {
   onPress() {
-    const { street, lat, lon, uid } = this.props;
-    this.props.setRsvp(street, lat, lon, uid);
+    const { street, lat, lon, meetup } = this.props;
+    const { uid, users } = meetup;
+    this.props.setRsvp(street, lat, lon, uid, users);
     Actions.pop();
   }
 

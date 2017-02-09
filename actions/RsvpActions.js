@@ -1,3 +1,5 @@
+import firebase from 'firebase';
+import { Actions } from 'react-native-router-flux';
 import {
   CHANGE_RSVP,
   SET_RSVP,
@@ -13,29 +15,33 @@ export const changeRSVP = (street, lat, lon) => {
   };
 };
 
-export const setRsvp = (street, lat, lon, meetupId) => {
+export const setRsvp = (street, lat, lon, meetupId, users) => {
   return (dispatch) => {
     dispatch({ type: SET_RSVP });
 
     //do firebase auth for current user in real version!
       //const { currentUser } = firebase.auth();
-    const currentUser = { uid: 'sg6wGGasLIYbmNdzKdZTrc9mPDu1' };
+    const currentUser = { uid: 'sg6wGGasLIYbmNdzKdZTrc9mPDu1', firstName: 'Teresa' };
 
-    // const guest = {
-    //
-    // };
-    // firebase.database().ref('/meetups')
-    //   .push(meetup)
-    //   .then(({ key }) => {
-    //     // console.log('created meetup: ', key);
-    //     dispatch({ type: ADD_MEETUP_SUCCESS });
-    //     Actions.meetup({ type: 'reset', meetup });
-    //   })
-    //   .catch((err) => console.log(err));
-    // };
-//    push onto current user meetups
-//    push onto current meetup
+    const guest = {
+      uid: currentUser.uid,
+      name: currentUser.firstName,
+      street,
+      lat,
+      lon
+    };
+    const guests = { ...users, uid: guest };
 
-    console.log(street, lat, lon, meetupId);
-  };
+    firebase.database().ref(`/meetups/${meetupId}/users`)
+      .push(guest)
+      .then(() => {
+        firebase.database().ref(`/users/${currentUser.uid}/meetups/${meetupId}`)
+        .set({ street, lat, lon, uid: meetupId })
+        .then(() => {
+          dispatch({ type: SET_RSVP_SUCCESS });
+          Actions.meetups({ type: 'reset' });
+        });
+      })
+      .catch((err) => console.log(err));
+    };
 };

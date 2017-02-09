@@ -4,7 +4,6 @@ import { Scene, Router, Actions } from 'react-native-router-flux';
 
 import Chat from './components/Chat';
 import Home from './components/Home';
-import LocationSelector from './components/LocationSelector';
 import LoginForm from './components/LoginForm';
 import Map from './components/Map';
 
