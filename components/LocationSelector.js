@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
+import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { connect } from 'react-redux';
 import { View, Text, TouchableOpacity } from 'react-native';
+import { Card, CardSection, Input } from './common';
 import { googlePlacesConfig } from '../envConfig';
 
-var {GooglePlacesAutocomplete} = require('react-native-google-places-autocomplete');
-
-const homePlace = {description: 'Home', geometry: { location: { lat: 48.8152937, lng: 2.4597668 } }};
-const workPlace = {description: 'Work', geometry: { location: { lat: 48.8496818, lng: 2.2940881 } }};
-
-import { Card, CardSection, Input } from './common';
-
+const homePlace = { description: 'Home', geometry: { location: { lat: 48.8152937, lng: 2.4597668 } } };
 
 class LocationSelector extends Component {
   onCurrentLocationPress() {
@@ -35,7 +31,7 @@ class LocationSelector extends Component {
               minLength={2} // minimum length of text to search
               autoFocus={false}
               listViewDisplayed='auto'    // true/false/undefined
-              fetchDetails={true}
+              fetchDetails
               renderDescription={(row) => row.description} // custom description render
               onPress={(data, details = null) => { // 'details' is provided when fetchDetails = true
                 console.log(data);

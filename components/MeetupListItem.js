@@ -1,12 +1,22 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { connect } from 'react-redux';
+import { Actions } from 'react-native-router-flux';
+import { Text, View, TouchableWithoutFeedback } from 'react-native';
+import { setCurrentMeetup } from '../actions';
 import { CardSection } from './common';
 
 class MeetupListItem extends Component {
+  onRowPress() {
+    this.props.setCurrentMeetup(this.props.meetup);
+    Actions.meetup({ meetup: this.props.meetup });
+  }
+
   render() {
-    const { name, city, start, vote } = this.props.meetup;
+    const { name, state, start, vote, uid } = this.props.meetup;
 
     return (
+      <TouchableWithoutFeedback onPress={this.onRowPress.bind(this)}>
+      <View>
       <CardSection style={styles.containerStyle}>
         <View style={styles.rowStyle}>
           <Text style={styles.titleStyle}>{name}</Text>
@@ -14,9 +24,11 @@ class MeetupListItem extends Component {
         </View>
         <View style={styles.rowStyle}>
           <Text style={styles.voteStyle}>{vote}</Text>
-          <Text style={styles.detailStyle}>{city}</Text>
+          <Text style={styles.detailStyle}>{state}</Text>
         </View>
       </CardSection>
+      </View>
+      </TouchableWithoutFeedback>
     );
   }
 }
@@ -45,4 +57,4 @@ const styles = {
   }
 };
 
-export default MeetupListItem;
+export default connect(null, { setCurrentMeetup })(MeetupListItem);
