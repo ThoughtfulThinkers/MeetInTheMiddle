@@ -6,9 +6,9 @@ import Chat from './components/Chat';
 import Home from './components/Home';
 import LoginForm from './components/LoginForm';
 import Map from './components/Map';
-import LocationSelector from './components/LocationSelector';
 import ProfileForm from './components/Profile/ProfileForm';
 
+import StateSelector from './components/StateSelector';
 
 import MeetupCreate from './components/MeetupCreate';
 import MeetupLocationCreate from './components/MeetupLocationCreate';
@@ -58,6 +58,7 @@ const RouterComponent = () => {
           rightTitle="Edit"
           onRight={() => Actions.edit()}
         />
+        <Scene key="states" component={StateSelector} title="Choose State" />
       </Scene>
     </Router>
   );
