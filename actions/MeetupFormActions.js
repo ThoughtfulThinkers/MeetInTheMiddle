@@ -30,7 +30,7 @@ export const addMeetup = (meetupDetails) => {
     .then(({ key }) => {
       // console.log('created meetup: ', key);
       dispatch({ type: ADD_MEETUP_SUCCESS });
-      Actions.meetup({ type: 'reset', id: key });
+      Actions.meetup({ type: 'reset', meetup });
     })
     .catch((err) => console.log(err));
   };

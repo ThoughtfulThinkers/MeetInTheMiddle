@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { Actions } from 'react-native-router-flux';
+import { Text, View, TouchableWithoutFeedback } from 'react-native';
 import { CardSection } from './common';
 
 class MeetupListItem extends Component {
+  onRowPress() {
+    console.log('pressed meetup: ', this.props.meetup.uid);
+    Actions.meetup({ meetup: this.props.meetup });
+  }
+
   render() {
-    const { name, state, start, vote } = this.props.meetup;
+    const { name, state, start, vote, uid } = this.props.meetup;
 
     return (
+      <TouchableWithoutFeedback onPress={this.onRowPress.bind(this)}>
+      <View>
       <CardSection style={styles.containerStyle}>
         <View style={styles.rowStyle}>
           <Text style={styles.titleStyle}>{name}</Text>
@@ -17,6 +25,8 @@ class MeetupListItem extends Component {
           <Text style={styles.detailStyle}>{state}</Text>
         </View>
       </CardSection>
+      </View>
+      </TouchableWithoutFeedback>
     );
   }
 }

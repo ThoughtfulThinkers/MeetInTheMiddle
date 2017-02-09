@@ -10,6 +10,7 @@ import LocationSelector from './components/LocationSelector';
 import ProfileForm from './components/Profile/ProfileForm';
 import MeetupCreate from './components/MeetupCreate';
 import MeetupLocationCreate from './components/MeetupLocationCreate';
+import Meetup from './components/Meetup';
 import Test from './components/Test';
 
 const RouterComponent = () => {
@@ -46,6 +47,7 @@ const RouterComponent = () => {
         <Scene key="test" component={Test} title="Test" />
         <Scene key="add" component={MeetupCreate} title="Add Meetup" />
         <Scene key="addLocation" component={MeetupLocationCreate} title="Location Settings" />
+        <Scene key="meetup" component={Meetup} title="Meetup" />
       </Scene>
     </Router>
   );
