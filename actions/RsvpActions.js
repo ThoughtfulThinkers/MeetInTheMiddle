@@ -18,7 +18,7 @@ export const changeRSVP = (street, lat, lon) => {
 export const setRsvp = (street, lat, lon, meetupId, users) => {
   return (dispatch) => {
     dispatch({ type: SET_RSVP });
-
+    
     const { currentUser } = firebase.auth();
     if (!currentUser) {
       Actions.login();

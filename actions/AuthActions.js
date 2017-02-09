@@ -6,7 +6,8 @@ import {
   PASSWORD_CHANGED,
   LOGIN_USER_SUCCESS,
   LOGIN_USER_FAIL,
-  LOGIN_USER
+  LOGIN_USER,
+  LOAD_AUTHENTICATED_USER_STATE_SUCCESS
 } from './types';
 
 /*****************************************************************
@@ -40,6 +41,7 @@ export const loginUser = ({ email, password }) => {
       .then(user => {
         console.log('sign in: ', user);
         loginUserSuccess(dispatch, user);
+        dispatch(loadAuthenticatedUserState());
       })
       .catch((error) => {
         console.log(error);
@@ -70,6 +72,17 @@ export const logoutUser = () => dispatch => {
 
 const loginUserFail = (dispatch) => {
   dispatch({ type: LOGIN_USER_FAIL });
+};
+
+export const loadAuthenticatedUserState = () => dispatch => {
+  const { currentUser } = firebase.auth();
+  if (!currentUser) {
+    dispatch({ type: LOAD_AUTHENTICATED_USER_STATE_SUCCESS, payload: {} });
+  }
+  firebase.database().ref(`/users/${currentUser.uid}`)
+    .on('value', (snapshot) => {
+      dispatch({ type: LOAD_AUTHENTICATED_USER_STATE_SUCCESS, payload: snapshot.val() });
+    });
 };
 
 /*****************************************************************

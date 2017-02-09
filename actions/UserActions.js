@@ -4,7 +4,6 @@ import { Actions } from 'react-native-router-flux';
 import {
   CREATE_USER_SUCCESS,
   FETCH_USER_SUCESS,
-  LOAD_AUTHENTICATED_USER_STATE_SUCCESS,
   USER_INPUT_CHANGED,
   USER_LOCATION_INPUT_CHANGED,
   UPDATE_USER_SUCCESS,
@@ -56,13 +55,4 @@ export const updateUser = data => {
     firebase.database().ref(`/users/${currentUser.uid}`)
       .then(response => dispatch({ type: UPDATE_USER_SUCCESS, payload: response }));
   };
-};
-
-export const loadAuthenticatedUserState = () => dispatch => {
-  const { currentUser } = firebase.auth();
-  if (!currentUser) {
-    dispatch({ type: LOAD_AUTHENTICATED_USER_STATE_SUCCESS, payload: {} });
-  }
-  firebase.database().ref(`/users/${currentUser.uid}`)
-    .then(snapshot => dispatch({ type: LOAD_AUTHENTICATED_USER_STATE_SUCCESS, payload: snapshot.val() }));
 };
