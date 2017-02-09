@@ -34,8 +34,8 @@ export const createUser = data => {
   const userData = { uid: currentUser.uid, firstName, lastName, image, meetups, location };
   const emailData = { email, password };
   return dispatch => {
-    firebase.database().ref('/users')
-      .push(userData)
+    firebase.database().ref(`/users/${currentUser.uid}`)
+      .set(userData)
       .then(({ key }) => {
         console.log('user created: ', key);
         dispatch({ type: CREATE_USER_SUCCESS, payload: key });

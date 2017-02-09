@@ -4,16 +4,14 @@ import { Scene, Router, Actions } from 'react-native-router-flux';
 
 import Chat from './components/Chat';
 import Home from './components/Home';
+import LocationSelector from './components/LocationSelector';
 import LoginForm from './components/LoginForm';
 import Map from './components/Map';
-import LocationSelector from './components/LocationSelector';
-import ProfileForm from './components/Profile/ProfileForm';
-
-
 import MeetupCreate from './components/MeetupCreate';
 import MeetupLocationCreate from './components/MeetupLocationCreate';
 import Meetup from './components/Meetup';
 import MeetupEdit from './components/MeetupEdit';
+import ProfileForm from './components/Profile/ProfileForm';
 import Test from './components/Test';
 
 const RouterComponent = () => {
@@ -24,6 +22,8 @@ const RouterComponent = () => {
           key="login"
           component={LoginForm}
           title="Login"
+          leftTitle="Home"
+          onLeft={() => Actions.meetups()}
           rightTitle="Profile"
           onRight={() => Actions.profileForm()}
 
@@ -31,19 +31,21 @@ const RouterComponent = () => {
         <Scene key="chat" component={Chat} title="Chat" style={{ paddingBottom: 40 }} />
         <Scene key="map" component={Map} title="Map" />
         <Scene
+          initial
           key="meetups"
           component={Home}
           title="Meet In The Middle"
           leftTitle="Settings"
-          onLeft={() => Actions.profileForm()}
+          onLeft={() => Actions.login()}
           rightTitle="Add"
           onRight={() => Actions.add()}
         />
         <Scene
-          initial
           key="profileForm"
           component={ProfileForm}
           title="Profile"
+          leftTitle="Home"
+          onLeft={() => Actions.meetups()}
           rightTitle="Login"
           onRight={() => Actions.login()}
 
