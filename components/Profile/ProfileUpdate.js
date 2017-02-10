@@ -68,6 +68,7 @@ class ProfileUpdate extends Component {
     return (
       <ScrollView>
       <Card>
+      <Card>
         <CardSection>
           <Input
             label="Email"
@@ -76,16 +77,21 @@ class ProfileUpdate extends Component {
             value={this.props.email}
           />
         </CardSection>
+        <Button>Update Email - TBD</Button>
+      </Card>
+      <Card>
         <CardSection>
           <Input
           secureTextEntry
           label="Password"
-          placeholder="password"
+          placeholder="reenter password"
           onChangeText={this.onPasswordChange.bind(this)}
           value={this.props.password}
           />
         </CardSection>
-
+        <Button>Update Password - TBD</Button>
+      </Card>
+      <Card>
         <CardSection>
           <Input
             label="First Name"
@@ -158,6 +164,7 @@ class ProfileUpdate extends Component {
         <CardSection>
           {this.renderUpdateProfileButton()}
         </CardSection>
+      </Card>
       </Card>
       </ScrollView>
     );
