@@ -3,6 +3,7 @@ import { Platform } from 'react-native';
 import { Scene, Router, Actions } from 'react-native-router-flux';
 
 import Chat from './components/Chat';
+import ChatMeetup from './components/Chat/ChatMeetup';
 import Home from './components/Home';
 import LoginForm from './components/LoginForm';
 import Map from './components/Map';
@@ -32,7 +33,7 @@ const RouterComponent = () => {
         <Scene key="profileCreate" component={ProfileCreate} title="Create Profile" leftTitle="Home" onLeft={() => Actions.meetups()} />
         <Scene key="profileUpdate" component={ProfileUpdate} title="Update Profile" leftTitle="Home" onLeft={() => Actions.meetups()} />
 
-        <Scene key="chat" component={Chat} title="Chat" style={{ paddingBottom: 40 }} />
+        <Scene key="chat" component={ChatMeetup} title="Chat" style={{ paddingBottom: 40 }} />
         <Scene key="map" component={Map} title="Map" />
         <Scene
           initial

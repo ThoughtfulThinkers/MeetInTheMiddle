@@ -1,10 +1,13 @@
-import React from 'react';
-
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { GiftedChat } from 'react-native-gifted-chat';
-import { View } from 'react-native'
-import Backend from '../Backend';
+import { View } from 'react-native';
+import Backend from '../../Backend';
+import {
 
-class Chat extends React.Component {
+} from '../../actions';
+
+class Chat extends Component {
   state = {
     messages: [],
   };
@@ -39,7 +42,14 @@ class Chat extends React.Component {
   }
 }
 
-export default Chat;
+const mapStateToProps = ({ chat }) => {
+  const { messages } = chat;
+  return { messages, };
+};
+
+export default connect(mapStateToProps, {
+
+})(Chat);
 
 Chat.defaultProps = {
   name: 'John Doe',
