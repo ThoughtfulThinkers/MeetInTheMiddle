@@ -11,12 +11,12 @@ import {
 const INITIAL_STATE = {
   firstName: '',
   lastName: '',
-  image: '',
+  image: ' ',
   meetups: {},
   location: {
-    street: '',
-    city: '',
-    zipcode: '',
+    street: ' ',
+    city: ' ',
+    zipcode: ' ',
     lon: '',
     lat: '',
   },

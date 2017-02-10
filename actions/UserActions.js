@@ -30,64 +30,38 @@ export const userLocationInputChanged = ({ prop, value }) => ({
   Firebase Actions
 ********************************************/
 
-export const createUser = data => {
-  const { currentUser } = firebase.auth();
-  console.log('currentUser', currentUser);
-  const { firstName, lastName, image, meetups, location } = data;
-  const userData = { uid: currentUser.uid, firstName, lastName, image, meetups, location };
-  const { street, city, state } = location;
-  return dispatch => {
-    dispatch(fetchGeoLocationByFullAddress(street, city, state))
-      .then(() => {
-        firebase.database().ref(`/users/${currentUser.uid}`)
-          .set(userData)
-          .then(({ key }) => {
-            console.log('user created: ', key);
-            dispatch({ type: CREATE_USER_SUCCESS, payload: key });
-          })
-          .catch(error => console.log(error));
-      });
-  };
-};
-
 export const updateUser = data => {
-  const { currentUser } = firebase.auth();
-  // console.log('currentUser', currentUser);
-  const { firstName, lastName, image, location } = data;
-  const userData = { firstName, lastName, image, location };
-  const { street, city, state } = location;
   return dispatch => {
-    // dispatch(fetchGeoLocationByFullAddress(street, city, state))
-    //   .then(() => {
+    const { currentUser } = firebase.auth();
+    const { street, city, state, firstName, lastName, image } = data;
+    const fullAddress = `${street},${city},${state}`;
+    const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${fullAddress}&key=${GOOGLE_API}`;
+    fetch(url)
+    .then(response => response.json())
+      .then(data => {
+        // console.log('location: ', data.results[0].geometry.location);
+        let userData = {};
+        const latLon = data.results[0].geometry.location;
+        let location = { lat: latLon.lat, lon: latLon.lng };
+        if (state.length > 0) location = { ...location, street, city, state }; // state required at minimum
+        userData = { ...userData, location };
+        // Firebase doesn't allow empty documents on an update
+        if (firstName.length > 0) userData = { ...userData, firstName };
+        if (lastName.length > 0) userData = { ...userData, lastName };
+        if (image.length > 0) userData = { ...userData, image };
+
+        console.log('userData ', userData);
+        dispatch({ type: FETCH_GEOLOCATION_BY_FULL_ADDRESS_SUCCESS, payload: location });
         firebase.database().ref(`/users/${currentUser.uid}`)
           .update(userData)
-          .then(response => {
-            dispatch({ type: UPDATE_USER_SUCCESS });
-            Actions.meetups({ type: 'reset' });
-          })
+          .then(response => Actions.meetups())
           .catch(error => console.log('updateUser Error: ', error));
-    // });
+      })
+      .catch(error => console.log('fetchGeoLocationByFullAddress error: ', error));
   };
 };
 
-/**************************************************
-  Google
-**************************************************/
-// const GOOGLE_PLACES_API = googlePlacesConfig.apiKey;
-const GOOGLE_API = 'AIzaSyDzk0eKI5tnKWkSORpDTL32iZ15QjxQxeg';
-export const fetchGeoLocationByFullAddress = (street, city, state) => dispatch => {
-  console.log('google api: ', GOOGLE_API);
-  const fullAddress = `${street},${city},${state}`;
-  const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${fullAddress}&key=${GOOGLE_API}`;
-  fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      // console.log('location: ', data.results[0].geometry.location);
-      const location = data.results[0].geometry.location;
-      dispatch({ type: FETCH_GEOLOCATION_BY_FULL_ADDRESS_SUCCESS, payload: location });
-    })
-    .catch(error => console.log('fetchGeoLocationByFullAddress error: ', error));
-};
+
 
 export const createNewUser = data => {
   return dispatch => {
@@ -98,7 +72,6 @@ export const createNewUser = data => {
     fetch(url)
       .then(response => response.json())
       .then(data => {
-        // console.log('location: ', data.results[0].geometry.location);
         const latLon = data.results[0].geometry.location;
         const location = { lat: latLon.lat, lon: latLon.lng, street, city, state };
         const userData = {
@@ -117,4 +90,23 @@ export const createNewUser = data => {
       })
       .catch(error => console.log('fetchGeoLocationByFullAddress error: ', error));
   };
+};
+
+/**************************************************
+Google
+**************************************************/
+// const GOOGLE_PLACES_API = googlePlacesConfig.apiKey;
+const GOOGLE_API = 'AIzaSyDzk0eKI5tnKWkSORpDTL32iZ15QjxQxeg';
+export const fetchGeoLocationByFullAddress = (street, city, state) => dispatch => {
+  console.log('google api: ', GOOGLE_API);
+  const fullAddress = `${street},${city},${state}`;
+  const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${fullAddress}&key=${GOOGLE_API}`;
+  fetch(url)
+  .then(response => response.json())
+  .then(data => {
+    // console.log('location: ', data.results[0].geometry.location);
+    const location = data.results[0].geometry.location;
+    dispatch({ type: FETCH_GEOLOCATION_BY_FULL_ADDRESS_SUCCESS, payload: location });
+  })
+  .catch(error => console.log('fetchGeoLocationByFullAddress error: ', error));
 };
