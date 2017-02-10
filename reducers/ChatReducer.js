@@ -1,5 +1,5 @@
 import {
-  FETCH_CHAT_MESSAGES_SUCCESS
+  FETCH_MESSAGES_BY_MEETUP_SUCCESS
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -8,8 +8,7 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case FETCH_CHAT_MESSAGES_SUCCESS:
-      // console.log(action.payload);
+    case FETCH_MESSAGES_BY_MEETUP_SUCCESS:
       return { ...state, messages: action.payload };
     default:
       return state;

@@ -37,8 +37,8 @@ export const createUser = data => {
   const userData = { uid: currentUser.uid, firstName, lastName, image, meetups, location };
   const { street, city, state } = location;
   return dispatch => {
-    // dispatch(fetchGeoLocationByFullAddress(street, city, state))
-    //   .then(() => {
+    dispatch(fetchGeoLocationByFullAddress(street, city, state))
+      .then(() => {
         firebase.database().ref(`/users/${currentUser.uid}`)
           .set(userData)
           .then(({ key }) => {
@@ -46,7 +46,7 @@ export const createUser = data => {
             dispatch({ type: CREATE_USER_SUCCESS, payload: key });
           })
           .catch(error => console.log(error));
-      // });
+      });
   };
 };
 
@@ -87,4 +87,34 @@ export const fetchGeoLocationByFullAddress = (street, city, state) => dispatch =
       dispatch({ type: FETCH_GEOLOCATION_BY_FULL_ADDRESS_SUCCESS, payload: location });
     })
     .catch(error => console.log('fetchGeoLocationByFullAddress error: ', error));
+};
+
+export const createNewUser = data => {
+  return dispatch => {
+    const { street, city, state, firstName, lastName, image, meetups } = data;
+    const { currentUser } = firebase.auth();
+    const fullAddress = `${street},${city},${state}`;
+    const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${fullAddress}&key=${GOOGLE_API}`;
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        // console.log('location: ', data.results[0].geometry.location);
+        const latLon = data.results[0].geometry.location;
+        const location = { lat: latLon.lat, lon: latLon.lng, street, city, state };
+        const userData = {
+          uid: currentUser.uid,
+          firstName,
+          lastName,
+          image,
+          meetups,
+          location
+        };
+        dispatch({ type: FETCH_GEOLOCATION_BY_FULL_ADDRESS_SUCCESS, payload: location });
+        firebase.database().ref(`/users/${currentUser.uid}`)
+          .set(userData)
+          .then(() => Actions.meetups({ type: 'reset' }))
+          .catch(error => console.log(error));
+      })
+      .catch(error => console.log('fetchGeoLocationByFullAddress error: ', error));
+  };
 };

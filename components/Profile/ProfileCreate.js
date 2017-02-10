@@ -9,6 +9,7 @@ import {
 
 import {
   createUser,
+  createNewUser,
   emailChanged,
   fetchGeoLocationByFullAddress,
   loginUser,
@@ -31,8 +32,10 @@ class ProfileCreate extends Component {
     // this.props.loginUser({ email, password });
     console.log('onProfileButtonPress');
     const { firstName, lastName, image, meetups, location, email, password } = this.props;
-    const data = { firstName, lastName, image, meetups, location, email, password };
-    this.props.createUser(data);
+    const { street, city, state, zipcode } = location;
+    const data = { firstName, lastName, image, meetups, street, city, state, zipcode, email, password };
+    // this.props.createUser(data);
+    this.props.createNewUser(data);
   }
 
   onSaveLocationButtonPress() {
@@ -152,9 +155,7 @@ class ProfileCreate extends Component {
 
 
         <Text style={styles.errorTextStyle}>{this.props.error}</Text>
-        <CardSection>
-          {this.renderSaveLocationButton()}
-        </CardSection>
+
         <CardSection>
           {this.renderProfileButton()}
         </CardSection>
@@ -195,6 +196,7 @@ const mapStateToProps = ({ auth, user }) => {
 
 export default connect(mapStateToProps, {
   createUser,
+  createNewUser,
   emailChanged,
   fetchGeoLocationByFullAddress,
   loginUser,

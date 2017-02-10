@@ -11,7 +11,7 @@ export const LOGIN_USER = 'LOGIN_USER';
 /******************************************************
 Chat Actions
 ******************************************************/
-export const FETCH_CHAT_MESSAGES = 'fetchChatMessages';
+export const FETCH_MESSAGES_BY_MEETUP_SUCCESS = 'FETCH_MESSAGES_BY_MEETUP_SUCCESS';
 
 /******************************************************
   Location Actions

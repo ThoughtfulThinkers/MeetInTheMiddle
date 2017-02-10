@@ -1,15 +1,20 @@
-import React from 'react';
-
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { GiftedChat } from 'react-native-gifted-chat';
-import { View } from 'react-native'
-import Backend from '../Backend';
+import { View } from 'react-native';
+import Backend from '../../Backend';
+import {
+  fetchMessagesByMeetup,
+} from '../../actions';
 
-class Chat extends React.Component {
+class ChatRoom extends Component {
   state = {
     messages: [],
   };
 
   componentDidMount() {
+    const { uid } = this.props.meetup;
+    this.props.fetchMessagesByMeetup(uid);
     Backend.loadMessages(message => {
       this.setState(previousState => {
         return {
@@ -18,6 +23,7 @@ class Chat extends React.Component {
       });
     });
   }
+
 
   componentWillUnmount() {
     Backend.closeChat();
@@ -39,12 +45,20 @@ class Chat extends React.Component {
   }
 }
 
-export default Chat;
+const mapStateToProps = ({ chat, user }) => {
+  const { messages } = chat;
+  const { firstName, lastName } = user;
+  return { messages, };
+};
 
-Chat.defaultProps = {
+export default connect(mapStateToProps, {
+  fetchMessagesByMeetup,
+})(ChatRoom);
+
+ChatRoom.defaultProps = {
   name: 'John Doe',
 };
 
-Chat.propTypes = {
+ChatRoom.propTypes = {
   name: React.PropTypes.string,
 };
