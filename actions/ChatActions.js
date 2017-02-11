@@ -32,8 +32,39 @@ export const fetchMessagesByMeetup = id => {
   return dispatch => {
     const messages = firebase.database().ref(`/chatrooms/${id}`).limitToLast(50);
     messages.on('child_added', snapshot => {
-      // console.log('snap.val ', snapshot.val());
-      dispatch({ type: FETCH_MESSAGES_BY_MEETUP_SUCCESS, payload: snapshot.val() });
+      console.log('snap.val ', snapshot.val());
+      console.log('snap._id', snapshot.key);
+      const message = snapshot.val();
+      const data = {
+        _id: snapshot.key,
+        text: message.text,
+        createdAt: new Date(message.createdAt),
+        user: {
+          _id: message.user._id,
+          name: message.user.name
+        }
+      };
+      console.log('data ', data);
+      dispatch({ type: FETCH_MESSAGES_BY_MEETUP_SUCCESS, payload: data });
+    });
+    messages.off();
+  };
+};
+
+export const loadMessages = (id, callback) => {
+  this.messagesRef = firebase.database().ref('/messages/${id}');
+  this.messagesRef.off();
+  const onReceive = (data) => {
+    const message = data.val();
+    callback({
+      _id: data.key,
+      text: message.text,
+      createdAt: new Date(message.createdAt),
+      user: {
+        _id: message.user._id,
+        name: message.user.name,
+      },
     });
   };
+  this.messagesRef.limitToLast(20).on('child_added', onReceive);
 };

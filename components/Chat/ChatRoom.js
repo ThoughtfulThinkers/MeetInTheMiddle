@@ -3,7 +3,7 @@ import firebase from 'firebase';
 import { connect } from 'react-redux';
 import { GiftedChat } from 'react-native-gifted-chat';
 import { View } from 'react-native';
-import Backend from '../../Backend';
+// import Backend from '../../Backend';
 import { fbConfig } from '../../envConfig';
 import {
   fetchMessagesByMeetup,
@@ -46,7 +46,7 @@ class ChatRoom extends Component {
   }
 
   render() {
-    console.log('messages: ', this.props.messages)
+    console.log('messages: ', this.props.messages);
     return (
       <GiftedChat
         messages={this.props.messages}
