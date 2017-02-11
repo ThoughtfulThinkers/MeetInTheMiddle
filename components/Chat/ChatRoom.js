@@ -22,9 +22,9 @@ class ChatRoom extends Component {
 
     const { uid } = this.props.meetup;
     this.props.fetchMessagesByMeetup(uid);
-    this.setState(previousState => {
-      return GiftedChat.append(previousState.messages, this.props.messages);
-    });
+    // this.setState(previousState => {
+    //   return GiftedChat.append(previousState.messages, this.props.messages);
+    // });
 
     // Backend.loadMessages(message => {
     //   this.setState(previousState => {
@@ -45,11 +45,22 @@ class ChatRoom extends Component {
     this.props.sendMessageByMeetup(this.props.meetup.uid, message);
   }
 
+  sortMessages() {
+    // console.log()
+    const messageArr = [];
+    for (let i = 0; i < this.props.messages.length; i++) {
+      if (this.props.messages[i].roomId === this.props.meetup.uid) {
+        messageArr.push(this.props.messages[i]);
+      }
+    }
+    return messageArr;
+  }
+  // messages={this.props.messages}
   render() {
-    console.log('messages: ', this.props.messages);
+    // console.log('messages: ', this.props.messages);
     return (
       <GiftedChat
-        messages={this.props.messages}
+        messages={this.sortMessages()}
         onSend={message => {
           // Backend.sendMessage(message);
           this.sendMessage(message);

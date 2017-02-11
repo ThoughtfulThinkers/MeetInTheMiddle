@@ -3,16 +3,16 @@ import {
 } from '../actions/types';
 
 const INITIAL_STATE = {
-  messages: []
+  messages: [],
 };
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case FETCH_MESSAGES_BY_MEETUP_SUCCESS: {
-      // console.log('payload ', action.payload.val());
+      console.log('payload ', action.payload);
       return {
         ...state,
-        messages: [...state.messages, action.payload]
+        messages: [...state.messages, action.payload],
       };
     }
     default:

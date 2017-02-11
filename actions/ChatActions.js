@@ -27,15 +27,16 @@ export const sendMessageByMeetup = (id, message) => {
 
 export const fetchMessagesByMeetup = id => {
   // TODO: if not current user, send to login page
-  // console.log('room id ', id)
   const { currentUser } = firebase.auth();
   return dispatch => {
-    const messages = firebase.database().ref(`/chatrooms/${id}`).limitToLast(50);
+    console.log('room id ', id);
+    const messages = firebase.database().ref(`/chatrooms/${id}`).orderByKey();
     messages.on('child_added', snapshot => {
       console.log('snap.val ', snapshot.val());
       console.log('snap._id', snapshot.key);
       const message = snapshot.val();
       const data = {
+        roomId: id,
         _id: snapshot.key,
         text: message.text,
         createdAt: new Date(message.createdAt),
@@ -47,7 +48,7 @@ export const fetchMessagesByMeetup = id => {
       console.log('data ', data);
       dispatch({ type: FETCH_MESSAGES_BY_MEETUP_SUCCESS, payload: data });
     });
-    messages.off();
+    // messages.off();
   };
 };
 
