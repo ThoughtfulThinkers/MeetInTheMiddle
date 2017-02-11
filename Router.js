@@ -26,7 +26,7 @@ import VenuePicker from './components/Venues/VenuePicker';
 
 const RouterComponent = () => {
   return (
-    <Router sceneStyle={{ paddingTop: 65 }}>
+    <Router sceneStyle={{ paddingTop: Platform.OS === 'ios' ? 64 : 54 }}>
       <Scene key="auth">
         <Scene key="login" component={LoginForm} title="Login" leftTitle="Home" onLeft={() => Actions.meetups()} />
         <Scene key="profileCreate" component={ProfileCreate} title="Create Profile" leftTitle="Home" onLeft={() => Actions.meetups()} />

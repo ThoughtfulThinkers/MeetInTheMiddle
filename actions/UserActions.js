@@ -7,6 +7,8 @@ import {
   CREATE_USER_SUCCESS,
   FETCH_USER_SUCESS,
   FETCH_GEOLOCATION_BY_FULL_ADDRESS_SUCCESS,
+  GET_CURRENT_USER,
+  SET_CURRENT_USER,
   USER_INPUT_CHANGED,
   USER_LOCATION_INPUT_CHANGED,
   UPDATE_USER_SUCCESS,
@@ -24,6 +26,19 @@ export const userInputChanged = ({ prop, value }) => ({
 export const userLocationInputChanged = ({ prop, value }) => ({
   type: USER_LOCATION_INPUT_CHANGED,
   payload: { prop, value }
+});
+
+/********************************************
+  User Data Actions
+*********************************************/
+
+export const getCurrentUser = () => ({
+  type: GET_CURRENT_USER
+});
+
+export const setCurrentUser = user => ({
+  type: SET_CURRENT_USER,
+  payload: user
 });
 
 /********************************************
