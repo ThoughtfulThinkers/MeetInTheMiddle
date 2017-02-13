@@ -9,7 +9,7 @@ const INITIAL_STATE = {
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case FETCH_MESSAGES_BY_MEETUP_SUCCESS: {
-      console.log('payload ', action.payload);
+      // console.log('payload ', action.payload);
       return {
         ...state,
         messages: [...state.messages, action.payload],

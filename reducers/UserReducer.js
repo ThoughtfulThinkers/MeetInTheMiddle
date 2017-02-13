@@ -69,7 +69,7 @@ export default (state = INITIAL_STATE, action) => {
     }
 
     case UPDATE_USER_SUCCESS: {
-      console.log('UPDATE_USER_SUCCESS payload: ', action.payload);
+      // console.log('UPDATE_USER_SUCCESS payload: ', action.payload);
       return state;
     }
 

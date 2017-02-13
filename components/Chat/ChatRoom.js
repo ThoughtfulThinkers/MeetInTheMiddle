@@ -6,6 +6,7 @@ import { View } from 'react-native';
 // import Backend from '../../Backend';
 import { fbConfig } from '../../envConfig';
 import {
+  closeMeetUpChat,
   fetchMessagesByMeetup,
   sendMessageByMeetup,
 } from '../../actions';
@@ -25,20 +26,12 @@ class ChatRoom extends Component {
     // this.setState(previousState => {
     //   return GiftedChat.append(previousState.messages, this.props.messages);
     // });
-
-    // Backend.loadMessages(message => {
-    //   this.setState(previousState => {
-    //     return {
-    //       messages: GiftedChat.append(previousState.messages, this.props.message),
-    //     };
-    //   });
-    // });
-
-
   }
 
   componentWillUnmount() {
     // Backend.closeChat();
+    // const { uid } = this.props.meetup;
+    // this.props.closeMeetUpChat(uid);
   }
 
   sendMessage(message) {
@@ -50,9 +43,10 @@ class ChatRoom extends Component {
     const messageArr = [];
     for (let i = 0; i < this.props.messages.length; i++) {
       if (this.props.messages[i].roomId === this.props.meetup.uid) {
-        messageArr.push(this.props.messages[i]);
+        messageArr.unshift(this.props.messages[i]);
       }
     }
+    // console.log('ChatRoom messageArr', messageArr);
     return messageArr;
   }
   // messages={this.props.messages}
@@ -79,10 +73,11 @@ class ChatRoom extends Component {
 const mapStateToProps = ({ chat, user }) => {
   const { messages } = chat;
   const { firstName, lastName } = user;
-  return { messages, };
+  return { messages, firstName, lastName };
 };
 
 export default connect(mapStateToProps, {
+  closeMeetUpChat,
   fetchMessagesByMeetup,
   sendMessageByMeetup,
 })(ChatRoom);

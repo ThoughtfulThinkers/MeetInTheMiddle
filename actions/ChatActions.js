@@ -10,7 +10,7 @@ import {
 export const sendMessageByMeetup = (id, message) => {
   // TODO: Check currentUser status
   const { currentUser } = firebase.auth();
-  console.log('sendMessageByMeetup', message);
+  // console.log('sendMessageByMeetup', message);
   const { text, user } = message[0];
   const createdAt = firebase.database.ServerValue.TIMESTAMP;
   return dispatch => {
@@ -18,9 +18,9 @@ export const sendMessageByMeetup = (id, message) => {
       .push({
         createdAt,
         text,
-        user
+        user,
       })
-      .then(() => console.log('message added'))
+      // .then(() => console.log('Chat Action sendMessageByMeetup: message added'))
       .catch(error => console.log(error));
   };
 };
@@ -29,11 +29,11 @@ export const fetchMessagesByMeetup = id => {
   // TODO: if not current user, send to login page
   const { currentUser } = firebase.auth();
   return dispatch => {
-    console.log('room id ', id);
+    // console.log('room id ', id);
     const messages = firebase.database().ref(`/chatrooms/${id}`).orderByKey();
     messages.on('child_added', snapshot => {
-      console.log('snap.val ', snapshot.val());
-      console.log('snap._id', snapshot.key);
+      // console.log('snap.val ', snapshot.val());
+      // console.log('snap._id', snapshot.key);
       const message = snapshot.val();
       const data = {
         roomId: id,
@@ -45,11 +45,15 @@ export const fetchMessagesByMeetup = id => {
           name: message.user.name
         }
       };
-      console.log('data ', data);
+      // console.log('data ', data);
       dispatch({ type: FETCH_MESSAGES_BY_MEETUP_SUCCESS, payload: data });
     });
     // messages.off();
   };
+};
+
+export const closeMeetUpChat = id => {
+  firebase.database().ref(`/chatrooms/${id}`);
 };
 
 export const loadMessages = (id, callback) => {
