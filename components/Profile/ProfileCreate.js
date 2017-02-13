@@ -8,7 +8,7 @@ import {
 } from '../common';
 
 import {
-  createUser,
+  createNewUser,
   emailChanged,
   fetchGeoLocationByFullAddress,
   loginUser,
@@ -27,16 +27,13 @@ class ProfileCreate extends Component {
   }
 
   onProfileButtonPress() {
-    // const { email, password } = this.props;
-    // this.props.loginUser({ email, password });
-    console.log('onProfileButtonPress');
-    const { firstName, lastName, image, meetups, location, email, password } = this.props;
-    const data = { firstName, lastName, image, meetups, location, email, password };
-    this.props.createUser(data);
+    const { firstName, lastName, image, location, email, password } = this.props;
+    const { street, city, state, zipcode } = location;
+    const data = { firstName, lastName, image, street, city, state, zipcode, email, password };
+    this.props.createNewUser(data);
   }
 
   onSaveLocationButtonPress() {
-    // console.log('get & set location lat/lon');
     const { location } = this.props;
     const { street, city, state } = location;
     this.props.fetchGeoLocationByFullAddress(street, city, state);
@@ -85,7 +82,6 @@ class ProfileCreate extends Component {
           value={this.props.password}
           />
         </CardSection>
-
         <CardSection>
           <Input
             label="First Name"
@@ -94,7 +90,6 @@ class ProfileCreate extends Component {
             onChangeText={value => this.props.userInputChanged({ prop: 'firstName', value })}
           />
         </CardSection>
-
         <CardSection>
           <Input
             label="Last Name"
@@ -103,7 +98,6 @@ class ProfileCreate extends Component {
             onChangeText={value => this.props.userInputChanged({ prop: 'lastName', value })}
           />
         </CardSection>
-
         <CardSection>
           <Input
             label="Street"
@@ -114,7 +108,6 @@ class ProfileCreate extends Component {
             }
           />
         </CardSection>
-
         <CardSection>
           <Input
             label="City"
@@ -125,8 +118,6 @@ class ProfileCreate extends Component {
             }
           />
         </CardSection>
-
-
         <CardSection>
           <Input
             label="State"
@@ -137,8 +128,6 @@ class ProfileCreate extends Component {
             }
           />
         </CardSection>
-
-
         <CardSection>
           <Input
             label="ZipCode"
@@ -149,12 +138,7 @@ class ProfileCreate extends Component {
             }
           />
         </CardSection>
-
-
         <Text style={styles.errorTextStyle}>{this.props.error}</Text>
-        <CardSection>
-          {this.renderSaveLocationButton()}
-        </CardSection>
         <CardSection>
           {this.renderProfileButton()}
         </CardSection>
@@ -177,8 +161,6 @@ const styles = {
 const mapStateToProps = ({ auth, user }) => {
   const { email, password, error, loading } = auth;
   const { uid, firstName, lastName, image, meetups, location } = user;
-  console.log('User Location: ', location.street);
-  console.log('User First Name: ', location.firstName);
   return {
     uid,
     email,
@@ -194,7 +176,7 @@ const mapStateToProps = ({ auth, user }) => {
 };
 
 export default connect(mapStateToProps, {
-  createUser,
+  createNewUser,
   emailChanged,
   fetchGeoLocationByFullAddress,
   loginUser,

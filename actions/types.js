@@ -11,7 +11,7 @@ export const LOGIN_USER = 'LOGIN_USER';
 /******************************************************
 Chat Actions
 ******************************************************/
-export const FETCH_CHAT_MESSAGES = 'fetchChatMessages';
+export const FETCH_MESSAGES_BY_MEETUP_SUCCESS = 'FETCH_MESSAGES_BY_MEETUP_SUCCESS';
 
 /******************************************************
   Location Actions
@@ -39,6 +39,8 @@ export const FETCH_MEETUP_SUCCESS = 'FETCH_MEETUPS_SUCCESS';
 ******************************************************/
 export const CREATE_USER_SUCCESS = 'CREATE_USER_SUCCESS';
 export const FETCH_USER_SUCCESS = 'FETCH_USER_SUCCESS';
+export const GET_CURRENT_USER = 'GET_CURRENT_USER';
+export const SET_CURRENT_USER = 'SET_CURRENT_USER';
 export const LOAD_AUTHENTICATED_USER_STATE_SUCCESS = 'LOAD_AUTHENTICATED_USER_STATE_SUCCESS';
 export const USER_INPUT_CHANGED = 'USER_INPUT_CHANGED';
 export const USER_LOCATION_INPUT_CHANGED = 'USER_LOCATION_INPUT_CHANGED';

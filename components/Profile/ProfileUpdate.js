@@ -27,10 +27,9 @@ class ProfileUpdate extends Component {
   }
 
   onUpdateProfileButtonPress() {
-    // const { email, password } = this.props;
-    // this.props.loginUser({ email, password });
     const { firstName, lastName, image, meetups, location, email, password } = this.props;
-    const data = { firstName, lastName, image, meetups, location, email, password };
+    const { street, city, state, zipcode } = location;
+    const data = { firstName, lastName, image, meetups, street, city, state, zipcode, email, password };
     this.props.updateUser(data);
   }
 
@@ -63,10 +62,10 @@ class ProfileUpdate extends Component {
     );
   }
 
-
   render() {
     return (
       <ScrollView>
+      <Card>
       <Card>
         <CardSection>
           <Input
@@ -76,16 +75,21 @@ class ProfileUpdate extends Component {
             value={this.props.email}
           />
         </CardSection>
+        <Button>Update Email - TBD</Button>
+      </Card>
+      <Card>
         <CardSection>
           <Input
           secureTextEntry
           label="Password"
-          placeholder="password"
+          placeholder="reenter password"
           onChangeText={this.onPasswordChange.bind(this)}
           value={this.props.password}
           />
         </CardSection>
-
+        <Button>Update Password - TBD</Button>
+      </Card>
+      <Card>
         <CardSection>
           <Input
             label="First Name"
@@ -94,7 +98,6 @@ class ProfileUpdate extends Component {
             onChangeText={value => this.props.userInputChanged({ prop: 'firstName', value })}
           />
         </CardSection>
-
         <CardSection>
           <Input
             label="Last Name"
@@ -103,7 +106,6 @@ class ProfileUpdate extends Component {
             onChangeText={value => this.props.userInputChanged({ prop: 'lastName', value })}
           />
         </CardSection>
-
         <CardSection>
           <Input
             label="Street"
@@ -114,7 +116,6 @@ class ProfileUpdate extends Component {
             }
           />
         </CardSection>
-
         <CardSection>
           <Input
             label="City"
@@ -125,8 +126,6 @@ class ProfileUpdate extends Component {
             }
           />
         </CardSection>
-
-
         <CardSection>
           <Input
             label="State"
@@ -137,8 +136,6 @@ class ProfileUpdate extends Component {
             }
           />
         </CardSection>
-
-
         <CardSection>
           <Input
             label="ZipCode"
@@ -149,15 +146,11 @@ class ProfileUpdate extends Component {
             }
           />
         </CardSection>
-
-
         <Text style={styles.errorTextStyle}>{this.props.error}</Text>
-        <CardSection>
-          {this.renderSaveLocationButton()}
-        </CardSection>
         <CardSection>
           {this.renderUpdateProfileButton()}
         </CardSection>
+      </Card>
       </Card>
       </ScrollView>
     );
@@ -177,8 +170,7 @@ const styles = {
 const mapStateToProps = ({ auth, user }) => {
   const { email, password, error, loading } = auth;
   const { uid, firstName, lastName, image, meetups, location } = user;
-  console.log('User Location: ', location.street);
-  console.log('User First Name: ', location.firstName);
+
   return {
     uid,
     email,
