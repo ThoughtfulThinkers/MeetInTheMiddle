@@ -46,9 +46,6 @@ class LocationSelector extends Component {
                   color: '#1faadb',
                 },
               }}
-
-              currentLocation
-              currentLocationLabel="Current location"
               predefinedPlaces={[homePlace]}
       />
           );
