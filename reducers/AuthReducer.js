@@ -24,10 +24,10 @@ export default (state = INITIAL_STATE, action) => {
       console.log('LOGIN_USER REDUCER: ', action.payload);
       return { ...state, loading: true, error: '' };
     case LOGIN_USER_SUCCESS:
-      console.log('LOGIN_USER_SUCCESS REDUCER: ', action.payload);
+      // console.log('LOGIN_USER_SUCCESS REDUCER: ', action.payload);
       return { ...state, ...INITIAL_STATE, user: action.payload };
     case LOGIN_USER_FAIL:
-      console.log('LOGIN_USER_FAIL: ', action.payload);
+      // console.log('LOGIN_USER_FAIL: ', action.payload);
       return { ...state, error: 'Authentication Failed.', password: '', loading: false };
     default:
       return state;

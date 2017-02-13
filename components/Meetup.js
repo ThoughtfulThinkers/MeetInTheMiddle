@@ -19,7 +19,7 @@ class Meetup extends Component {
   }
 
   onChatPress() {
-    Actions.chat();
+    Actions.chat({ meetup: this.props.meetup });
   }
 
   render() {
