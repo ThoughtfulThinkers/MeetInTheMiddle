@@ -90,7 +90,7 @@ class MeetupEdit extends Component {
         </CardSection>
 
         <CardSection style={{ alignItems: 'center' }}>
-          <Text style={styles.pickerTextStyle}>{this.props.meetup.venue}</Text>
+          <Text style={styles.pickerTextStyle}>{this.props.meetup.venue.name}</Text>
           <Button onPress={this.onVenuePress.bind(this)}>Change Venue</Button>
         </CardSection>
 

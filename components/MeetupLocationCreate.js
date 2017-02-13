@@ -25,12 +25,16 @@ class MeetupLocationCreate extends Component {
     this.props.meetupChange(prop, value);
   }
 
+  onVenuePress() {
+    Actions.venues();
+  }
+
   render() {
     let venue;
-    if (this.props.venue.length === 0) {
+    if (!this.props.venue || this.props.venue === '') {
       venue = 'location';
     } else {
-      venue = this.props.venue;
+      venue = this.props.venue.name;
     }
 
     let button;
@@ -53,13 +57,9 @@ class MeetupLocationCreate extends Component {
         </CardSection>
 
         <View><Text>{`2. What kind of place do you want ${this.props.name} to be in?`}</Text></View>
-        <CardSection>
-          <Input
-            label="Venue"
-            placeholder="This needs to be a picker or something"
-            value={this.props.venue}
-            onChangeText={value => this.onChange('venue', value)}
-          />
+        <CardSection style={{ alignItems: 'center' }}>
+          <Text style={styles.pickerTextStyle}>{venue}</Text>
+          <Button onPress={this.onVenuePress.bind(this)}>Change Venue</Button>
         </CardSection>
 
         <View>
@@ -120,7 +120,6 @@ const styles = {
 
 const mapStateToProps = ({ meetupForm, filter }) => {
   const { name, description, start, end, state, venue, voteStart, voteEnd } = meetupForm;
-  console.log('state', state)
   const { location } = filter;
   const loading = meetupForm.loading ? true : false;
   return { name, description, start, end, state, venue, voteStart, voteEnd, loading, location };

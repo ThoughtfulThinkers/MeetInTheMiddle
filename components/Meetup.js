@@ -11,7 +11,7 @@ class Meetup extends Component {
   }
 
   onInvitePress() {
-    console.log('invite');
+    Actions.invite({ meetup: this.props.meetup });
   }
 
   onMapPress() {
@@ -65,6 +65,7 @@ class Meetup extends Component {
           <Text style={styles.titleStyle}>{meetup.name}</Text>
           <Text style={styles.textStyle}>Start: {meetup.start}</Text>
           <Text style={styles.textStyle}>End: {meetup.end}</Text>
+          <Text style={styles.textStyle}>Venue: {meetup.venue.name}</Text>
           <Text style={styles.textStyle}>Description: {meetup.description}</Text>
         </CardSection>
 

@@ -12,8 +12,8 @@ const INITIAL_STATE = {
   description: '',
   start: '2017-01-01 20:00',
   end: '2017-01-01 22:00',
-  state: '',
-  venue: '',
+  state: 'New York',
+  venue: { name: 'Coffee Shop', id: '4bf58dd8d48988d1e0931735' },
   voteStart: '2017-01-01 22:00',
   voteEnd: '2017-01-01 22:00'
 };
