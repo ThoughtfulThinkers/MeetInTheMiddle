@@ -26,7 +26,6 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-
     case SET_CURRENT_USER: {
       const { firstName, lastName } = action.payload;
       return { ...state, firstName, lastName };
@@ -63,7 +62,7 @@ export default (state = INITIAL_STATE, action) => {
 
     case FETCH_GEOLOCATION_BY_FULL_ADDRESS_SUCCESS: {
       const lat = action.payload.lat;
-      const lon = action.payload.lng;
+      const lon = action.payload.lon;
       const location = { ...state.location, lon, lat };
       return { ...state, location };
     }
