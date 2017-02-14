@@ -57,9 +57,6 @@ class LoginForm extends Component {
   }
 
   renderLogoutButton() {
-    if (this.props.loading) {
-      return <Spinner size="large" />;
-    }
     return (
       <Button onPress={this.onLogoutButtonPress.bind(this)}>
         Log Out

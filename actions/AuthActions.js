@@ -61,7 +61,7 @@ const loginUserSuccess = (dispatch, user) => {
 
 export const logoutUser = () => dispatch => {
   firebase.auth().signOut()
-    .then(() => Actions.meetups())
+    .then(() => Actions.meetups({ type: 'reset' }))
     .catch(error => console.log('Sign Out Error ', error));
 };
 
