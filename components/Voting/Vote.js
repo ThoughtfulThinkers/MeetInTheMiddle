@@ -6,6 +6,14 @@ import { setVote } from '../../actions';
 import { CardSection } from '../common';
 
 class Vote extends Component {
+  componentDidMount() {
+    const { location, vote } = this.props;
+    const origin = `origins=${location.lat},${location.lon}`;
+    const destination = `destinations=${vote.lat},${vote.lon}`;
+    // fetch(`https://maps.googleapis.com/maps/api/distancematrix/json?${origin}&${destination}&key=`)
+    // .then(data => console.log(data));
+  }
+
   onRowPress() {
     const meetup = this.props.meetups[this.props.uid];
     if (!meetup) {
@@ -53,9 +61,9 @@ const styles = {
 
 const mapStateToProps = state => {
   const { meetupForm, user } = state;
-  const { meetups } = user;
+  const { meetups, location } = user;
   const { uid } = meetupForm;
-  return { meetupForm, user, meetups, uid };
+  return { meetupForm, user, meetups, uid, location };
 };
 
 export default connect(mapStateToProps, { setVote })(Vote);
