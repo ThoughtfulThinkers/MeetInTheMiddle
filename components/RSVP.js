@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import firebase from 'firebase';
 import Exponent from 'exponent';
 import { Text, Alert } from 'react-native';
 import { connect } from 'react-redux';
@@ -8,6 +9,13 @@ import LocationSelector from './LocationSelector';
 import { CardSection, Card, Button } from './common';
 
 class RSVP extends Component {
+
+  componentDidMount() {
+    const { currentUser } = firebase.auth();
+    if (!currentUser) {
+      Actions.login();
+    }
+  }
 
   onPress() {
     const { lat, lon, meetup, firstName, lastName } = this.props;
