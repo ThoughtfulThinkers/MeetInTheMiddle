@@ -1,4 +1,7 @@
 import 'whatwg-fetch';
+import firebase from 'firebase';
+import { Actions } from 'react-native-router-flux';
+import { SET_CURRENT_MEETUP } from './types';
 import { foursquareConfig } from '../envConfig';
 
 const { ID, SECRET } = foursquareConfig;
@@ -18,11 +21,27 @@ const venueIds = [{ name: 'Arts & Entertainment', id: '4d4b7104d754a06370d81259'
 { name: 'Shop & Service', id: '4d4b7105d754a06378d81259' },
 { name: 'Travel & Transport', id: '4d4b7105d754a06379d81259' }];
 
-export const createVoting = (lat, lon, venueId) => {
-  const search = `https://api.foursquare.com/v2/venues/search?ll=${lat},${lon}&client_id=${ID}&client_secret=${SECRET}&radius=1600&intent=browse&categoryId=${venueId}&v=20170201&m=foursquare`;
-  fetch(search)
-  .then(response => response.json())
-  .then(data => {
-    console.log(data);
-  });
+export const createVoting = (lat, lon, meetup) => {
+  const venueId = meetup.venue.id;
+  return dispatch => {
+    const search = `https://api.foursquare.com/v2/venues/search?ll=${lat},${lon}&client_id=${ID}&client_secret=${SECRET}&radius=1600&intent=browse&categoryId=${venueId}&v=20170201&m=foursquare`;
+    fetch(search)
+    .then(response => response.json())
+    .then(data => {
+      const venues = {};
+      data.response.venues.forEach(venue => {
+        const { name, location, id } = venue;
+        const { formattedAddress, lng } = location;
+        venues[id] = { name, formattedAddress, lat: location.lat, lon: lng, votes: 0 };
+      });
+      const newMeetup = { ...meetup, venues };
+      console.log(newMeetup);
+      firebase.database().ref(`/meetups/${meetup.uid}`)
+        .set(newMeetup)
+        .then(() => {
+          dispatch({ type: SET_CURRENT_MEETUP, meetup: newMeetup });
+        });
+    })
+    .catch(err => console.log(err));
+  };
 };
