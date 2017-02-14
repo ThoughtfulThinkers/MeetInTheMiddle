@@ -44,7 +44,8 @@ export const loginUser = ({ email, password }) => {
         dispatch(loadAuthenticatedUserState());
         return user;
       })
-      .then(user => Actions.profileUpdate(user))
+      // .then(user => Actions.profileUpdate(user))
+      .then(() => Actions.meetups({ type: 'reset' }))
       .catch((error) => {
         console.log(error);
       });

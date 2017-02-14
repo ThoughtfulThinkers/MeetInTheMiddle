@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { ScrollView, Text } from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
 import { Button, Card, CardSection, Input, Spinner } from './common';
 import {
   createNewUserAccount,
@@ -47,6 +47,15 @@ class LoginForm extends Component {
     );
   }
 
+  renderUpdateProfileButton() {
+    const { email, password } = this.props;
+    return (
+      <Button onPress={() => Actions.profileUpdate({ email, password })}>
+        Update Profile
+      </Button>
+    );
+  }
+
   renderLogoutButton() {
     if (this.props.loading) {
       return <Spinner size="large" />;
@@ -63,9 +72,9 @@ class LoginForm extends Component {
       return <Spinner size="large" />;
     }
     return (
-      <Button onPress={this.onCreateAccountButtonPress.bind(this)}>
-        Create New Account
-      </Button>
+        <Button onPress={this.onCreateAccountButtonPress.bind(this)}>
+          Create New Account
+        </Button>
     );
   }
 
@@ -96,10 +105,13 @@ class LoginForm extends Component {
             {this.renderLoginButton()}
           </CardSection>
           <CardSection>
+            {this.renderUpdateProfileButton()}
+          </CardSection>
+          <CardSection>
             {this.renderLogoutButton()}
           </CardSection>
           <CardSection>
-            {this.renderCreateAccountButton()}
+            <Button onPress={() => Actions.profileCreate({ type: 'reset' })} >Sign Up</Button>
           </CardSection>
         </Card>
       </ScrollView>
