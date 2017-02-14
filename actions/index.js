@@ -6,3 +6,4 @@ export * from './UserActions';
 export * from './FilterActions';
 export * from './MeetupFormActions';
 export * from './RsvpActions';
+export * from './MapActions';

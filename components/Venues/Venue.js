@@ -5,7 +5,7 @@ import { Text, View, TouchableWithoutFeedback } from 'react-native';
 import { meetupChange } from '../../actions';
 import { CardSection } from '../common';
 
-class StateItem extends Component {
+class Venue extends Component {
   onRowPress() {
     this.props.meetupChange('venue', this.props.venue);
     Actions.pop();
@@ -34,4 +34,4 @@ const styles = {
   }
 };
 
-export default connect(null, { meetupChange })(StateItem);
+export default connect(null, { meetupChange })(Venue);
