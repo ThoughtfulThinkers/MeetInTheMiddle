@@ -14,8 +14,8 @@ class Meetup extends Component {
   onInvitePress() {
     console.log(this.props.meetup.start);
     const { start } = this.props.meetup;
-    const day = moment(Date(this.props.meetup.start)).format('DD MMM YYYY');
-    const time = moment(Date(this.props.meetup.start)).format('h:mm a');
+    const day = moment(Date(start)).format('DD MMM YYYY');
+    const time = moment(Date(start)).format('h:mm a');
     Share.share({
       message: `I'm planning to go to the ${this.props.meetup.name} meetup on ${day} at ${time}.\nWould you like to join me?\n\nDescription: ${this.props.meetup.description}`,
       title: `Join me at the ${this.props.meetup.name} meetup`
