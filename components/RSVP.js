@@ -27,9 +27,7 @@ class RSVP extends Component {
           <LocationSelector />
         </CardSection>
         <CardSection>
-          <Button
-            onPress={this.onPress.bind(this)}
-          >
+          <Button onPress={this.onPress.bind(this)}>
             Confirm RSVP
           </Button>
         </CardSection>

@@ -10,12 +10,12 @@ import {
 const INITIAL_STATE = {
   name: '',
   description: '',
-  start: '2017-01-01 20:00',
-  end: '2017-01-01 22:00',
+  start: '2017-02-20 15:00',
+  end: '2017-02-20 17:00',
   state: 'New York',
   venue: { name: 'Coffee Shop', id: '4bf58dd8d48988d1e0931735' },
-  voteStart: '2017-01-01 22:00',
-  voteEnd: '2017-01-01 22:00'
+  voteStart: '2017-02-13 20:00',
+  voteEnd: '2017-02-19 20:00'
 };
 
 export default (state = INITIAL_STATE, action) => {

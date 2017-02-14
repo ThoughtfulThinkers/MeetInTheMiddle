@@ -30,13 +30,7 @@ class MeetupLocationCreate extends Component {
   }
 
   render() {
-    let venue;
-    if (!this.props.venue || this.props.venue === '') {
-      venue = 'location';
-    } else {
-      venue = this.props.venue.name;
-    }
-
+    const venue = this.props.venue.name;
     let button;
     if (!this.props.loading) {
       button = (<Button
