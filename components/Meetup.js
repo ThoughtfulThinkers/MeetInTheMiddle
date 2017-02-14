@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import _ from 'lodash';
 import moment from 'moment';
 import { Actions } from 'react-native-router-flux';
+import moment from 'moment';
 import { Text, View, Share, TouchableWithoutFeedback } from 'react-native';
+import { changeStatus } from '../actions';
+
 import GuestList from './GuestList';
 import { CardSection, Card, Button } from './common';
 
@@ -31,7 +35,38 @@ class Meetup extends Component {
     Actions.chat({ meetup: this.props.meetup });
   }
 
+  checkStatus() {
+    const { start, end, voteStart, voteEnd, status } = this.props.meetup;
+    console.log('meetup status: ', status);
+    switch (this.props.meetup.status) {
+      case 'created': {
+        if (moment().isSameOrAfter(voteStart)) {
+          console.log('Event RSVP ended with no guests added. Event cancelled.');
+          this.props.changeStatus(this.props.meetup, 'closed');
+        } else {
+          console.log('Time to set up components!');
+        }
+        break;
+      }
+      case 'guests': {
+        if (moment().isSameOrAfter(voteStart)) {
+          this.props.changeStatus(this.props.meetup, 'foursquare');
+        } else {
+          console.log('Time to set up components!');
+        }
+        break;
+      }
+      case 'foursquare': { break; }
+      case 'voting': { break; }
+      case 'set': { break; }
+      case 'closed': { break; }
+      default:
+        throw new Error('Meetup has no status assigned!');
+    }
+  }
+
   render() {
+    this.checkStatus();
     const { meetup } = this.props;
     const guests = _.map(meetup.users, (val, uid) => {
       return { ...val, uid };
@@ -116,4 +151,4 @@ const styles = {
   }
 };
 
-export default Meetup;
+export default connect(null, { changeStatus })(Meetup);
