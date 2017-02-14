@@ -78,33 +78,37 @@ export const updateUser = data => {
 
 
 
-export const createNewUser = data => {
+export const createNewUser = newUserData => {
   return dispatch => {
-    const { street, city, state, firstName, lastName, image, meetups } = data;
     const { currentUser } = firebase.auth();
+    const { street, city, state, firstName, lastName, image, meetups } = newUserData;
     const fullAddress = `${street},${city},${state}`;
     const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${fullAddress}&key=${GOOGLE_API}`;
     fetch(url)
       .then(response => response.json())
       .then(data => {
-        const latLon = data.results[0].geometry.location;
-        const location = { lat: latLon.lat, lon: latLon.lng, street, city, state };
+        const lat = data.results[0].geometry.location.lat;
+        const lon = data.results[0].geometry.location.lng;
+        const location = { lat, lon, street, city, state };
         const userData = {
           uid: currentUser.uid,
           firstName,
           lastName,
-          image,
-          meetups,
           location
         };
         dispatch({ type: FETCH_GEOLOCATION_BY_FULL_ADDRESS_SUCCESS, payload: location });
-        firebase.database().ref(`/users/${currentUser.uid}`)
-          .set(userData)
-          .then(() => Actions.meetups({ type: 'reset' }))
-          .catch(error => console.log(error));
+        dispatch(() => setNewUser(dispatch, userData));
       })
-      .catch(error => console.log('fetchGeoLocationByFullAddress error: ', error));
+      .catch(error => console.log('fetchGeoLocationByFullAddress error: ', error.message));
   };
+};
+
+export const setNewUser = (dispatch, userData) => {
+  const { currentUser } = firebase.auth();
+  firebase.database().ref(`/users/${currentUser.uid}`)
+    .set(userData)
+    .then(() => Actions.meetups({ type: 'reset' }))
+    .catch(error => console.log(error));
 };
 
 /**************************************************
