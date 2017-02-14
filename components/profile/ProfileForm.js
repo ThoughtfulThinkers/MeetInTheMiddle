@@ -12,6 +12,7 @@ import {
 } from '../common';
 
 import {
+  userInputChanged,
   userLocationInputChanged,
 } from '../../actions';
 
@@ -86,5 +87,6 @@ const mapStateToProps = ({ user }) => {
 };
 
 export default connect(mapStateToProps, {
+  userInputChanged,
   userLocationInputChanged,
 })(ProfileForm);
