@@ -72,7 +72,7 @@ export const updateUser = data => {
           .then(response => Actions.meetups())
           .catch(error => console.log('updateUser Error: ', error));
       })
-      .catch(error => console.log('fetchGeoLocationByFullAddress error: ', error));
+      .catch(error => console.log('fetchGeoLocationByFullAddress error: ', error.message));
   };
 };
 
