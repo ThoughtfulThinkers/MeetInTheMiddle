@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
+import moment from 'moment';
 import { Actions } from 'react-native-router-flux';
 import moment from 'moment';
-import { Text, View, TouchableWithoutFeedback } from 'react-native';
+import { Text, View, Share, TouchableWithoutFeedback } from 'react-native';
 import { changeStatus } from '../actions';
+
 import GuestList from './GuestList';
 import { CardSection, Card, Button } from './common';
 
@@ -14,7 +16,15 @@ class Meetup extends Component {
   }
 
   onInvitePress() {
-    Actions.invite({ meetup: this.props.meetup });
+    console.log(this.props.meetup.start);
+    const { start } = this.props.meetup;
+    const day = moment(Date(start)).format('DD MMM YYYY');
+    const time = moment(Date(start)).format('h:mm a');
+    Share.share({
+      message: `I'm planning to go to the ${this.props.meetup.name} meetup on ${day} at ${time}.\nWould you like to join me?\n\nDescription: ${this.props.meetup.description}`,
+      title: `Join me at the ${this.props.meetup.name} meetup`
+    });
+    // Actions.invite({ meetup: this.props.meetup });
   }
 
   onMapPress() {
