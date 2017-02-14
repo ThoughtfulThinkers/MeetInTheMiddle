@@ -1,18 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import firebase from 'firebase';
 import { Actions } from 'react-native-router-flux';
 import { Text, View, TouchableWithoutFeedback, Alert } from 'react-native';
 import { setVote } from '../../actions';
 import { CardSection } from '../common';
 
 class Vote extends Component {
-  componentDidMount() {
-    const { location, vote } = this.props;
-    const origin = `origins=${location.lat},${location.lon}`;
-    const destination = `destinations=${vote.lat},${vote.lon}`;
-    // fetch(`https://maps.googleapis.com/maps/api/distancematrix/json?${origin}&${destination}&key=`)
-    // .then(data => console.log(data));
-  }
 
   onRowPress() {
     const meetup = this.props.meetups[this.props.uid];
@@ -34,7 +28,6 @@ class Vote extends Component {
           <Text style={styles.titleStyle}>{this.props.vote.name}</Text>
           <View>
           <Text style={styles.textStyle}>Votes: {this.props.vote.votes}</Text>
-          <Text style={styles.textStyle}>Distance: </Text>
           </View>
         </CardSection>
       </View>
@@ -61,9 +54,10 @@ const styles = {
 
 const mapStateToProps = state => {
   const { meetupForm, user } = state;
-  const { meetups, location } = user;
+  const { meetups } = user;
+  console.log(user);
   const { uid } = meetupForm;
-  return { meetupForm, user, meetups, uid, location };
+  return { meetupForm, user, meetups, uid };
 };
 
 export default connect(mapStateToProps, { setVote })(Vote);
