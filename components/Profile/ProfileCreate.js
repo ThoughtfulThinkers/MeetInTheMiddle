@@ -27,27 +27,20 @@ class ProfileCreate extends Component {
   }
 
   onProfileButtonPress() {
-    const { firstName, lastName, image, location, email, password } = this.props;
-    const { street, city, state, zipcode } = location;
+    let { firstName, lastName, image, email, password } = this.props;
+    let { street, city, state, zipcode } = this.props.location;
+    firstName = firstName.trim();
+    lastName = lastName.trim();
+    image = image.trim();
+    street = street.trim();
+    city = city.trim();
+    state = state.trim();
+    zipcode = zipcode.trim();
+    email = email.trim();
+    password = password.trim();
+
     const data = { firstName, lastName, image, street, city, state, zipcode, email, password };
     this.props.createNewUser(data);
-  }
-
-  onSaveLocationButtonPress() {
-    const { location } = this.props;
-    const { street, city, state } = location;
-    this.props.fetchGeoLocationByFullAddress(street, city, state);
-  }
-
-  renderSaveLocationButton() {
-    if (this.props.loading) {
-      return <Spinner size="large" />;
-    }
-    return (
-      <Button onPress={this.onSaveLocationButtonPress.bind(this)}>
-        Set Lat & Lon
-      </Button>
-    );
   }
 
   renderProfileButton() {
