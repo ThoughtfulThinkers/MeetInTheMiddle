@@ -27,17 +27,17 @@ class ProfileUpdate extends Component {
   }
 
   onUpdateProfileButtonPress() {
-    let { firstName, lastName, image, email, password } = this.props;
-    let { street, city, state, zipcode } = this.props.location;
-    firstName = firstName.trim();
-    lastName = lastName.trim();
-    image = image.trim();
-    street = street.trim();
-    city = city.trim();
-    state = state.trim();
-    zipcode = zipcode.trim();
-    email = email.trim();
-    password = password.trim();
+    const { firstName, lastName, image, email, password } = this.props;
+    const { street, city, state, zipcode } = this.props.location;
+    // firstName = firstName.trim();
+    // lastName = lastName.trim();
+    // image = image.trim();
+    // street = street.trim();
+    // city = city.trim();
+    // state = state.trim();
+    // zipcode = zipcode.trim();
+    // email = email.trim();
+    // password = password.trim();
     const data = { firstName, lastName, image, street, city, state, zipcode, email, password };
     this.props.updateUser(data);
   }

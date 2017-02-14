@@ -48,7 +48,7 @@ export const setCurrentUser = user => ({
 export const updateUser = data => {
   return dispatch => {
     const { currentUser } = firebase.auth();
-    const { street, city, state, firstName, lastName, image } = data;
+    const { street, city, state, zipcode, firstName, lastName, image } = data;
     const fullAddress = `${street},${city},${state}`;
     const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${fullAddress}&key=${GOOGLE_API}`;
     fetch(url)
@@ -58,7 +58,7 @@ export const updateUser = data => {
         let userData = {};
         const latLon = data.results[0].geometry.location;
         let location = { lat: latLon.lat, lon: latLon.lng };
-        if (state.length > 0) location = { ...location, street, city, state }; // state required at minimum
+        if (state.length > 0) location = { ...location, street, city, state, zipcode }; // state required at minimum
         userData = { ...userData, location };
         // Firebase doesn't allow empty documents on an update
         if (firstName.length > 0) userData = { ...userData, firstName };
@@ -69,7 +69,7 @@ export const updateUser = data => {
         dispatch({ type: FETCH_GEOLOCATION_BY_FULL_ADDRESS_SUCCESS, payload: location });
         firebase.database().ref(`/users/${currentUser.uid}`)
           .update(userData)
-          .then(response => Actions.meetups())
+          .then(response => Actions.meetups({ type: 'reset' }))
           .catch(error => console.log('updateUser Error: ', error));
       })
       .catch(error => console.log('fetchGeoLocationByFullAddress error: ', error.message));
