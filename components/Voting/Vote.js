@@ -5,7 +5,6 @@ import { Actions } from 'react-native-router-flux';
 import { Text, View, TouchableWithoutFeedback, Alert } from 'react-native';
 import { setVote } from '../../actions';
 import { CardSection } from '../common';
-import { googlePlacesConfig } from '../../envConfig';
 
 class Vote extends Component {
 
