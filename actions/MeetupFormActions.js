@@ -26,7 +26,8 @@ export const addMeetup = (meetupDetails) => {
     chat: {},
     vote: {},
     users: {},
-    location: ''
+    location: '',
+    status: 'created'
   };
   firebase.database().ref('/meetups')
     .push(meetup)
@@ -60,3 +61,17 @@ export const meetupEdit = (meetup) => {
     .catch((err) => console.log(err));
   };
 };
+
+export const changeStatus = (meetup, status) => {
+  return (dispatch) => {
+    dispatch({ type: EDIT_MEETUP });
+    const newMeetup = { ...meetup, status };
+    firebase.database().ref(`/meetups/${meetup.uid}`)
+      .set(newMeetup)
+      .then(() => {
+        console.log('set meetup');
+        dispatch({ type: EDIT_MEETUP_SUCCESS });
+      })
+      .catch((err) => console.log(err));
+    };
+  };
