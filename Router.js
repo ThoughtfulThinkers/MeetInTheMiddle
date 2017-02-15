@@ -29,9 +29,9 @@ const RouterComponent = () => {
   return (
     <Router sceneStyle={{ paddingTop: Platform.OS === 'ios' ? 64 : 54 }}>
       <Scene key="auth">
-        <Scene key="login" component={LoginForm} title="Account Management" leftTitle="Home" onLeft={() => Actions.meetups()} />
-        <Scene key="profileCreate" component={ProfileCreate} title="Create Account" leftTitle="Home" onLeft={() => Actions.meetups()} />
-        <Scene key="profileUpdate" component={ProfileUpdate} title="Update Profile" leftTitle="Home" onLeft={() => Actions.meetups()} />
+        <Scene key="login" component={LoginForm} title="Account Management" leftTitle="Home" onLeft={() => Actions.meetups({ type: 'reset' })} />
+        <Scene key="profileCreate" component={ProfileCreate} title="Create Account" leftTitle="Home" onLeft={() => Actions.meetups({ type: 'reset' })} />
+        <Scene key="profileUpdate" component={ProfileUpdate} title="Update Profile" leftTitle="Home" onLeft={() => Actions.meetups({ type: 'reset' })} />
 
         <Scene key="chat" component={ChatRoom} title="Chat Room" style={{ paddingBottom: 40 }} />
         <Scene key="map" component={Map} title="Map" />
