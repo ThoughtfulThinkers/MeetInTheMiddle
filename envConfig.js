@@ -10,6 +10,8 @@ export const googlePlacesConfig = {
   apiKey: 'AIzaSyCuVd-6uX1VisVjL17eVtRdAaHA-dV_ITo'
 };
 
+export const GOOGLE_GEO_API_KEY='AIzaSyAGQnPaUtcKigQBpBeYh2qZfb1ZHFWNBnY'
+
 export const foursquareConfig = {
   ID: '0G4DIDKIFK5OQLE0EOIIM1WRLAQ1LTMC1PS2VKR314CQ433C',
   SECRET: 'PK0K22VR5D33M0V0KXK0TOFV42OHKQGM4MPNYH3OMNVLH25O'
