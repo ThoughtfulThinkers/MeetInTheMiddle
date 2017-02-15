@@ -62,13 +62,32 @@ export const setVote = (meetupId, venueId, venueVote) => {
 };
 
 export const voteChange = (meetupId, venueId, venueVote) => {
-  //firebase!!
-    //GET users/userId/meetups/meetupId/vote (as 'oldVote')
-    //SET users/userId/meetups/meetupId/vote = venueId
-    //GET meetups/meetupId/venue/oldVoteId (as oldVote)
-    //SET meetups/meetupId/venue/oldVoteId = oldVote - 1
-    //SET meetups/meetupId/venue/venueId = venueVote + 1
+  return dispatch => {
+      const { currentUser } = firebase.auth();
 
+      //get old vote location
+      let userPreviousVote;
+      firebase.database().ref(`/users/${currentUser.uid}/meetups/${meetupId}/vote`)
+        .on('value', (snapshot) => {
+          userPreviousVote = snapshot.val();
+      });
+
+      //get old venue vote count
+      let oldVenueCount;
+      firebase.database().ref(`/meetups/${meetupId}/venues/${userPreviousVote}/votes`)
+        .on('value', (snapshot) => {
+          oldVenueCount = snapshot.val();
+      });
+
+      //lower old vote count, raise new vote count, replace user venue id
+      oldVenueCount -= 1;
+      const updates = {};
+      updates[`/users/${currentUser.uid}/meetups/${meetupId}/vote`] = venueId;
+      updates[`/meetups/${meetupId}/venues/${userPreviousVote}/votes`] = oldVenueCount;
+      updates[`/meetups/${meetupId}/venues/${venueId}/votes`] = venueVote;
+
+      firebase.database().ref().update(updates).then(() => dispatch({ type: SET_VOTE, venueId, vote: venueVote }));
+  };
 };
 
 export const changeLocation = (location, meetupId) => {
