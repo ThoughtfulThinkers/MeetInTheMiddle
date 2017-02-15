@@ -1,3 +1,4 @@
+import moment from 'moment';
 import {
   MEETUP_CHANGED,
   ADD_MEETUP,
@@ -10,18 +11,19 @@ import {
   RESET_MEETUP
 } from '../actions/types';
 
+const now = moment().format('YYYY-MM-DD HH:mm');
 const INITIAL_STATE = {
   name: '',
   description: '',
-  start: '2017-02-20 15:00',
-  end: '2017-02-20 17:00',
+  start: now,
+  end: now,
   state: 'New York',
   venue: { name: 'Coffee Shop', id: '4bf58dd8d48988d1e0931735' },
   venues: {},
   status: 'created',
   location: '',
-  voteStart: '2017-02-13 20:00',
-  voteEnd: '2017-02-19 20:00'
+  voteStart: now,
+  voteEnd: now
 };
 
 export default (state = INITIAL_STATE, action) => {

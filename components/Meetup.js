@@ -100,7 +100,11 @@ class Meetup extends Component {
 
   //button methods
   onRSVPPress() {
-    Actions.rsvp({ meetup: this.props.meetup });
+    if (this.props.auth.loggedIn) {
+      Actions.rsvp({ meetup: this.props.meetup });
+    } else {
+      Actions.login();
+    }
   }
 
   onInvitePress() {
@@ -250,7 +254,8 @@ const styles = {
 };
 const mapStateToProps = state => {
   const meetup = state.meetupForm;
-  return { meetup };
+  const { auth, user } = state;
+  return { meetup, auth };
 };
 
 export default connect(mapStateToProps, { changeStatus, createVoting, changeLocation })(Meetup);
