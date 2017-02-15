@@ -37,8 +37,14 @@ class Meetup extends Component {
       case 'created': {
         //the event has been created but has no guests.
         //RSVP is available
+        //check if guests
         //if RSVP ends with no guests, mark event closed
-        if (moment().isSameOrAfter(voteStart)) {
+        const guests = _.map(this.props.meetup.users, (val, uid) => {
+          return { ...val, uid };
+        });
+        if (guests.length !== 0) {
+          this.props.changeStatus(this.props.meetup, 'guests');
+        } else if (moment().isSameOrAfter(voteStart)) {
           Alert.alert('Event RSVP ended with no guests added. Event cancelled.');
           this.props.changeStatus(this.props.meetup, 'closed');
         }
@@ -56,7 +62,6 @@ class Meetup extends Component {
         //send foursquare search and set votes, then change status to voting
         const { lat, lon } = getLatLon(this.props.meetup.users);
         this.props.createVoting(lat, lon, this.props.meetup);
-        this.props.changeStatus(this.props.meetup, 'voting');
         break;
       }
       case 'voting': {
@@ -150,6 +155,7 @@ class Meetup extends Component {
       const votingArray = _.map(this.props.meetup.venues, (val, uid) => {
         return { ...val, uid };
       });
+      console.log('votes', votingArray);
       return (
         <View style={{ height: 150, flex: 1 }}>
         <CardSection style={{ flexDirection: 'column' }}>
@@ -224,5 +230,9 @@ const styles = {
     color: '#007aff' //TODO: color and content change based on vote start/end
   }
 };
+const mapStateToProps = state => {
+  const meetup = state.meetupForm;
+  return { meetup };
+};
 
-export default connect(null, { changeStatus, createVoting })(Meetup);
+export default connect(mapStateToProps, { changeStatus, createVoting })(Meetup);
