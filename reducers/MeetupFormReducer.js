@@ -18,6 +18,7 @@ const INITIAL_STATE = {
   venue: { name: 'Coffee Shop', id: '4bf58dd8d48988d1e0931735' },
   venues: {},
   status: 'created',
+  location: '',
   voteStart: '2017-02-13 20:00',
   voteEnd: '2017-02-19 20:00'
 };

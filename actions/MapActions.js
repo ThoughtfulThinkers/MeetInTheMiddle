@@ -70,3 +70,17 @@ export const voteChange = (meetupId, venueId, venueVote) => {
     //SET meetups/meetupId/venue/venueId = venueVote + 1
 
 };
+
+export const changeLocation = (location, meetupId) => {
+  return (dispatch) => {
+    firebase.database().ref(`/meetups/${meetupId}/location`)
+      .set(location)
+      .then(() => {
+        dispatch({
+            type: MEETUP_CHANGED,
+            prop: 'location',
+            value: location });
+      })
+      .catch((err) => console.log(err));
+    };
+};

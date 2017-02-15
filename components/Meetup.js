@@ -4,7 +4,7 @@ import _ from 'lodash';
 import { Actions } from 'react-native-router-flux';
 import moment from 'moment';
 import { Text, View, Share, TouchableWithoutFeedback, Alert } from 'react-native';
-import { changeStatus, createVoting } from '../actions';
+import { changeStatus, createVoting, changeLocation } from '../actions';
 
 import GuestList from './GuestList';
 import VotingList from './Voting/VotingList';
@@ -74,6 +74,12 @@ class Meetup extends Component {
       }
       case 'location': {
         //set location and change to set
+        let votingArray = _.map(this.props.meetup.venues, (val, uid) => {
+          return { ...val, uid };
+        });
+        votingArray = votingArray.sort((a, b) => b.votes - a.votes);
+        this.props.changeLocation(votingArray[0], this.props.meetup.uid);
+        this.props.changeStatus(this.props.meetup, 'set');
         break;
       }
       case 'set': {
@@ -127,7 +133,7 @@ class Meetup extends Component {
   //render methods
   renderLocation(status) {
     if (status === 'set' || status === 'closed') {
-      return <Text style={styles.textStyle}>Location: {this.props.meetup.location}</Text>;
+      return <Text style={styles.textStyle}>Location: {this.props.meetup.location.name}</Text>;
     }
       return <Text />;
   }
@@ -158,12 +164,17 @@ class Meetup extends Component {
 
   renderVoting(status) {
     if (status === 'voting') {
+      let votingArray = _.map(this.props.meetup.venues, (val, uid) => {
+        return { ...val, uid };
+      });
+      votingArray = votingArray.sort((a, b) => b.votes - a.votes);
       return (
-          <CardSection style={{ flexDirection: 'row' }}>
+          <CardSection style={{ flexDirection: 'column', height: 90 }}>
+              <Text style={styles.textStyle}>Top Location: {votingArray[0].name}</Text>
               <Button onPress={this.onVotePress.bind(this)}>
                   Vote on Location
-                </Button>
-            </CardSection>);
+              </Button>
+          </CardSection>);
     }
     return <Text />;
   }
@@ -235,4 +246,4 @@ const mapStateToProps = state => {
   return { meetup };
 };
 
-export default connect(mapStateToProps, { changeStatus, createVoting })(Meetup);
+export default connect(mapStateToProps, { changeStatus, createVoting, changeLocation })(Meetup);
