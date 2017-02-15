@@ -242,11 +242,6 @@ const styles = {
     fontSize: 18,
     padding: 5
   },
-  voteStyle: {
-    fontSize: 15,
-    padding: 5,
-    color: '#007aff' //TODO: color and content change based on vote start/end
-  },
   addressStyle: {
     fontSize: 15,
   },

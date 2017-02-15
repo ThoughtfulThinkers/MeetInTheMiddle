@@ -60,7 +60,6 @@ export const meetupEdit = (meetup) => {
   updates['/venue'] = venue;
   updates['/voteStart'] = voteStart;
   updates['/voteEnd'] = voteEnd;
-  updates['/status'] = 'created';
 
   firebase.database().ref(`/meetups/${meetup.uid}`)
     .update(updates)
