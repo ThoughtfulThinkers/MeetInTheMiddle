@@ -9,7 +9,7 @@ import {
 } from '../common';
 
 import {
-  createNewUser,
+  createNewUserAccount,
   emailChanged,
   fetchGeoLocationByFullAddress,
   loginUser,
@@ -27,23 +27,21 @@ class ProfileCreate extends Component {
     this.props.passwordChanged(text);
   }
 
-  onProfileButtonPress() {
-
+  onCreateAccountButtonPress() {
     const { firstName, lastName, image, email, password } = this.props;
     const { street, city, state, zipcode } = this.props.location;
-
-    const data = { firstName, lastName, image, street, city, state, zipcode, email, password };
-    this.props.createNewUser(data);
+    const userProfileData = { firstName, lastName, image, street, city, state, zipcode, email, password };
+    this.props.createNewUserAccount(userProfileData);
   }
 
-  renderProfileButton() {
+  renderCreateAccountButton() {
     if (this.props.loading) {
       return <Spinner size="large" />;
     }
     return (
-      <Button onPress={this.onProfileButtonPress.bind(this)}>
-        Create Profile
-      </Button>
+        <Button onPress={this.onCreateAccountButtonPress.bind(this)}>
+          Create New Account
+        </Button>
     );
   }
 
@@ -71,7 +69,7 @@ class ProfileCreate extends Component {
         <ProfileForm />
         <Text style={styles.errorTextStyle}>{this.props.error}</Text>
         <CardSection>
-          {this.renderProfileButton()}
+          {this.renderCreateAccountButton()}
         </CardSection>
       </Card>
       </ScrollView>
@@ -107,7 +105,7 @@ const mapStateToProps = ({ auth, user }) => {
 };
 
 export default connect(mapStateToProps, {
-  createNewUser,
+  createNewUserAccount,
   emailChanged,
   fetchGeoLocationByFullAddress,
   loginUser,
