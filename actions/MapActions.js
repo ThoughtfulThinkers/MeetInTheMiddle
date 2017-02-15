@@ -1,7 +1,7 @@
 import 'whatwg-fetch';
 import firebase from 'firebase';
 import { Actions } from 'react-native-router-flux';
-import { SET_CURRENT_MEETUP } from './types';
+import { SET_CURRENT_MEETUP, SET_VOTE } from './types';
 import { foursquareConfig } from '../envConfig';
 
 const { ID, SECRET } = foursquareConfig;
@@ -52,7 +52,10 @@ export const setVote = (meetupId, venueId, venueVote) => {
     .set(venueId)
     .then(() => {
       firebase.database().ref(`/meetups/${meetupId}/venues/${venueId}/votes`)
-      .set(venueVote);
+      .set(venueVote)
+      .then(() => {
+        dispatch({ type: SET_VOTE, venueId, vote: venueVote });
+      });
     })
     .catch(err => console.log(err));
   };

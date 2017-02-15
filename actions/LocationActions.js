@@ -12,7 +12,6 @@ import {
 // const GOOGLE_PLACES_API = googlePlacesConfig.apiKey;
 const GOOGLE_API = 'AIzaSyDzk0eKI5tnKWkSORpDTL32iZ15QjxQxeg';
 export const fetchGeoLocationByFullAddress = (street, city, state) => dispatch => {
-  console.log('google api: ', GOOGLE_API);
   const fullAddress = `${street},${city},${state}`;
   const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${fullAddress}&key=${GOOGLE_API}`;
   fetch(url)

@@ -8,6 +8,7 @@ import LoginForm from './components/LoginForm';
 import Map from './components/Map';
 
 import StateSelector from './components/StateSelector';
+import VotingList from './components/Voting/VotingList';
 
 import MeetupCreate from './components/MeetupCreate';
 import MeetupLocationCreate from './components/MeetupLocationCreate';
@@ -60,6 +61,7 @@ const RouterComponent = () => {
         <Scene key="states" component={StateSelector} title="Choose State" />
         <Scene key="rsvp" component={RSVP} title="RSVP" />
         <Scene key="venues" component={VenuePicker} title="Choose Venue" />
+        <Scene key="voting" component={VotingList} title="Vote for Location" />
         <Scene key="searchLocation" component={LocationSelector} title="Choose Location" />
       </Scene>
     </Router>

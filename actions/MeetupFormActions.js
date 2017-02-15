@@ -32,7 +32,6 @@ export const addMeetup = (meetupDetails) => {
   firebase.database().ref('/meetups')
     .push(meetup)
     .then(({ key }) => {
-      // console.log('created meetup: ', key);
       dispatch({ type: ADD_MEETUP_SUCCESS });
       Actions.meetup({ type: 'reset', meetup });
     })
