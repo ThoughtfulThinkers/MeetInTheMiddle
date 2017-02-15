@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import firebase from 'firebase';
 import { Actions } from 'react-native-router-flux';
 import { Text, View, TouchableWithoutFeedback, Alert } from 'react-native';
-import { setVote } from '../../actions';
+import { setVote, voteChange } from '../../actions';
 import { CardSection } from '../common';
 
 class Vote extends Component {
@@ -13,13 +13,13 @@ class Vote extends Component {
     if (!meetup) {
       Alert.alert('You are not registered for this meetup.');
     } else if (meetup.vote) {
-      Alert.alert('You already voted on this meetup.');
-      //TODO: change vote instead of alert
+      const voteCount = this.props.vote.votes + 1;
+      this.props.voteChange(this.props.uid, this.props.vote.uid, voteCount);
     } else {
       const voteCount = this.props.vote.votes + 1;
       this.props.setVote(this.props.uid, this.props.vote.uid, voteCount);
     }
-    Actions.pop();
+    Actions.pop({ refresh: { ...this.props.meetupForm } });
   }
 
   render() {
@@ -61,4 +61,4 @@ const mapStateToProps = state => {
   return { meetupForm, user, meetups, uid };
 };
 
-export default connect(mapStateToProps, { setVote })(Vote);
+export default connect(mapStateToProps, { setVote, voteChange })(Vote);

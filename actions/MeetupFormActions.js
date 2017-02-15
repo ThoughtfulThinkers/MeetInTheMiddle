@@ -73,13 +73,10 @@ export const meetupEdit = (meetup) => {
 };
 
 export const changeStatus = (meetup, status) => {
-  console.log('change status to ', status);
   return (dispatch) => {
     firebase.database().ref(`/meetups/${meetup.uid}/status`)
       .set(status)
       .then(() => {
-        console.log('set meetup');
-
         dispatch({
             type: MEETUP_CHANGED,
             prop: 'status',
