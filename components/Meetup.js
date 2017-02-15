@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 import { Actions } from 'react-native-router-flux';
 import moment from 'moment';
-import { Text, View, Share, TouchableWithoutFeedback } from 'react-native';
+import { Text, View, Share, TouchableWithoutFeedback, Alert } from 'react-native';
 import { changeStatus, createVoting } from '../actions';
 
 import GuestList from './GuestList';
@@ -115,7 +115,7 @@ class Meetup extends Component {
   //render methods
   renderLocation(status) {
     if (status === 'set' || status === 'closed') {
-      return <Text style={styles.textStyle}>Location: {meetup.location}</Text>;
+      return <Text style={styles.textStyle}>Location: {this.props.meetup.location}</Text>;
     }
       return <Text />;
   }
