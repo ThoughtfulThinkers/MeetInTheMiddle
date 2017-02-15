@@ -10,9 +10,8 @@ import {
   LOAD_AUTHENTICATED_USER_STATE_SUCCESS
 } from './types';
 
-import { googlePlacesConfig } from '../envConfig';
+import { googlePlacesConfig, GOOGLE_GEO_API_KEY } from '../envConfig';
 
-const GOOGLE_API = 'AIzaSyDzk0eKI5tnKWkSORpDTL32iZ15QjxQxeg';
 /*****************************************************************
   Changes to form Input fields
 *****************************************************************/
@@ -104,7 +103,7 @@ const createNewUserProfile = (dispatch, newUserData) => {
     const { currentUser } = firebase.auth();
     const { street, city, state, zipcode, firstName, lastName } = newUserData;
     const fullAddress = `${street},${city},${state}`;
-    const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${fullAddress}&key=${GOOGLE_API}`;
+    const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${fullAddress}&key=${GOOGLE_GEO_API_KEY}`;
     fetch(url)
       .then(response => response.json())
       .then(data => {
