@@ -14,9 +14,10 @@ class Vote extends Component {
       Alert.alert('You are not registered for this meetup.');
     } else if (meetup.voted) {
       Alert.alert('You already voted on this meetup.');
+      //TODO: change vote instead of alert
     } else {
-      //add 'voted' to user's meetup
-      //add +1 to current venue in meetup
+      const voteCount = this.props.vote.votes + 1;
+      this.props.setVote(this.props.uid, this.props.vote.uid, voteCount);
     }
   }
 
@@ -55,7 +56,6 @@ const styles = {
 const mapStateToProps = state => {
   const { meetupForm, user } = state;
   const { meetups } = user;
-  console.log(user);
   const { uid } = meetupForm;
   return { meetupForm, user, meetups, uid };
 };

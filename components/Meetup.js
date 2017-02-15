@@ -94,7 +94,6 @@ class Meetup extends Component {
   }
 
   onInvitePress() {
-    console.log(this.props.meetup.start);
     const { start } = this.props.meetup;
     const day = moment(start).format('DD MMM YYYY');
     const time = moment(start).format('h:mm a');
