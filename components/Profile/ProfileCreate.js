@@ -28,6 +28,7 @@ class ProfileCreate extends Component {
   }
 
   onProfileButtonPress() {
+
     const { firstName, lastName, image, email, password } = this.props;
     const { street, city, state, zipcode } = this.props.location;
 

@@ -35,7 +35,7 @@ export const createVoting = (lat, lon, meetup) => {
         venues[id] = { name, formattedAddress, lat: location.lat, lon: lng, votes: 0 };
       });
       const newMeetup = { ...meetup, venues };
-      console.log(newMeetup);
+
       firebase.database().ref(`/meetups/${meetup.uid}`)
         .set(newMeetup)
         .then(() => {
@@ -44,4 +44,27 @@ export const createVoting = (lat, lon, meetup) => {
     })
     .catch(err => console.log(err));
   };
+};
+
+export const setVote = (meetupId, venueId, venueVote) => {
+  return dispatch => {
+  const { currentUser } = firebase.auth();
+  firebase.database().ref(`/users/${currentUser.uid}/meetups/${meetupId}/vote`)
+    .set(venueId)
+    .then(() => {
+      firebase.database().ref(`/meetups/${meetupId}/venues/${venueId}/votes`)
+      .set(venueVote);
+    })
+    .catch(err => console.log(err));
+  };
+};
+
+export const voteChange = (meetupId, venueId, venueVote) => {
+  //firebase!!
+    //GET users/userId/meetups/meetupId/vote (as 'oldVote')
+    //SET users/userId/meetups/meetupId/vote = venueId
+    //GET meetups/meetupId/venue/oldVoteId (as oldVote)
+    //SET meetups/meetupId/venue/oldVoteId = oldVote - 1
+    //SET meetups/meetupId/venue/venueId = venueVote + 1
+
 };
