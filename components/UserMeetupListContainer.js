@@ -46,7 +46,6 @@ const mapStateToProps = state => {
   const meetups = _.map(state.meetups.userMeetups, (val, uid) => {
     return { ...val, uid };
   });
-    // console.log("in mapstate", meetups);
   return { meetups, loading: state.meetups.userLoading };
 };
 

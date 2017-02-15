@@ -117,6 +117,13 @@ class Meetup extends Component {
     Actions.chat({ meetup: this.props.meetup });
   }
 
+  onVotePress() {
+    const votingArray = _.map(this.props.meetup.venues, (val, uid) => {
+      return { ...val, uid };
+    });
+    Actions.voting({ venues: votingArray });
+  }
+
   //render methods
   renderLocation(status) {
     if (status === 'set' || status === 'closed') {
@@ -137,7 +144,6 @@ class Meetup extends Component {
 
   renderRsvp(status) {
     if (status === 'created' || status === 'guests') {
-      console.log('you can rsvp');
       return (<CardSection style={{ flexDirection: 'row' }}>
               <Button onPress={this.onRSVPPress.bind(this)}>
                 RSVP
@@ -152,18 +158,12 @@ class Meetup extends Component {
 
   renderVoting(status) {
     if (status === 'voting') {
-      const votingArray = _.map(this.props.meetup.venues, (val, uid) => {
-        return { ...val, uid };
-      });
-      console.log('votes', votingArray);
       return (
-        <View style={{ height: 150, flex: 1 }}>
-        <CardSection style={{ flexDirection: 'column' }}>
-          <Text style={styles.titleStyle}>Vote on a Location</Text>
-          <VotingList venues={votingArray} />
-        </CardSection>
-        </View>
-        );
+          <CardSection style={{ flexDirection: 'row' }}>
+              <Button onPress={this.onVotePress.bind(this)}>
+                  Vote on Location
+                </Button>
+            </CardSection>);
     }
     return <Text />;
   }
@@ -202,9 +202,9 @@ class Meetup extends Component {
             Chat
           </Button>
         </CardSection>
-        <CardSection>
+
           {this.renderVoting(status)}
-        </CardSection>
+
         <CardSection style={{ flexDirection: 'column' }}>
           <Text style={styles.titleStyle}>Attending</Text>
           {this.renderGuests(status)}

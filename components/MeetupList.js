@@ -23,7 +23,6 @@ class MeetupList extends Component {
   }
 
   renderRow(meetup) {
-    // console.log(meetup);
       return <MeetupListItem meetup={meetup} />;
   }
 
