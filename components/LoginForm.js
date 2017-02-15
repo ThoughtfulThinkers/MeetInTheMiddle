@@ -10,6 +10,7 @@ import {
   loginUser,
   logoutUser,
   passwordChanged,
+  setLoginStatus,
 } from '../actions';
 import MeetupList from './MeetupList';
 
@@ -19,9 +20,11 @@ class LoginForm extends Component {
     firebase.auth().onAuthStateChanged(user => {
       console.log('Login: Auth State Changed: ');
       if (user) {
-        console.log('Login: logged In: ', user);
+        console.log('Set Login Status: logged In ');
+        this.props.setLoginStatus(true);
       } else {
-        console.log('Login: not logged out ', user);
+        console.log('Set Login Status: logged out ');
+        this.props.setLoginStatus(false);
       }
     });
   }
@@ -43,85 +46,80 @@ class LoginForm extends Component {
     this.props.logoutUser();
   }
 
-  onCreateAccountButtonPress() {
-    const { email, password } = this.props;
+  onCreateAccountButtonPress(email, password) {
+    // const { email, password } = this.props;
     this.props.createNewUserAccount({ email, password });
   }
 
-  renderLoginButton() {
-    if (this.props.loading) {
+  renderButtons() {
+    // const isLoggedIn = this.props.loggedIn;
+    const { email, password, error, loading, loggedIn } = this.props;
+    if (loading) {
       return <Spinner size="large" />;
     }
-    return (
-      <Button onPress={this.onLoginButtonPress.bind(this)}>
-        Login
-      </Button>
-    );
-  }
-
-  renderUpdateProfileButton() {
-    const { email, password } = this.props;
-    return (
-      <Button onPress={() => Actions.profileUpdate({ email, password })}>
-        Update Profile
-      </Button>
-    );
-  }
-
-  renderLogoutButton() {
-    return (
-      <Button onPress={this.onLogoutButtonPress.bind(this)}>
-        Log Out
-      </Button>
-    );
-  }
-
-  renderCreateAccountButton() {
-    if (this.props.loading) {
-      return <Spinner size="large" />;
+    if (loggedIn) {
+      return (
+        <Card>
+          <CardSection>
+            <Text style={styles.title}>Logged In as {this.props.email}</Text>
+          </CardSection>
+          <CardSection>
+            <Button onPress={() => Actions.profileUpdate({ email, password })}>
+              Update Profile
+            </Button>
+          </CardSection>
+          <CardSection>
+            <Button onPress={this.onLogoutButtonPress.bind(this)}>
+              Log Out
+            </Button>
+          </CardSection>
+        </Card>
+        );
+      } else {
+        // loggedOut
+        return (
+          <Card>
+            <CardSection>
+              <Text style={styles.title}>Please Login or Sign Up</Text>
+            </CardSection>
+            <CardSection>
+              <Input
+                label="Email"
+                placeholder="email@domain.com"
+                onChangeText={this.onEmailChange.bind(this)}
+                value={this.props.email}
+              />
+            </CardSection>
+            <CardSection>
+              <Input
+              secureTextEntry
+              label="Password"
+              placeholder="password"
+              onChangeText={this.onPasswordChange.bind(this)}
+              value={this.props.password}
+              />
+            </CardSection>
+            <CardSection>
+              <Button onPress={this.onLoginButtonPress.bind(this)}>
+                Login
+              </Button>
+            </CardSection>
+            <CardSection>
+              <Button onPress={() => Actions.profileCreate({ type: 'reset' })} >
+                Sign Up
+              </Button>
+            </CardSection>
+          </Card>
+        );
+      }
     }
-    return (
-        <Button onPress={this.onCreateAccountButtonPress.bind(this)}>
-          Create New Account
-        </Button>
-    );
-  }
 
   render() {
     return (
       <ScrollView>
         <Card>
-          <CardSection>
-            <Input
-              label="Email"
-              placeholder="email@domain.com"
-              onChangeText={this.onEmailChange.bind(this)}
-              value={this.props.email}
-            />
-          </CardSection>
-          <CardSection>
-            <Input
-            secureTextEntry
-            label="Password"
-            placeholder="password"
-            onChangeText={this.onPasswordChange.bind(this)}
-            value={this.props.password}
-            />
-          </CardSection>
-
+          {this.renderButtons()}
           <Text style={styles.errorTextStyle}>{this.props.error}</Text>
-          <CardSection>
-            {this.renderLoginButton()}
-          </CardSection>
-          <CardSection>
-            {this.renderUpdateProfileButton()}
-          </CardSection>
-          <CardSection>
-            {this.renderLogoutButton()}
-          </CardSection>
-          <CardSection>
-            <Button onPress={() => Actions.profileCreate({ type: 'reset' })} >Sign Up</Button>
-          </CardSection>
         </Card>
       </ScrollView>
     );
@@ -135,12 +133,21 @@ const styles = {
     alignSelf: 'center',
     paddingLeft: 10,
     paddingRight: 10
+  },
+  title: {
+    flex: 1,
+    color: '#0000ff',
+    fontSize: 20,
+    alignSelf: 'center',
+    paddingLeft: 10,
+    paddingRight: 10
   }
 };
 
 const mapStateToProps = ({ auth }) => {
-  const { email, password, error, loading } = auth;
-  return { email, password, error, loading };
+  const { email, password, error, loading, loggedIn } = auth;
+  // console.log('LoginForm props loggedIn', loggedIn)
+  return { email, password, error, loading, loggedIn };
 };
 
 export default connect(mapStateToProps, {
@@ -148,5 +155,6 @@ export default connect(mapStateToProps, {
   emailChanged,
   loginUser,
   logoutUser,
-  passwordChanged
+  passwordChanged,
+  setLoginStatus,
 })(LoginForm);
