@@ -5,7 +5,7 @@ import Venue from './Venue';
 const venueIds = [{ name: 'Arts & Entertainment', id: '4d4b7104d754a06370d81259' },
 { name: 'College & University', id: '4d4b7105d754a06372d81259' },
 { name: 'Event', id: '4d4b7105d754a06373d81259' },
-{ name: 'Food', id: '4d4b7105d754a06374d81259' },
+{ name: 'Food & Restaurants', id: '4d4b7105d754a06374d81259' },
 { name: 'Coffee Shop', id: '4bf58dd8d48988d1e0931735' },
 { name: 'Fast Food Restaurant', id: '4bf58dd8d48988d16e941735' },
 { name: 'Nightlife Spot', id: '4d4b7105d754a06376d81259' },
