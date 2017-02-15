@@ -34,12 +34,9 @@ export const createVoting = (lat, lon, meetup) => {
         const { formattedAddress, lng } = location;
         venues[id] = { name, formattedAddress, lat: location.lat, lon: lng, votes: 0 };
       });
-      const updates = {};
-      updates['/venues'] = venues;
-      updates['/status'] = 'voting';
-      const newMeetup = { ...meetup, status: voting, venues };
+      const newMeetup = { ...meetup, status: 'voting', venues };
       firebase.database().ref(`/meetups/${meetup.uid}`)
-        .update(updates)
+        .set(newMeetup)
         .then(() => {
           dispatch({ type: SET_CURRENT_MEETUP, meetup: newMeetup });
         });
