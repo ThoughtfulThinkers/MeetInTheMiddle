@@ -56,15 +56,17 @@ export const updateUser = data => {
       .then(data => {
         // console.log('location: ', data.results[0].geometry.location);
         let userData = {};
-        const latLon = data.results[0].geometry.location;
-        let location = { lat: latLon.lat, lon: latLon.lng };
+        // const latLon = data.results[0].geometry.location;
+        // let location = { lat: latLon.lat, lon: latLon.lng };
+        const lat = data.results[0].geometry.location.lat;
+        const lon = data.results[0].geometry.location.lng;
+        let location = { lat, lon };
         if (state.length > 0) location = { ...location, street, city, state, zipcode }; // state required at minimum
         userData = { ...userData, location };
         // Firebase doesn't allow empty documents on an update
         if (firstName.length > 0) userData = { ...userData, firstName };
         if (lastName.length > 0) userData = { ...userData, lastName };
         if (image.length > 0) userData = { ...userData, image };
-
         console.log('userData ', userData);
         dispatch({ type: FETCH_GEOLOCATION_BY_FULL_ADDRESS_SUCCESS, payload: location });
         firebase.database().ref(`/users/${currentUser.uid}`)
@@ -81,7 +83,7 @@ export const updateUser = data => {
 export const createNewUser = newUserData => {
   return dispatch => {
     const { currentUser } = firebase.auth();
-    const { street, city, state, firstName, lastName, image, meetups } = newUserData;
+    const { street, city, state, zipcode, firstName, lastName } = newUserData;
     const fullAddress = `${street},${city},${state}`;
     const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${fullAddress}&key=${GOOGLE_API}`;
     fetch(url)
@@ -89,13 +91,14 @@ export const createNewUser = newUserData => {
       .then(data => {
         const lat = data.results[0].geometry.location.lat;
         const lon = data.results[0].geometry.location.lng;
-        const location = { lat, lon, street, city, state };
+        const location = { lat, lon, street, city, state, zipcode };
         const userData = {
           uid: currentUser.uid,
           firstName,
           lastName,
           location
         };
+        console.log(`userData: ${userData}`);
         dispatch({ type: FETCH_GEOLOCATION_BY_FULL_ADDRESS_SUCCESS, payload: location });
         dispatch(() => setNewUser(dispatch, userData));
       })
