@@ -5,7 +5,8 @@ import {
   SET_CURRENT_MEETUP,
   EDIT_MEETUP,
   EDIT_MEETUP_SUCCESS,
-  CREATE_VOTING_SUCCESS
+  CREATE_VOTING_SUCCESS,
+  SET_VOTE
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -15,6 +16,8 @@ const INITIAL_STATE = {
   end: '2017-02-20 17:00',
   state: 'New York',
   venue: { name: 'Coffee Shop', id: '4bf58dd8d48988d1e0931735' },
+  venues: {},
+  status: 'created',
   voteStart: '2017-02-13 20:00',
   voteEnd: '2017-02-19 20:00'
 };
@@ -33,6 +36,12 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, loading: true };
     case EDIT_MEETUP_SUCCESS:
       return INITIAL_STATE;
+    case SET_VOTE: {
+      const venue = state.venues[action.venueId];
+      venue.votes = action.vote;
+      const venues = { ...state.venues, venue };
+      return { ...state, venues };
+    }
     default:
       return state;
   }

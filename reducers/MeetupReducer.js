@@ -18,7 +18,6 @@ export default (state = INITIAL_STATE, action) => {
     case FETCH_MEETUPS:
       return { ...state, cityLoading: true };
     case FETCH_MEETUPS_SUCCESS:
-      // console.log('in reducer', action.payload);
       return { ...state, cityMeetups: action.payload, cityLoading: false };
     case FETCH_USER_MEETUPS:
       return { ...state, userLoading: true };

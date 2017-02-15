@@ -12,13 +12,14 @@ class Vote extends Component {
     const meetup = this.props.meetups[this.props.uid];
     if (!meetup) {
       Alert.alert('You are not registered for this meetup.');
-    } else if (meetup.voted) {
+    } else if (meetup.vote) {
       Alert.alert('You already voted on this meetup.');
       //TODO: change vote instead of alert
     } else {
       const voteCount = this.props.vote.votes + 1;
       this.props.setVote(this.props.uid, this.props.vote.uid, voteCount);
     }
+    Actions.pop();
   }
 
   render() {
