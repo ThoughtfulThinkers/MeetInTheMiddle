@@ -61,8 +61,9 @@ export const meetupEdit = (meetup) => {
   updates['/venue'] = venue;
   updates['/voteStart'] = voteStart;
   updates['/voteEnd'] = voteEnd;
+  updates['/status'] = 'created';
 
-  firebase.database().ref(`/meetups/${meetup.uid}/`)
+  firebase.database().ref(`/meetups/${meetup.uid}`)
     .update(updates)
     .then(() => {
       dispatch({ type: EDIT_MEETUP_SUCCESS });
@@ -73,13 +74,17 @@ export const meetupEdit = (meetup) => {
 };
 
 export const changeStatus = (meetup, status) => {
+  console.log('change status to ', status);
   return (dispatch) => {
-    dispatch({ type: EDIT_MEETUP });
     firebase.database().ref(`/meetups/${meetup.uid}/status`)
       .set(status)
       .then(() => {
         console.log('set meetup');
-        dispatch({ type: EDIT_MEETUP_SUCCESS });
+
+        dispatch({
+            type: MEETUP_CHANGED,
+            prop: 'status',
+            value: status });
       })
       .catch((err) => console.log(err));
     };
