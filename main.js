@@ -23,12 +23,9 @@ class App extends Component {
     firebase.auth().onAuthStateChanged(user => {
       // console.log('Auth State Changed: ', user);
       if (user) {
-        // this.setUid(user.uid);
-        // console.log('Main.js uid: ', user.uid);
+        console.log('Main.js user looged in');
       } else {
-        firebase.auth().signInAnonymously().catch((error) => {
-          console.log(error.message);
-        });
+        console.log('Main.js user not logged in');
       }
     });
   }

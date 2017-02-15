@@ -3,11 +3,12 @@ import { Actions } from 'react-native-router-flux';
 import {
   EMAIL_CHANGED,
   FETCH_GEOLOCATION_BY_FULL_ADDRESS_SUCCESS,
-  PASSWORD_CHANGED,
   LOGIN_USER_SUCCESS,
   LOGIN_USER_FAIL,
   LOGIN_USER,
-  LOAD_AUTHENTICATED_USER_STATE_SUCCESS
+  LOAD_AUTHENTICATED_USER_STATE_SUCCESS,
+  SET_LOGIN_STATUS,
+  PASSWORD_CHANGED,
 } from './types';
 
 import { googlePlacesConfig, GOOGLE_GEO_API_KEY } from '../envConfig';
@@ -33,6 +34,14 @@ export const passwordChanged = (text) => {
 /*****************************************************************
     Access Actions
 *****************************************************************/
+// export const SET_LOGIN_STATUS = 'SET_LOGIN_STATUS';
+export const setLoginStatus = status => {
+  console.log('Action: setLoginStatus called: ', status);
+  return {
+    type: SET_LOGIN_STATUS,
+    payload: status
+  };
+};
 
 export const loginUser = ({ email, password }) => {
   // console.log(`Login User email: ${email} password: ${password}`);
@@ -107,7 +116,6 @@ const createNewUserProfile = (dispatch, newUserData) => {
     fetch(url)
       .then(response => response.json())
       .then(data => {
-        console.log('Geo successful ', data);
         const lat = data.results[0].geometry.location.lat;
         const lon = data.results[0].geometry.location.lng;
         const location = { lat, lon, street, city, state, zipcode };
