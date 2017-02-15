@@ -45,7 +45,6 @@ class Meetup extends Component {
         if (guests.length !== 0) {
           this.props.changeStatus(this.props.meetup, 'guests');
         } else if (moment().isSameOrAfter(voteStart)) {
-          Alert.alert('Event RSVP ended with no guests added. Event cancelled.');
           this.props.changeStatus(this.props.meetup, 'closed');
         }
         break;

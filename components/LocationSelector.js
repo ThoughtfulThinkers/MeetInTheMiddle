@@ -9,11 +9,6 @@ import { googlePlacesConfig } from '../envConfig';
 class LocationSelector extends Component {
 
   render() {
-    const homePlace = {
-      description: this.props.street,
-      geometry: { location: { lat: this.props.lat, lng: this.props.lon } }
-    };
-
     return (
       <GooglePlacesAutocomplete
               placeholder='Search'
@@ -41,12 +36,8 @@ class LocationSelector extends Component {
               styles={{
                 description: {
                   fontWeight: 'bold',
-                },
-                predefinedPlacesDescription: {
-                  color: '#1faadb',
-                },
+                }
               }}
-              predefinedPlaces={[homePlace]}
       />
           );
         }

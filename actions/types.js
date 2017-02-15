@@ -56,7 +56,7 @@ export const EDIT_MEETUP = 'EDIT_MEETUP';
 export const EDIT_MEETUP_SUCCESS = 'EDIT_MEETUP_SUCCESS';
 export const CREATE_VOTING_SUCCESS = 'CREATE_VOTING_SUCCESS';
 export const SET_VOTE = 'SET_VOTE';
-
+export const RESET_MEETUP = 'RESET_MEETUP';
 /******************************************************
   Rsvp Actions
 ******************************************************/

@@ -3,10 +3,14 @@ import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { Text } from 'react-native';
 import DatePicker from 'react-native-datepicker';
-import { meetupChange } from '../actions';
+import { meetupChange, resetMeetup } from '../actions';
 import { Card, CardSection, Input, Button } from './common';
 
 class MeetupCreate extends Component {
+  componentDidMount() {
+    this.props.resetMeetup();
+  }
+
   onButtonPress() {
     Actions.addLocation();
   }
@@ -87,4 +91,4 @@ const mapStateToProps = ({ meetupForm }) => {
   return { name, description, start, end };
 };
 
-export default connect(mapStateToProps, { meetupChange })(MeetupCreate);
+export default connect(mapStateToProps, { meetupChange, resetMeetup })(MeetupCreate);
