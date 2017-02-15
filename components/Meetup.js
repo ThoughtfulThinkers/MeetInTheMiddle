@@ -133,7 +133,15 @@ class Meetup extends Component {
   //render methods
   renderLocation(status) {
     if (status === 'set' || status === 'closed') {
-      return <Text style={styles.textStyle}>Location: {this.props.meetup.location.name}</Text>;
+      const { location } = this.props.meetup;
+      return (
+        <CardSection style={{ flexDirection: 'column' }}>
+          <Text style={styles.textStyle}>Location: {location.name}</Text>
+          <Text style={styles.textStyle}>Address: </Text>
+          <View style={styles.addressView}>
+          {location.formattedAddress.map((line, i) => <Text style={styles.addressStyle} key={i}>{line}</Text>)}
+          </View>
+        </CardSection>);
     }
       return <Text />;
   }
@@ -169,7 +177,7 @@ class Meetup extends Component {
       });
       votingArray = votingArray.sort((a, b) => b.votes - a.votes);
       return (
-          <CardSection style={{ flexDirection: 'column', height: 90 }}>
+          <CardSection style={{ flexDirection: 'column', height: 110 }}>
               <Text style={styles.textStyle}>Top Location: {votingArray[0].name}</Text>
               <Button onPress={this.onVotePress.bind(this)}>
                   Vote on Location
@@ -201,9 +209,8 @@ class Meetup extends Component {
           <Text style={styles.textStyle}>End: {meetup.end}</Text>
           <Text style={styles.textStyle}>Venue: {meetup.venue.name}</Text>
           <Text style={styles.textStyle}>Description: {meetup.description}</Text>
-          {this.renderLocation(status)}
         </CardSection>
-
+          {this.renderLocation(status)}
           {this.renderRsvp(status)}
 
         <CardSection style={{ flexDirection: 'row' }}>
@@ -239,6 +246,12 @@ const styles = {
     fontSize: 15,
     padding: 5,
     color: '#007aff' //TODO: color and content change based on vote start/end
+  },
+  addressStyle: {
+    fontSize: 15,
+  },
+  addressView: {
+    padding: 5
   }
 };
 const mapStateToProps = state => {
