@@ -4,12 +4,19 @@ import { connect } from 'react-redux';
 import { Text, View } from 'react-native';
 import DatePicker from 'react-native-datepicker';
 import VenuePicker from './Venues/VenuePicker';
-import { meetupChange, meetupEdit } from '../actions';
+import {
+  meetupChange,
+  meetupEdit,
+  fetchMeetups,
+  meetupsFetch,
+  userMeetupsFetch } from '../actions';
 import { Card, CardSection, Input, Button, Spinner } from './common';
 
 class MeetupEdit extends Component {
   onButtonPress() {
     this.props.meetupEdit(this.props.meetup);
+    this.props.meetupsFetch(this.props.location);
+    this.props.userMeetupsFetch();
   }
 
   onChange(prop, value) {
@@ -29,11 +36,10 @@ class MeetupEdit extends Component {
 
     let button;
     if (!this.props.loading) {
-      button = (<Button
-        onPress={this.onButtonPress.bind(this)}
-      >
-        Save Changes
-      </Button>);
+      button = (
+        <Button onPress={this.onButtonPress.bind(this)}>
+          Save Changes
+        </Button>);
     } else {
       button = <CardSection><Spinner size='small' /></CardSection>;
     }
@@ -136,10 +142,11 @@ const styles = {
   }
 };
 
-const mapStateToProps = ({ meetupForm }) => {
-  const meetup = meetupForm;
-    const loading = meetupForm.loading ? true : false;
-  return { meetup, loading };
+const mapStateToProps = (state) => {
+  const meetup = state.meetupForm;
+  const location = state.filter.location;
+  const loading = state.meetupForm.loading ? true : false;
+  return { meetup, loading, location };
 };
 
-export default connect(mapStateToProps, { meetupChange, meetupEdit })(MeetupEdit);
+export default connect(mapStateToProps, { meetupChange, meetupEdit, meetupsFetch, userMeetupsFetch })(MeetupEdit);

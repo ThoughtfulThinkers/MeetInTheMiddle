@@ -8,7 +8,7 @@ import { CardSection } from './common';
 class MeetupListItem extends Component {
   onRowPress() {
     this.props.setCurrentMeetup(this.props.meetup);
-    Actions.meetup({ meetup: this.props.meetup });
+    Actions.meetup();
   }
 
   render() {
