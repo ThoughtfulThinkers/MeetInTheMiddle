@@ -61,7 +61,7 @@ class LoginForm extends Component {
       return (
         <Card>
           <CardSection>
-            <Text style={styles.title}>Logged In as {this.props.email}</Text>
+            <Text style={styles.title}>Logged In</Text>
           </CardSection>
           <CardSection>
             <Button onPress={() => Actions.profileUpdate({ email, password })}>
