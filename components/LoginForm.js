@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import firebase from 'firebase';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { ScrollView, Text, View } from 'react-native';
@@ -13,6 +14,17 @@ import {
 import MeetupList from './MeetupList';
 
 class LoginForm extends Component {
+
+  componentWillMount() {
+    firebase.auth().onAuthStateChanged(user => {
+      console.log('Login: Auth State Changed: ');
+      if (user) {
+        console.log('Login: logged In: ', user);
+      } else {
+        console.log('Login: not logged out ', user);
+      }
+    });
+  }
 
   onEmailChange(text) {
     this.props.emailChanged(text);

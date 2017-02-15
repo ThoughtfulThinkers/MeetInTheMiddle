@@ -107,7 +107,6 @@ const createNewUserProfile = (dispatch, newUserData) => {
     fetch(url)
       .then(response => response.json())
       .then(data => {
-        console.log('Geo successful ', data);
         const lat = data.results[0].geometry.location.lat;
         const lon = data.results[0].geometry.location.lng;
         const location = { lat, lon, street, city, state, zipcode };
