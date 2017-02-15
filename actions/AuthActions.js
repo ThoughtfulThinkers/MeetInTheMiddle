@@ -101,14 +101,10 @@ export const createNewUserAccount = userProfileData => dispatch => {
 };
 
 const createNewUserProfile = (dispatch, newUserData) => {
-  console.log('createNewUserProfile called ', newUserData);
-  // return dispatch => {
     const { currentUser } = firebase.auth();
     const { street, city, state, zipcode, firstName, lastName } = newUserData;
     const fullAddress = `${street},${city},${state}`;
-    console.log('GOOGLE_API: ', GOOGLE_API);
     const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${fullAddress}&key=${GOOGLE_API}`;
-    console.log('Account Created ... fetching GeoLocation: ', url);
     fetch(url)
       .then(response => response.json())
       .then(data => {
@@ -122,7 +118,6 @@ const createNewUserProfile = (dispatch, newUserData) => {
           lastName,
           location
         };
-        console.log(`userData: ${userData}`);
         dispatch({ type: FETCH_GEOLOCATION_BY_FULL_ADDRESS_SUCCESS, payload: location });
         dispatch(() => setNewUser(dispatch, userData));
       })
@@ -138,19 +133,7 @@ export const setNewUser = (dispatch, userData) => {
     .catch(error => console.log(error));
 };
 
-
-// const createNewUserAccountSuccess = (dispatch, user, userProfileData) => {
-//   dispatch({
-//     type: CREATE_NEW_USER_ACCOUNT_SUCCESS,
-//     payload: { user, email, password }
-//   })
-//   .then(() => createNewUserProfile(userProfileData))
-//   .catch(error => console.log(error));
-//
-//   // Actions.profileCreate();
-// };
-
-
 /*****************************************************************
-    Modify User Account
+    Update User Account
 *****************************************************************/
+// TODO: move updateUser Account from UserActions.js
