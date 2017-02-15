@@ -81,6 +81,7 @@ export const updateUser = data => {
 
 
 export const createNewUser = newUserData => {
+  console.log('Account Created ...', newUserData);
   return dispatch => {
     const { currentUser } = firebase.auth();
     const { street, city, state, zipcode, firstName, lastName } = newUserData;
@@ -106,7 +107,7 @@ export const createNewUser = newUserData => {
   };
 };
 
-export const setNewUser = (dispatch, userData) => {
+const setNewUser = (dispatch, userData) => {
   const { currentUser } = firebase.auth();
   firebase.database().ref(`/users/${currentUser.uid}`)
     .set(userData)

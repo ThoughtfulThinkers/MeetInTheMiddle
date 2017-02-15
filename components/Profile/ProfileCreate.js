@@ -10,6 +10,7 @@ import {
 
 import {
   createNewUser,
+  createNewUserAccount,
   emailChanged,
   fetchGeoLocationByFullAddress,
   loginUser,
@@ -28,12 +29,18 @@ class ProfileCreate extends Component {
   }
 
   onProfileButtonPress() {
-
     const { firstName, lastName, image, email, password } = this.props;
     const { street, city, state, zipcode } = this.props.location;
 
     const data = { firstName, lastName, image, street, city, state, zipcode, email, password };
     this.props.createNewUser(data);
+  }
+
+  onCreateAccountButtonPress() {
+    const { firstName, lastName, image, email, password } = this.props;
+    const { street, city, state, zipcode } = this.props.location;
+    const userProfileData = { firstName, lastName, image, street, city, state, zipcode, email, password };
+    this.props.createNewUserAccount(userProfileData);
   }
 
   renderProfileButton() {
@@ -44,6 +51,17 @@ class ProfileCreate extends Component {
       <Button onPress={this.onProfileButtonPress.bind(this)}>
         Create Profile
       </Button>
+    );
+  }
+
+  renderCreateAccountButton() {
+    if (this.props.loading) {
+      return <Spinner size="large" />;
+    }
+    return (
+        <Button onPress={this.onCreateAccountButtonPress.bind(this)}>
+          Create New Account
+        </Button>
     );
   }
 
@@ -67,6 +85,9 @@ class ProfileCreate extends Component {
           onChangeText={this.onPasswordChange.bind(this)}
           value={this.props.password}
           />
+        </CardSection>
+        <CardSection>
+          {this.renderCreateAccountButton()}
         </CardSection>
         <ProfileForm />
         <Text style={styles.errorTextStyle}>{this.props.error}</Text>
@@ -108,6 +129,7 @@ const mapStateToProps = ({ auth, user }) => {
 
 export default connect(mapStateToProps, {
   createNewUser,
+  createNewUserAccount,
   emailChanged,
   fetchGeoLocationByFullAddress,
   loginUser,

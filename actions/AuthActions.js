@@ -1,8 +1,8 @@
 import firebase from 'firebase';
 import { Actions } from 'react-native-router-flux';
 import {
-  CREATE_NEW_USER_ACCOUNT_SUCCESS,
   EMAIL_CHANGED,
+  FETCH_GEOLOCATION_BY_FULL_ADDRESS_SUCCESS,
   PASSWORD_CHANGED,
   LOGIN_USER_SUCCESS,
   LOGIN_USER_FAIL,
@@ -10,6 +10,9 @@ import {
   LOAD_AUTHENTICATED_USER_STATE_SUCCESS
 } from './types';
 
+import { googlePlacesConfig } from '../envConfig';
+
+const GOOGLE_API = 'AIzaSyDzk0eKI5tnKWkSORpDTL32iZ15QjxQxeg';
 /*****************************************************************
   Changes to form Input fields
 *****************************************************************/
@@ -85,22 +88,68 @@ export const loadAuthenticatedUserState = () => dispatch => {
     Create New User Account
 *****************************************************************/
 
-export const createNewUserAccount = ({ email, password }) => dispatch => {
+export const createNewUserAccount = userProfileData => dispatch => {
+  const { email, password } = userProfileData;
   firebase.auth().createUserWithEmailAndPassword(email, password)
+    // .then(user => createNewUserProfile(dispatch, user, userProfileData))
     .then(user => {
-      // console.log('create user: ', user);
-      createNewUserAccountSuccess(dispatch, user, email, password);
+      let newUserData = userProfileData;
+      newUserData = { ...newUserData, uid: user.uid };
+      createNewUserProfile(dispatch, newUserData);
     })
     .catch(() => loginUserFail(dispatch));
 };
 
-const createNewUserAccountSuccess = (dispatch, user, email, password) => {
-  dispatch({
-    type: CREATE_NEW_USER_ACCOUNT_SUCCESS,
-    payload: { user, email, password }
-  });
-  Actions.profileCreate();
+const createNewUserProfile = (dispatch, newUserData) => {
+  console.log('createNewUserProfile called ', newUserData);
+  // return dispatch => {
+    const { currentUser } = firebase.auth();
+    const { street, city, state, zipcode, firstName, lastName } = newUserData;
+    const fullAddress = `${street},${city},${state}`;
+    console.log('GOOGLE_API: ', GOOGLE_API);
+    const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${fullAddress}&key=${GOOGLE_API}`;
+    console.log('Account Created ... fetching GeoLocation: ', url);
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        console.log('Geo successful ', data);
+        const lat = data.results[0].geometry.location.lat;
+        const lon = data.results[0].geometry.location.lng;
+        const location = { lat, lon, street, city, state, zipcode };
+        const userData = {
+          uid: currentUser.uid,
+          firstName,
+          lastName,
+          location
+        };
+        console.log(`userData: ${userData}`);
+        dispatch({ type: FETCH_GEOLOCATION_BY_FULL_ADDRESS_SUCCESS, payload: location });
+        dispatch(() => setNewUser(dispatch, userData));
+      })
+      .catch(error => console.log('fetchGeoLocationByFullAddress error: ', error.message));
+  // };
 };
+
+export const setNewUser = (dispatch, userData) => {
+  const { currentUser } = firebase.auth();
+  firebase.database().ref(`/users/${currentUser.uid}`)
+    .set(userData)
+    .then(() => Actions.meetups({ type: 'reset' }))
+    .catch(error => console.log(error));
+};
+
+
+// const createNewUserAccountSuccess = (dispatch, user, userProfileData) => {
+//   dispatch({
+//     type: CREATE_NEW_USER_ACCOUNT_SUCCESS,
+//     payload: { user, email, password }
+//   })
+//   .then(() => createNewUserProfile(userProfileData))
+//   .catch(error => console.log(error));
+//
+//   // Actions.profileCreate();
+// };
+
 
 /*****************************************************************
     Modify User Account
