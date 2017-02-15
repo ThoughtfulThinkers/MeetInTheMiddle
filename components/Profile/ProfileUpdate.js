@@ -27,8 +27,9 @@ class ProfileUpdate extends Component {
   }
 
   onUpdateProfileButtonPress() {
-    let { firstName, lastName, image, email, password } = this.props;
-    let { street, city, state, zipcode } = this.props.location;
+    const { firstName, lastName, image, email, password } = this.props;
+    const { street, city, state, zipcode } = this.props.location;
+    //TODO: error chcking
     // firstName = firstName.trim();
     // lastName = lastName.trim();
     // image = image.trim();
@@ -40,24 +41,6 @@ class ProfileUpdate extends Component {
     // password = password.trim();
     const data = { firstName, lastName, image, street, city, state, zipcode, email, password };
     this.props.updateUser(data);
-  }
-
-  onSaveLocationButtonPress() {
-    // console.log('get & set location lat/lon');
-    const { location } = this.props;
-    const { street, city, state } = location;
-    this.props.fetchGeoLocationByFullAddress(street, city, state);
-  }
-
-  renderSaveLocationButton() {
-    if (this.props.loading) {
-      return <Spinner size="large" />;
-    }
-    return (
-      <Button onPress={this.onSaveLocationButtonPress.bind(this)}>
-        Set Lat & Lon
-      </Button>
-    );
   }
 
   renderUpdateProfileButton() {
