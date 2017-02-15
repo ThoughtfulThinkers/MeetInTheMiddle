@@ -43,18 +43,27 @@ class RSVP extends Component {
       .catch(err => console.log(err));
     }
 
+    onPreferredLocationPress() {
+      const { lat, lon } = this.props.user.location;
+      this.props.changeRSVP(lat, lon);
+      Alert.alert('Location set, please confirm RSVP.');
+    }
+
   render() {
     return (
       <Card>
-      <CardSection>
-        <Button onPress={this.onCurrentLocationPress.bind(this)}>
-          Current Location
-        </Button>
-      </CardSection>
         <CardSection style={{ justifyContent: 'center' }}>
           <Text style={styles.titleStyle}>
             Where are you coming from?
           </Text>
+        </CardSection>
+        <CardSection>
+          <Button onPress={this.onCurrentLocationPress.bind(this)}>
+            Current Location
+          </Button>
+          <Button onPress={this.onPreferredLocationPress.bind(this)}>
+            Profile Location
+          </Button>
         </CardSection>
         <CardSection>
           <LocationSelector />
@@ -75,10 +84,10 @@ const styles = {
   }
 };
 
-const mapStateToProps = state => {
-  const { lat, lon } = state.rsvp;
-  const { firstName, lastName } = state.user;
-  return { lat, lon, firstName, lastName };
+const mapStateToProps = ({ rsvp, user }) => {
+  const { lat, lon } = rsvp;
+  const { firstName, lastName } = user;
+  return { lat, lon, firstName, lastName, user };
 };
 
 export default connect(mapStateToProps, { setRsvp, changeRSVP, changeStatus })(RSVP);

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 import { Actions } from 'react-native-router-flux';
 import { Text, View, TouchableWithoutFeedback } from 'react-native';
 import { setCurrentMeetup } from '../actions';
@@ -11,8 +12,22 @@ class MeetupListItem extends Component {
     Actions.meetup();
   }
 
+  renderVote(status, venues, location) {
+    if (status === 'voting') {
+      let votingArray = _.map(this.props.meetup.venues, (val, uid) => {
+        return { ...val, uid };
+      });
+      votingArray = votingArray.sort((a, b) => b.votes - a.votes);
+      return <Text style={styles.voteStyle}>Vote: {votingArray[0].name}</Text>;
+    }
+    if (status === 'set') {
+      return <Text style={styles.locationStyle}>{location.name}</Text>;
+    }
+    return <Text />;
+  }
+
   render() {
-    const { name, state, start, vote, uid } = this.props.meetup;
+    const { name, state, start, vote, uid, location, status, venues } = this.props.meetup;
 
     return (
       <TouchableWithoutFeedback onPress={this.onRowPress.bind(this)}>
@@ -23,7 +38,7 @@ class MeetupListItem extends Component {
           <Text style={styles.detailStyle}>{start}</Text>
         </View>
         <View style={styles.rowStyle}>
-          <Text style={styles.voteStyle}>{vote}</Text>
+          {this.renderVote(status, venues, location)}
           <Text style={styles.detailStyle}>{state}</Text>
         </View>
       </CardSection>
@@ -54,6 +69,10 @@ const styles = {
     fontSize: 15,
     padding: 5,
     color: '#007aff' //TODO: color and content change based on vote start/end
+  },
+  locationStyle: {
+    fontSize: 15,
+    padding: 5
   }
 };
 

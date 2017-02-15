@@ -6,7 +6,8 @@ import {
   ADD_MEETUP_SUCCESS,
   SET_CURRENT_MEETUP,
   EDIT_MEETUP,
-  EDIT_MEETUP_SUCCESS
+  EDIT_MEETUP_SUCCESS,
+  RESET_MEETUP
 } from './types';
 
 export const meetupChange = (prop, value) => {
@@ -60,7 +61,6 @@ export const meetupEdit = (meetup) => {
   updates['/venue'] = venue;
   updates['/voteStart'] = voteStart;
   updates['/voteEnd'] = voteEnd;
-  updates['/status'] = 'created';
 
   firebase.database().ref(`/meetups/${meetup.uid}`)
     .update(updates)
@@ -83,5 +83,11 @@ export const changeStatus = (meetup, status) => {
             value: status });
       })
       .catch((err) => console.log(err));
+    };
+  };
+
+  export const resetMeetup = () => {
+    return {
+      type: RESET_MEETUP
     };
   };

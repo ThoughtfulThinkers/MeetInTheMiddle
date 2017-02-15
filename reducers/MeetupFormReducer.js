@@ -6,7 +6,8 @@ import {
   EDIT_MEETUP,
   EDIT_MEETUP_SUCCESS,
   CREATE_VOTING_SUCCESS,
-  SET_VOTE
+  SET_VOTE,
+  RESET_MEETUP
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -43,6 +44,8 @@ export default (state = INITIAL_STATE, action) => {
       const venues = { ...state.venues, venue };
       return { ...state, venues };
     }
+    case RESET_MEETUP:
+      return INITIAL_STATE;
     default:
       return state;
   }

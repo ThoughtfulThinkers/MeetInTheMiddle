@@ -1,5 +1,6 @@
 import React from 'react';
 import { Components } from 'exponent';
+import { Text } from 'react-native';
 import _ from 'lodash';
 import { Actions } from 'react-native-router-flux';
 
@@ -22,7 +23,11 @@ const getLatLon = (users) => {
 export default class Map extends React.Component {
   renderVenues(status, venues, location) {
     if (status === 'voting') {
-      return venues.map(venue => (
+      return venues.map((venue, i) => {
+        if (!venue.lat || !venue.lon) {
+          return <Text key={i} />;
+        }
+        return (
         <Components.MapView.Marker
           key={venue.uid}
           coordinate={{
@@ -33,7 +38,8 @@ export default class Map extends React.Component {
           title={venue.name}
           description={venue.formattedAddress[0]}
         />
-      ));
+      );
+    });
     } else if (status === 'set') {
       return (
         <Components.MapView.Marker
