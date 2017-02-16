@@ -27,6 +27,7 @@ export const userMeetupsFetch = () => {
 
       //return empty object if user not logged in
       const { currentUser } = firebase.auth();
+
       if (!currentUser) {
         return dispatch({ type: FETCH_USER_MEETUPS_SUCCESS, payload: {} });
       }
