@@ -9,6 +9,7 @@ import { CardSection, Spinner, Input, Button } from './common';
 
 
 class OpenMeetupListContainer extends Component {
+
   componentWillMount() {
     this.props.meetupsFetch(this.props.location);
   }
@@ -49,10 +50,10 @@ const styles = {
     fontSize: 20,
     alignSelf: 'center',
     padding: 5,
-    color: 'black',
+    color: 'black'
   },
   filterStyle: {
-    backgroundColor: '#4A148C',
+    backgroundColor: '#1ba6bd',
     justifyContent: 'center',
     alignItems: 'center'
   },
@@ -66,7 +67,7 @@ const styles = {
   },
   stateTextStyle: {
     fontSize: 18,
-    color: '#fef267',
+    color: '#ffca63',
   }
 };
 
