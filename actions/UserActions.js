@@ -4,15 +4,18 @@ import 'whatwg-fetch';
 import { googlePlacesConfig } from '../envConfig';
 
 import {
-  CREATE_USER_SUCCESS,
-  FETCH_USER_SUCESS,
   FETCH_GEOLOCATION_BY_FULL_ADDRESS_SUCCESS,
-  GET_CURRENT_USER,
-  SET_CURRENT_USER,
   USER_INPUT_CHANGED,
   USER_LOCATION_INPUT_CHANGED,
   UPDATE_USER_SUCCESS,
 } from './types';
+
+/*
+Code to hold for a moment
+FETCH_USER_SUCESS,
+GET_CURRENT_USER,
+SET_CURRENT_USER,
+*/
 
 /********************************************
   Form Actions
@@ -32,14 +35,27 @@ export const userLocationInputChanged = ({ prop, value }) => ({
   User Data Actions
 *********************************************/
 
-export const getCurrentUser = () => ({
-  type: GET_CURRENT_USER
-});
-
-export const setCurrentUser = user => ({
-  type: SET_CURRENT_USER,
-  payload: user
-});
+export const getLoggedInUserDataFromFB = user => dispatch => {
+  if (user != null) {
+    const { uid, email, password } = user;
+    // firebase.database().ref(`/users/${uid}`)
+    //   .once('value')
+    //   .then(snapshot => {
+    //     console.log(snapshot);
+    //     // const userData = { snapshot, email, password }
+    //     // dispatch({ type: INITIALIZE_USER_STATE, payload: userData });
+    //   });
+  }
+};
+//
+// export const getCurrentUser = () => ({
+//   type: GET_CURRENT_USER
+// });
+//
+// export const setCurrentUser = user => ({
+//   type: SET_CURRENT_USER,
+//   payload: user
+// });
 
 /********************************************
   Firebase Actions
@@ -77,59 +93,3 @@ export const updateUser = data => {
       .catch(error => console.log('fetchGeoLocationByFullAddress error: ', error.message));
   };
 };
-
-//
-//
-// export const createNewUser = newUserData => {
-//   console.log('Account Created ...', newUserData);
-//   return dispatch => {
-//     const { currentUser } = firebase.auth();
-//     const { street, city, state, zipcode, firstName, lastName } = newUserData;
-//     const fullAddress = `${street},${city},${state}`;
-//     const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${fullAddress}&key=${GOOGLE_API}`;
-//     fetch(url)
-//       .then(response => response.json())
-//       .then(data => {
-//         const lat = data.results[0].geometry.location.lat;
-//         const lon = data.results[0].geometry.location.lng;
-//         const location = { lat, lon, street, city, state, zipcode };
-//         const userData = {
-//           uid: currentUser.uid,
-//           firstName,
-//           lastName,
-//           location
-//         };
-//         console.log(`userData: ${userData}`);
-//         dispatch({ type: FETCH_GEOLOCATION_BY_FULL_ADDRESS_SUCCESS, payload: location });
-//         dispatch(() => setNewUser(dispatch, userData));
-//       })
-//       .catch(error => console.log('fetchGeoLocationByFullAddress error: ', error.message));
-//   };
-// };
-//
-// const setNewUser = (dispatch, userData) => {
-//   const { currentUser } = firebase.auth();
-//   firebase.database().ref(`/users/${currentUser.uid}`)
-//     .set(userData)
-//     .then(() => Actions.meetups({ type: 'reset' }))
-//     .catch(error => console.log(error));
-// };
-
-/**************************************************
-Google
-**************************************************/
-// const GOOGLE_PLACES_API = googlePlacesConfig.apiKey;
-// const GOOGLE_API = 'AIzaSyDzk0eKI5tnKWkSORpDTL32iZ15QjxQxeg';
-// export const fetchGeoLocationByFullAddress = (street, city, state) => dispatch => {
-//   console.log('google api: ', GOOGLE_API);
-//   const fullAddress = `${street},${city},${state}`;
-//   const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${fullAddress}&key=${GOOGLE_API}`;
-//   fetch(url)
-//   .then(response => response.json())
-//   .then(data => {
-//     // console.log('location: ', data.results[0].geometry.location);
-//     const location = data.results[0].geometry.location;
-//     dispatch({ type: FETCH_GEOLOCATION_BY_FULL_ADDRESS_SUCCESS, payload: location });
-//   })
-//   .catch(error => console.log('fetchGeoLocationByFullAddress error: ', error));
-// };
