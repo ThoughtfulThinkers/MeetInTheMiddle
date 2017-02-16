@@ -7,12 +7,6 @@ import {
   UPDATE_USER_SUCCESS,
 } from '../actions/types';
 
-/*
-FETCH_USER_SUCCESS,
-GET_CURRENT_USER,
-SET_CURRENT_USER,
-*/
-
 const INITIAL_STATE = {
   firstName: '',
   lastName: '',
@@ -43,14 +37,12 @@ export default (state = INITIAL_STATE, action) => {
       // example: action.payload = {prop: 'name', value: 'Will Smith'}
       // key interpolation -> [prop]
       const { prop, value } = action.payload;
-      // console.log(`USER_INPUT_CHANGED: ${prop}: ${value}`);
       return { ...state, [prop]: value };
     }
 
     case USER_LOCATION_INPUT_CHANGED: {
       const { prop, value } = action.payload;
       const location = { ...state.location, [prop]: value };
-      // console.log('USER_LOCATION_INPUT_CHANGED: ', location);
       return { ...state, location };
     }
 
@@ -62,7 +54,6 @@ export default (state = INITIAL_STATE, action) => {
     }
 
     case UPDATE_USER_SUCCESS: {
-      // console.log('UPDATE_USER_SUCCESS payload: ', action.payload);
       return state;
     }
 
@@ -71,15 +62,3 @@ export default (state = INITIAL_STATE, action) => {
 
   }
 };
-
-/*
-  Code to keep for the moment
-  case SET_CURRENT_USER: {
-    const { firstName, lastName } = action.payload;
-    return { ...state, firstName, lastName };
-  }
-
-  case FETCH_USER_SUCCESS: {
-    return { ...state, user: action.payload };
-  }
-*/

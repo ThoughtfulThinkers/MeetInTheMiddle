@@ -16,19 +16,6 @@ import MeetupList from './MeetupList';
 
 class LoginForm extends Component {
 
-  // componentWillMount() {
-  //   firebase.auth().onAuthStateChanged(user => {
-  //     console.log('Login: Auth State Changed: ');
-  //     if (user) {
-  //       console.log('Set Login Status: logged In ');
-  //       this.props.setLoginStatus(true);
-  //     } else {
-  //       console.log('Set Login Status: logged out ');
-  //       this.props.setLoginStatus(false);
-  //     }
-  //   });
-  // }
-
   onEmailChange(text) {
     this.props.emailChanged(text);
   }
@@ -52,8 +39,8 @@ class LoginForm extends Component {
   }
 
   renderButtons() {
-    // const isLoggedIn = this.props.loggedIn;
     const { email, password, error, loading, loggedIn } = this.props;
+    const { firstName, lastName } = this.props;
     if (loading) {
       return <Spinner size="large" />;
     }
@@ -61,7 +48,7 @@ class LoginForm extends Component {
       return (
         <Card>
           <CardSection>
-            <Text style={styles.title}>Logged In</Text>
+            <Text style={styles.title}>Welcome {firstName}</Text>
           </CardSection>
           <CardSection>
             <Button onPress={() => Actions.profileUpdate({ email, password })}>
@@ -144,10 +131,12 @@ const styles = {
   }
 };
 
-const mapStateToProps = ({ auth }) => {
+const mapStateToProps = ({ auth, user }) => {
   const { email, password, error, loading, loggedIn } = auth;
-  // console.log('LoginForm props loggedIn', loggedIn)
-  return { email, password, error, loading, loggedIn };
+  const { firstName, LastName } = user;
+  return {
+    email, password, error, loading, loggedIn, firstName, LastName,
+  };
 };
 
 export default connect(mapStateToProps, {

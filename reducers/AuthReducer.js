@@ -19,7 +19,6 @@ const INITIAL_STATE = {
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case SET_LOGIN_STATUS: {
-      console.log('Reducer SET_LOGIN_STATUS: ', action.payload);
       return { ...state, loggedIn: action.payload };
     }
     case EMAIL_CHANGED:
@@ -28,10 +27,8 @@ export default (state = INITIAL_STATE, action) => {
       console.log('LOGIN_USER REDUCER: ', action.payload);
       return { ...state, loading: true, error: '' };
     case LOGIN_USER_SUCCESS:
-      // console.log('LOGIN_USER_SUCCESS REDUCER: ', action.payload);
       return { ...state, ...INITIAL_STATE, user: action.payload };
     case LOGIN_USER_FAIL:
-      // console.log('LOGIN_USER_FAIL: ', action.payload);
       return { ...state, error: 'Authentication Failed.', password: '', loading: false };
     case PASSWORD_CHANGED:
       return { ...state, password: action.payload };

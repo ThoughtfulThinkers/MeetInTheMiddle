@@ -33,10 +33,11 @@ export const passwordChanged = (text) => {
 
 /*****************************************************************
     Access Actions
+    setLoginStatus is used to cofirm a user's login status
+    by app components.  This is especially useful when
+    accessing a screen that requires a user be logged in.
 *****************************************************************/
-// export const SET_LOGIN_STATUS = 'SET_LOGIN_STATUS';
 export const setLoginStatus = status => {
-  console.log('Action: setLoginStatus called: ', status);
   return {
     type: SET_LOGIN_STATUS,
     payload: status
@@ -44,18 +45,15 @@ export const setLoginStatus = status => {
 };
 
 export const loginUser = ({ email, password }) => {
-  // console.log(`Login User email: ${email} password: ${password}`);
   return (dispatch) => {
     dispatch({ type: LOGIN_USER });
 
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(user => {
-        // console.log('sign in: ', user);
         loginUserSuccess(dispatch, user);
         dispatch(loadAuthenticatedUserState());
         return user;
       })
-      // .then(user => Actions.profileUpdate(user))
       .then(() => Actions.meetups({ type: 'reset' }))
       .catch((error) => {
         console.log(error);
@@ -81,6 +79,12 @@ const loginUserFail = (dispatch) => {
   Actions.login({ type: 'reset' });
 };
 
+/*****************************************************************
+  Manage User
+  loadAuthenticatedUserState is used both in the physical login
+  process and to keep the user state between app restarts
+*****************************************************************/
+
 export const loadAuthenticatedUserState = () => dispatch => {
   const { currentUser } = firebase.auth();
   if (!currentUser) {
@@ -93,18 +97,18 @@ export const loadAuthenticatedUserState = () => dispatch => {
 };
 
 /*****************************************************************
-    Manage User
-*****************************************************************/
-
-
-/*****************************************************************
     Create New User Account
+
+    Creating a new user account is a three step process:
+    1. Create the user account in FB
+    2. Get the user's latitude & logitude from Google based on
+       their prefered location address
+    2. Create a user profile (e.g. name, location) in FB
 *****************************************************************/
 
 export const createNewUserAccount = userProfileData => dispatch => {
   const { email, password } = userProfileData;
   firebase.auth().createUserWithEmailAndPassword(email, password)
-    // .then(user => createNewUserProfile(dispatch, user, userProfileData))
     .then(user => {
       let newUserData = userProfileData;
       newUserData = { ...newUserData, uid: user.uid };
@@ -149,3 +153,11 @@ export const setNewUser = (dispatch, userData) => {
     Update User Account
 *****************************************************************/
 // TODO: move updateUser Account from UserActions.js
+
+// TODO: Add displayName and photoURL w/i user auth
+
+// TODO: Change email and password
+
+// TODO: Send password reset email
+
+// TODO: Authenticate Email address

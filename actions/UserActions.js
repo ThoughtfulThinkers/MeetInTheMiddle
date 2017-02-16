@@ -31,31 +31,6 @@ export const userLocationInputChanged = ({ prop, value }) => ({
   payload: { prop, value }
 });
 
-/********************************************
-  User Data Actions
-*********************************************/
-
-export const getLoggedInUserDataFromFB = user => dispatch => {
-  if (user != null) {
-    const { uid, email, password } = user;
-    // firebase.database().ref(`/users/${uid}`)
-    //   .once('value')
-    //   .then(snapshot => {
-    //     console.log(snapshot);
-    //     // const userData = { snapshot, email, password }
-    //     // dispatch({ type: INITIALIZE_USER_STATE, payload: userData });
-    //   });
-  }
-};
-//
-// export const getCurrentUser = () => ({
-//   type: GET_CURRENT_USER
-// });
-//
-// export const setCurrentUser = user => ({
-//   type: SET_CURRENT_USER,
-//   payload: user
-// });
 
 /********************************************
   Firebase Actions
