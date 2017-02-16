@@ -21,20 +21,26 @@ export const meetupChange = (prop, value) => {
 export const addMeetup = (meetupDetails) => {
   return (dispatch) => {
   dispatch({ type: ADD_MEETUP });
-  //const { currentUser } = firebase.auth();
+  const { currentUser } = firebase.auth();
+  if (!currentUser) {
+    return Actions.login();
+  }
   const meetup = {
     ...meetupDetails,
     chat: {},
     vote: {},
     users: {},
     location: '',
-    status: 'created'
+    status: 'created',
+    user: currentUser.uid
   };
   firebase.database().ref('/meetups')
     .push(meetup)
     .then(({ key }) => {
       dispatch({ type: ADD_MEETUP_SUCCESS });
-      Actions.meetup({ type: 'reset', meetup });
+      meetup.uid = key;
+      dispatch(setCurrentMeetup(meetup));
+      Actions.meetup({ type: 'reset' });
     })
     .catch((err) => console.log(err));
   };
@@ -61,6 +67,7 @@ export const meetupEdit = (meetup) => {
   updates['/venue'] = venue;
   updates['/voteStart'] = voteStart;
   updates['/voteEnd'] = voteEnd;
+  updates['/status'] = 'created';
 
   firebase.database().ref(`/meetups/${meetup.uid}`)
     .update(updates)
@@ -81,6 +88,9 @@ export const changeStatus = (meetup, status) => {
             type: MEETUP_CHANGED,
             prop: 'status',
             value: status });
+      })
+      .then(() => {
+        Actions.meetup({ type: 'refresh' });
       })
       .catch((err) => console.log(err));
     };

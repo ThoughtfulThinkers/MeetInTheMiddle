@@ -18,7 +18,7 @@ const INITIAL_STATE = {
   start: now,
   end: now,
   state: 'New York',
-  venue: { name: 'Coffee Shop', id: '4bf58dd8d48988d1e0931735' },
+  venue: { name: 'Top Picks', id: 'topPicks' },
   venues: {},
   status: 'created',
   location: '',
