@@ -31,7 +31,7 @@ class OpenMeetupListContainer extends Component {
       listContent = <MeetupList meetups={this.props.meetups} />;
     }
     return (
-      <View>
+      <View style={styles.viewStyle}>
         <Text style={styles.headerStyle}>Open Meetups</Text>
         <CardSection style={styles.filterStyle}>
           <Text style={styles.filterTextStyle}>Events in </Text><Text style={styles.stateTextStyle}>{this.props.location}</Text>
@@ -46,6 +46,9 @@ class OpenMeetupListContainer extends Component {
 }
 
 const styles = {
+  viewStyle: {
+    maxHeight: 400
+  },
   headerStyle: {
     fontSize: 20,
     alignSelf: 'center',

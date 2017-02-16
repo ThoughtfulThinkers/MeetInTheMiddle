@@ -26,76 +26,81 @@ const getLatLon = (users) => {
   return { lat, lon };
 };
 
-
 class Meetup extends Component {
 
-  //status check, and changes if needed!
   componentDidMount() {
-    const { start, end, voteStart, voteEnd, status } = this.props.meetup;
-    console.log('meetup status: ', status);
-    switch (this.props.meetup.status) {
-      case 'created': {
-        //the event has been created but has no guests.
-        //RSVP is available
-        //check if guests
-        //if RSVP ends with no guests, mark event closed
-        const guests = _.map(this.props.meetup.users, (val, uid) => {
-          return { ...val, uid };
-        });
-        if (guests.length !== 0) {
-          this.props.changeStatus(this.props.meetup, 'guests');
-        } else if (moment().isSameOrAfter(voteStart)) {
-          this.props.changeStatus(this.props.meetup, 'closed');
+    const { start, end, voteStart, voteEnd } = this.props.meetup;
+    const { status } = this.props;
+    this.checkStatus(status, start, end, voteStart, voteEnd);
+  }
+
+  checkStatus(status, start, end, voteStart, voteEnd) {
+    let fillerStatus = status;
+    let statusSet = false;
+    while (!statusSet) {
+      console.log('meetup status: ', fillerStatus);
+      switch (fillerStatus) {
+        case 'created': {
+          const guests = _.map(this.props.meetup.users, (val, uid) => {
+            return { ...val, uid };
+          });
+          if (guests.length !== 0) {
+            fillerStatus = 'guests';
+          } else if (moment().isSameOrAfter(voteStart)) {
+            fillerStatus = 'closed';
+          } else {
+            statusSet = true;
+          }
+          break;
         }
-        break;
-      }
-      case 'guests': {
-        //the event has guests and RSVP is available.
-        //If RSVP has ended, change status to foursquare
-        if (moment().isSameOrAfter(voteStart)) {
-          this.props.changeStatus(this.props.meetup, 'foursquare');
+        case 'guests': {
+          if (moment().isSameOrAfter(voteStart)) {
+            fillerStatus = 'foursquare';
+          } else {
+            statusSet = true;
+          }
+          break;
         }
-        break;
-      }
-      case 'foursquare': {
-        //send foursquare search and set votes, then change status to voting
-        const { lat, lon } = getLatLon(this.props.meetup.users);
-        this.props.createVoting(lat, lon, this.props.meetup);
-        break;
-      }
-      case 'voting': {
-        //the event is closed for RSVPs but is voting on location
-        //if voting date is passed, shange status to 'location'
-        if (moment().isSameOrAfter(voteEnd)) {
-          this.props.changeStatus(this.props.meetup, 'location');
+        case 'foursquare': {
+          const { lat, lon } = getLatLon(this.props.meetup.users);
+          this.props.createVoting(lat, lon, this.props.meetup);
+          fillerStatus = 'voting';
+          break;
         }
-        break;
-      }
-      case 'location': {
-        //set location and change to set
-        let votingArray = _.map(this.props.meetup.venues, (val, uid) => {
-          return { ...val, uid };
-        });
-        votingArray = votingArray.sort((a, b) => b.votes - a.votes);
-        this.props.changeLocation(votingArray[0], this.props.meetup.uid);
-        this.props.changeStatus(this.props.meetup, 'set');
-        break;
-      }
-      case 'set': {
-        //the event's location has been chosen
-        //if the event is over, close the event
-        if (moment().isSameOrAfter(end)) {
-          this.props.changeStatus(this.props.meetup, 'closed');
+        case 'voting': {
+          if (moment().isSameOrAfter(voteEnd)) {
+            fillerStatus = 'location';
+          } else {
+            statusSet = true;
+          }
+          break;
         }
-        break;
-      }
-      case 'closed': {
-        //the event is over.
-        break;
-      }
-      default:
+        case 'location': {
+          let votingArray = _.map(this.props.meetup.venues, (val, uid) => {
+            return { ...val, uid };
+          });
+          votingArray = votingArray.sort((a, b) => b.votes - a.votes);
+          this.props.changeLocation(votingArray[0], this.props.meetup.uid);
+          fillerStatus = 'set';
+          break;
+        }
+        case 'set': {
+          if (moment().isSameOrAfter(end)) {
+            fillerStatus = 'closed';
+          } else {
+            statusSet = true;
+          }
+          break;
+        }
+        case 'closed': {
+          statusSet = true;
+          break;
+        }
+        default:
         throw new Error('Meetup has no status assigned!');
+      }
     }
+    this.props.changeStatus(this.props.meetup, fillerStatus);
   }
 
   //button methods
@@ -115,7 +120,6 @@ class Meetup extends Component {
       message: `I'm planning to go to the ${this.props.meetup.name} meetup on ${day} at ${time}.\nWould you like to join me?\n\nDescription: ${this.props.meetup.description}`,
       title: `Join me at the ${this.props.meetup.name} meetup`
     });
-    // Actions.invite({ meetup: this.props.meetup });
   }
 
   onMapPress() {
@@ -202,8 +206,7 @@ class Meetup extends Component {
 
 
   render() {
-    const { meetup } = this.props;
-    const { status } = meetup;
+    const { meetup, status } = this.props;
     return (
       <Card>
         <CardSection style={{ flexDirection: 'column' }}>
@@ -230,6 +233,7 @@ class Meetup extends Component {
           <Text style={styles.titleStyle}>Attending</Text>
           {this.renderGuests(status)}
         </CardSection>
+        <Text style={styles.hidden}>{status}</Text>
       </Card>
     );
   }
@@ -250,12 +254,16 @@ const styles = {
   },
   addressView: {
     padding: 5
+  },
+  hidden: {
+    color: 'black'
   }
 };
 const mapStateToProps = state => {
   const meetup = state.meetupForm;
+  const status = state.meetupForm.status;
   const { auth, user } = state;
-  return { meetup, auth };
+  return { meetup, auth, status };
 };
 
 export default connect(mapStateToProps, { changeStatus, createVoting, changeLocation })(Meetup);

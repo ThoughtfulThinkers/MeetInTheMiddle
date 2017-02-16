@@ -2,7 +2,7 @@ import 'whatwg-fetch';
 import firebase from 'firebase';
 import { Actions } from 'react-native-router-flux';
 import { changeStatus } from './MeetupFormActions';
-import { SET_CURRENT_MEETUP, SET_VOTE } from './types';
+import { SET_CURRENT_MEETUP, SET_VOTE, MEETUP_CHANGED } from './types';
 import { foursquareConfig, googlePlacesConfig } from '../envConfig';
 
 const { ID, SECRET } = foursquareConfig;
@@ -61,6 +61,7 @@ export const createVoting = (lat, lon, meetup) => {
       .set(newMeetup)
       .then(() => {
         dispatch({ type: SET_CURRENT_MEETUP, meetup: newMeetup });
+        Actions.meetup({ type: 'refresh' });
       })
       .catch(err => console.log('create venues error', err));
     })
@@ -78,6 +79,7 @@ export const setVote = (meetupId, venueId, venueVote) => {
       .set(venueVote)
       .then(() => {
         dispatch({ type: SET_VOTE, venueId, vote: venueVote });
+        Actions.meetup({ type: 'refresh' });
       });
     })
     .catch(err => console.log(err));
@@ -109,7 +111,10 @@ export const voteChange = (meetupId, venueId, venueVote) => {
       updates[`/meetups/${meetupId}/venues/${userPreviousVote}/votes`] = oldVenueCount;
       updates[`/meetups/${meetupId}/venues/${venueId}/votes`] = venueVote;
 
-      firebase.database().ref().update(updates).then(() => dispatch({ type: SET_VOTE, venueId, vote: venueVote }));
+      firebase.database().ref().update(updates).then(() => {
+        dispatch({ type: SET_VOTE, venueId, vote: venueVote });
+        Actions.meetup({ type: 'refresh' });
+      });
   };
 };
 
@@ -122,6 +127,7 @@ export const changeLocation = (location, meetupId) => {
             type: MEETUP_CHANGED,
             prop: 'location',
             value: location });
+            Actions.meetup({ type: 'refresh' });
       })
       .catch((err) => console.log(err));
     };
