@@ -1,6 +1,7 @@
 /**************************************************
   Authentication Actions
 **************************************************/
+export const AUTH_INPUT_CHANGED = 'AUTH_INPUT_CHANGED';
 export const EMAIL_CHANGED = 'EMAIL_CHANGED';
 export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
 export const LOGIN_USER_FAIL = 'LOGIN_USER_FAIL';

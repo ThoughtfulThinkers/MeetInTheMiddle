@@ -1,6 +1,7 @@
 import firebase from 'firebase';
 import { Actions } from 'react-native-router-flux';
 import {
+  AUTH_INPUT_CHANGED,
   EMAIL_CHANGED,
   FETCH_GEOLOCATION_BY_FULL_ADDRESS_SUCCESS,
   LOGIN_USER_SUCCESS,
@@ -33,6 +34,11 @@ export const passwordChanged = (text) => {
     payload: text
   };
 };
+
+export const authInputChanged = ({ prop, value }) => ({
+  type: AUTH_INPUT_CHANGED,
+  payload: { prop, value }
+});
 
 export const resetAuthErrorState = () => {
   return {
