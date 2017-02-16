@@ -58,7 +58,6 @@ export const updateUser = data => {
         if (firstName.length > 0) userData = { ...userData, firstName };
         if (lastName.length > 0) userData = { ...userData, lastName };
         if (image.length > 0) userData = { ...userData, image };
-        console.log('userData ', userData);
         dispatch({ type: FETCH_GEOLOCATION_BY_FULL_ADDRESS_SUCCESS, payload: location });
         firebase.database().ref(`/users/${currentUser.uid}`)
           .update(userData)
