@@ -140,7 +140,7 @@ const styles = {
   },
   title: {
     flex: 1,
-    color: '#4E0FA1',
+    color: '#1ba6bd',
     fontSize: 20,
     alignSelf: 'center',
     paddingLeft: 10,

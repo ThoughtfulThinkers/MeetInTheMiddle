@@ -68,7 +68,7 @@ const styles = {
   voteStyle: {
     fontSize: 15,
     padding: 5,
-    color: '#9B019B'
+    color: '#ff4c50'
   },
   locationStyle: {
     fontSize: 15,

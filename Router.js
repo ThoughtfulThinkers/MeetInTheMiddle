@@ -28,7 +28,7 @@ import VenuePicker from './components/Venues/VenuePicker';
 
 const RouterComponent = () => {
   return (
-    <Router navigationBarStyle={{ backgroundColor: '#4E0FA1' }} titleStyle={{ color: 'white' }} barButtonTextStyle={{ color: '#fef267' }} barButtonIconStyle={{ tintColor: 'rgb(254, 242, 103)' }} rightButtonTextStyle={{ color: '#fef267' }} leftButtonTextStyle={{ color: '#fef267' }} sceneStyle={{ paddingTop: Platform.OS === 'ios' ? 64 : 54 }}>
+    <Router navigationBarStyle={{ backgroundColor: '#1ba6bd' }} titleStyle={{ color: 'white' }} barButtonTextStyle={{ color: '#fef267' }} barButtonIconStyle={{ tintColor: 'rgb(254, 242, 103)' }} rightButtonTextStyle={{ color: '#ffca63' }} leftButtonTextStyle={{ color: '#ffca63' }} sceneStyle={{ paddingTop: Platform.OS === 'ios' ? 64 : 54 }}>
       <Scene key="auth">
         <Scene initial key="meetups" component={Home} title="Meet In The Middle" leftTitle="Settings" onLeft={() => Actions.login({ type: 'reset' })} rightTitle="Add" onRight={() => Actions.add()} />
         <Scene key="add" component={MeetupCreate} title="Add Meetup" />
@@ -52,5 +52,9 @@ const RouterComponent = () => {
     </Router>
   );
 };
+
+// Parade — #1ba6bd
+// Strawberry — #ff4c50
+// Sandcastle — #ffca63
 
 export default RouterComponent;
