@@ -191,8 +191,12 @@ export const updateUser = data => {
 };
 
 // TODO: Change email and password
+// export const updateUserEmail
 
 // TODO: Send password reset email
+export const emailPasswordRest = () => dispatch => {
+  
+};
 
 // TODO: Authenticate Email address
 
