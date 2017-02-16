@@ -15,6 +15,7 @@ import { googlePlacesConfig, GOOGLE_GEO_API_KEY } from '../envConfig';
 
 /*****************************************************************
   Changes to form Input fields
+  TODO: move to UserActions.js & Refactor that to FormActions.js
 *****************************************************************/
 
 export const emailChanged = (text) => {

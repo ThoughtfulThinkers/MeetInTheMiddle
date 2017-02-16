@@ -51,7 +51,7 @@ class LoginForm extends Component {
             <Text style={styles.title}>Welcome {firstName}</Text>
           </CardSection>
           <CardSection>
-            <Button onPress={() => Actions.profileUpdate({ email, password })}>
+            <Button onPress={() => Actions.profileUpdate({ type: 'reset', email, password })}>
               Update Profile
             </Button>
           </CardSection>

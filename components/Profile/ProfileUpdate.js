@@ -19,13 +19,6 @@ import {
 } from '../../actions';
 
 class ProfileUpdate extends Component {
-  onEmailChange(text) {
-    this.props.emailChanged(text);
-  }
-
-  onPasswordChange(text) {
-    this.props.passwordChanged(text);
-  }
 
   onUpdateProfileButtonPress() {
     const { firstName, lastName, image, email, password } = this.props;
@@ -60,8 +53,8 @@ class ProfileUpdate extends Component {
       <ScrollView>
       <Card>
         <CardSection>
-          <Button style={styles.buttonStyle}>
-            Update  Email and Password - TBD
+          <Button onPress={() => Actions.manageAuth()} >
+            Update  Email and Password
           </Button>
         </CardSection>
 
