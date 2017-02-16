@@ -22,7 +22,6 @@ class RSVP extends Component {
     const { uid, users } = meetup;
     const name = `${firstName} ${lastName}`;
     this.props.setRsvp(lat, lon, uid, users, name);
-    this.props.changeStatus(this.props.meetup, 'guests');
     Actions.pop();
   }
 
@@ -35,7 +34,6 @@ class RSVP extends Component {
           .then(data => {
             const { latitude, longitude } = data.coords;
             this.props.changeRSVP(latitude, longitude);
-            Alert.alert('Location set, please confirm RSVP.');
           });
         }
           throw new Error('Location permission not granted');
@@ -69,6 +67,9 @@ class RSVP extends Component {
           <LocationSelector />
         </CardSection>
         <CardSection>
+          <Text style={styles.titleStyle}>Location: {this.props.address}</Text>
+        </CardSection>
+        <CardSection>
           <Button onPress={this.onPress.bind(this)}>
             Confirm RSVP
           </Button>
@@ -85,9 +86,9 @@ const styles = {
 };
 
 const mapStateToProps = ({ rsvp, user }) => {
-  const { lat, lon } = rsvp;
+  const { lat, lon, address } = rsvp;
   const { firstName, lastName } = user;
-  return { lat, lon, firstName, lastName, user };
+  return { lat, lon, firstName, lastName, user, address };
 };
 
 export default connect(mapStateToProps, { setRsvp, changeRSVP, changeStatus })(RSVP);

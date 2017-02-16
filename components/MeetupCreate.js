@@ -33,8 +33,9 @@ class MeetupCreate extends Component {
 
         <CardSection>
           <Input
+            multiline
             label="Description"
-            placeholder="Bring cake to Judy's house"
+            placeholder="Bring cake and presents"
             value={this.props.description}
             onChangeText={value => this.onChange('description', value)}
           />

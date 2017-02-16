@@ -8,9 +8,9 @@ import { CardSection, Spinner } from './common';
 
 
 class UserMeetupListContainer extends Component {
-  componentWillMount() {
-    this.props.userMeetupsFetch();
-  }
+  // componentDidMount() {
+  //   this.props.userMeetupsFetch();
+  // }
 
   render() {
     let textContent;
@@ -22,7 +22,7 @@ class UserMeetupListContainer extends Component {
       textContent = <Text style={styles.headerStyle}>Your Meetups</Text>;
     }
     return (
-      <View>
+      <View style={styles.viewStyle}>
         {textContent}
         <MeetupList meetups={this.props.meetups} />
       </View>
@@ -31,6 +31,9 @@ class UserMeetupListContainer extends Component {
 }
 
 const styles = {
+  viewStyle: {
+    maxHeight: 200
+  },
   headerStyle: {
     fontSize: 20,
     alignSelf: 'center',

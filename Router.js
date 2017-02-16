@@ -56,5 +56,6 @@ const RouterComponent = () => {
 // Parade — #1ba6bd
 // Strawberry — #ff4c50
 // Sandcastle — #ffca63
+// Caribbean Green - #06D6A0
 
 export default RouterComponent;
