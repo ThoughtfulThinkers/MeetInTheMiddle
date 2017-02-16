@@ -49,7 +49,7 @@ class ProfileForm extends Component {
           <CardSection>
             <Input
               label="City"
-              placeholder="Salt Lake city"
+              placeholder="Salt Lake City"
               value={this.props.location.city}
               onChangeText={
                 value => this.props.userLocationInputChanged({ prop: 'city', value })
@@ -90,3 +90,8 @@ export default connect(mapStateToProps, {
   userInputChanged,
   userLocationInputChanged,
 })(ProfileForm);
+
+ProfileForm.propTypes = {
+  firstName: React.PropTypes.string,
+  lastName: React.PropTypes.string,
+};
