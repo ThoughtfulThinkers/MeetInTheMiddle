@@ -90,11 +90,12 @@ export const loadAuthenticatedUserState = () => dispatch => {
   const { currentUser } = firebase.auth();
   if (!currentUser) {
     dispatch({ type: LOAD_AUTHENTICATED_USER_STATE_SUCCESS, payload: {} });
+  } else {
+    firebase.database().ref(`/users/${currentUser.uid}`)
+      .on('value', (snapshot) => {
+        dispatch({ type: LOAD_AUTHENTICATED_USER_STATE_SUCCESS, payload: snapshot.val() });
+      });
   }
-  firebase.database().ref(`/users/${currentUser.uid}`)
-    .on('value', (snapshot) => {
-      dispatch({ type: LOAD_AUTHENTICATED_USER_STATE_SUCCESS, payload: snapshot.val() });
-    });
 };
 
 /*****************************************************************
@@ -195,7 +196,9 @@ export const updateUser = data => {
 
 // TODO: Send password reset email
 export const emailPasswordRest = () => dispatch => {
-  
+  // const { currentUser } = firebase.auth();
+  // console.log('Action emailPasswordRestReset', currentUser);
+  // const emailAddress = currentUser.email;
 };
 
 // TODO: Authenticate Email address

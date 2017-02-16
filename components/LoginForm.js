@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import firebase from 'firebase';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { ScrollView, Text, View } from 'react-native';
+import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { Button, Card, CardSection, Input, Spinner } from './common';
 import {
   createNewUserAccount,
@@ -61,8 +61,8 @@ class LoginForm extends Component {
             </Button>
           </CardSection>
         </Card>
-        );
-      } else {
+      );
+    } else {
         // loggedOut
         return (
           <Card>
@@ -96,6 +96,11 @@ class LoginForm extends Component {
                 Sign Up
               </Button>
             </CardSection>
+            <CardSection>
+              <TouchableOpacity style={styles.forgotPasswordTouchable}>
+                <Text style={styles.forgotPasswordButton}>Forgot My Password</Text>
+              </TouchableOpacity>
+            </CardSection>
           </Card>
         );
       }
@@ -120,6 +125,18 @@ const styles = {
     alignSelf: 'center',
     paddingLeft: 10,
     paddingRight: 10
+  },
+  forgotPasswordButton: {
+    alignSelf: 'center',
+    color: '#EED901',
+    fontSize: 16,
+    fontWeight: '600',
+    paddingTop: 10,
+    paddingBottom: 10
+  },
+  forgotPasswordTouchable: {
+    flex: 1,
+    alignSelf: 'stretch',
   },
   title: {
     flex: 1,
