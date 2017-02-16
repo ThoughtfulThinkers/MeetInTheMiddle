@@ -1,6 +1,7 @@
 import 'whatwg-fetch';
 import firebase from 'firebase';
 import { Actions } from 'react-native-router-flux';
+import { changeStatus } from './MeetupFormActions';
 import { SET_CURRENT_MEETUP, SET_VOTE } from './types';
 import { foursquareConfig, googlePlacesConfig } from '../envConfig';
 
@@ -31,7 +32,21 @@ export const createVoting = (lat, lon, meetup) => {
     .then(data => {
       let venues;
       if (data.response.groups.length === 0 || data.response.groups[0].items.length === 0) {
-          handleNoResults(lat, lon, meetup);
+        const search2 = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lon}&key=${apiKey}`;
+        fetch(search2)
+        .then(response => response.json())
+        .then((data2) => {
+          const location = {
+            formattedAddress: [data2.results[0].formatted_address],
+            lat,
+            lon,
+            name: data2.results[0].formatted_address,
+            votes: 0
+          };
+          dispatch(changeLocation(location, meetup.uid));
+          dispatch(changeStatus(meetup, 'set'));
+        })
+        .catch(err => console.log(err));
       } else {
         venues = {};
         data.response.groups[0].items.forEach(item => {
@@ -43,11 +58,11 @@ export const createVoting = (lat, lon, meetup) => {
       }
       const newMeetup = { ...meetup, status: 'voting', venues };
       firebase.database().ref(`/meetups/${meetup.uid}`)
-        .set(newMeetup)
-        .then(() => {
-          dispatch({ type: SET_CURRENT_MEETUP, meetup: newMeetup });
-        })
-        .catch(err => console.log('create venues error', err));
+      .set(newMeetup)
+      .then(() => {
+        dispatch({ type: SET_CURRENT_MEETUP, meetup: newMeetup });
+      })
+      .catch(err => console.log('create venues error', err));
     })
     .catch(err => console.log(err));
   };
@@ -109,27 +124,5 @@ export const changeLocation = (location, meetupId) => {
             value: location });
       })
       .catch((err) => console.log(err));
-    };
-};
-
-export const handleNoResults = (lat, lon, meetup) => {
-    console.log('in here');
-    return dispatch => {
-    const search = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lon}&key=${apiKey}`;
-    fetch(search)
-      .then(response => response.json())
-      .then((data) => {
-        console.log(data.response)
-        changeStatus(meetup, 'set');
-        const location = {
-          formattedAddress: { 0: formatted_address },
-          lat,
-          lon,
-          name: formatted_address,
-          votes: 0,
-        };
-        changeLocation(location, meetup.uid);
-        })
-      .catch(err => console.log(err));
     };
 };

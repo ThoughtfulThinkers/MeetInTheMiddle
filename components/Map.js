@@ -34,7 +34,7 @@ export default class Map extends React.Component {
             latitude: venue.lat,
             longitude: venue.lon,
           }}
-          pinColor="#007aff"
+          pinColor="#ffca63"
           title={venue.name}
           description={venue.formattedAddress[0]}
         />
@@ -48,7 +48,7 @@ export default class Map extends React.Component {
             latitude: location.lat,
             longitude: location.lon,
           }}
-          pinColor="#007aff"
+          pinColor="#ff4c50"
           title={location.name}
           description={location.formattedAddress[0]}
         />
@@ -82,7 +82,7 @@ export default class Map extends React.Component {
             latitude: lat,
             longitude: lon,
           }}
-          pinColor="green"
+          pinColor="#1ba6bd"
           title="Middle Location"
           description="This point is the central location between attendees."
         />
