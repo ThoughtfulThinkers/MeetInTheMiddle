@@ -123,7 +123,7 @@ const styles = {
   },
   title: {
     flex: 1,
-    color: '#0000ff',
+    color: '#4E0FA1',
     fontSize: 20,
     alignSelf: 'center',
     paddingLeft: 10,

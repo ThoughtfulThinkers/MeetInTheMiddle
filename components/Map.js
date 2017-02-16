@@ -75,6 +75,7 @@ export default class Map extends React.Component {
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }}
+        loadingEnabled
       >
         <Components.MapView.Marker
           coordinate={{

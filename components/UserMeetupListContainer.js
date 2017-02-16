@@ -17,7 +17,7 @@ class UserMeetupListContainer extends Component {
     if (this.props.loading) {
       textContent = <CardSection><Spinner size='small' /></CardSection>;
     } else if (this.props.meetups.length === 0) {
-      textContent = <Text style={styles.textStyle}>You have no meetups scheduled.</Text>;
+      textContent = <Text style={styles.emptyTextStyle}>You have no meetups scheduled.</Text>;
     } else {
       textContent = <Text style={styles.headerStyle}>Your Meetups</Text>;
     }
@@ -39,6 +39,11 @@ const styles = {
   textStyle: {
     fontSize: 18,
     padding: 5
+  },
+  emptyTextStyle: {
+    fontSize: 18,
+    padding: 5,
+    color: 'rgba(0,0,0,0.7)'
   }
 };
 

@@ -2,9 +2,10 @@ import 'whatwg-fetch';
 import firebase from 'firebase';
 import { Actions } from 'react-native-router-flux';
 import { SET_CURRENT_MEETUP, SET_VOTE } from './types';
-import { foursquareConfig } from '../envConfig';
+import { foursquareConfig, googlePlacesConfig } from '../envConfig';
 
 const { ID, SECRET } = foursquareConfig;
+const { apiKey } = googlePlacesConfig;
 const venueIds = [{ name: 'Arts & Entertainment', id: '4d4b7104d754a06370d81259' },
 { name: 'College & University', id: '4d4b7105d754a06372d81259' },
 { name: 'Event', id: '4d4b7105d754a06373d81259' },
@@ -30,7 +31,7 @@ export const createVoting = (lat, lon, meetup) => {
     .then(data => {
       let venues;
       if (data.response.groups.length === 0 || data.response.groups[0].items.length === 0) {
-        venues = { 0: { name: 'No Results', formattedAddress: ['', '', ''], lat: 0, lon: 0, votes: 0 } };
+          handleNoResults(lat, lon, meetup);
       } else {
         venues = {};
         data.response.groups[0].items.forEach(item => {
@@ -108,5 +109,27 @@ export const changeLocation = (location, meetupId) => {
             value: location });
       })
       .catch((err) => console.log(err));
+    };
+};
+
+export const handleNoResults = (lat, lon, meetup) => {
+  changeStatus(meetup, status)
+ //  changeLocation = (location, meetupId)
+ //  formattedAddress: {0: formatted_address}
+ // lat
+ // lon
+ // name: formatted_address
+ // votes: 0
+
+    console.log('in here');
+    return dispatch => {
+    const search = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lon}&key=${apiKey}`;
+    fetch(search)
+      .then(response => response.json())
+      .then((data) => {
+          dispatch({ type: MEETUP_CHANGED, prop: 'location', value: data.results[0].formatted_address });
+          dispatch({ type: MEETUP_CHANGED, prop: 'status', value: 'set' });
+        })
+      .catch(err => console.log(err));
     };
 };
