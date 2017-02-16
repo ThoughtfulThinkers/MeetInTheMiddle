@@ -7,14 +7,16 @@ import {
   LOGIN_USER_FAIL,
   LOGIN_USER,
   LOAD_AUTHENTICATED_USER_STATE_SUCCESS,
-  SET_LOGIN_STATUS,
   PASSWORD_CHANGED,
+  PASSWORD_RESET_FAILED,
+  RESET_AUTH_ERROR_STATE,
+  SET_LOGIN_STATUS,
 } from './types';
 
 import { googlePlacesConfig, GOOGLE_GEO_API_KEY } from '../envConfig';
 
 /*****************************************************************
-  Changes to form Input fields
+  Changes to form fields
   TODO: move to UserActions.js & Refactor that to FormActions.js
 *****************************************************************/
 
@@ -29,6 +31,12 @@ export const passwordChanged = (text) => {
   return {
     type: PASSWORD_CHANGED,
     payload: text
+  };
+};
+
+export const resetAuthErrorState = () => {
+  return {
+    type: RESET_AUTH_ERROR_STATE
   };
 };
 
@@ -195,10 +203,14 @@ export const updateUser = data => {
 // export const updateUserEmail
 
 // TODO: Send password reset email
-export const emailPasswordRest = () => dispatch => {
-  // const { currentUser } = firebase.auth();
-  // console.log('Action emailPasswordRestReset', currentUser);
-  // const emailAddress = currentUser.email;
+export const emailPasswordReset = emailAddress => dispatch => {
+  // console.log('Action emailPasswordRestReset', emailAddress);
+  firebase.auth().sendPasswordResetEmail(emailAddress)
+    .then(() => {
+      dispatch({ type: RESET_AUTH_ERROR_STATE });
+      Actions.meetups({ type: 'reset' });
+    })
+    .catch(() => dispatch({ type: PASSWORD_RESET_FAILED }));
 };
 
 // TODO: Authenticate Email address

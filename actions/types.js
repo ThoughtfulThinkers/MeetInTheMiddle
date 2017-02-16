@@ -2,10 +2,12 @@
   Authentication Actions
 **************************************************/
 export const EMAIL_CHANGED = 'EMAIL_CHANGED';
-export const PASSWORD_CHANGED = 'PASSWORD_CHANGED';
 export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
 export const LOGIN_USER_FAIL = 'LOGIN_USER_FAIL';
 export const LOGIN_USER = 'LOGIN_USER';
+export const PASSWORD_CHANGED = 'PASSWORD_CHANGED';
+export const PASSWORD_RESET_FAILED = 'PASSWORD_RESET_FAILED';
+export const RESET_AUTH_ERROR_STATE = 'RESET_AUTH_ERROR_STATE';
 export const SET_LOGIN_STATUS = 'SET_LOGIN_STATUS';
 
 /******************************************************

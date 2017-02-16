@@ -10,11 +10,16 @@ import {
   loginUser,
   logoutUser,
   passwordChanged,
+  resetAuthErrorState,
   setLoginStatus,
 } from '../actions';
 import MeetupList from './MeetupList';
 
 class LoginForm extends Component {
+
+  componentDidMount() {
+    this.props.resetAuthErrorState();
+  }
 
   onEmailChange(text) {
     this.props.emailChanged(text);
@@ -162,5 +167,6 @@ export default connect(mapStateToProps, {
   loginUser,
   logoutUser,
   passwordChanged,
+  resetAuthErrorState,
   setLoginStatus,
 })(LoginForm);
