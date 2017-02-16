@@ -1,9 +1,11 @@
 import {
   EMAIL_CHANGED,
-  PASSWORD_CHANGED,
   LOGIN_USER_SUCCESS,
   LOGIN_USER_FAIL,
   LOGIN_USER,
+  PASSWORD_CHANGED,
+  PASSWORD_RESET_FAILED,
+  RESET_AUTH_ERROR_STATE,
   SET_LOGIN_STATUS,
 } from '../actions/types';
 
@@ -32,6 +34,10 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, error: 'Authentication Failed.', password: '', loading: false };
     case PASSWORD_CHANGED:
       return { ...state, password: action.payload };
+    case PASSWORD_RESET_FAILED:
+      return { ...state, error: 'Email Address Invalid or Account does not exist' };
+    case RESET_AUTH_ERROR_STATE:
+      return { ...state, error: '' };
     default:
       return state;
   }
