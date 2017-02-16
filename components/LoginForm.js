@@ -97,7 +97,7 @@ class LoginForm extends Component {
               </Button>
             </CardSection>
             <CardSection>
-              <TouchableOpacity style={styles.forgotPasswordTouchable}>
+              <TouchableOpacity style={styles.forgotPasswordTouchable} onPress={() => Actions.forgotPassword()}>
                 <Text style={styles.forgotPasswordButton}>Forgot My Password</Text>
               </TouchableOpacity>
             </CardSection>
@@ -128,7 +128,7 @@ const styles = {
   },
   forgotPasswordButton: {
     alignSelf: 'center',
-    color: '#EED901',
+    color: '#ffca63',
     fontSize: 16,
     fontWeight: '600',
     paddingTop: 10,
