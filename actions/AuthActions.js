@@ -154,10 +154,10 @@ export const setNewUser = (dispatch, userData) => {
 *****************************************************************/
 // TODO: move updateUser Account from UserActions.js
 
-// TODO: Add displayName and photoURL w/i user auth
-
 // TODO: Change email and password
 
 // TODO: Send password reset email
 
 // TODO: Authenticate Email address
+
+// TODO: Add displayName and photoURL w/i user auth
