@@ -28,18 +28,28 @@ export const createVoting = (lat, lon, meetup) => {
     fetch(search)
     .then(response => response.json())
     .then(data => {
-      const venues = {};
-      data.response.venues.forEach(venue => {
-        const { name, location, id } = venue;
-        const { formattedAddress, lng } = location;
-        venues[id] = { name, formattedAddress, lat: location.lat, lon: lng, votes: 0 };
-      });
+      let venues;
+      if (data.response.venues.length === 0) {
+        console.log('no results');
+        venues = { 0: { name: 'No Results', formattedAddress: ['', '', ''], lat: 0, lon: 0, votes: 0 } };
+      } else {
+        venues = {};
+        data.response.venues.forEach(venue => {
+          const { name, location, id } = venue;
+          const { formattedAddress, lng } = location;
+          venues[id] = { name, formattedAddress, lat: location.lat, lon: lng, votes: 0 };
+        });
+      }
+
       const newMeetup = { ...meetup, status: 'voting', venues };
+      console.log('working');
       firebase.database().ref(`/meetups/${meetup.uid}`)
         .set(newMeetup)
         .then(() => {
+          console.log('working2');
           dispatch({ type: SET_CURRENT_MEETUP, meetup: newMeetup });
-        });
+        })
+        .catch(err => console.log('create venues error', err));
     })
     .catch(err => console.log(err));
   };
