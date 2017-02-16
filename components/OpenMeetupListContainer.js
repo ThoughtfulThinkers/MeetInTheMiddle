@@ -33,7 +33,7 @@ class OpenMeetupListContainer extends Component {
       <View>
         <Text style={styles.headerStyle}>Open Meetups</Text>
         <CardSection style={styles.filterStyle}>
-          <Text style={styles.filterTextStyle}>Events in {this.props.location}</Text>
+          <Text style={styles.filterTextStyle}>Events in </Text><Text style={styles.stateTextStyle}>{this.props.location}</Text>
         </CardSection>
         <CardSection>
           <Button onPress={this.onPress.bind(this)}>Change State</Button>
@@ -48,22 +48,26 @@ const styles = {
   headerStyle: {
     fontSize: 20,
     alignSelf: 'center',
-    padding: 5
+    padding: 5,
+    color: 'black',
   },
   filterStyle: {
-    backgroundColor: '#007aff',
+    backgroundColor: '#4A148C',
     justifyContent: 'center',
     alignItems: 'center'
   },
   filterTextStyle: {
     fontSize: 18,
     color: 'white',
-    flex: 2
   },
   textStyle: {
     fontSize: 18,
     padding: 5
   },
+  stateTextStyle: {
+    fontSize: 18,
+    color: '#fef267',
+  }
 };
 
 const mapStateToProps = state => {

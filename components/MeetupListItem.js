@@ -58,21 +58,22 @@ const styles = {
   },
   titleStyle: {
     fontSize: 18,
-    padding: 5
+    padding: 5,
   },
   detailStyle: {
     fontSize: 15,
     padding: 5,
-    color: 'grey'
+    color: 'rgba(0,0,0,0.6)'
   },
   voteStyle: {
     fontSize: 15,
     padding: 5,
-    color: '#007aff' //TODO: color and content change based on vote start/end
+    color: '#9B019B'
   },
   locationStyle: {
     fontSize: 15,
-    padding: 5
+    padding: 5,
+    color: 'rgba(0,0,0,0.8)'
   }
 };
 

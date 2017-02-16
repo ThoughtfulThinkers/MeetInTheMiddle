@@ -27,7 +27,7 @@ import VenuePicker from './components/Venues/VenuePicker';
 
 const RouterComponent = () => {
   return (
-    <Router sceneStyle={{ paddingTop: Platform.OS === 'ios' ? 64 : 54 }}>
+    <Router navigationBarStyle={{ backgroundColor: '#4E0FA1' }} titleStyle={{ color: 'white' }} barButtonTextStyle={{ color: '#fef267' }} barButtonIconStyle={{ tintColor: 'rgb(254, 242, 103)' }} rightButtonTextStyle={{ color: '#fef267' }} leftButtonTextStyle={{ color: '#fef267' }} sceneStyle={{ paddingTop: Platform.OS === 'ios' ? 64 : 54 }}>
       <Scene key="auth">
         <Scene key="login" component={LoginForm} title="Account Management" leftTitle="Home" onLeft={() => Actions.meetups({ type: 'reset' })} />
         <Scene key="profileCreate" component={ProfileCreate} title="Create Account" leftTitle="Home" onLeft={() => Actions.meetups({ type: 'reset' })} />
