@@ -22,31 +22,28 @@ const venueIds = [{ name: 'Arts & Entertainment', id: '4d4b7104d754a06370d81259'
 { name: 'Travel & Transport', id: '4d4b7105d754a06379d81259' }];
 
 export const createVoting = (lat, lon, meetup) => {
-  const venueId = meetup.venue.id;
+  const venueType = meetup.venue.id;
   return dispatch => {
-    const search = `https://api.foursquare.com/v2/venues/search?ll=${lat},${lon}&client_id=${ID}&client_secret=${SECRET}&radius=1600&intent=browse&categoryId=${venueId}&v=20170201&m=foursquare`;
+    const search = `https://api.foursquare.com/v2/venues/explore?ll=${lat},${lon}&client_id=${ID}&client_secret=${SECRET}&sortByDistance=true&section=${venueType}&limit=10&v=20170201&m=foursquare`;
     fetch(search)
     .then(response => response.json())
     .then(data => {
       let venues;
-      if (data.response.venues.length === 0) {
-        console.log('no results');
+      if (data.response.groups.length === 0 || data.response.groups[0].items.length === 0) {
         venues = { 0: { name: 'No Results', formattedAddress: ['', '', ''], lat: 0, lon: 0, votes: 0 } };
       } else {
         venues = {};
-        data.response.venues.forEach(venue => {
+        data.response.groups[0].items.forEach(item => {
+          const { venue } = item;
           const { name, location, id } = venue;
           const { formattedAddress, lng } = location;
           venues[id] = { name, formattedAddress, lat: location.lat, lon: lng, votes: 0 };
         });
       }
-
       const newMeetup = { ...meetup, status: 'voting', venues };
-      console.log('working');
       firebase.database().ref(`/meetups/${meetup.uid}`)
         .set(newMeetup)
         .then(() => {
-          console.log('working2');
           dispatch({ type: SET_CURRENT_MEETUP, meetup: newMeetup });
         })
         .catch(err => console.log('create venues error', err));
