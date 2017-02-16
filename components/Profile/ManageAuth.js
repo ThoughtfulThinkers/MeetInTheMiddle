@@ -14,6 +14,7 @@ import {
 } from '../common';
 
 import {
+  authInputChanged,
   emailChanged,
   loginUser,
   passwordChanged,
@@ -21,18 +22,87 @@ import {
 } from '../../actions';
 
 class ManageAuth extends Component {
+
+  onSubmitUpdate
+
   render() {
     return (
       <Card>
-        <CardSection>
-          <Text>Hi from ManageAuth</Text>
-        </CardSection>
+        <Card>
+          <CardSection>
+            <Text>Enter Your New Email</Text>
+          </CardSection>
+          <CardSection>
+            <Input
+              label="New Email"
+              placeholder="email@domain.com"
+              value={this.props.email}
+              onChangeText={value => this.props.authInputChanged({ prop: 'email', value })}
+            />
+          </CardSection>
+          </Card>
+          <Card>
+            <CardSection>
+              <Text>Change Your Password</Text>
+            </CardSection>
+            <CardSection>
+              <Input
+                secureTextEntry
+                label="New Password"
+                placeholder="new password"
+                value={this.props.newPassword}
+                onChangeText={value => this.props.authInputChanged({ prop: 'newPassword', value })}
+              />
+            </CardSection>
+            <CardSection>
+              <Input
+                secureTextEntry
+                label="Confim Password"
+                placeholder="new password"
+                value={this.props.newPassword}
+                onChangeText={value => this.props.authInputChanged({ prop: 'confirmPassword', value })}
+              />
+            </CardSection>
+          </Card>
+        <Card>
+          <CardSection>
+            <Text style={styles.noticeStyle}>
+              Current Password Required To Update Your Email or Password
+            </Text>
+          </CardSection>
+          <CardSection>
+            <Input
+            secureTextEntry
+            label="Password"
+            placeholder="current password"
+            value={this.props.password}
+            onChangeText={value => this.props.authInputChanged({ prop: 'password', value })}
+            />
+          </CardSection>
+          <Card>
+            <CardSection>
+              <Button>Update</Button>
+            </CardSection>
+          </Card>
+        </Card>
       </Card>
     );
   }
 }
 
+const styles = {
+  noticeStyle: {
+    fontSize: 15,
+  }
+};
+
+const mapStatetoProps = ({ auth }) => {
+  const { email, password, newPassword, confirmPassword, } = auth;
+  return { email, password, newPassword, confirmPassword, };
+};
+
 export default connect(null, {
+  authInputChanged,
   emailChanged,
   loginUser,
   passwordChanged,
@@ -40,31 +110,7 @@ export default connect(null, {
 })(ManageAuth);
 
 
-/*****************************************************
-
-onEmailChange(text) {
-  this.props.emailChanged(text);
-}
-
-onPasswordChange(text) {
-  this.props.passwordChanged(text);
-}
-<CardSection>
-  <Input
-    label="Email"
-    placeholder="email@domain.com"
-    onChangeText={this.onEmailChange.bind(this)}
-    value={this.props.email}
-  />
-</CardSection>
-<CardSection>
-  <Input
-  secureTextEntry
-  label="Password"
-  placeholder="reenter password"
-  onChangeText={this.onPasswordChange.bind(this)}
-  value={this.props.password}
-  />
-</CardSection>
-
-*****************************************************/
+ManageAuth.propTypes = {
+  email: React.PropTypes.string,
+  password: React.PropTypes.string,
+};

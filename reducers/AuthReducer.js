@@ -1,4 +1,5 @@
 import {
+  AUTH_INPUT_CHANGED,
   EMAIL_CHANGED,
   LOGIN_USER_SUCCESS,
   LOGIN_USER_FAIL,
@@ -16,10 +17,18 @@ const INITIAL_STATE = {
   error: '',
   loading: false,
   loggedIn: false,
+  newPassword: '',
+  confirmPassword: '',
 };
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case AUTH_INPUT_CHANGED: {
+      // example: action.payload = {prop: 'email', value: 'test@test.com'}
+      // key interpolation -> [prop]
+      const { prop, value } = action.payload;
+      return { ...state, [prop]: value };
+    }
     case SET_LOGIN_STATUS: {
       return { ...state, loggedIn: action.payload };
     }
