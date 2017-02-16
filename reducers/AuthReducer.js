@@ -17,6 +17,7 @@ const INITIAL_STATE = {
   error: '',
   loading: false,
   loggedIn: false,
+  newEmail: '',
   newPassword: '',
   confirmPassword: '',
 };

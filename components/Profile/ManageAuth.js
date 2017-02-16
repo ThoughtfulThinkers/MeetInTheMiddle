@@ -18,12 +18,23 @@ import {
   emailChanged,
   loginUser,
   passwordChanged,
+  updateUserEmail,
+  updateUserPassword,
   userInputChanged,
 } from '../../actions';
 
 class ManageAuth extends Component {
 
-  onSubmitUpdate
+  onSubmitUpdate() {
+    const { email, password, newPassword, confirmPassword } = this.props;
+    if (!password) return;
+    if (newPassword && newPassword === confirmPassword) {
+      this.props.updateUserPassword(newPassword, password);
+    }
+    if (newEmail) {
+      this.props.updateUserEmail(newEmail, password);
+    }
+  }
 
   render() {
     return (
@@ -36,8 +47,8 @@ class ManageAuth extends Component {
             <Input
               label="New Email"
               placeholder="email@domain.com"
-              value={this.props.email}
-              onChangeText={value => this.props.authInputChanged({ prop: 'email', value })}
+              value={this.props.newEmail}
+              onChangeText={value => this.props.authInputChanged({ prop: 'newEmail', value })}
             />
           </CardSection>
           </Card>
@@ -97,8 +108,8 @@ const styles = {
 };
 
 const mapStatetoProps = ({ auth }) => {
-  const { email, password, newPassword, confirmPassword, } = auth;
-  return { email, password, newPassword, confirmPassword, };
+  const { email, newEmail, password, newPassword, confirmPassword, } = auth;
+  return { email, newEmail, password, newPassword, confirmPassword, };
 };
 
 export default connect(null, {
@@ -106,6 +117,8 @@ export default connect(null, {
   emailChanged,
   loginUser,
   passwordChanged,
+  updateUserEmail,
+  updateUserPassword,
   userInputChanged,
 })(ManageAuth);
 

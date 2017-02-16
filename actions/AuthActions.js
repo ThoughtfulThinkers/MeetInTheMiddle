@@ -206,7 +206,23 @@ export const updateUser = data => {
 };
 
 // TODO: Change email and password
-// export const updateUserEmail
+export const updateUserEmail = (emailAddress, password) => dispatch => {
+  console.log('updateUserEmail');
+  const user = firebase.auth().currentUser;
+  const credential = { email: user.email, password };
+  user.reauthenticate(credential)
+    .then(() => user.updateEmail(newPassword))
+    .catch(error => console.log(error));
+};
+
+export const updateUserPassword = (newPassword, password) => dispatch => {
+  console.log('updateUserPassword');
+  const user = firebase.auth().currentUser;
+  const credential = { email: user.email, password };
+  user.reauthenticate(credential)
+    .then(() => user.updatePassword(newPassword))
+    .catch(error => console.log(error));
+};
 
 // TODO: Send password reset email
 export const emailPasswordReset = emailAddress => dispatch => {
