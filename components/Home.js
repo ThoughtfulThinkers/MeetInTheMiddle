@@ -8,20 +8,22 @@ import OpenMeetupListContainer from './OpenMeetupListContainer';
 import {
   loadAuthenticatedUserState,
   setLoginStatus,
+  userMeetupsFetch
 } from '../actions';
 
 class Home extends Component {
   componentWillMount() {
     firebase.auth().onAuthStateChanged(user => {
-      // console.log('Login: Auth State Changed: ');
+      console.log('Login: Auth State Changed: ', user);
+      this.props.loadAuthenticatedUserState();
       if (user) {
-        // console.log('Set Login Status: logged In ');
+        console.log('Set Login Status: logged In ');
         this.props.setLoginStatus(true);
+        this.props.userMeetupsFetch();
       } else {
-        // console.log('Set Login Status: logged out ');
+        console.log('Set Login Status: logged out ');
         this.props.setLoginStatus(false);
       }
-      this.props.loadAuthenticatedUserState();
     });
   }
   render() {
@@ -37,4 +39,5 @@ class Home extends Component {
 export default connect(null, {
   loadAuthenticatedUserState,
   setLoginStatus,
+  userMeetupsFetch,
 })(Home);

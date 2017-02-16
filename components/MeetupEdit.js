@@ -57,8 +57,9 @@ class MeetupEdit extends Component {
 
         <CardSection>
           <Input
+            multiline
             label="Description"
-            placeholder="Bring cake to Judy's house"
+            placeholder="Bring cake and presents"
             value={meetup.description}
             onChangeText={value => this.onChange('description', value)}
           />

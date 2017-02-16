@@ -8,9 +8,9 @@ import { CardSection, Spinner } from './common';
 
 
 class UserMeetupListContainer extends Component {
-  componentWillMount() {
-    this.props.userMeetupsFetch();
-  }
+  // componentDidMount() {
+  //   this.props.userMeetupsFetch();
+  // }
 
   render() {
     let textContent;
