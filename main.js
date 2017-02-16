@@ -17,6 +17,7 @@ import Router from './Router';
 const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
 
 class App extends Component {
+
   componentWillMount() {
     firebase.initializeApp(fbConfig);
   }

@@ -113,22 +113,22 @@ export const changeLocation = (location, meetupId) => {
 };
 
 export const handleNoResults = (lat, lon, meetup) => {
-  changeStatus(meetup, status)
- //  changeLocation = (location, meetupId)
- //  formattedAddress: {0: formatted_address}
- // lat
- // lon
- // name: formatted_address
- // votes: 0
-
     console.log('in here');
     return dispatch => {
     const search = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lon}&key=${apiKey}`;
     fetch(search)
       .then(response => response.json())
       .then((data) => {
-          dispatch({ type: MEETUP_CHANGED, prop: 'location', value: data.results[0].formatted_address });
-          dispatch({ type: MEETUP_CHANGED, prop: 'status', value: 'set' });
+        console.log(data.response)
+        changeStatus(meetup, 'set');
+        const location = {
+          formattedAddress: { 0: formatted_address },
+          lat,
+          lon,
+          name: formatted_address,
+          votes: 0,
+        };
+        changeLocation(location, meetup.uid);
         })
       .catch(err => console.log(err));
     };
