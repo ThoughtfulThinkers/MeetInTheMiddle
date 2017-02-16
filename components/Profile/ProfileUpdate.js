@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { View, ScrollView, Text } from 'react-native';
+import ProfileForm from './ProfileForm';
 import {
   Button, Card, CardSection,
   Input, Spinner,
@@ -18,13 +19,6 @@ import {
 } from '../../actions';
 
 class ProfileUpdate extends Component {
-  onEmailChange(text) {
-    this.props.emailChanged(text);
-  }
-
-  onPasswordChange(text) {
-    this.props.passwordChanged(text);
-  }
 
   onUpdateProfileButtonPress() {
     const { firstName, lastName, image, email, password } = this.props;
@@ -58,91 +52,17 @@ class ProfileUpdate extends Component {
     return (
       <ScrollView>
       <Card>
-      <Card>
         <CardSection>
-          <Input
-            label="Email"
-            placeholder="email@domain.com"
-            onChangeText={this.onEmailChange.bind(this)}
-            value={this.props.email}
-          />
+          <Button onPress={() => Actions.manageAuth()} >
+            Update  Email and Password
+          </Button>
         </CardSection>
-        <Button>Update Email - TBD</Button>
-      </Card>
-      <Card>
-        <CardSection>
-          <Input
-          secureTextEntry
-          label="Password"
-          placeholder="reenter password"
-          onChangeText={this.onPasswordChange.bind(this)}
-          value={this.props.password}
-          />
-        </CardSection>
-        <Button>Update Password - TBD</Button>
-      </Card>
-      <Card>
-        <CardSection>
-          <Input
-            label="First Name"
-            placeholder="William"
-            value={this.props.firstName}
-            onChangeText={value => this.props.userInputChanged({ prop: 'firstName', value })}
-          />
-        </CardSection>
-        <CardSection>
-          <Input
-            label="Last Name"
-            placeholder="Tell"
-            value={this.props.lastName}
-            onChangeText={value => this.props.userInputChanged({ prop: 'lastName', value })}
-          />
-        </CardSection>
-        <CardSection>
-          <Input
-            label="Street"
-            placeholder="123 Main St"
-            value={this.props.location.street}
-            onChangeText={
-              value => this.props.userLocationInputChanged({ prop: 'street', value })
-            }
-          />
-        </CardSection>
-        <CardSection>
-          <Input
-            label="City"
-            placeholder="Salt Lake city"
-            value={this.props.location.city}
-            onChangeText={
-              value => this.props.userLocationInputChanged({ prop: 'city', value })
-            }
-          />
-        </CardSection>
-        <CardSection>
-          <Input
-            label="State"
-            placeholder="UT"
-            value={this.props.location.state}
-            onChangeText={
-              value => this.props.userLocationInputChanged({ prop: 'state', value })
-            }
-          />
-        </CardSection>
-        <CardSection>
-          <Input
-            label="ZipCode"
-            placeholder="84111"
-            value={this.props.location.zipcode}
-            onChangeText={
-              value => this.props.userLocationInputChanged({ prop: 'zipcode', value })
-            }
-          />
-        </CardSection>
+
+        <ProfileForm />
         <Text style={styles.errorTextStyle}>{this.props.error}</Text>
         <CardSection>
           {this.renderUpdateProfileButton()}
         </CardSection>
-      </Card>
       </Card>
       </ScrollView>
     );
@@ -156,7 +76,7 @@ const styles = {
     alignSelf: 'center',
     paddingLeft: 10,
     paddingRight: 10
-  }
+  },
 };
 
 const mapStateToProps = ({ auth, user }) => {
@@ -186,3 +106,60 @@ export default connect(mapStateToProps, {
   userInputChanged,
   userLocationInputChanged,
 })(ProfileUpdate);
+
+// <CardSection>
+//   <Input
+//     label="First Name"
+//     placeholder="William"
+//     value={this.props.firstName}
+//     onChangeText={value => this.props.userInputChanged({ prop: 'firstName', value })}
+//   />
+// </CardSection>
+// <CardSection>
+//   <Input
+//     label="Last Name"
+//     placeholder="Tell"
+//     value={this.props.lastName}
+//     onChangeText={value => this.props.userInputChanged({ prop: 'lastName', value })}
+//   />
+// </CardSection>
+// <CardSection>
+//   <Input
+//     label="Street"
+//     placeholder="123 Main St"
+//     value={this.props.location.street}
+//     onChangeText={
+//       value => this.props.userLocationInputChanged({ prop: 'street', value })
+//     }
+//   />
+// </CardSection>
+// <CardSection>
+//   <Input
+//     label="City"
+//     placeholder="Salt Lake city"
+//     value={this.props.location.city}
+//     onChangeText={
+//       value => this.props.userLocationInputChanged({ prop: 'city', value })
+//     }
+//   />
+// </CardSection>
+// <CardSection>
+//   <Input
+//     label="State"
+//     placeholder="UT"
+//     value={this.props.location.state}
+//     onChangeText={
+//       value => this.props.userLocationInputChanged({ prop: 'state', value })
+//     }
+//   />
+// </CardSection>
+// <CardSection>
+//   <Input
+//     label="ZipCode"
+//     placeholder="84111"
+//     value={this.props.location.zipcode}
+//     onChangeText={
+//       value => this.props.userLocationInputChanged({ prop: 'zipcode', value })
+//     }
+//   />
+// </CardSection>

@@ -19,15 +19,6 @@ const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
 class App extends Component {
   componentWillMount() {
     firebase.initializeApp(fbConfig);
-
-    firebase.auth().onAuthStateChanged(user => {
-      // console.log('Auth State Changed: ', user);
-      if (user) {
-        console.log('Main.js user looged in');
-      } else {
-        console.log('Main.js user not logged in');
-      }
-    });
   }
 
   render() {

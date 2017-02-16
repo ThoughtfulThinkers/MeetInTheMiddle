@@ -9,7 +9,7 @@ import Map from './components/Map';
 
 import StateSelector from './components/StateSelector';
 import VotingList from './components/Voting/VotingList';
-
+import ManageAuth from './components/Profile/ManageAuth';
 import MeetupCreate from './components/MeetupCreate';
 import MeetupLocationCreate from './components/MeetupLocationCreate';
 import Meetup from './components/Meetup';
@@ -30,6 +30,7 @@ const RouterComponent = () => {
     <Router sceneStyle={{ paddingTop: Platform.OS === 'ios' ? 64 : 54 }}>
       <Scene key="auth">
         <Scene key="login" component={LoginForm} title="Account Management" leftTitle="Home" onLeft={() => Actions.meetups({ type: 'reset' })} />
+        <Scene key="manageAuth" component={ManageAuth} title="Update Authentication" leftTitle="Account" onLeft={() => Actions.profileUpdate({ type: 'reset' })} />
         <Scene key="profileCreate" component={ProfileCreate} title="Create Account" leftTitle="Home" onLeft={() => Actions.meetups({ type: 'reset' })} />
         <Scene key="profileUpdate" component={ProfileUpdate} title="Update Profile" leftTitle="Home" onLeft={() => Actions.meetups({ type: 'reset' })} />
 
@@ -41,7 +42,7 @@ const RouterComponent = () => {
           component={Home}
           title="Meet In The Middle"
           leftTitle="Settings"
-          onLeft={() => Actions.login()}
+          onLeft={() => Actions.login({ type: 'reset' })}
           rightTitle="Add"
           onRight={() => Actions.add()}
         />

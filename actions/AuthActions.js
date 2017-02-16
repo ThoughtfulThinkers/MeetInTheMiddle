@@ -15,6 +15,7 @@ import { googlePlacesConfig, GOOGLE_GEO_API_KEY } from '../envConfig';
 
 /*****************************************************************
   Changes to form Input fields
+  TODO: move to UserActions.js & Refactor that to FormActions.js
 *****************************************************************/
 
 export const emailChanged = (text) => {
@@ -33,10 +34,11 @@ export const passwordChanged = (text) => {
 
 /*****************************************************************
     Access Actions
+    setLoginStatus is used to cofirm a user's login status
+    by app components.  This is especially useful when
+    accessing a screen that requires a user be logged in.
 *****************************************************************/
-// export const SET_LOGIN_STATUS = 'SET_LOGIN_STATUS';
 export const setLoginStatus = status => {
-  console.log('Action: setLoginStatus called: ', status);
   return {
     type: SET_LOGIN_STATUS,
     payload: status
@@ -44,18 +46,15 @@ export const setLoginStatus = status => {
 };
 
 export const loginUser = ({ email, password }) => {
-  // console.log(`Login User email: ${email} password: ${password}`);
   return (dispatch) => {
     dispatch({ type: LOGIN_USER });
 
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(user => {
-        // console.log('sign in: ', user);
         loginUserSuccess(dispatch, user);
         dispatch(loadAuthenticatedUserState());
         return user;
       })
-      // .then(user => Actions.profileUpdate(user))
       .then(() => Actions.meetups({ type: 'reset' }))
       .catch((error) => {
         console.log(error);
@@ -81,6 +80,12 @@ const loginUserFail = (dispatch) => {
   Actions.login({ type: 'reset' });
 };
 
+/*****************************************************************
+  Manage User
+  loadAuthenticatedUserState is used both in the physical login
+  process and to keep the user state between app restarts
+*****************************************************************/
+
 export const loadAuthenticatedUserState = () => dispatch => {
   const { currentUser } = firebase.auth();
   if (!currentUser) {
@@ -94,12 +99,17 @@ export const loadAuthenticatedUserState = () => dispatch => {
 
 /*****************************************************************
     Create New User Account
+
+    Creating a new user account is a three step process:
+    1. Create the user account in FB
+    2. Get the user's latitude & logitude from Google based on
+       their prefered location address
+    2. Create a user profile (e.g. name, location) in FB
 *****************************************************************/
 
 export const createNewUserAccount = userProfileData => dispatch => {
   const { email, password } = userProfileData;
   firebase.auth().createUserWithEmailAndPassword(email, password)
-    // .then(user => createNewUserProfile(dispatch, user, userProfileData))
     .then(user => {
       let newUserData = userProfileData;
       newUserData = { ...newUserData, uid: user.uid };
@@ -142,5 +152,48 @@ export const setNewUser = (dispatch, userData) => {
 
 /*****************************************************************
     Update User Account
+    This is a 2 step process
+    1. Get the GeoLocation (lat/lon) from Google based on user's
+       profile location
+    2. Update FB user data
 *****************************************************************/
-// TODO: move updateUser Account from UserActions.js
+
+export const updateUser = data => {
+  return dispatch => {
+    const { currentUser } = firebase.auth();
+    const { street, city, state, zipcode, firstName, lastName, image } = data;
+    const fullAddress = `${street},${city},${state}`;
+    const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${fullAddress}&key=${GOOGLE_GEO_API_KEY}`;
+    fetch(url)
+    .then(response => response.json())
+      .then(data => {
+        // console.log('location: ', data.results[0].geometry.location);
+        let userData = {};
+        // const latLon = data.results[0].geometry.location;
+        // let location = { lat: latLon.lat, lon: latLon.lng };
+        const lat = data.results[0].geometry.location.lat;
+        const lon = data.results[0].geometry.location.lng;
+        let location = { lat, lon };
+        if (state.length > 0) location = { ...location, street, city, state, zipcode }; // state required at minimum
+        userData = { ...userData, location };
+        // Firebase doesn't allow empty documents on an update
+        if (firstName.length > 0) userData = { ...userData, firstName };
+        if (lastName.length > 0) userData = { ...userData, lastName };
+        if (image.length > 0) userData = { ...userData, image };
+        dispatch({ type: FETCH_GEOLOCATION_BY_FULL_ADDRESS_SUCCESS, payload: location });
+        firebase.database().ref(`/users/${currentUser.uid}`)
+          .update(userData)
+          .then(response => Actions.meetups({ type: 'reset' }))
+          .catch(error => console.log('updateUser Error: ', error));
+      })
+      .catch(error => console.log('fetchGeoLocationByFullAddress error: ', error.message));
+  };
+};
+
+// TODO: Change email and password
+
+// TODO: Send password reset email
+
+// TODO: Authenticate Email address
+
+// TODO: Add displayName and photoURL w/i user's auth profile
