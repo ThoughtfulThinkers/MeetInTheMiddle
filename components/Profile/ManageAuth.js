@@ -23,21 +23,7 @@ import {
 
 class ManageAuth extends Component {
 
-  onEmailChange(text) {
-    this.props.emailChanged(text);
-  }
-
-  onPasswordChange(text) {
-    this.props.passwordChanged(text);
-  }
-
-  onNewPasswordChange(text) {
-
-  }
-
-  onConfirmNewPasswordChange(text) {
-
-  }
+  onSubmitUpdate
 
   render() {
     return (
@@ -61,6 +47,7 @@ class ManageAuth extends Component {
             </CardSection>
             <CardSection>
               <Input
+                secureTextEntry
                 label="New Password"
                 placeholder="new password"
                 value={this.props.newPassword}
@@ -69,6 +56,7 @@ class ManageAuth extends Component {
             </CardSection>
             <CardSection>
               <Input
+                secureTextEntry
                 label="Confim Password"
                 placeholder="new password"
                 value={this.props.newPassword}
@@ -122,9 +110,7 @@ export default connect(null, {
 })(ManageAuth);
 
 
-/*****************************************************
-
-
-
-
-*****************************************************/
+ManageAuth.propTypes = {
+  email: React.PropTypes.string,
+  password: React.PropTypes.string,
+};
