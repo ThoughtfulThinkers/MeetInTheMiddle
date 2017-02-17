@@ -130,7 +130,11 @@ class Meetup extends Component {
   }
 
   onChatPress() {
-    Actions.chat({ meetup: this.props.meetup });
+    if (this.props.auth.loggedIn) {
+      Actions.chat({ meetup: this.props.meetup });
+    } else {
+      Actions.login();
+    }
   }
 
   onVotePress() {
