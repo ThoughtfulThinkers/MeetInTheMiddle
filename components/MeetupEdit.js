@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 import { Text, View } from 'react-native';
 import DatePicker from 'react-native-datepicker';
 import VenuePicker from './Venues/VenuePicker';
@@ -9,8 +10,9 @@ import {
   meetupEdit,
   fetchMeetups,
   meetupsFetch,
-  userMeetupsFetch } from '../actions';
-import { Card, CardSection, Input, Button, Spinner } from './common';
+  userMeetupsFetch,
+  deleteMeetup } from '../actions';
+import { Card, CardSection, Input, Button, Spinner, DeleteButton } from './common';
 
 class MeetupEdit extends Component {
   onButtonPress() {
@@ -31,6 +33,13 @@ class MeetupEdit extends Component {
     Actions.venues();
   }
 
+  onDeletePress() {
+    const guests = _.map(this.props.meetup.users, (val, uid) => {
+      return uid;
+    });
+    this.props.deleteMeetup(this.props.meetup.uid, guests);
+  }
+
   render() {
     const { meetup } = this.props;
 
@@ -42,6 +51,18 @@ class MeetupEdit extends Component {
         </Button>);
     } else {
       button = <CardSection><Spinner size='small' /></CardSection>;
+    }
+
+    let deleteButton;
+    if (!this.props.loading) {
+      deleteButton = (
+        <DeleteButton
+          onPress={this.onDeletePress.bind(this)}
+        >
+          Delete Meetup
+        </DeleteButton>);
+    } else {
+      deleteButton = <CardSection><Spinner size='small' /></CardSection>;
     }
 
     return (
@@ -129,6 +150,7 @@ class MeetupEdit extends Component {
 
         <CardSection>
           {button}
+          {deleteButton}
         </CardSection>
       </Card>
     );
@@ -140,7 +162,13 @@ const styles = {
     fontSize: 18,
     paddingLeft: 20,
     flex: 1
-  }
+  },
+  deleteButton: {
+    backgroundColor: '#1ba6bd'
+  },
+  deleteText: {
+    color: 'white'
+  },
 };
 
 const mapStateToProps = (state) => {
@@ -150,4 +178,8 @@ const mapStateToProps = (state) => {
   return { meetup, loading, location };
 };
 
-export default connect(mapStateToProps, { meetupChange, meetupEdit, meetupsFetch, userMeetupsFetch })(MeetupEdit);
+export default connect(mapStateToProps, { meetupChange,
+                                          meetupEdit,
+                                          meetupsFetch,
+                                          userMeetupsFetch,
+                                          deleteMeetup })(MeetupEdit);

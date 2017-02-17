@@ -14,11 +14,14 @@ class MeetupListItem extends Component {
 
   renderVote(status, venues, location) {
     if (status === 'voting') {
-      let votingArray = _.map(this.props.meetup.venues, (val, uid) => {
-        return { ...val, uid };
-      });
-      votingArray = votingArray.sort((a, b) => b.votes - a.votes);
-      return <Text style={styles.voteStyle}>Vote: {votingArray[0].name}</Text>;
+      if (this.props.meetup.venues) {
+        let votingArray = _.map(this.props.meetup.venues, (val, uid) => {
+          return { ...val, uid };
+        });
+        votingArray = votingArray.sort((a, b) => b.votes - a.votes);
+        return <Text style={styles.voteStyle}>Vote: {votingArray[0].name}</Text>;
+        }
+        return null;
     }
     if (status === 'set') {
       return <Text style={styles.locationStyle}>{location.name}</Text>;

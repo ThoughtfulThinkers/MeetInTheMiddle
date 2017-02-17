@@ -6,3 +6,4 @@ export * from './Input';
 export * from './Spinner';
 export * from './Confirm';
 export * from './Circle';
+export * from './DeleteButton';
