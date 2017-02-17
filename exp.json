@@ -16,10 +16,10 @@
     "assetExts": ["ttf", "mp4"]
   },
   "ios": {
-   "bundleIdentifier": "com.meetupinthemiddle.exp",
+   "bundleIdentifier": "io.nickcoleman.meetinthemiddle",
   "supportsTablet": true
  },
   "android": {
-    "package": "org.rnplay.exp",
+    "package": "io.nickcoleman.meetinthemiddle",
   }
 }
