@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
+import firebase from 'firebase';
 import _ from 'lodash';
-import { Text, View } from 'react-native';
+import { Text, View, Alert } from 'react-native';
 import DatePicker from 'react-native-datepicker';
 import VenuePicker from './Venues/VenuePicker';
 import {
@@ -15,6 +16,19 @@ import {
 import { Card, CardSection, Input, Button, Spinner, DeleteButton } from './common';
 
 class MeetupEdit extends Component {
+
+  componentDidMount() {
+    if (!this.props.loggedIn) {
+      Actions.login({ type: 'reset' });
+    } else {
+      const { currentUser } = firebase.auth();
+      if (!currentUser || currentUser.uid !== this.props.meetup.user) {
+        Alert.alert('You aren\'t authorized to edit this meetup.');
+        Actions.pop({ type: 'reset' });
+      }
+    }
+  }
+
   onButtonPress() {
     this.props.meetupEdit(this.props.meetup);
     this.props.meetupsFetch(this.props.location);
@@ -38,6 +52,7 @@ class MeetupEdit extends Component {
       return uid;
     });
     this.props.deleteMeetup(this.props.meetup.uid, guests);
+    Actions.meetups({ type: 'refresh' });
   }
 
   render() {
@@ -175,7 +190,8 @@ const mapStateToProps = (state) => {
   const meetup = state.meetupForm;
   const location = state.filter.location;
   const loading = state.meetupForm.loading ? true : false;
-  return { meetup, loading, location };
+  const { loggedIn } = state.user;
+  return { meetup, loading, location, loggedIn };
 };
 
 export default connect(mapStateToProps, { meetupChange,
