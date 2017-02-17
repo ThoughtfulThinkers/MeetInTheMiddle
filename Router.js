@@ -1,7 +1,7 @@
 import React from 'react';
 import { Platform } from 'react-native';
 import { Scene, Router, Actions } from 'react-native-router-flux';
-
+import { Ionicons } from '@exponent/vector-icons';
 
 import ChatRoom from './components/Chat/ChatRoom';
 import ForgotPassword from './components/Profile/ForgotPassword';
@@ -32,7 +32,7 @@ const RouterComponent = () => {
   return (
     <Router navigationBarStyle={{ backgroundColor: '#1ba6bd' }} titleStyle={{ color: 'white' }} barButtonTextStyle={{ color: '#fef267' }} barButtonIconStyle={{ tintColor: 'rgb(254, 242, 103)' }} rightButtonTextStyle={{ color: '#ffca63' }} leftButtonTextStyle={{ color: '#ffca63' }} sceneStyle={{ paddingTop: Platform.OS === 'ios' ? 64 : 54 }}>
       <Scene key="auth">
-        <Scene initial key="meetups" component={Home} title="Meet In The Middle" leftTitle="Settings" onLeft={() => Actions.login({ type: 'reset' })} rightTitle="Add" onRight={() => Actions.add()} />
+        <Scene initial key="meetups" component={Home} title="Meet In The Middle" leftButtonImage={require('./assets/images/settings.png')} onLeft={() => Actions.login({ type: 'reset' })} rightButtonImage={require('./assets/images/add.png')} onRight={() => Actions.add()} />
         <Scene key="add" component={MeetupCreate} title="Add Meetup" />
         <Scene key="addLocation" component={MeetupLocationCreate} title="Location Settings" />
         <Scene key="chat" component={ChatRoom} title="Chat Room" style={{ paddingBottom: 40 }} />
