@@ -45,7 +45,7 @@ export default (state = INITIAL_STATE, action) => {
     }
 
     case LOGIN_USER:
-      console.log('LOGIN_USER REDUCER: ', action.payload);
+      // console.log('LOGIN_USER REDUCER: ', action.payload);
       return { ...state, loading: true, error: '' };
     case LOGIN_USER_SUCCESS:
       return { ...state, ...INITIAL_STATE, user: action.payload };
