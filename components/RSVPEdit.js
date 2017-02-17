@@ -21,8 +21,12 @@ class RSVPEdit extends Component {
     const { lat, lon, meetup, firstName, lastName } = this.props;
     const { uid, users } = meetup;
     const name = `${firstName} ${lastName}`;
-    this.props.editRsvp(lat, lon, uid, users, name);
-    Actions.pop();
+    if (lat === 0 && lon === 0) {
+      Alert.alert('Invalid location.');
+    } else {
+      this.props.editRsvp(lat, lon, uid, users, name);
+      Actions.pop();
+    }
   }
 
   onCurrentLocationPress() {
