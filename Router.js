@@ -38,13 +38,13 @@ const RouterComponent = () => {
         <Scene key="chat" component={ChatRoom} title="Chat Room" style={{ paddingBottom: 40 }} />
         <Scene key="edit" component={MeetupEdit} title="Edit Meetup" />
         <Scene key="forgotPassword" component={ForgotPassword} title="Rest Password" />
-        <Scene key="login" component={LoginForm} title="Account Management" leftTitle="Home" onLeft={() => Actions.meetups({ type: 'reset' })} />
-        <Scene key="manageAuth" component={ManageAuth} title="Update Authentication" leftTitle="Profile" onLeft={() => Actions.profileUpdate({ type: 'reset' })} />
-        <Scene key="manageEmail" component={ManageEmail} title="Update Email Address" leftTitle="Profile" onLeft={() => Actions.profileUpdate({ type: 'reset' })} />
+        <Scene key="login" component={LoginForm} title="Account Management" leftButtonImage={require('./assets/images/house.png')} onLeft={() => Actions.meetups({ type: 'reset' })} />
+        <Scene key="manageAuth" component={ManageAuth} title="Update Authentication" leftButtonImage={require('./assets/images/settings.png')} onLeft={() => Actions.profileUpdate({ type: 'reset' })} />
+        <Scene key="manageEmail" component={ManageEmail} title="Update Email Address" leftButtonImage={require('./assets/images/settings.png')} onLeft={() => Actions.profileUpdate({ type: 'reset' })} />
         <Scene key="map" component={Map} title="Map" />
-        <Scene key="meetup" component={Meetup} title="Meetup" rightTitle="Edit" onRight={() => Actions.edit()} leftTitle="Home" onLeft={() => Actions.meetups({ type: 'reset' })} />
-        <Scene key="profileCreate" component={ProfileCreate} title="Create Account" leftTitle="Home" onLeft={() => Actions.meetups({ type: 'reset' })} />
-        <Scene key="profileUpdate" component={ProfileUpdate} title="Update Profile" leftTitle="Home" onLeft={() => Actions.meetups({ type: 'reset' })} />
+        <Scene key="meetup" component={Meetup} title="Meetup" rightButtonImage={require('./assets/images/edit.png')} onRight={() => Actions.edit()} leftButtonImage={require('./assets/images/house.png')} onLeft={() => Actions.meetups({ type: 'reset' })} />
+        <Scene key="profileCreate" component={ProfileCreate} title="Create Account" leftButtonImage={require('./assets/images/house.png')} onLeft={() => Actions.meetups({ type: 'reset' })} />
+        <Scene key="profileUpdate" component={ProfileUpdate} title="Update Profile" leftButtonImage={require('./assets/images/house.png')} onLeft={() => Actions.meetups({ type: 'reset' })} />
         <Scene key="test" component={Test} title="Test" />
         <Scene key="rsvp" component={RSVP} title="RSVP" />
         <Scene key="rsvpEdit" component={RSVPEdit} title="Edit RSVP" />
