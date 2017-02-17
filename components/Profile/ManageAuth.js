@@ -1,9 +1,3 @@
-/**************************************************
-  ManageAuth.js
-  Used to manage a user's Email and password.
-  To change either of these, they'll neet to
-  authenticate with their current password
-**************************************************/
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Acttions } from 'react-native-router-flux';
@@ -18,30 +12,31 @@ import {
   emailChanged,
   loginUser,
   passwordChanged,
+  updateUserEmail,
+  updateUserPassword,
   userInputChanged,
 } from '../../actions';
 
 class ManageAuth extends Component {
 
-  onSubmitUpdate
+  onSubmitUpdate() {
+    const { email, password, newPassword, confirmPassword } = this.props;
+
+    console.log('onSubmitUpdate: ', password, newPassword, confirmPassword);
+    if (!password) {
+      console.log('ManageAuth: no pasword');
+      return;
+    }
+    if (newPassword && newPassword === confirmPassword) {
+      ('ManageAuth: calling updateUserPassword');
+      this.props.updateUserPassword(newPassword, password);
+    }
+  }
 
   render() {
     return (
       <Card>
         <Card>
-          <CardSection>
-            <Text>Enter Your New Email</Text>
-          </CardSection>
-          <CardSection>
-            <Input
-              label="New Email"
-              placeholder="email@domain.com"
-              value={this.props.email}
-              onChangeText={value => this.props.authInputChanged({ prop: 'email', value })}
-            />
-          </CardSection>
-          </Card>
-          <Card>
             <CardSection>
               <Text>Change Your Password</Text>
             </CardSection>
@@ -59,7 +54,7 @@ class ManageAuth extends Component {
                 secureTextEntry
                 label="Confim Password"
                 placeholder="new password"
-                value={this.props.newPassword}
+                value={this.props.confirmPassword}
                 onChangeText={value => this.props.authInputChanged({ prop: 'confirmPassword', value })}
               />
             </CardSection>
@@ -67,7 +62,7 @@ class ManageAuth extends Component {
         <Card>
           <CardSection>
             <Text style={styles.noticeStyle}>
-              Current Password Required To Update Your Email or Password
+              Current Password Required
             </Text>
           </CardSection>
           <CardSection>
@@ -81,7 +76,9 @@ class ManageAuth extends Component {
           </CardSection>
           <Card>
             <CardSection>
-              <Button>Update</Button>
+              <Button onPress={this.onSubmitUpdate.bind(this)}>
+                Update
+              </Button>
             </CardSection>
           </Card>
         </Card>
@@ -96,21 +93,23 @@ const styles = {
   }
 };
 
-const mapStatetoProps = ({ auth }) => {
-  const { email, password, newPassword, confirmPassword, } = auth;
-  return { email, password, newPassword, confirmPassword, };
+const mapStateToProps = ({ auth }) => {
+  const { password, newPassword, confirmPassword, } = auth;
+  return { password, newPassword, confirmPassword, };
 };
 
-export default connect(null, {
+export default connect(mapStateToProps, {
   authInputChanged,
   emailChanged,
   loginUser,
   passwordChanged,
+  updateUserEmail,
+  updateUserPassword,
   userInputChanged,
 })(ManageAuth);
 
 
-ManageAuth.propTypes = {
-  email: React.PropTypes.string,
-  password: React.PropTypes.string,
-};
+// ManageAuth.propTypes = {
+//   email: React.PropTypes.string,
+//   password: React.PropTypes.string,
+// };

@@ -47,6 +47,28 @@ export const resetAuthErrorState = () => {
 };
 
 /*****************************************************************
+  loadAuthenticatedUserState is used both in the physical login
+  process and to keep the user state between app restarts.  It
+  is first initialized in Home.js -- intial app entry -- and
+  is used in both AuthReducer and UserReducer
+*****************************************************************/
+
+export const loadAuthenticatedUserState = () => dispatch => {
+  const { currentUser } = firebase.auth();
+  if (!currentUser) {
+    dispatch({ type: LOAD_AUTHENTICATED_USER_STATE_SUCCESS, payload: {} });
+  } else {
+    const { email } = currentUser;
+    firebase.database().ref(`/users/${currentUser.uid}`)
+      .on('value', snapshot => {
+        let userData = snapshot.val();
+        userData = { ...userData, email };
+        dispatch({ type: LOAD_AUTHENTICATED_USER_STATE_SUCCESS, payload: userData });
+      });
+  }
+};
+
+/*****************************************************************
     Access Actions
     setLoginStatus is used to cofirm a user's login status
     by app components.  This is especially useful when
@@ -92,24 +114,6 @@ export const logoutUser = () => dispatch => {
 const loginUserFail = (dispatch) => {
   dispatch({ type: LOGIN_USER_FAIL });
   Actions.login({ type: 'reset' });
-};
-
-/*****************************************************************
-  Manage User
-  loadAuthenticatedUserState is used both in the physical login
-  process and to keep the user state between app restarts
-*****************************************************************/
-
-export const loadAuthenticatedUserState = () => dispatch => {
-  const { currentUser } = firebase.auth();
-  if (!currentUser) {
-    dispatch({ type: LOAD_AUTHENTICATED_USER_STATE_SUCCESS, payload: {} });
-  } else {
-    firebase.database().ref(`/users/${currentUser.uid}`)
-      .on('value', (snapshot) => {
-        dispatch({ type: LOAD_AUTHENTICATED_USER_STATE_SUCCESS, payload: snapshot.val() });
-      });
-  }
 };
 
 /*****************************************************************
@@ -206,7 +210,36 @@ export const updateUser = data => {
 };
 
 // TODO: Change email and password
-// export const updateUserEmail
+export const updateUserEmail = (emailAddress, password) => dispatch => {
+  const user = firebase.auth().currentUser;
+  const credential = firebase.auth.EmailAuthProvider.credential(
+    user.email,
+    password
+  );
+  user.reauthenticate(credential)
+    .then(() => {
+      user.updateEmail(emailAddress)
+        .then(dispatch(Actions.profileUpdate({ type: 'reset' })))
+    })
+    .catch(error => console.log(error.message));
+};
+
+export const updateUserPassword = (newPassword, password) => dispatch => {
+  console.log('updateUserPassword');
+  const user = firebase.auth().currentUser;
+  // const credential = { email: user.email, password };
+  const credential = firebase.auth.EmailAuthProvider.credential(
+    user.email,
+    password
+  );
+  user.reauthenticate(credential)
+    .then(() => {
+      console.log('updatePassword called');
+      user.updatePassword(newPassword)
+      .then(() => Actions.profileUpdate({ type: 'reset' }));
+    })
+    .catch(error => console.log(error));
+};
 
 // TODO: Send password reset email
 export const emailPasswordReset = emailAddress => dispatch => {

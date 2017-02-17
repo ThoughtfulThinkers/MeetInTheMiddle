@@ -8,6 +8,7 @@ import ForgotPassword from './components/Profile/ForgotPassword';
 import Home from './components/Home';
 import LoginForm from './components/LoginForm';
 import ManageAuth from './components/Profile/ManageAuth';
+import ManageEmail from './components/Profile/ManageEmail';
 import Map from './components/Map';
 import MeetupCreate from './components/MeetupCreate';
 import MeetupLocationCreate from './components/MeetupLocationCreate';
@@ -38,7 +39,8 @@ const RouterComponent = () => {
         <Scene key="edit" component={MeetupEdit} title="Edit Meetup" />
         <Scene key="forgotPassword" component={ForgotPassword} title="Rest Password" />
         <Scene key="login" component={LoginForm} title="Account Management" leftTitle="Home" onLeft={() => Actions.meetups({ type: 'reset' })} />
-        <Scene key="manageAuth" component={ManageAuth} title="Update Authentication" leftTitle="Account" onLeft={() => Actions.profileUpdate({ type: 'reset' })} />
+        <Scene key="manageAuth" component={ManageAuth} title="Update Authentication" leftTitle="Profile" onLeft={() => Actions.profileUpdate({ type: 'reset' })} />
+        <Scene key="manageEmail" component={ManageEmail} title="Update Email Address" leftTitle="Profile" onLeft={() => Actions.profileUpdate({ type: 'reset' })} />
         <Scene key="map" component={Map} title="Map" />
         <Scene key="meetup" component={Meetup} title="Meetup" rightTitle="Edit" onRight={() => Actions.edit()} leftTitle="Home" onLeft={() => Actions.meetups({ type: 'reset' })} />
         <Scene key="profileCreate" component={ProfileCreate} title="Create Account" leftTitle="Home" onLeft={() => Actions.meetups({ type: 'reset' })} />
