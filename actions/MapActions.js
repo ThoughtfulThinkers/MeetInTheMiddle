@@ -31,18 +31,25 @@ export const createVoting = (lat, lon, meetup) => {
     .then(response => response.json())
     .then(data => {
       let venues;
-      if (data.response.groups.length === 0 || data.response.groups[0].items.length === 0) {
+      if (!data.response.groups || data.response.groups.length === 0 || data.response.groups[0].items.length === 0) {
         const search2 = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lon}&key=${apiKey}`;
         fetch(search2)
         .then(response => response.json())
         .then((data2) => {
+          let formattedAddress;
+          if (!data2 || !data2.results || !data2.results[0] || !data2.results[0].formatted_address) {
+            formattedAddress = 'Invalid Location';
+          } else {
+            formattedAddress = data2.results[0].formatted_address;
+          }
           const location = {
-            formattedAddress: [data2.results[0].formatted_address],
+            formattedAddress: [formattedAddress],
             lat,
             lon,
-            name: data2.results[0].formatted_address,
+            name: formattedAddress,
             votes: 0
           };
+          console.log('l', location);
           dispatch(changeLocation(location, meetup.uid));
           dispatch(changeStatus(meetup, 'set'));
         })

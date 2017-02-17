@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import firebase from 'firebase';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { Text } from 'react-native';
@@ -7,7 +8,12 @@ import { meetupChange, resetMeetup } from '../actions';
 import { Card, CardSection, Input, Button } from './common';
 
 class MeetupCreate extends Component {
+
   componentDidMount() {
+    if (!this.props.loggedIn) {
+      Actions.login({ type: 'reset' });
+      return;
+    }
     this.props.resetMeetup();
   }
 
@@ -87,9 +93,11 @@ const styles = {
   }
 };
 
-const mapStateToProps = ({ meetupForm }) => {
+const mapStateToProps = ({ meetupForm, user }) => {
   const { name, description, start, end } = meetupForm;
-  return { name, description, start, end };
+  const { loggedIn } = user;
+  console.log(loggedIn)
+  return { name, description, start, end, loggedIn };
 };
 
 export default connect(mapStateToProps, { meetupChange, resetMeetup })(MeetupCreate);

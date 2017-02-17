@@ -165,31 +165,40 @@ class Meetup extends Component {
 
   renderRsvp(status) {
     if (status === 'created' || status === 'guests') {
-      return (<CardSection style={{ flexDirection: 'row' }}>
+      return (
               <Button onPress={this.onRSVPPress.bind(this)}>
                 RSVP
-              </Button>
+              </Button>);
+    }
+    return <Text />;
+  }
+
+  renderInvite(status) {
+    if (status === 'created' || status === 'guests') {
+      return (
               <Button onPress={this.onInvitePress.bind(this)}>
                 Invite Friends
-              </Button>
-            </CardSection>);
+              </Button>);
     }
     return <Text />;
   }
 
   renderVoting(status) {
     if (status === 'voting') {
-      let votingArray = _.map(this.props.meetup.venues, (val, uid) => {
-        return { ...val, uid };
-      });
-      votingArray = votingArray.sort((a, b) => b.votes - a.votes);
-      return (
-          <CardSection style={{ flexDirection: 'column', height: 110 }}>
-              <Text style={styles.textStyle}>Top Location: {votingArray[0].name}</Text>
-              <Button onPress={this.onVotePress.bind(this)}>
-                  Vote on Location
-              </Button>
-          </CardSection>);
+        let votingArray = _.map(this.props.meetup.venues, (val, uid) => {
+          return { ...val, uid };
+        });
+        if (votingArray.length === 0) {
+          return null;
+        }
+        votingArray = votingArray.sort((a, b) => b.votes - a.votes);
+        return (
+            <CardSection style={{ flexDirection: 'column', height: 110 }}>
+                <Text style={styles.textStyle}>Top Location: {votingArray[0].name}</Text>
+                <Button onPress={this.onVotePress.bind(this)}>
+                    Vote on Location
+                </Button>
+            </CardSection>);
     }
     return <Text />;
   }
@@ -217,7 +226,10 @@ class Meetup extends Component {
           <Text style={styles.textStyle}>Description: {meetup.description}</Text>
         </CardSection>
           {this.renderLocation(status)}
+        <CardSection style={{ flexDirection: 'row' }}>
           {this.renderRsvp(status)}
+          {this.renderInvite(status)}
+        </CardSection>
 
         <CardSection style={{ flexDirection: 'row' }}>
           {this.renderMap(status)}
@@ -233,7 +245,6 @@ class Meetup extends Component {
           <Text style={styles.titleStyle}>Attending</Text>
           {this.renderGuests(status)}
         </CardSection>
-        <Text style={styles.hidden}>{status}</Text>
       </Card>
     );
   }
@@ -255,9 +266,6 @@ const styles = {
   addressView: {
     padding: 5
   },
-  hidden: {
-    color: 'black'
-  }
 };
 const mapStateToProps = state => {
   const meetup = state.meetupForm;
