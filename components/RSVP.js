@@ -48,7 +48,6 @@ class RSVP extends Component {
     onPreferredLocationPress() {
       const { lat, lon } = this.props.user.location;
       this.props.changeRSVP(lat, lon);
-      Alert.alert('Location set, please confirm RSVP.');
     }
 
   render() {
@@ -57,6 +56,7 @@ class RSVP extends Component {
         <CardSection style={{ justifyContent: 'center' }}>
           <Text style={styles.titleStyle}>
             Where are you coming from?
+            Please select a location in {this.props.meetupForm.state}.
           </Text>
         </CardSection>
         <CardSection>
@@ -89,10 +89,10 @@ const styles = {
   }
 };
 
-const mapStateToProps = ({ rsvp, user }) => {
+const mapStateToProps = ({ rsvp, user, meetupForm }) => {
   const { lat, lon, address } = rsvp;
   const { firstName, lastName } = user;
-  return { lat, lon, firstName, lastName, user, address };
+  return { lat, lon, firstName, lastName, user, address, meetupForm };
 };
 
 export default connect(mapStateToProps, { setRsvp, changeRSVP, changeStatus })(RSVP);

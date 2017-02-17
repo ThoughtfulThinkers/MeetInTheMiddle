@@ -47,13 +47,13 @@ class MeetupLocationCreate extends Component {
 
     return (
       <Card>
-        <View><Text>{`1. What state will ${this.props.name} be in?`}</Text></View>
+        <View><Text>1. What state will your event be in?</Text></View>
         <CardSection>
           <Text style={styles.pickerTextStyle}>{this.props.location}</Text>
           <Button onPress={this.onStatePress.bind(this)}>Change State</Button>
         </CardSection>
 
-        <View><Text>{`2. What kind of place do you want ${this.props.name} to be in?`}</Text></View>
+        <View><Text>2. What kind of place do you want your event to be in?</Text></View>
         <CardSection style={{ alignItems: 'center' }}>
           <Text style={styles.pickerTextStyle}>{venue}</Text>
           <Button onPress={this.onVenuePress.bind(this)}>Change Venue</Button>
@@ -61,10 +61,12 @@ class MeetupLocationCreate extends Component {
 
         <View>
         <Text>
-          {`3. We will find some great ${venue}s ` +
-          'for you that will let everyone meet in the middle. ' +
-          'When do you want to start voting on which is the best? ' +
-          'No guests can RSVP after this time.'}
+          3. We will find some great locations
+          for you that will let everyone meet in the middle.
+          When do you want to start voting on which is the best?
+        </Text>
+        <Text style={styles.importantText}>
+          No guests can RSVP after this time.
         </Text>
         </View>
         <CardSection style={{ alignItems: 'center' }}>
@@ -112,6 +114,9 @@ const styles = {
     paddingLeft: 20,
     flex: 1,
     alignSelf: 'center'
+  },
+  importantText: {
+    fontWeight: 'bold'
   }
 };
 

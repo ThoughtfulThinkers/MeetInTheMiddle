@@ -23,10 +23,10 @@ const INITIAL_STATE = {
 };
 
 export default (state = INITIAL_STATE, action) => {
+
   switch (action.type) {
     case LOAD_AUTHENTICATED_USER_STATE_SUCCESS: {
-      const { firstName, lastName, image, meetups, location } = action.payload;
-      return { ...state, firstName, lastName, image, meetups, location };
+      return { ...state, ...action.payload };
     }
 
     case CREATE_USER_SUCCESS: {
@@ -57,8 +57,8 @@ export default (state = INITIAL_STATE, action) => {
       return state;
     }
 
-    default:
+    default: {
       return state;
-
+    }
   }
 };
