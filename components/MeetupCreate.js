@@ -93,10 +93,9 @@ const styles = {
   }
 };
 
-const mapStateToProps = ({ meetupForm, user }) => {
+const mapStateToProps = ({ meetupForm, auth }) => {
   const { name, description, start, end } = meetupForm;
-  const { loggedIn } = user;
-  console.log(loggedIn)
+  const { loggedIn } = auth;
   return { name, description, start, end, loggedIn };
 };
 

@@ -3,7 +3,8 @@ import {
   FETCH_MEETUPS_SUCCESS,
   FETCH_USER_MEETUPS,
   FETCH_USER_MEETUPS_SUCCESS,
-  MEETUP_CREATE_SUCCESS
+  MEETUP_CREATE_SUCCESS,
+  DELETE_RSVP_SUCCESS
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -23,6 +24,8 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, userLoading: true };
     case FETCH_USER_MEETUPS_SUCCESS:
       return { ...state, userMeetups: action.payload, userLoading: false };
+    case DELETE_RSVP_SUCCESS:
+      return { ...state, userMeetups: { ...state.userMeetups, [action.id]: action.meetup } };
     default:
       return state;
   }

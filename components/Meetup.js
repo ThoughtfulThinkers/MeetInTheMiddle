@@ -38,7 +38,6 @@ class Meetup extends Component {
     let fillerStatus = status;
     let statusSet = false;
     while (!statusSet) {
-      console.log('meetup status: ', fillerStatus);
       switch (fillerStatus) {
         case 'created': {
           const guests = _.map(this.props.meetup.users, (val, uid) => {
@@ -106,7 +105,11 @@ class Meetup extends Component {
   //button methods
   onRSVPPress() {
     if (this.props.auth.loggedIn) {
-      Actions.rsvp({ meetup: this.props.meetup });
+      if (!this.props.user.meetups[this.props.meetup.uid]) {
+        Actions.rsvp({ meetup: this.props.meetup });
+      } else {
+        Actions.rsvpEdit({ meetup: this.props.meetup });
+      }
     } else {
       Actions.login();
     }
@@ -271,7 +274,7 @@ const mapStateToProps = state => {
   const meetup = state.meetupForm;
   const status = state.meetupForm.status;
   const { auth, user } = state;
-  return { meetup, auth, status };
+  return { meetup, auth, user, status };
 };
 
 export default connect(mapStateToProps, { changeStatus, createVoting, changeLocation })(Meetup);

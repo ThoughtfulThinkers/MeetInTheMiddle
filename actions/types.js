@@ -67,3 +67,4 @@ export const RESET_MEETUP = 'RESET_MEETUP';
 export const CHANGE_RSVP = 'CHANGE_RSVP';
 export const SET_RSVP = 'SET_RSVP';
 export const SET_RSVP_SUCCESS = 'SET_RSVP_SUCCESS';
+export const DELETE_RSVP_SUCCESS = 'DELETE_RSVP_SUCCESS';

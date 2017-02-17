@@ -1,7 +1,8 @@
 import {
   CHANGE_RSVP,
   SET_RSVP,
-  SET_RSVP_SUCCESS
+  SET_RSVP_SUCCESS,
+  DELETE_RSVP_SUCCESS
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -17,6 +18,8 @@ export default (state = INITIAL_STATE, action) => {
     case SET_RSVP:
       return { ...state, loading: true };
     case SET_RSVP_SUCCESS:
+      return INITIAL_STATE;
+    case DELETE_RSVP_SUCCESS:
       return INITIAL_STATE;
     default:
       return state;

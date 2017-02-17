@@ -8,7 +8,7 @@ import {
   EDIT_MEETUP_SUCCESS,
   CREATE_VOTING_SUCCESS,
   SET_VOTE,
-  RESET_MEETUP
+  RESET_MEETUP,
 } from '../actions/types';
 
 const now = moment().format('YYYY-MM-DD HH:mm');
