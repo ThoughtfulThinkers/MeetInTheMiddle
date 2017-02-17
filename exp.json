@@ -4,7 +4,7 @@
   "slug": "meetup-in-the-middle",
   "privacy": "public",
   "sdkVersion": "13.0.0",
-  "version": "1.0.01",
+  "version": "1.0.02",
   "orientation": "portrait",
   "primaryColor": "#cccccc",
   "icon": "./assets/images/MeetInTheMiddleLogo.png",
@@ -17,7 +17,10 @@
   },
   "ios": {
    "bundleIdentifier": "io.nickcoleman.meetinthemiddle",
-  "supportsTablet": true
+  "supportsTablet": true,
+  "config": {
+    "usesNonExemptEncryption": false
+  }
  },
   "android": {
     "package": "io.nickcoleman.meetinthemiddle",
