@@ -49,7 +49,6 @@ export const createVoting = (lat, lon, meetup) => {
             name: formattedAddress,
             votes: 0
           };
-          console.log('l', location);
           dispatch(changeLocation(location, meetup.uid));
           dispatch(changeStatus(meetup, 'set'));
         })

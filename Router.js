@@ -22,6 +22,7 @@ import VotingList from './components/Voting/VotingList';
 //RSVP
 import LocationSelector from './components/LocationSelector';
 import RSVP from './components/RSVP';
+import RSVPEdit from './components/RSVPEdit';
 
 //Venue
 import VenuePicker from './components/Venues/VenuePicker';
@@ -44,6 +45,7 @@ const RouterComponent = () => {
         <Scene key="profileUpdate" component={ProfileUpdate} title="Update Profile" leftTitle="Home" onLeft={() => Actions.meetups({ type: 'reset' })} />
         <Scene key="test" component={Test} title="Test" />
         <Scene key="rsvp" component={RSVP} title="RSVP" />
+        <Scene key="rsvpEdit" component={RSVPEdit} title="Edit RSVP" />
         <Scene key="searchLocation" component={LocationSelector} title="Choose Location" />
         <Scene key="states" component={StateSelector} title="Choose State" />
         <Scene key="venues" component={VenuePicker} title="Choose Venue" />

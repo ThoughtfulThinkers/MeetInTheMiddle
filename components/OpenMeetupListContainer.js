@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import { View, Text } from 'react-native';
+import moment from 'moment';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { meetupsFetch, setText, setLocation } from '../actions';
@@ -75,8 +76,17 @@ const styles = {
 };
 
 const mapStateToProps = state => {
-  const meetups = _.map(state.meetups.cityMeetups, (val, uid) => {
+  let meetups = _.map(state.meetups.cityMeetups, (val, uid) => {
     return { ...val, uid };
+  });
+  meetups = meetups.sort((a, b) => {
+    const aDate = moment(a.start);
+    const bDate = moment(b.start);
+    return aDate.diff(bDate);
+  });
+  const removeDate = moment().subtract(1, 'months');
+  meetups = meetups.filter((a) => {
+    return moment(a.end).isAfter(removeDate);
   });
   return {
     meetups,

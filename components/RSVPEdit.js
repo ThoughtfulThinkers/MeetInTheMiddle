@@ -4,11 +4,11 @@ import Exponent from 'exponent';
 import { Text, Alert } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { setRsvp, changeRSVP, changeStatus } from '../actions';
+import { setRsvp, changeRSVP, changeStatus, editRsvp, deleteRsvp } from '../actions';
 import LocationSelector from './LocationSelector';
-import { CardSection, Card, Button } from './common';
+import { CardSection, Card, Button, DeleteButton } from './common';
 
-class RSVP extends Component {
+class RSVPEdit extends Component {
 
   componentDidMount() {
     const { currentUser } = firebase.auth();
@@ -24,7 +24,7 @@ class RSVP extends Component {
     if (lat === 0 && lon === 0) {
       Alert.alert('Invalid location.');
     } else {
-      this.props.setRsvp(lat, lon, uid, users, name);
+      this.props.editRsvp(lat, lon, uid, users, name);
       Actions.pop();
     }
   }
@@ -49,6 +49,11 @@ class RSVP extends Component {
       const { lat, lon } = this.props.user.location;
       this.props.changeRSVP(lat, lon);
       Alert.alert('Location set, please confirm RSVP.');
+    }
+
+    onDeletePress() {
+      this.props.deleteRsvp(this.props.meetup);
+      Actions.pop();
     }
 
   render() {
@@ -77,6 +82,9 @@ class RSVP extends Component {
           <Button onPress={this.onPress.bind(this)}>
             Confirm RSVP
           </Button>
+          <DeleteButton onPress={this.onDeletePress.bind(this)}>
+            Delete RSVP
+          </DeleteButton>
         </CardSection>
       </Card>
     );
@@ -89,10 +97,12 @@ const styles = {
   }
 };
 
-const mapStateToProps = ({ rsvp, user }) => {
+const mapStateToProps = (state, props) => {
+  const { rsvp, user } = state;
   const { lat, lon, address } = rsvp;
   const { firstName, lastName } = user;
-  return { lat, lon, firstName, lastName, user, address };
+  const oldRSVP = user.meetups[props.meetup.uid];
+  return { lat, lon, firstName, lastName, user, address, oldRSVP };
 };
 
-export default connect(mapStateToProps, { setRsvp, changeRSVP, changeStatus })(RSVP);
+export default connect(mapStateToProps, { setRsvp, changeRSVP, changeStatus, editRsvp, deleteRsvp })(RSVPEdit);

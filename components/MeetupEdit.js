@@ -190,7 +190,7 @@ const mapStateToProps = (state) => {
   const meetup = state.meetupForm;
   const location = state.filter.location;
   const loading = state.meetupForm.loading ? true : false;
-  const { loggedIn } = state.user;
+  const { loggedIn } = state.auth;
   return { meetup, loading, location, loggedIn };
 };
 
