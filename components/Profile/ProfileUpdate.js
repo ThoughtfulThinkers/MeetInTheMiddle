@@ -53,11 +53,18 @@ class ProfileUpdate extends Component {
       <ScrollView>
       <Card>
         <CardSection>
-          <Button onPress={() => Actions.manageAuth()} >
-            Update  Email and Password
+          <Text>Current email: {this.props.email}</Text>
+        </CardSection>
+        <CardSection>
+          <Button onPress={() => Actions.manageEmail()} >
+            Update Email Address
           </Button>
         </CardSection>
-
+        <CardSection>
+          <Button onPress={() => Actions.manageAuth()} >
+            Update Password
+          </Button>
+        </CardSection>
         <ProfileForm />
         <Text style={styles.errorTextStyle}>{this.props.error}</Text>
         <CardSection>

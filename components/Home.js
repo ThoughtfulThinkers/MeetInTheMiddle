@@ -14,14 +14,14 @@ import {
 class Home extends Component {
   componentWillMount() {
     firebase.auth().onAuthStateChanged(user => {
-      console.log('Login: Auth State Changed: ', user);
-      this.props.loadAuthenticatedUserState();
+      // console.log('Login: Auth State Changed: ', user);
+      this.props.loadAuthenticatedUserState(user);
       if (user) {
-        console.log('Set Login Status: logged In ');
+        // console.log('Set Login Status: logged In ');
         this.props.setLoginStatus(true);
         this.props.userMeetupsFetch();
       } else {
-        console.log('Set Login Status: logged out ');
+        // console.log('Set Login Status: logged out ');
         this.props.setLoginStatus(false);
       }
     });

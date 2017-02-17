@@ -1,6 +1,7 @@
 import {
   AUTH_INPUT_CHANGED,
   EMAIL_CHANGED,
+  LOAD_AUTHENTICATED_USER_STATE_SUCCESS,
   LOGIN_USER_SUCCESS,
   LOGIN_USER_FAIL,
   LOGIN_USER,
@@ -30,11 +31,19 @@ export default (state = INITIAL_STATE, action) => {
       const { prop, value } = action.payload;
       return { ...state, [prop]: value };
     }
+
     case SET_LOGIN_STATUS: {
       return { ...state, loggedIn: action.payload };
     }
+
     case EMAIL_CHANGED:
       return { ...state, email: action.payload };
+
+    case LOAD_AUTHENTICATED_USER_STATE_SUCCESS: {
+      const { email } = action.payload;
+      return { ...state, email };
+    }
+
     case LOGIN_USER:
       console.log('LOGIN_USER REDUCER: ', action.payload);
       return { ...state, loading: true, error: '' };
