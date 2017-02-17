@@ -7,9 +7,9 @@
   "version": "1.0.0",
   "orientation": "portrait",
   "primaryColor": "#cccccc",
-  "icon": "./assets/MeetInTheMiddleLogo.png",
+  "icon": "./assets/images/MeetInTheMiddleLogo.png",
   "loading": {
-    "icon": "./assets/MeetInTheMiddleLogo.png",
+    "icon": "./assets/images/MeetInTheMiddleLogo.png",
     "hideExponentText": true
   },
   "packagerOpts": {
