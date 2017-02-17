@@ -1,21 +1,25 @@
 {
   "name": "meetup-in-the-middle",
-  "description": "An empty new project",
+  "description": "An app for arranging meetups in the middle",
   "slug": "meetup-in-the-middle",
   "privacy": "public",
   "sdkVersion": "13.0.0",
   "version": "1.0.0",
   "orientation": "portrait",
   "primaryColor": "#cccccc",
-  "icon": "https://s3.amazonaws.com/exp-brand-assets/ExponentEmptyManifest_192.png",
+  "icon": "./assets/MeetInTheMiddleLogo.png",
   "loading": {
-    "icon": "https://s3.amazonaws.com/exp-brand-assets/ExponentEmptyManifest_192.png",
-    "hideExponentText": false
+    "icon": "./assets/MeetInTheMiddleLogo.png",
+    "hideExponentText": true
   },
   "packagerOpts": {
     "assetExts": ["ttf", "mp4"]
   },
   "ios": {
-    "supportsTablet": true
+   "bundleIdentifier": "com.meetupinthemiddle.exp",
+  "supportsTablet": true
+ },
+  "android": {
+    "package": "org.rnplay.exp",
   }
 }
