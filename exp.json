@@ -17,9 +17,14 @@
   },
   "ios": {
    "bundleIdentifier": "io.nickcoleman.meetinthemiddle",
-  "supportsTablet": true
+  "supportsTablet": true,
  },
   "android": {
     "package": "io.nickcoleman.meetinthemiddle",
+    "config": {
+      "googleMaps": {
+        "apiKey": "AIzaSyD3M7ujMrm0FDHqNpfWQN9QVqkvaJ3Wws0"
+        }
+    }
   }
 }
