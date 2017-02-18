@@ -1,6 +1,6 @@
 import { Actions } from 'react-native-router-flux';
 import 'whatwg-fetch';
-import { googlePlacesConfig } from '../envConfig';
+import { GOOGLE_GEO_API_KEY } from '../envConfig';
 
 import {
   FETCH_GEOLOCATION_BY_FULL_ADDRESS_SUCCESS
@@ -9,11 +9,9 @@ import {
 /**************************************************
   Google
 **************************************************/
-// const GOOGLE_PLACES_API = googlePlacesConfig.apiKey;
-const GOOGLE_API = 'AIzaSyDzk0eKI5tnKWkSORpDTL32iZ15QjxQxeg';
 export const fetchGeoLocationByFullAddress = (street, city, state) => dispatch => {
   const fullAddress = `${street},${city},${state}`;
-  const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${fullAddress}&key=${GOOGLE_API}`;
+  const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${fullAddress}&key=${GOOGLE_GEO_API_KEY}`;
   fetch(url)
     .then(response => response.json())
     .then(data => {
