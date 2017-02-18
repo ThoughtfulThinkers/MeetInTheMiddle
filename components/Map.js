@@ -1,6 +1,6 @@
 import React from 'react';
 import { Components } from 'exponent';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 import _ from 'lodash';
 import { Actions } from 'react-native-router-flux';
 
@@ -67,8 +67,9 @@ export default class Map extends React.Component {
       return { ...val, uid };
     });
     return (
+      <View style={styles.container}>
       <Components.MapView
-        style={{ flex: 1 }}
+        style={styles.map}
         initialRegion={{
           latitude: lat,
           longitude: lon,
@@ -88,6 +89,26 @@ export default class Map extends React.Component {
         />
         {this.renderVenues(status, venues, location)}
       </Components.MapView>
+      </View>
     );
   }
 }
+
+const styles = {
+  container: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
+  map: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0
+  },
+};
