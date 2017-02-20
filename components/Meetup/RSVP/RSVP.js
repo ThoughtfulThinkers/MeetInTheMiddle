@@ -4,9 +4,9 @@ import Exponent from 'exponent';
 import { Text, Alert } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { setRsvp, changeRSVP, changeStatus } from '../actions';
-import LocationSelector from './LocationSelector';
-import { CardSection, Card, Button } from './common';
+import { setRsvp, changeRSVP, changeStatus } from '../../../actions';
+import LocationSelector from '../../LocationSelector';
+import { CardSection, Card, Button } from '../../common';
 
 class RSVP extends Component {
 

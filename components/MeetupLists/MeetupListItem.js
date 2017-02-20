@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 import { Actions } from 'react-native-router-flux';
 import { Text, View, TouchableWithoutFeedback } from 'react-native';
-import { setCurrentMeetup } from '../actions';
-import { CardSection } from './common';
+import { setCurrentMeetup } from '../../actions';
+import { CardSection } from '../common';
 
 class MeetupListItem extends Component {
   onRowPress() {

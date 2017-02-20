@@ -12,8 +12,8 @@ import {
   fetchMeetups,
   meetupsFetch,
   userMeetupsFetch,
-  deleteMeetup } from '../actions';
-import { Card, CardSection, Input, Button, Spinner, DeleteButton } from './common';
+  deleteMeetup } from '../../actions';
+import { Card, CardSection, Input, Button, Spinner, DeleteButton } from '../common';
 
 class MeetupEdit extends Component {
 

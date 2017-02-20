@@ -3,9 +3,9 @@ import _ from 'lodash';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import { View, Text } from 'react-native';
-import { userMeetupsFetch } from '../actions';
+import { userMeetupsFetch } from '../../actions';
 import MeetupList from './MeetupList';
-import { CardSection, Spinner } from './common';
+import { CardSection, Spinner } from '../common';
 
 
 class UserMeetupListContainer extends Component {

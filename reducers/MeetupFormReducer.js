@@ -11,22 +11,27 @@ import {
   RESET_MEETUP,
 } from '../actions/types';
 
-const now = moment().format('YYYY-MM-DD HH:mm');
+const thirtyMin = moment().add(30, 'minutes').format('YYYY-MM-DD HH:mm');
+const hour = moment().add(1, 'hour').format('YYYY-MM-DD HH:mm');
+const hourTwo = moment().add(2, 'hour').format('YYYY-MM-DD HH:mm');
+const hourThree = moment().add(3, 'hour').format('YYYY-MM-DD HH:mm');
+
 const INITIAL_STATE = {
   name: '',
   description: '',
-  start: now,
-  end: now,
+  start: hourTwo,
+  end: hourThree,
   state: 'New York',
   venue: { name: 'Top Picks', id: 'topPicks' },
   venues: {},
   status: 'created',
   location: '',
-  voteStart: now,
-  voteEnd: now
+  voteStart: thirtyMin,
+  voteEnd: hour
 };
 
 export default (state = INITIAL_STATE, action) => {
+  console.log(state.start);
   switch (action.type) {
     case MEETUP_CHANGED:
       return { ...state, [action.prop]: action.value };

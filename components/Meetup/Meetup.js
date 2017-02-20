@@ -4,11 +4,11 @@ import _ from 'lodash';
 import { Actions } from 'react-native-router-flux';
 import moment from 'moment';
 import { Text, View, Share, TouchableWithoutFeedback, Alert } from 'react-native';
-import { changeStatus, createVoting, changeLocation } from '../actions';
+import { changeStatus, createVoting, changeLocation } from '../../actions';
 
-import GuestList from './GuestList';
+import GuestList from './GuestList/GuestList';
 import VotingList from './Voting/VotingList';
-import { CardSection, Card, Button } from './common';
+import { CardSection, Card, Button } from '../common';
 
 const getAve = (array) => {
   const sum = array.reduce((a, b) => a + b);

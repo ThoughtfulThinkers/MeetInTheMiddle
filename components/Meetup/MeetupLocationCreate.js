@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import moment from 'moment';
 import { Text, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import DatePicker from 'react-native-datepicker';
 import {
   addMeetup,
   meetupChange,
-} from '../actions';
-import { Card, CardSection, Input, Button, Spinner } from './common';
+} from '../../actions';
+import { Card, CardSection, Input, Button, Spinner } from '../common';
 
 class MeetupLocationCreate extends Component {
   constructor() {
@@ -45,6 +46,8 @@ class MeetupLocationCreate extends Component {
       button = <CardSection><Spinner size='small' /></CardSection>;
     }
 
+    const thirtyMin = moment().add(30, 'minutes').format('YYYY-MM-DD HH:mm');
+
     return (
       <Card>
         <View><Text>1. What state will your event be in?</Text></View>
@@ -74,6 +77,8 @@ class MeetupLocationCreate extends Component {
           <DatePicker
             style={{ flex: 2 }}
             date={this.props.voteStart}
+            minDate={thirtyMin}
+            maxDate={this.props.start}
             mode="datetime"
             format="YYYY-MM-DD HH:mm"
             confirmBtnText="Choose"
@@ -92,6 +97,8 @@ class MeetupLocationCreate extends Component {
           <DatePicker
             style={{ flex: 2 }}
             date={this.props.voteEnd}
+            minDate={this.props.voteStart}
+            maxDate={this.props.start}
             mode="datetime"
             format="YYYY-MM-DD HH:mm"
             confirmBtnText="Choose"

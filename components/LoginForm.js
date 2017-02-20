@@ -13,7 +13,7 @@ import {
   resetAuthErrorState,
   setLoginStatus,
 } from '../actions';
-import MeetupList from './MeetupList';
+import MeetupList from './MeetupLists/MeetupList';
 
 class LoginForm extends Component {
 

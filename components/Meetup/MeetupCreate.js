@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
+import moment from 'moment';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { Text } from 'react-native';
 import DatePicker from 'react-native-datepicker';
-import { meetupChange, resetMeetup } from '../actions';
-import { Card, CardSection, Input, Button } from './common';
+import { meetupChange, resetMeetup } from '../../actions';
+import { Card, CardSection, Input, Button } from '../common';
 
 class MeetupCreate extends Component {
 
@@ -26,6 +27,8 @@ class MeetupCreate extends Component {
   }
 
   render() {
+    const start = moment().add(1, 'hour').format('YYYY-MM-DD HH:mm');
+
     return (
       <Card>
         <CardSection>
@@ -52,6 +55,7 @@ class MeetupCreate extends Component {
           <DatePicker
             style={{ flex: 2 }}
             date={this.props.start}
+            minDate={start}
             mode="datetime"
             format="YYYY-MM-DD HH:mm"
             confirmBtnText="Choose"
@@ -65,6 +69,7 @@ class MeetupCreate extends Component {
           <DatePicker
             style={{ flex: 2 }}
             date={this.props.end}
+            minDate={this.props.start}
             mode="datetime"
             format="YYYY-MM-DD HH:mm"
             confirmBtnText="Choose"

@@ -9,28 +9,38 @@ import Home from './components/Home';
 import LoginForm from './components/LoginForm';
 import ManageAuth from './components/Profile/ManageAuth';
 import ManageEmail from './components/Profile/ManageEmail';
-import Map from './components/Map';
-import MeetupCreate from './components/MeetupCreate';
-import MeetupLocationCreate from './components/MeetupLocationCreate';
-import Meetup from './components/Meetup';
-import MeetupEdit from './components/MeetupEdit';
+import Map from './components/Meetup/Map';
+import MeetupCreate from './components/Meetup/MeetupCreate';
+import MeetupLocationCreate from './components/Meetup/MeetupLocationCreate';
+import Meetup from './components/Meetup/Meetup';
+import MeetupEdit from './components/Meetup/MeetupEdit';
 import ProfileCreate from './components/Profile/ProfileCreate';
 import ProfileUpdate from './components/Profile/ProfileUpdate';
-import StateSelector from './components/StateSelector';
-import Test from './components/Test';
-import VotingList from './components/Voting/VotingList';
+import StateSelector from './components/States/StateSelector';
+import VotingList from './components/Meetup/Voting/VotingList';
 
 //RSVP
 import LocationSelector from './components/LocationSelector';
-import RSVP from './components/RSVP';
-import RSVPEdit from './components/RSVPEdit';
+import RSVP from './components/Meetup/RSVP/RSVP';
+import RSVPEdit from './components/Meetup/RSVP/RSVPEdit';
 
 //Venue
-import VenuePicker from './components/Venues/VenuePicker';
+import VenuePicker from './components/Meetup/Venues/VenuePicker';
 
 const RouterComponent = () => {
   return (
-    <Router navigationBarStyle={{ backgroundColor: '#1ba6bd', height: Platform.OS === 'ios' ? 64 : 75, paddingTop: Platform.OS === 'ios' ? 0 : 20 }} titleStyle={{ color: 'white' }} barButtonTextStyle={{ color: '#fef267' }} barButtonIconStyle={{ tintColor: 'rgb(254, 242, 103)' }} rightButtonTextStyle={{ color: '#ffca63' }} leftButtonTextStyle={{ color: '#ffca63' }} sceneStyle={{ paddingTop: Platform.OS === 'ios' ? 64 : 74 }}>
+    <Router
+      navigationBarStyle={{
+        backgroundColor: '#1ba6bd',
+        height: Platform.OS === 'ios' ? 64 : 75,
+        paddingTop: Platform.OS === 'ios' ? 0 : 20 }}
+      titleStyle={{ color: 'white' }}
+      barButtonTextStyle={{ color: '#fef267' }}
+      barButtonIconStyle={{ tintColor: 'rgb(254, 242, 103)' }}
+      rightButtonTextStyle={{ color: '#ffca63' }}
+      leftButtonTextStyle={{ color: '#ffca63' }}
+      sceneStyle={{ paddingTop: Platform.OS === 'ios' ? 64 : 74 }}
+    >
       <Scene key="auth">
         <Scene initial key="meetups" component={Home} title="Meet In The Middle" leftButtonImage={require('./assets/images/settings.png')} onLeft={() => Actions.login({ type: 'reset' })} rightButtonImage={require('./assets/images/add.png')} onRight={() => Actions.add()} />
         <Scene key="add" component={MeetupCreate} title="Add Meetup" />
@@ -45,7 +55,6 @@ const RouterComponent = () => {
         <Scene key="meetup" component={Meetup} title="Meetup" rightButtonImage={require('./assets/images/edit.png')} onRight={() => Actions.edit()} leftButtonImage={require('./assets/images/house.png')} onLeft={() => Actions.meetups({ type: 'reset' })} />
         <Scene key="profileCreate" component={ProfileCreate} title="Create Account" leftButtonImage={require('./assets/images/house.png')} onLeft={() => Actions.meetups({ type: 'reset' })} />
         <Scene key="profileUpdate" component={ProfileUpdate} title="Update Profile" leftButtonImage={require('./assets/images/house.png')} onLeft={() => Actions.meetups({ type: 'reset' })} />
-        <Scene key="test" component={Test} title="Test" />
         <Scene key="rsvp" component={RSVP} title="RSVP" />
         <Scene key="rsvpEdit" component={RSVPEdit} title="Edit RSVP" />
         <Scene key="searchLocation" component={LocationSelector} title="Choose Location" />
