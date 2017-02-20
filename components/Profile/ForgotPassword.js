@@ -12,13 +12,13 @@ import { Button, Card, CardSection, Input, Spinner } from '../common';
 import {
   emailChanged,
   emailPasswordReset,
-  resetErrorState,
+  resetAuthErrorState,
 } from '../../actions';
 
 class ForgotPassword extends Component {
 
   componentWillMount() {
-    this.props.resetErrorState();
+    this.props.resetAuthErrorState();
   }
 
   onEmailChange(text) {
@@ -33,6 +33,7 @@ class ForgotPassword extends Component {
   }
 
   render() {
+    console.log('ForgotPassword error', this.props.authError);
     return (
       <Card>
         <Text>If the email address you enter is registered, you'll received link sent to that email address to to reset your password.</Text>
@@ -49,7 +50,7 @@ class ForgotPassword extends Component {
             Send Password Reset
           </Button>
         </CardSection>
-        <Text style={styles.errorTextStyle}>{this.props.error}</Text>
+        <Text style={styles.errorTextStyle}>{this.props.authError}</Text>
       </Card>
     );
   }
@@ -66,13 +67,12 @@ const styles = {
 };
 
 const mapStateToProps = ({ auth, user }) => {
-  const { email, loading } = auth;
-  const { error } = user;
-  return { email, error, loading };
+  const { email, loading, authError } = auth;
+  return { authError, email, loading };
 };
 
 export default connect(mapStateToProps, {
   emailChanged,
   emailPasswordReset,
-  resetErrorState,
+  resetAuthErrorState,
 })(ForgotPassword);

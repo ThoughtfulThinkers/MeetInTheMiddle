@@ -10,6 +10,7 @@ import {
   loginUser,
   logoutUser,
   passwordChanged,
+  resetAuthErrorState,
   resetErrorState,
   setLoginStatus,
 } from '../actions';
@@ -18,7 +19,7 @@ import MeetupList from './MeetupLists/MeetupList';
 class LoginForm extends Component {
 
   componentDidMount() {
-    this.props.resetErrorState();
+    this.props.resetAuthErrorState();
   }
 
   onEmailChange(text) {
@@ -116,7 +117,7 @@ class LoginForm extends Component {
       <ScrollView>
         <Card>
           {this.renderButtons()}
-          <Text style={styles.errorTextStyle}>{this.props.error}</Text>
+          <Text style={styles.errorTextStyle}>{this.props.authError}</Text>
         </Card>
       </ScrollView>
     );
@@ -154,10 +155,10 @@ const styles = {
 };
 
 const mapStateToProps = ({ auth, user }) => {
-  const { email, password, loading, loggedIn } = auth;
-  const { firstName, LastName, error } = user;
+  const { authError, email, password, loading, loggedIn } = auth;
+  const { firstName, LastName, } = user;
   return {
-    email, password, error, loading, loggedIn, firstName, LastName,
+    authError, email, password, loading, loggedIn, firstName, LastName,
   };
 };
 
@@ -167,6 +168,7 @@ export default connect(mapStateToProps, {
   loginUser,
   logoutUser,
   passwordChanged,
+  resetAuthErrorState,
   resetErrorState,
   setLoginStatus,
 })(LoginForm);

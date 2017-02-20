@@ -66,7 +66,7 @@ class ProfileUpdate extends Component {
           </Button>
         </CardSection>
         <ProfileForm />
-        <Text style={styles.errorTextStyle}>{this.props.error}</Text>
+        <Text style={styles.errorTextStyle}>{this.props.authError}</Text>
         <CardSection>
           {this.renderUpdateProfileButton()}
         </CardSection>
