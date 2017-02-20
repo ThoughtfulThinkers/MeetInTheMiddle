@@ -129,7 +129,7 @@ class Meetup extends Component {
       title: `Join me at the ${this.props.meetup.name} meetup`,
     });
   }
-  
+
   onMapPress() {
     Actions.map({ meetup: this.props.meetup });
   }

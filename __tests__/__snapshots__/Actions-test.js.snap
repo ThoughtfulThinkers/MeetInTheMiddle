@@ -1,0 +1,37 @@
+exports[`test creates a MEETUP_CHANGED action 1`] = `
+Object {
+  "prop": "state",
+  "type": "MEETUP_CHANGED",
+  "value": "Pennsylvania",
+}
+`;
+
+exports[`test creates a RESET_MEETUP action 1`] = `
+Object {
+  "type": "RESET_MEETUP",
+}
+`;
+
+exports[`test creates a SET_CURRENT_MEETUP action 1`] = `
+Object {
+  "meetup": Object {
+    "description": "meetup",
+    "name": "meetup",
+  },
+  "type": "SET_CURRENT_MEETUP",
+}
+`;
+
+exports[`test creates a SET_LOCATION action 1`] = `
+Object {
+  "payload": "Pennsylvania",
+  "type": "SET_LOCATION",
+}
+`;
+
+exports[`test creates a SET_TEXT action 1`] = `
+Object {
+  "payload": "Penn",
+  "type": "SET_TEXT",
+}
+`;
