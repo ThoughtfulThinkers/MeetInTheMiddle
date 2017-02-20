@@ -3,7 +3,7 @@ import firebase from 'firebase';
 import moment from 'moment';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
-import { Text } from 'react-native';
+import { Text, Alert } from 'react-native';
 import DatePicker from 'react-native-datepicker';
 import { meetupChange, resetMeetup } from '../../actions';
 import { Card, CardSection, Input, Button } from '../common';
@@ -19,6 +19,10 @@ class MeetupCreate extends Component {
   }
 
   onButtonPress() {
+    if (this.props.name === '' || this.props.description === '') {
+      Alert.alert('Please include a name and description.');
+      return;
+    }
     Actions.addLocation();
   }
 
