@@ -11,7 +11,7 @@ class LocationSelector extends Component {
   render() {
     return (
       <GooglePlacesAutocomplete
-              placeholder='Search'
+              placeholder='Search for alternate location'
               minLength={2} // minimum length of text to search
               autoFocus={false}
               listViewDisplayed='auto'    // true/false/undefined
@@ -32,11 +32,6 @@ class LocationSelector extends Component {
                 // available options: https://developers.google.com/places/web-service/autocomplete
                 key: googlePlacesConfig.apiKey,
                 language: 'en', // language of the results
-              }}
-              styles={{
-                description: {
-                  fontWeight: 'bold',
-                }
               }}
       />
           );

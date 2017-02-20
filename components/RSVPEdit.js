@@ -62,6 +62,7 @@ class RSVPEdit extends Component {
         <CardSection style={{ justifyContent: 'center' }}>
           <Text style={styles.titleStyle}>
             Where are you coming from?
+            Please select a location in {this.props.meetupForm.state}.
           </Text>
         </CardSection>
         <CardSection>
@@ -98,11 +99,11 @@ const styles = {
 };
 
 const mapStateToProps = (state, props) => {
-  const { rsvp, user } = state;
+  const { rsvp, user, meetupForm } = state;
   const { lat, lon, address } = rsvp;
   const { firstName, lastName } = user;
   const oldRSVP = user.meetups[props.meetup.uid];
-  return { lat, lon, firstName, lastName, user, address, oldRSVP };
+  return { lat, lon, firstName, lastName, user, address, oldRSVP, meetupForm };
 };
 
 export default connect(mapStateToProps, { setRsvp, changeRSVP, changeStatus, editRsvp, deleteRsvp })(RSVPEdit);

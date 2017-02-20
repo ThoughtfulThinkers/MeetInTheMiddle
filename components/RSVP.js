@@ -56,7 +56,7 @@ class RSVP extends Component {
         <CardSection style={{ justifyContent: 'center' }}>
           <Text style={styles.titleStyle}>
             Where are you coming from?
-            Please select a location in {this.props.meetupForm.state}.
+            Please choose a location in {this.props.meetupForm.state}.
           </Text>
         </CardSection>
         <CardSection>

@@ -31,6 +31,8 @@ export const createVoting = (lat, lon, meetup) => {
     .then(response => response.json())
     .then(data => {
       let venues;
+      let status;
+      let newMeetup;
       if (!data.response.groups || data.response.groups.length === 0 || data.response.groups[0].items.length === 0) {
         const search2 = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lon}&key=${apiKey}`;
         fetch(search2)
@@ -49,27 +51,35 @@ export const createVoting = (lat, lon, meetup) => {
             name: formattedAddress,
             votes: 0
           };
-          dispatch(changeLocation(location, meetup.uid));
-          dispatch(changeStatus(meetup, 'set'));
+          venues = { 0: location };
+          status = 'location';
+          newMeetup = { ...meetup, status, venues };
+          firebase.database().ref(`/meetups/${meetup.uid}`)
+          .set(newMeetup)
+          .then(() => {
+            dispatch({ type: SET_CURRENT_MEETUP, meetup: newMeetup });
+            Actions.meetup({ type: 'refresh' });
+          })
+          .catch(err => console.log('create venues error', err));
         })
         .catch(err => console.log(err));
       } else {
         venues = {};
+        status = 'voting';
         data.response.groups[0].items.forEach(item => {
-          const { venue } = item;
-          const { name, location, id } = venue;
+          const { name, location, id } = item.venue;
           const { formattedAddress, lng } = location;
           venues[id] = { name, formattedAddress, lat: location.lat, lon: lng, votes: 0 };
         });
+        newMeetup = { ...meetup, status, venues };
+        firebase.database().ref(`/meetups/${meetup.uid}`)
+        .set(newMeetup)
+        .then(() => {
+          dispatch({ type: SET_CURRENT_MEETUP, meetup: newMeetup });
+          Actions.meetup({ type: 'refresh' });
+        })
+        .catch(err => console.log('create venues error', err));
       }
-      const newMeetup = { ...meetup, status: 'voting', venues };
-      firebase.database().ref(`/meetups/${meetup.uid}`)
-      .set(newMeetup)
-      .then(() => {
-        dispatch({ type: SET_CURRENT_MEETUP, meetup: newMeetup });
-        Actions.meetup({ type: 'refresh' });
-      })
-      .catch(err => console.log('create venues error', err));
     })
     .catch(err => console.log(err));
   };
@@ -77,8 +87,8 @@ export const createVoting = (lat, lon, meetup) => {
 
 export const setVote = (meetupId, venueId, venueVote) => {
   return dispatch => {
-  const { currentUser } = firebase.auth();
-  firebase.database().ref(`/users/${currentUser.uid}/meetups/${meetupId}/vote`)
+    const { currentUser } = firebase.auth();
+    firebase.database().ref(`/users/${currentUser.uid}/meetups/${meetupId}/vote`)
     .set(venueId)
     .then(() => {
       firebase.database().ref(`/meetups/${meetupId}/venues/${venueId}/votes`)
@@ -94,47 +104,47 @@ export const setVote = (meetupId, venueId, venueVote) => {
 
 export const voteChange = (meetupId, venueId, venueVote) => {
   return dispatch => {
-      const { currentUser } = firebase.auth();
+    const { currentUser } = firebase.auth();
 
-      //get old vote location
-      let userPreviousVote;
-      firebase.database().ref(`/users/${currentUser.uid}/meetups/${meetupId}/vote`)
-        .on('value', (snapshot) => {
-          userPreviousVote = snapshot.val();
-      });
+    //get old vote location
+    let userPreviousVote;
+    firebase.database().ref(`/users/${currentUser.uid}/meetups/${meetupId}/vote`)
+    .on('value', (snapshot) => {
+      userPreviousVote = snapshot.val();
+    });
 
-      //get old venue vote count
-      let oldVenueCount;
-      firebase.database().ref(`/meetups/${meetupId}/venues/${userPreviousVote}/votes`)
-        .on('value', (snapshot) => {
-          oldVenueCount = snapshot.val();
-      });
+    //get old venue vote count
+    let oldVenueCount;
+    firebase.database().ref(`/meetups/${meetupId}/venues/${userPreviousVote}/votes`)
+    .on('value', (snapshot) => {
+      oldVenueCount = snapshot.val();
+    });
 
-      //lower old vote count, raise new vote count, replace user venue id
-      oldVenueCount -= 1;
-      const updates = {};
-      updates[`/users/${currentUser.uid}/meetups/${meetupId}/vote`] = venueId;
-      updates[`/meetups/${meetupId}/venues/${userPreviousVote}/votes`] = oldVenueCount;
-      updates[`/meetups/${meetupId}/venues/${venueId}/votes`] = venueVote;
+    //lower old vote count, raise new vote count, replace user venue id
+    oldVenueCount -= 1;
+    const updates = {};
+    updates[`/users/${currentUser.uid}/meetups/${meetupId}/vote`] = venueId;
+    updates[`/meetups/${meetupId}/venues/${userPreviousVote}/votes`] = oldVenueCount;
+    updates[`/meetups/${meetupId}/venues/${venueId}/votes`] = venueVote;
 
-      firebase.database().ref().update(updates).then(() => {
-        dispatch({ type: SET_VOTE, venueId, vote: venueVote });
-        Actions.meetup({ type: 'refresh' });
-      });
+    firebase.database().ref().update(updates).then(() => {
+      dispatch({ type: SET_VOTE, venueId, vote: venueVote });
+      Actions.meetup({ type: 'refresh' });
+    });
   };
 };
 
 export const changeLocation = (location, meetupId) => {
   return (dispatch) => {
     firebase.database().ref(`/meetups/${meetupId}/location`)
-      .set(location)
-      .then(() => {
-        dispatch({
-            type: MEETUP_CHANGED,
-            prop: 'location',
-            value: location });
-            Actions.meetup({ type: 'refresh' });
+    .set(location)
+    .then(() => {
+      dispatch({
+        type: MEETUP_CHANGED,
+        prop: 'location',
+        value: location });
+        Actions.meetup({ type: 'refresh' });
       })
       .catch((err) => console.log(err));
     };
-};
+  };
