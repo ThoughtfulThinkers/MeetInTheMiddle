@@ -41,6 +41,7 @@ export const authInputChanged = ({ prop, value }) => ({
 });
 
 export const resetAuthErrorState = () => {
+  console.log('Action resetAuthErrorState');
   return {
     type: RESET_AUTH_ERROR_STATE
   };

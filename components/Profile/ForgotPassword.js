@@ -12,13 +12,13 @@ import { Button, Card, CardSection, Input, Spinner } from '../common';
 import {
   emailChanged,
   emailPasswordReset,
-  resetAuthErrorState,
+  resetErrorState,
 } from '../../actions';
 
 class ForgotPassword extends Component {
-  
+
   componentWillMount() {
-    this.props.resetAuthErrorState();
+    this.props.resetErrorState();
   }
 
   onEmailChange(text) {
@@ -64,13 +64,14 @@ const styles = {
   },
 };
 
-const mapStateToProps = ({ auth }) => {
-  const { email, error } = auth;
+const mapStateToProps = ({ auth, user }) => {
+  const { email } = auth;
+  const { error } = user;
   return { email, error };
 };
 
 export default connect(mapStateToProps, {
   emailChanged,
   emailPasswordReset,
-  resetAuthErrorState
+  resetErrorState,
 })(ForgotPassword);

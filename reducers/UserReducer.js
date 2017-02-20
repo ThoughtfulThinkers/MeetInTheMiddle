@@ -2,6 +2,7 @@ import {
   CREATE_USER_SUCCESS,
   FETCH_GEOLOCATION_BY_FULL_ADDRESS_SUCCESS,
   LOAD_AUTHENTICATED_USER_STATE_SUCCESS,
+  RESET_ERROR_STATE,
   USER_INPUT_CHANGED,
   USER_LOCATION_INPUT_CHANGED,
   UPDATE_USER_SUCCESS,
@@ -20,6 +21,7 @@ const INITIAL_STATE = {
     lon: '',
     lat: '',
   },
+  error: '',
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -53,6 +55,9 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, location };
     }
 
+    case RESET_ERROR_STATE:
+      return { ...state, error: '' };
+      
     case UPDATE_USER_SUCCESS: {
       return state;
     }
