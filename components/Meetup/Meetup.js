@@ -119,12 +119,17 @@ class Meetup extends Component {
     const { start } = this.props.meetup;
     const day = moment(start).format('DD MMM YYYY');
     const time = moment(start).format('h:mm a');
+    const url = 'https://goo.gl/icDb9f';
     Share.share({
-      message: `I'm planning to go to the ${this.props.meetup.name} meetup on ${day} at ${time}.\nWould you like to join me?\n\nDescription: ${this.props.meetup.description}`,
-      title: `Join me at the ${this.props.meetup.name} meetup`
+      message: `Want to join me for the ${this.props.meetup.name} meetup on ${day} at ${time}.
+      \nDescription: ${this.props.meetup.description}
+      \nSent from the "Meet In The Middle" app ... available on
+      \n   Google Play: ${url}
+      \n   Apple iTunes: comming soon`,
+      title: `Join me at the ${this.props.meetup.name} meetup`,
     });
   }
-
+  
   onMapPress() {
     Actions.map({ meetup: this.props.meetup });
   }
