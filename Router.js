@@ -30,7 +30,7 @@ import VenuePicker from './components/Venues/VenuePicker';
 
 const RouterComponent = () => {
   return (
-    <Router navigationBarStyle={{ backgroundColor: '#1ba6bd' }} titleStyle={{ color: 'white' }} barButtonTextStyle={{ color: '#fef267' }} barButtonIconStyle={{ tintColor: 'rgb(254, 242, 103)' }} rightButtonTextStyle={{ color: '#ffca63' }} leftButtonTextStyle={{ color: '#ffca63' }} sceneStyle={{ paddingTop: Platform.OS === 'ios' ? 64 : 54 }}>
+    <Router navigationBarStyle={{ backgroundColor: '#1ba6bd', height: Platform.OS === 'ios' ? 64 : 75, paddingTop: Platform.OS === 'ios' ? 0 : 20 }} titleStyle={{ color: 'white' }} barButtonTextStyle={{ color: '#fef267' }} barButtonIconStyle={{ tintColor: 'rgb(254, 242, 103)' }} rightButtonTextStyle={{ color: '#ffca63' }} leftButtonTextStyle={{ color: '#ffca63' }} sceneStyle={{ paddingTop: Platform.OS === 'ios' ? 64 : 74 }}>
       <Scene key="auth">
         <Scene initial key="meetups" component={Home} title="Meet In The Middle" leftButtonImage={require('./assets/images/settings.png')} onLeft={() => Actions.login({ type: 'reset' })} rightButtonImage={require('./assets/images/add.png')} onRight={() => Actions.add()} />
         <Scene key="add" component={MeetupCreate} title="Add Meetup" />
