@@ -31,7 +31,6 @@ const INITIAL_STATE = {
 };
 
 export default (state = INITIAL_STATE, action) => {
-  console.log(state.start);
   switch (action.type) {
     case MEETUP_CHANGED:
       return { ...state, [action.prop]: action.value };
