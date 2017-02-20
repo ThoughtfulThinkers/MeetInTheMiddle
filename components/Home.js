@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import firebase from 'firebase';
 import { connect } from 'react-redux';
 import { View } from 'react-native';
-import UserMeetupListContainer from './UserMeetupListContainer';
-import OpenMeetupListContainer from './OpenMeetupListContainer';
+import UserMeetupListContainer from './MeetupLists/UserMeetupListContainer';
+import OpenMeetupListContainer from './MeetupLists/OpenMeetupListContainer';
 
 import {
   loadAuthenticatedUserState,

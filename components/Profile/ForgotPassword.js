@@ -16,7 +16,7 @@ import {
 } from '../../actions';
 
 class ForgotPassword extends Component {
-  
+
   componentWillMount() {
     this.props.resetAuthErrorState();
   }
@@ -26,8 +26,9 @@ class ForgotPassword extends Component {
   }
 
   onResetPasswordButtonPress() {
-    const { email } = this.props;
-    console.log('ForgotPassword.js ', this.props.email);
+    const { email, loading } = this.props;
+    // console.log('ForgotPassword.js ', this.props.email);
+    if (!email) return;
     this.props.emailPasswordReset(email);
   }
 
@@ -65,8 +66,8 @@ const styles = {
 };
 
 const mapStateToProps = ({ auth }) => {
-  const { email, error } = auth;
-  return { email, error };
+  const { email, error, loading } = auth;
+  return { email, error, loading };
 };
 
 export default connect(mapStateToProps, {

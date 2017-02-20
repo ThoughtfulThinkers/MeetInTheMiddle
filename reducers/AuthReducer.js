@@ -56,7 +56,8 @@ export default (state = INITIAL_STATE, action) => {
     case PASSWORD_RESET_FAILED:
       return { ...state, error: 'Email Address Invalid or Account does not exist' };
     case RESET_AUTH_ERROR_STATE:
-      return { ...state, error: '' };
+      console.log('RESET_AUTH_ERROR_STATE called');
+      return { ...state, error: '', loading: false };
     default:
       return state;
   }

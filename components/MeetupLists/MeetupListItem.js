@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
+import moment from 'moment';
 import { Actions } from 'react-native-router-flux';
 import { Text, View, TouchableWithoutFeedback } from 'react-native';
-import { setCurrentMeetup } from '../actions';
-import { CardSection } from './common';
+import { setCurrentMeetup } from '../../actions';
+import { CardSection } from '../common';
 
 class MeetupListItem extends Component {
   onRowPress() {
@@ -38,7 +39,7 @@ class MeetupListItem extends Component {
       <CardSection style={styles.containerStyle}>
         <View style={styles.rowStyle}>
           <Text style={styles.titleStyle}>{name}</Text>
-          <Text style={styles.detailStyle}>{start}</Text>
+          <Text style={styles.detailStyle}>{moment(start).format('MMMM Do YYYY, h:mm a')}</Text>
         </View>
         <View style={styles.rowStyle}>
           {this.renderVote(status, venues, location)}

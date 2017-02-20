@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { Text, View, TouchableWithoutFeedback } from 'react-native';
-import { meetupChange } from '../../actions';
-import { CardSection } from '../common';
+import { meetupChange } from '../../../actions';
+import { CardSection } from '../../common';
 
 class Venue extends Component {
   onRowPress() {

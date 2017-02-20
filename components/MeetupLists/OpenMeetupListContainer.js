@@ -4,9 +4,9 @@ import { View, Text } from 'react-native';
 import moment from 'moment';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
-import { meetupsFetch, setText, setLocation } from '../actions';
+import { meetupsFetch, setText, setLocation } from '../../actions';
 import MeetupList from './MeetupList';
-import { CardSection, Spinner, Input, Button } from './common';
+import { CardSection, Spinner, Input, Button } from '../common';
 
 
 class OpenMeetupListContainer extends Component {

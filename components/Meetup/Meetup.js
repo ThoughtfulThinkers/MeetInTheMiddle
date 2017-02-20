@@ -4,11 +4,11 @@ import _ from 'lodash';
 import { Actions } from 'react-native-router-flux';
 import moment from 'moment';
 import { Text, View, Share, TouchableWithoutFeedback, Alert } from 'react-native';
-import { changeStatus, createVoting, changeLocation } from '../actions';
+import { changeStatus, createVoting, changeLocation } from '../../actions';
 
-import GuestList from './GuestList';
+import GuestList from './GuestList/GuestList';
 import VotingList from './Voting/VotingList';
-import { CardSection, Card, Button } from './common';
+import { CardSection, Card, Button } from '../common';
 
 const getAve = (array) => {
   const sum = array.reduce((a, b) => a + b);
@@ -129,7 +129,7 @@ class Meetup extends Component {
       title: `Join me at the ${this.props.meetup.name} meetup`,
     });
   }
-
+  
   onMapPress() {
     Actions.map({ meetup: this.props.meetup });
   }
@@ -234,8 +234,8 @@ class Meetup extends Component {
       <Card>
         <CardSection style={{ flexDirection: 'column' }}>
           <Text style={styles.titleStyle}>{meetup.name}</Text>
-          <Text style={styles.textStyle}>Start: {meetup.start}</Text>
-          <Text style={styles.textStyle}>End: {meetup.end}</Text>
+          <Text style={styles.textStyle}>Start: {moment(meetup.start).format('MMMM Do YYYY, h:mm a')}</Text>
+          <Text style={styles.textStyle}>End: {moment(meetup.end).format('MMMM Do YYYY, h:mm a')}</Text>
           <Text style={styles.textStyle}>Venue: {meetup.venue.name}</Text>
           <Text style={styles.textStyle}>Description: {meetup.description}</Text>
         </CardSection>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
+import moment from 'moment';
 import firebase from 'firebase';
 import _ from 'lodash';
 import { Text, View, Alert } from 'react-native';
@@ -12,8 +13,8 @@ import {
   fetchMeetups,
   meetupsFetch,
   userMeetupsFetch,
-  deleteMeetup } from '../actions';
-import { Card, CardSection, Input, Button, Spinner, DeleteButton } from './common';
+  deleteMeetup } from '../../actions';
+import { Card, CardSection, Input, Button, Spinner, DeleteButton } from '../common';
 
 class MeetupEdit extends Component {
 
@@ -30,6 +31,10 @@ class MeetupEdit extends Component {
   }
 
   onButtonPress() {
+    if (this.props.meetup.name === '' || this.props.meetup.description === '') {
+      Alert.alert('Please include a name and description.');
+      return;
+    }
     this.props.meetupEdit(this.props.meetup);
     this.props.meetupsFetch(this.props.location);
     this.props.userMeetupsFetch();
@@ -106,6 +111,7 @@ class MeetupEdit extends Component {
           <DatePicker
             style={{ flex: 2 }}
             date={meetup.start}
+            minDate={meetup.voteEnd}
             mode="datetime"
             format="YYYY-MM-DD HH:mm"
             confirmBtnText="Choose"
@@ -119,6 +125,7 @@ class MeetupEdit extends Component {
           <DatePicker
             style={{ flex: 2 }}
             date={meetup.end}
+            minDate={meetup.start}
             mode="datetime"
             format="YYYY-MM-DD HH:mm"
             confirmBtnText="Choose"
@@ -142,6 +149,7 @@ class MeetupEdit extends Component {
             <DatePicker
               style={{ flex: 2 }}
               date={meetup.voteStart}
+              maxDate={meetup.voteEnd}
               mode="datetime"
               format="YYYY-MM-DD HH:mm"
               confirmBtnText="Choose"
@@ -155,6 +163,8 @@ class MeetupEdit extends Component {
             <DatePicker
               style={{ flex: 2 }}
               date={meetup.voteEnd}
+              minDate={meetup.voteStart}
+              maxDate={meetup.start}
               mode="datetime"
               format="YYYY-MM-DD HH:mm"
               confirmBtnText="Choose"
