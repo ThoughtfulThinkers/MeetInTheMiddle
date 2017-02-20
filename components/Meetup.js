@@ -146,7 +146,7 @@ class Meetup extends Component {
 
   //render methods
   renderLocation(status) {
-    if (status === 'set' || status === 'closed') {
+    if (status === 'set') {
       const { location } = this.props.meetup;
       return (
         <CardSection style={{ flexDirection: 'column' }}>
@@ -211,8 +211,10 @@ class Meetup extends Component {
   }
 
   renderGuests(status) {
-    if (status === 'created' || status === 'closed') {
+    if (status === 'created') {
       return <Text>No one is attending this meetup.</Text>;
+    } else if (status === 'closed') {
+      return <Text>This meetup is closed.</Text>;
     }
     const guests = _.map(this.props.meetup.users, (val, uid) => {
       return { ...val, uid };
