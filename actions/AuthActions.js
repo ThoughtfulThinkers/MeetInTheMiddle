@@ -40,13 +40,6 @@ export const authInputChanged = ({ prop, value }) => ({
   payload: { prop, value }
 });
 
-export const resetAuthErrorState = () => {
-  console.log('Action resetAuthErrorState');
-  return {
-    type: RESET_AUTH_ERROR_STATE
-  };
-};
-
 /*****************************************************************
   loadAuthenticatedUserState is used both in the physical login
   process and to keep the user state between app restarts.  It
@@ -95,6 +88,7 @@ export const loginUser = ({ email, password }) => {
       .then(() => Actions.meetups({ type: 'reset' }))
       .catch((error) => {
         console.log(error);
+        loginUserFail(dispatch);
       });
   };
 };
@@ -210,7 +204,7 @@ export const updateUser = data => {
   };
 };
 
-// TODO: Change email and password
+// Change email and password
 export const updateUserEmail = (emailAddress, password) => dispatch => {
   const user = firebase.auth().currentUser;
   const credential = firebase.auth.EmailAuthProvider.credential(

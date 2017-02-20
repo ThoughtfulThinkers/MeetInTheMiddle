@@ -47,7 +47,7 @@ const RouterComponent = () => {
         <Scene key="addLocation" component={MeetupLocationCreate} title="Location Settings" />
         <Scene key="chat" component={ChatRoom} title="Chat Room" style={{ paddingBottom: 40 }} />
         <Scene key="edit" component={MeetupEdit} title="Edit Meetup" />
-        <Scene key="forgotPassword" component={ForgotPassword} title="Rest Password" onBack={() => Actions.pop({})} />
+        <Scene key="forgotPassword" component={ForgotPassword} title="Rest Password" />
         <Scene key="login" component={LoginForm} title="Account Management" leftButtonImage={require('./assets/images/house.png')} onLeft={() => Actions.meetups({ type: 'reset' })} />
         <Scene key="manageAuth" component={ManageAuth} title="Update Authentication" leftButtonImage={require('./assets/images/settings.png')} onLeft={() => Actions.profileUpdate({ type: 'reset' })} />
         <Scene key="manageEmail" component={ManageEmail} title="Update Email Address" leftButtonImage={require('./assets/images/settings.png')} onLeft={() => Actions.profileUpdate({ type: 'reset' })} />
