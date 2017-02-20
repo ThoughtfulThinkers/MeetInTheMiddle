@@ -119,13 +119,14 @@ class Meetup extends Component {
     const { start } = this.props.meetup;
     const day = moment(start).format('DD MMM YYYY');
     const time = moment(start).format('h:mm a');
-    const url = 'https://goo.gl/icDb9f';
+    const urlAndroid = 'https://goo.gl/icDb9f';
+    const urlIOS = 'https://goo.gl/VSL6mJ';
     Share.share({
       message: `Want to join me for the ${this.props.meetup.name} meetup on ${day} at ${time}.
       \nDescription: ${this.props.meetup.description}
       \nSent from the "Meet In The Middle" app ... available on
-      \n   Google Play: ${url}
-      \n   Apple iTunes: comming soon`,
+      \n   Google Play: ${urlAndroid}
+      \n   Apple iTunes: ${urlIOS}`,
       title: `Join me at the ${this.props.meetup.name} meetup`,
     });
   }
