@@ -40,6 +40,15 @@ export const authInputChanged = ({ prop, value }) => ({
   payload: { prop, value }
 });
 
+// Resets the error messages -- generally used in
+// componentDidMount
+export const resetAuthErrorState = () => {
+  // console.log('Action resetAuthErrorState called');
+  return {
+    type: RESET_AUTH_ERROR_STATE
+  };
+};
+
 /*****************************************************************
   loadAuthenticatedUserState is used both in the physical login
   process and to keep the user state between app restarts.  It

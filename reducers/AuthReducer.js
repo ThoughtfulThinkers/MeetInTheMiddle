@@ -7,6 +7,7 @@ import {
   LOGIN_USER,
   PASSWORD_CHANGED,
   PASSWORD_RESET_FAILED,
+  RESET_AUTH_ERROR_STATE,
   SET_LOGIN_STATUS,
 } from '../actions/types';
 
@@ -20,6 +21,7 @@ const INITIAL_STATE = {
   newEmail: '',
   newPassword: '',
   confirmPassword: '',
+  authError: '',
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -45,15 +47,18 @@ export default (state = INITIAL_STATE, action) => {
 
     case LOGIN_USER:
       // console.log('LOGIN_USER REDUCER: ', action.payload);
-      return { ...state, loading: true, error: '' };
+      return { ...state, loading: true, authError: '' };
     case LOGIN_USER_SUCCESS:
       return { ...state, ...INITIAL_STATE, user: action.payload };
     case LOGIN_USER_FAIL:
-      return { ...state, error: 'Authentication Failed.', password: '', loading: false };
+      return { ...state, authError: 'Authentication Failed.', password: '', loading: false };
     case PASSWORD_CHANGED:
       return { ...state, password: action.payload };
     case PASSWORD_RESET_FAILED:
-      return { ...state, error: 'Email Address Invalid or Account does not exist' };
+      return { ...state, authError: 'Email Address Invalid or Account does not exist' };
+    case RESET_AUTH_ERROR_STATE:
+      console.log('RESET_AUTH_ERROR_STATE called');
+      return { ...state, authError: '', loading: false };
     default:
       return state;
   }

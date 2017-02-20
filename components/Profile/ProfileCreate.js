@@ -67,7 +67,7 @@ class ProfileCreate extends Component {
           />
         </CardSection>
         <ProfileForm />
-        <Text style={styles.errorTextStyle}>{this.props.error}</Text>
+        <Text style={styles.errorTextStyle}>{this.props.authError}</Text>
         <CardSection>
           {this.renderCreateAccountButton()}
         </CardSection>

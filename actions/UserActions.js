@@ -24,7 +24,7 @@ export const userLocationInputChanged = ({ prop, value }) => ({
 });
 
 export const resetErrorState = () => {
-  console.log('Action resetErrorState');
+  // console.log('Action resetErrorState');
   return {
     type: RESET_ERROR_STATE
   };
