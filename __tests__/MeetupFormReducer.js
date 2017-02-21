@@ -7,9 +7,7 @@ import {
   ADD_MEETUP_SUCCESS,
   EDIT_MEETUP,
   EDIT_MEETUP_SUCCESS,
-  CREATE_VOTING_SUCCESS,
   SET_VOTE,
-  RESET_MEETUP,
 } from '../actions/types';
 
 it('undefined', () => {
@@ -17,11 +15,13 @@ it('undefined', () => {
 });
 
 it('meetupChange', () => {
-  expect(MeetupFormReducer(undefined, actions.meetupChange('state', 'Pennsylvania'))).toMatchSnapshot();
+  expect(MeetupFormReducer(undefined,
+    actions.meetupChange('state', 'Pennsylvania'))).toMatchSnapshot();
 });
 
 it('setCurrentMeetup', () => {
-  expect(MeetupFormReducer(undefined, actions.setCurrentMeetup({ name: 'test', description: 'test' }))).toMatchSnapshot();
+  expect(MeetupFormReducer(undefined,
+    actions.setCurrentMeetup({ name: 'test', description: 'test' }))).toMatchSnapshot();
 });
 
 it('resetMeetup', () => {
@@ -45,5 +45,6 @@ it('edit_meetup_success', () => {
 });
 
 it('set_vote', () => {
-  expect(MeetupFormReducer({ venues: { 123: { name: 'test', vote: 0 } } }, { type: SET_VOTE, venueId: 123, vote: 2 })).toMatchSnapshot();
+  expect(MeetupFormReducer({ venues: { 123: { name: 'test', vote: 0 } } },
+  { type: SET_VOTE, venueId: 123, vote: 2 })).toMatchSnapshot();
 });
