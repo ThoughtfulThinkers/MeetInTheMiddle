@@ -32,7 +32,9 @@ class LoginForm extends Component {
 
   onLoginButtonPress() {
     const { email, password } = this.props;
-    this.props.loginUser({ email, password });
+    if (email && password) {
+      this.props.loginUser({ email, password });
+    }
   }
 
   onLogoutButtonPress() {
@@ -116,8 +118,8 @@ class LoginForm extends Component {
     return (
       <ScrollView>
         <Card>
-          {this.renderButtons()}
           <Text style={styles.errorTextStyle}>{this.props.authError}</Text>
+          {this.renderButtons()}
         </Card>
       </ScrollView>
     );
