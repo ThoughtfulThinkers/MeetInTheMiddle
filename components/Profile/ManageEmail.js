@@ -24,13 +24,25 @@ import {
 } from '../../actions';
 
 class ManageEmail extends Component {
+  state = {
+    msg: '',
+  }
+
+  componentDidMount() {
+    this.props.password = '';
+  }
 
   onSubmitUpdate() {
-    console.log('onSubmitUpdate called');
-    const { newEmail, password, } = this.props;
-    if (!password) return;
-    if (newEmail) {
+    // console.log('onSubmitUpdate called');
+    let { newEmail, password, } = this.props;
+    newEmail = newEmail.trim();
+    password = password.trim();
+    if (newEmail && password) {
       this.props.updateUserEmail(newEmail, password);
+    } else if (!newEmail) {
+      this.setState({ msg: 'New Email is required' });
+    } else if (!password) {
+      this.setState({ msg: 'Password is required' });
     }
   }
 
@@ -61,6 +73,9 @@ class ManageEmail extends Component {
         </Card>
         <Card>
           <CardSection>
+            <Text style={styles.errorTextStyle} >{this.state.msg}</Text>
+          </CardSection>
+          <CardSection>
             <Button onPress={this.onSubmitUpdate.bind(this)}>Update</Button>
           </CardSection>
         </Card>
@@ -72,6 +87,13 @@ class ManageEmail extends Component {
 const styles = {
   noticeStyle: {
     fontSize: 15,
+  },
+  errorTextStyle: {
+    color: 'red',
+    fontSize: 20,
+    alignSelf: 'center',
+    paddingLeft: 10,
+    paddingRight: 10
   }
 };
 

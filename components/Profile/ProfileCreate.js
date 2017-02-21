@@ -9,6 +9,7 @@ import {
 } from '../common';
 
 import {
+  authError,
   createNewUserAccount,
   emailChanged,
   fetchGeoLocationByFullAddress,
@@ -19,6 +20,10 @@ import {
 } from '../../actions';
 
 class ProfileCreate extends Component {
+  state = {
+    msg: '',
+  }
+
   onEmailChange(text) {
     this.props.emailChanged(text);
   }
@@ -28,11 +33,37 @@ class ProfileCreate extends Component {
   }
 
   onCreateAccountButtonPress() {
-    const { firstName, lastName, image, email, password } = this.props;
-    const { street, city, state, zipcode } = this.props.location;
+    let { firstName, lastName, image, email, password } = this.props;
+    let { street, city, state, zipcode } = this.props.location;
+    email = email.trim();
+    password = password.trim();
+    firstName = firstName.trim();
+    lastName = lastName.trim();
+    image = image.trim();
+    street = street.trim();
+    city = city.trim();
+    state = state.trim();
+    zipcode = zipcode.trim();
     const userProfileData = { firstName, lastName, image, street, city, state, zipcode, email, password };
-    this.props.createNewUserAccount(userProfileData);
+    if (email && password && firstName && lastName && street && city && state) {
+      this.props.createNewUserAccount(userProfileData);
+    } else if (!email) {
+      this.setState({ msg: 'Email Address is required ' });
+    } else if (!password) {
+      this.setState({ msg: 'Password is required ' });
+    } else if (!firstName) {
+      this.setState({ msg: 'First Name is required ' });
+    } else if (!lastName) {
+      this.setState({ msg: 'Last Name is required ' });
+    } else if (!street) {
+      this.setState({ msg: 'Street is required ' });
+    } else if (!city) {
+      this.setState({ msg: 'City is required ' });
+    } else if (!state) {
+      this.setState({ msg: 'state is required ' });
+    }
   }
+
 
   renderCreateAccountButton() {
     if (this.props.loading) {
@@ -67,7 +98,10 @@ class ProfileCreate extends Component {
           />
         </CardSection>
         <ProfileForm />
-        <Text style={styles.errorTextStyle}>{this.props.authError}</Text>
+        <CardSection>
+          <Text style={styles.errorTextStyle} >{this.state.msg}</Text>
+          <Text style={styles.errorTextStyle}>{this.props.authError}</Text>
+        </CardSection>
         <CardSection>
           {this.renderCreateAccountButton()}
         </CardSection>
@@ -105,6 +139,7 @@ const mapStateToProps = ({ auth, user }) => {
 };
 
 export default connect(mapStateToProps, {
+  authError,
   createNewUserAccount,
   emailChanged,
   fetchGeoLocationByFullAddress,
