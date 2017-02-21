@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import firebase from 'firebase';
 import { connect } from 'react-redux';
 import { GiftedChat } from 'react-native-gifted-chat';
+import { View } from 'react-native';
+// import Backend from '../../Backend';
+import { fbConfig } from '../../envConfig';
 import {
   closeMeetUpChat,
   fetchMessagesByMeetup,

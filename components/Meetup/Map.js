@@ -2,6 +2,7 @@ import React from 'react';
 import { Components } from 'exponent';
 import { Text, View } from 'react-native';
 import _ from 'lodash';
+import { Actions } from 'react-native-router-flux';
 
 const getAve = (array) => {
   const sum = array.reduce((a, b) => a + b);

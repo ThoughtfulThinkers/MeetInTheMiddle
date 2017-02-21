@@ -106,9 +106,4 @@ const mapStateToProps = (state, props) => {
   return { lat, lon, firstName, lastName, user, address, oldRSVP, meetupForm };
 };
 
-export default connect(mapStateToProps, {
-  setRsvp,
-  changeRSVP,
-  changeStatus,
-  editRsvp,
-  deleteRsvp })(RSVPEdit);
+export default connect(mapStateToProps, { setRsvp, changeRSVP, changeStatus, editRsvp, deleteRsvp })(RSVPEdit);

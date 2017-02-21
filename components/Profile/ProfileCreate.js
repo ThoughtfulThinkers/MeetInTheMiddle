@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { ScrollView, Text } from 'react-native';
+import { Actions } from 'react-native-router-flux';
+import { View, ScrollView, Text } from 'react-native';
 import ProfileForm from './ProfileForm';
 import {
   Button, Card, CardSection,
@@ -29,8 +30,7 @@ class ProfileCreate extends Component {
   onCreateAccountButtonPress() {
     const { firstName, lastName, image, email, password } = this.props;
     const { street, city, state, zipcode } = this.props.location;
-    const userProfileData =
-    { firstName, lastName, image, street, city, state, zipcode, email, password };
+    const userProfileData = { firstName, lastName, image, street, city, state, zipcode, email, password };
     this.props.createNewUserAccount(userProfileData);
   }
 

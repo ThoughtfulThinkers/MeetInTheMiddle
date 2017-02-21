@@ -4,9 +4,11 @@
   Firebase.  We just need to supply the email address.
 *********************************************************************/
 import React, { Component } from 'react';
+import firebase from 'firebase';
 import { connect } from 'react-redux';
-import { Text, } from 'react-native';
-import { Button, Card, CardSection, Input } from '../common';
+import { Actions } from 'react-native-router-flux';
+import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { Button, Card, CardSection, Input, Spinner } from '../common';
 import {
   emailChanged,
   emailPasswordReset,
@@ -24,7 +26,7 @@ class ForgotPassword extends Component {
   }
 
   onResetPasswordButtonPress() {
-    const { email } = this.props;
+    const { email, loading } = this.props;
     console.log('ForgotPassword.js ', email);
     if (!email) return;
     this.props.emailPasswordReset(email);
@@ -34,11 +36,7 @@ class ForgotPassword extends Component {
     console.log('ForgotPassword error', this.props.authError);
     return (
       <Card>
-        <Text>
-          If the email address you enter is registered,
-          you will receive a link sent to that email address to reset
-          your password.
-        </Text>
+        <Text>If the email address you enter is registered, you'll received link sent to that email address to to reset your password.</Text>
         <CardSection>
           <Input
             label="Email"
@@ -68,7 +66,7 @@ const styles = {
   },
 };
 
-const mapStateToProps = ({ auth }) => {
+const mapStateToProps = ({ auth, user }) => {
   const { email, loading, authError } = auth;
   return { authError, email, loading };
 };

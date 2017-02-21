@@ -6,7 +6,7 @@ import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { meetupsFetch, setText, setLocation } from '../../actions';
 import MeetupList from './MeetupList';
-import { CardSection, Spinner, Button } from '../common';
+import { CardSection, Spinner, Input, Button } from '../common';
 
 
 class OpenMeetupListContainer extends Component {
@@ -35,8 +35,7 @@ class OpenMeetupListContainer extends Component {
       <View style={styles.viewStyle}>
         <Text style={styles.headerStyle}>Open Meetups</Text>
         <CardSection style={styles.filterStyle}>
-          <Text style={styles.filterTextStyle}>
-            Events in </Text><Text style={styles.stateTextStyle}>{this.props.location}</Text>
+          <Text style={styles.filterTextStyle}>Events in </Text><Text style={styles.stateTextStyle}>{this.props.location}</Text>
         </CardSection>
         <CardSection>
           <Button onPress={this.onPress.bind(this)}>Change State</Button>
@@ -97,5 +96,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, {
-  meetupsFetch, setLocation, setText })(OpenMeetupListContainer);
+export default connect(mapStateToProps, { meetupsFetch, setLocation, setText })(OpenMeetupListContainer);

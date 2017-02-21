@@ -1,4 +1,5 @@
 import 'react-native';
+import React from 'react';
 import * as actions from '../actions';
 
 /******************************************************

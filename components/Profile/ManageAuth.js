@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Text } from 'react-native';
+import { Acttions } from 'react-native-router-flux';
+import { View, ScrollView, Text } from 'react-native';
 import {
   Button, Card, CardSection,
-  Input
+  Input, Spinner
 } from '../common';
 
 import {
@@ -19,7 +20,7 @@ import {
 class ManageAuth extends Component {
 
   onSubmitUpdate() {
-    const { password, newPassword, confirmPassword } = this.props;
+    const { email, password, newPassword, confirmPassword } = this.props;
 
     console.log('onSubmitUpdate: ', password, newPassword, confirmPassword);
     if (!password) {
@@ -54,8 +55,7 @@ class ManageAuth extends Component {
                 label="Confim Password"
                 placeholder="new password"
                 value={this.props.confirmPassword}
-                onChangeText={value =>
-                  this.props.authInputChanged({ prop: 'confirmPassword', value })}
+                onChangeText={value => this.props.authInputChanged({ prop: 'confirmPassword', value })}
               />
             </CardSection>
           </Card>

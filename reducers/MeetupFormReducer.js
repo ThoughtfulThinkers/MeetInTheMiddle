@@ -6,6 +6,7 @@ import {
   SET_CURRENT_MEETUP,
   EDIT_MEETUP,
   EDIT_MEETUP_SUCCESS,
+  CREATE_VOTING_SUCCESS,
   SET_VOTE,
   RESET_MEETUP,
 } from '../actions/types';

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import firebase from 'firebase';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { ScrollView, Text, TouchableOpacity } from 'react-native';
+import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { Button, Card, CardSection, Input, Spinner } from './common';
 import {
   createNewUserAccount,
@@ -13,6 +14,7 @@ import {
   resetErrorState,
   setLoginStatus,
 } from '../actions';
+import MeetupList from './MeetupLists/MeetupList';
 
 class LoginForm extends Component {
 
@@ -43,8 +45,8 @@ class LoginForm extends Component {
   }
 
   renderButtons() {
-    const { email, password, loading, loggedIn } = this.props;
-    const { firstName } = this.props;
+    const { email, password, error, loading, loggedIn } = this.props;
+    const { firstName, lastName } = this.props;
     if (loading) {
       return <Spinner size="large" />;
     }
@@ -66,7 +68,7 @@ class LoginForm extends Component {
           </CardSection>
         </Card>
       );
-    }
+    } else {
         // loggedOut
         return (
           <Card>
@@ -101,15 +103,13 @@ class LoginForm extends Component {
               </Button>
             </CardSection>
             <CardSection>
-              <TouchableOpacity
-                style={styles.forgotPasswordTouchable} 
-                onPress={() => Actions.forgotPassword()}
-              >
+              <TouchableOpacity style={styles.forgotPasswordTouchable} onPress={() => Actions.forgotPassword()}>
                 <Text style={styles.forgotPasswordButton}>Forgot My Password</Text>
               </TouchableOpacity>
             </CardSection>
           </Card>
         );
+      }
     }
 
   render() {

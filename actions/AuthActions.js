@@ -14,7 +14,7 @@ import {
   SET_LOGIN_STATUS,
 } from './types';
 
-import { GOOGLE_GEO_API_KEY } from '../envConfig';
+import { googlePlacesConfig, GOOGLE_GEO_API_KEY } from '../envConfig';
 
 /*****************************************************************
   Changes to form fields
@@ -197,8 +197,7 @@ export const updateUser = data => {
         const lat = data.results[0].geometry.location.lat;
         const lon = data.results[0].geometry.location.lng;
         let location = { lat, lon };
-        if (state.length > 0) location = { ...location, street, city, state, zipcode };
-        // state required at minimum
+        if (state.length > 0) location = { ...location, street, city, state, zipcode }; // state required at minimum
         userData = { ...userData, location };
         // Firebase doesn't allow empty documents on an update
         if (firstName.length > 0) userData = { ...userData, firstName };
@@ -207,7 +206,7 @@ export const updateUser = data => {
         dispatch({ type: FETCH_GEOLOCATION_BY_FULL_ADDRESS_SUCCESS, payload: location });
         firebase.database().ref(`/users/${currentUser.uid}`)
           .update(userData)
-          .then(() => Actions.meetups({ type: 'reset' }))
+          .then(response => Actions.meetups({ type: 'reset' }))
           .catch(error => console.log('updateUser Error: ', error));
       })
       .catch(error => console.log('fetchGeoLocationByFullAddress error: ', error.message));
@@ -224,7 +223,7 @@ export const updateUserEmail = (emailAddress, password) => dispatch => {
   user.reauthenticate(credential)
     .then(() => {
       user.updateEmail(emailAddress)
-        .then(dispatch(Actions.profileUpdate({ type: 'reset' })));
+        .then(dispatch(Actions.profileUpdate({ type: 'reset' })))
     })
     .catch(error => console.log(error.message));
 };

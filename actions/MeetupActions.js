@@ -1,11 +1,13 @@
 import firebase from 'firebase';
 import _ from 'lodash';
+import { Actions } from 'react-native-router-flux';
 
 import {
   FETCH_MEETUPS,
   FETCH_MEETUPS_SUCCESS,
   FETCH_USER_MEETUPS,
   FETCH_USER_MEETUPS_SUCCESS,
+  FETCH_MEETUP_SUCCESS
 } from './types';
 
 export const meetupsFetch = (city) => {

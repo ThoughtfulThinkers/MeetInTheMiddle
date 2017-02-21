@@ -1,6 +1,7 @@
 import React from 'react';
 import { Platform } from 'react-native';
 import { Scene, Router, Actions } from 'react-native-router-flux';
+import { Ionicons } from '@exponent/vector-icons';
 
 import ChatRoom from './components/Chat/ChatRoom';
 import ForgotPassword from './components/Profile/ForgotPassword';
@@ -41,66 +42,19 @@ const RouterComponent = () => {
       sceneStyle={{ paddingTop: Platform.OS === 'ios' ? 64 : 74 }}
     >
       <Scene key="auth">
-        <Scene
-          initial
-          key="meetups"
-          component={Home}
-          title="Meet In The Middle"
-          leftButtonImage={require('./assets/images/settings.png')}
-          onLeft={() => Actions.login({ type: 'reset' })}
-          rightButtonImage={require('./assets/images/add.png')}
-          onRight={() => Actions.add()}
-        />
+        <Scene initial key="meetups" component={Home} title="Meet In The Middle" leftButtonImage={require('./assets/images/settings.png')} onLeft={() => Actions.login({ type: 'reset' })} rightButtonImage={require('./assets/images/add.png')} onRight={() => Actions.add()} />
         <Scene key="add" component={MeetupCreate} title="Add Meetup" />
         <Scene key="addLocation" component={MeetupLocationCreate} title="Location Settings" />
         <Scene key="chat" component={ChatRoom} title="Chat Room" style={{ paddingBottom: 40 }} />
         <Scene key="edit" component={MeetupEdit} title="Edit Meetup" />
         <Scene key="forgotPassword" component={ForgotPassword} title="Rest Password" />
-        <Scene
-          key="login"
-          component={LoginForm}
-          title="Account Management"
-          leftButtonImage={require('./assets/images/house.png')}
-          onLeft={() => Actions.meetups({ type: 'reset' })}
-        />
-        <Scene
-          key="manageAuth"
-          component={ManageAuth}
-          title="Update Authentication"
-          leftButtonImage={require('./assets/images/settings.png')}
-          onLeft={() => Actions.profileUpdate({ type: 'reset' })}
-        />
-        <Scene
-          key="manageEmail"
-          component={ManageEmail}
-          title="Update Email Address"
-          leftButtonImage={require('./assets/images/settings.png')}
-          onLeft={() => Actions.profileUpdate({ type: 'reset' })}
-        />
+        <Scene key="login" component={LoginForm} title="Account Management" leftButtonImage={require('./assets/images/house.png')} onLeft={() => Actions.meetups({ type: 'reset' })} />
+        <Scene key="manageAuth" component={ManageAuth} title="Update Authentication" leftButtonImage={require('./assets/images/settings.png')} onLeft={() => Actions.profileUpdate({ type: 'reset' })} />
+        <Scene key="manageEmail" component={ManageEmail} title="Update Email Address" leftButtonImage={require('./assets/images/settings.png')} onLeft={() => Actions.profileUpdate({ type: 'reset' })} />
         <Scene key="map" component={Map} title="Map" />
-        <Scene
-          key="meetup"
-          component={Meetup}
-          title="Meetup"
-          rightButtonImage={require('./assets/images/edit.png')}
-          onRight={() => Actions.edit()}
-          leftButtonImage={require('./assets/images/house.png')}
-          onLeft={() => Actions.meetups({ type: 'reset' })}
-        />
-        <Scene
-          key="profileCreate"
-          component={ProfileCreate}
-          title="Create Account"
-          leftButtonImage={require('./assets/images/house.png')}
-          onLeft={() => Actions.meetups({ type: 'reset' })}
-        />
-        <Scene
-          key="profileUpdate"
-          component={ProfileUpdate}
-          title="Update Profile"
-          leftButtonImage={require('./assets/images/house.png')}
-          onLeft={() => Actions.meetups({ type: 'reset' })}
-        />
+        <Scene key="meetup" component={Meetup} title="Meetup" rightButtonImage={require('./assets/images/edit.png')} onRight={() => Actions.edit()} leftButtonImage={require('./assets/images/house.png')} onLeft={() => Actions.meetups({ type: 'reset' })} />
+        <Scene key="profileCreate" component={ProfileCreate} title="Create Account" leftButtonImage={require('./assets/images/house.png')} onLeft={() => Actions.meetups({ type: 'reset' })} />
+        <Scene key="profileUpdate" component={ProfileUpdate} title="Update Profile" leftButtonImage={require('./assets/images/house.png')} onLeft={() => Actions.meetups({ type: 'reset' })} />
         <Scene key="rsvp" component={RSVP} title="RSVP" />
         <Scene key="rsvpEdit" component={RSVPEdit} title="Edit RSVP" />
         <Scene key="searchLocation" component={LocationSelector} title="Choose Location" />

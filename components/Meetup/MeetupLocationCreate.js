@@ -8,7 +8,7 @@ import {
   addMeetup,
   meetupChange,
 } from '../../actions';
-import { Card, CardSection, Button, Spinner } from '../common';
+import { Card, CardSection, Input, Button, Spinner } from '../common';
 
 class MeetupLocationCreate extends Component {
   constructor() {

@@ -2,6 +2,7 @@ import 'whatwg-fetch';
 import firebase from 'firebase';
 import _ from 'lodash';
 import { Actions } from 'react-native-router-flux';
+import { changeStatus } from './MeetupFormActions';
 import { SET_CURRENT_MEETUP, SET_VOTE, MEETUP_CHANGED } from './types';
 import { foursquareConfig, googlePlacesConfig } from '../envConfig';
 
@@ -21,17 +22,13 @@ export const createVoting = (lat, lon, meetup) => {
       let venues;
       let status;
       let newMeetup;
-      if (!data.response.groups ||
-        data.response.groups.length === 0 ||
-        data.response.groups[0].items.length === 0) {
+      if (!data.response.groups || data.response.groups.length === 0 || data.response.groups[0].items.length === 0) {
         const search2 = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lon}&key=${apiKey}`;
         fetch(search2)
         .then(response => response.json())
         .then((data2) => {
           let formattedAddress;
-          if (!data2 || !data2.results ||
-            !data2.results[0] || 
-            !data2.results[0].formatted_address) {
+          if (!data2 || !data2.results || !data2.results[0] || !data2.results[0].formatted_address) {
             formattedAddress = 'Invalid Location';
           } else {
             formattedAddress = data2.results[0].formatted_address;
