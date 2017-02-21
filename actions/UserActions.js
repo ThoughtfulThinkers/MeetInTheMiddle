@@ -1,3 +1,5 @@
+import firebase from 'firebase';
+import { Actions } from 'react-native-router-flux';
 import 'whatwg-fetch';
 // import { googlePlacesConfig, GOOGLE_GEO_API_KEY } from '../envConfig';
 

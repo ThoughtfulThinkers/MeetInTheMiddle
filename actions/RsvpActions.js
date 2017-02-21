@@ -45,6 +45,7 @@ export const setRsvp = (lat, lon, meetupId, users, name) => {
       lat,
       lon
     };
+    const guests = { ...users, uid: guest };
 
     firebase.database().ref(`/meetups/${meetupId}/users/${currentUser.uid}`)
       .set(guest)

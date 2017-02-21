@@ -9,7 +9,6 @@ const InputCtrl = ({
     <View style={containerStyle}>
       <Text style={labelStyle}>{label}</Text>
       <TextInput
-        autoCapitalize={autoCapitalize}
         secureTextEntry={secureTextEntry}
         autoCorrect={false}
         placeholder={placeholder}
@@ -43,4 +42,4 @@ const styles = {
   }
 };
 
-export { InputCtrl };
+export { Input };

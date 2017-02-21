@@ -1,3 +1,4 @@
+import { Actions } from 'react-native-router-flux';
 import {
   SET_TEXT,
   SET_LOCATION
