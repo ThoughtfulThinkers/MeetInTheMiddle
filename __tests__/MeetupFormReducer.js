@@ -25,38 +25,23 @@ const INITIAL_STATE = {
 };
 
 describe('meetupFormReducer', () => {
-it('undefined', () => {
-  expect(MeetupFormReducer(undefined, { type: 'null' })).toMatchSnapshot();
-});
 
 it('meetupChange', () => {
-  expect(MeetupFormReducer(undefined,
+  expect(MeetupFormReducer(INITIAL_STATE,
     actions.meetupChange('state', 'Pennsylvania'))).toMatchSnapshot();
 });
 
 it('setCurrentMeetup', () => {
-  expect(MeetupFormReducer(undefined,
+  expect(MeetupFormReducer(INITIAL_STATE,
     actions.setCurrentMeetup({ name: 'test', description: 'test' }))).toMatchSnapshot();
 });
 
-it('resetMeetup', () => {
-  expect(MeetupFormReducer(undefined, actions.resetMeetup())).toMatchSnapshot();
-});
-
 it('add_meetup', () => {
-  expect(MeetupFormReducer(undefined, { type: ADD_MEETUP })).toMatchSnapshot();
-});
-
-it('add_meetup_success', () => {
-  expect(MeetupFormReducer(undefined, { type: ADD_MEETUP_SUCCESS })).toMatchSnapshot();
+  expect(MeetupFormReducer(INITIAL_STATE, { type: ADD_MEETUP })).toMatchSnapshot();
 });
 
 it('edit_meetup', () => {
-  expect(MeetupFormReducer(undefined, { type: EDIT_MEETUP })).toMatchSnapshot();
-});
-
-it('edit_meetup_success', () => {
-  expect(MeetupFormReducer(undefined, { type: EDIT_MEETUP_SUCCESS })).toMatchSnapshot();
+  expect(MeetupFormReducer(INITIAL_STATE, { type: EDIT_MEETUP })).toMatchSnapshot();
 });
 
 it('set_vote', () => {
