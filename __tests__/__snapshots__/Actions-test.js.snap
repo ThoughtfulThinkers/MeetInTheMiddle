@@ -35,3 +35,63 @@ Object {
   "type": "SET_TEXT",
 }
 `;
+
+exports[`test creates a USER_INPUT_CHANGED action 1`] = `
+Object {
+  "payload": Object {
+    "prop": "firstName",
+    "value": "John",
+  },
+  "type": "USER_INPUT_CHANGED",
+}
+`;
+
+exports[`test creates a USER_INPUT_CHANGED action 2`] = `
+Object {
+  "payload": Object {
+    "prop": "lastName",
+    "value": "Smith",
+  },
+  "type": "USER_INPUT_CHANGED",
+}
+`;
+
+exports[`test creates a USER_LOCATION_INPUT_CHANGED action 1`] = `
+Object {
+  "payload": Object {
+    "prop": "street",
+    "value": "123 Main St",
+  },
+  "type": "USER_LOCATION_INPUT_CHANGED",
+}
+`;
+
+exports[`test creates a USER_LOCATION_INPUT_CHANGED action 2`] = `
+Object {
+  "payload": Object {
+    "prop": "city",
+    "value": "Salt Lake City",
+  },
+  "type": "USER_LOCATION_INPUT_CHANGED",
+}
+`;
+
+exports[`test creates a USER_LOCATION_INPUT_CHANGED action 3`] = `
+Object {
+  "payload": Object {
+    "prop": "state",
+    "value": "UT",
+  },
+  "type": "USER_LOCATION_INPUT_CHANGED",
+}
+`;
+
+exports[`test creates a USER_LOCATION_INPUT_CHANGED action 4`] = `
+Object {
+  "payload": Object {
+    "prop": "zipcode",
+    "value": "84111",
+  },
+  "type": "USER_LOCATION_INPUT_CHANGED",
+}
+`;
