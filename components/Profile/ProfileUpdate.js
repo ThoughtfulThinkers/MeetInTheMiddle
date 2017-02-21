@@ -19,22 +19,35 @@ import {
 } from '../../actions';
 
 class ProfileUpdate extends Component {
+  state = {
+    msg: '',
+  }
 
   onUpdateProfileButtonPress() {
-    const { firstName, lastName, image, email, password } = this.props;
-    const { street, city, state, zipcode } = this.props.location;
+    let { firstName, lastName, image, email, password } = this.props;
+    let { street, city, state, zipcode } = this.props.location;
     //TODO: error chcking
-    // firstName = firstName.trim();
-    // lastName = lastName.trim();
-    // image = image.trim();
-    // street = street.trim();
-    // city = city.trim();
-    // state = state.trim();
-    // zipcode = zipcode.trim();
-    // email = email.trim();
-    // password = password.trim();
+    firstName = firstName.trim();
+    lastName = lastName.trim();
+    image = image.trim();
+    street = street.trim();
+    city = city.trim();
+    state = state.trim();
+    zipcode = zipcode.trim();
     const data = { firstName, lastName, image, street, city, state, zipcode, email, password };
-    this.props.updateUser(data);
+    if (firstName && lastName && street && city && state) {
+      this.props.updateUser(data);
+    } else if (!firstName) {
+      this.setState({ msg: 'First Name is required ' });
+    } else if (!lastName) {
+      this.setState({ msg: 'Last Name is required ' });
+    } else if (!street) {
+      this.setState({ msg: 'Street is required ' });
+    } else if (!city) {
+      this.setState({ msg: 'City is required ' });
+    } else if (!state) {
+      this.setState({ msg: 'state is required ' });
+    }
   }
 
   renderUpdateProfileButton() {
@@ -66,9 +79,12 @@ class ProfileUpdate extends Component {
           </Button>
         </CardSection>
         <ProfileForm />
-        <Text style={styles.errorTextStyle}>{this.props.authError}</Text>
         <CardSection>
-          {this.renderUpdateProfileButton()}
+          <Text style={styles.errorTextStyle} >{this.state.msg}</Text>
+          <Text style={styles.errorTextStyle}>{this.props.authError}</Text>
+        </CardSection>
+        <CardSection>
+        {this.renderUpdateProfileButton()}
         </CardSection>
       </Card>
       </ScrollView>
@@ -113,60 +129,3 @@ export default connect(mapStateToProps, {
   userInputChanged,
   userLocationInputChanged,
 })(ProfileUpdate);
-
-// <CardSection>
-//   <Input
-//     label="First Name"
-//     placeholder="William"
-//     value={this.props.firstName}
-//     onChangeText={value => this.props.userInputChanged({ prop: 'firstName', value })}
-//   />
-// </CardSection>
-// <CardSection>
-//   <Input
-//     label="Last Name"
-//     placeholder="Tell"
-//     value={this.props.lastName}
-//     onChangeText={value => this.props.userInputChanged({ prop: 'lastName', value })}
-//   />
-// </CardSection>
-// <CardSection>
-//   <Input
-//     label="Street"
-//     placeholder="123 Main St"
-//     value={this.props.location.street}
-//     onChangeText={
-//       value => this.props.userLocationInputChanged({ prop: 'street', value })
-//     }
-//   />
-// </CardSection>
-// <CardSection>
-//   <Input
-//     label="City"
-//     placeholder="Salt Lake city"
-//     value={this.props.location.city}
-//     onChangeText={
-//       value => this.props.userLocationInputChanged({ prop: 'city', value })
-//     }
-//   />
-// </CardSection>
-// <CardSection>
-//   <Input
-//     label="State"
-//     placeholder="UT"
-//     value={this.props.location.state}
-//     onChangeText={
-//       value => this.props.userLocationInputChanged({ prop: 'state', value })
-//     }
-//   />
-// </CardSection>
-// <CardSection>
-//   <Input
-//     label="ZipCode"
-//     placeholder="84111"
-//     value={this.props.location.zipcode}
-//     onChangeText={
-//       value => this.props.userLocationInputChanged({ prop: 'zipcode', value })
-//     }
-//   />
-// </CardSection>
