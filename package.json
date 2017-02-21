@@ -13,12 +13,13 @@
     "jasmine-pit": "^2.0.2",
     "lodash": "^4.17.4",
     "moment": "^2.17.1",
-    "react": "~15.4.0",
+    "react": "^15.4.2",
     "react-native": "https://github.com/exponent/react-native/archive/sdk-13.0.3.tar.gz",
     "react-native-datepicker": "^1.4.4",
     "react-native-gifted-chat": "^0.1.1",
     "react-native-google-places-autocomplete": "^1.2.7",
     "react-native-router-flux": "^3.37.0",
+    "react-native-web": "0.0.72",
     "react-redux": "^5.0.2",
     "react-test-renderer": "^15.4.2",
     "redux": "^3.6.0",
@@ -29,12 +30,18 @@
   "devDependencies": {
     "jest": "^18.1.0",
     "jest-exponent": "^0.2.1",
-    "react-test-renderer": "^15.4.2"
+    "jest-fetch-mock": "^1.0.7",
+    "react-test-renderer": "^15.4.2",
+    "redux-mock-store": "^1.2.2"
   },
   "scripts": {
     "test": "jest"
   },
   "jest": {
-    "preset": "jest-exponent"
+    "preset": "jest-exponent",
+    "automock": false,
+    "setupFiles": [
+      "./setupJest.js"
+    ]
   }
 }
