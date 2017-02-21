@@ -3,11 +3,10 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 import { Actions } from 'react-native-router-flux';
 import moment from 'moment';
-import { Text, View, Share, TouchableWithoutFeedback, Alert } from 'react-native';
+import { Text, View, Share } from 'react-native';
 import { changeStatus, createVoting, changeLocation } from '../../actions';
 
 import GuestList from './GuestList/GuestList';
-import VotingList from './Voting/VotingList';
 import { CardSection, Card, Button } from '../common';
 
 const getAve = (array) => {
@@ -32,6 +31,54 @@ class Meetup extends Component {
     const { start, end, voteStart, voteEnd } = this.props.meetup;
     const { status } = this.props;
     this.checkStatus(status, start, end, voteStart, voteEnd);
+  }
+
+  //button methods
+  onRSVPPress() {
+    if (this.props.auth.loggedIn) {
+      if (!this.props.user.meetups[this.props.meetup.uid]) {
+        Actions.rsvp({ meetup: this.props.meetup });
+      } else {
+        Actions.rsvpEdit({ meetup: this.props.meetup });
+      }
+    } else {
+      Actions.login();
+    }
+  }
+
+  onInvitePress() {
+    const { start } = this.props.meetup;
+    const day = moment(start).format('DD MMM YYYY');
+    const time = moment(start).format('h:mm a');
+    const urlAndroid = 'https://goo.gl/icDb9f';
+    const urlIOS = 'https://goo.gl/VSL6mJ';
+    Share.share({
+      message: `Want to join me for the ${this.props.meetup.name} meetup on ${day} at ${time}.
+      \nDescription: ${this.props.meetup.description}
+      \nSent from the "Meet In The Middle" app ... available on
+      \n   Google Play: ${urlAndroid}
+      \n   Apple iTunes: ${urlIOS}`,
+      title: `Join me at the ${this.props.meetup.name} meetup`,
+    });
+  }
+
+  onMapPress() {
+    Actions.map({ meetup: this.props.meetup });
+  }
+
+  onChatPress() {
+    if (this.props.auth.loggedIn) {
+      Actions.chat({ meetup: this.props.meetup });
+    } else {
+      Actions.login();
+    }
+  }
+
+  onVotePress() {
+    const votingArray = _.map(this.props.meetup.venues, (val, uid) => {
+      return { ...val, uid };
+    });
+    Actions.voting({ venues: votingArray });
   }
 
   checkStatus(status, start, end, voteStart, voteEnd) {
@@ -102,54 +149,6 @@ class Meetup extends Component {
     this.props.changeStatus(this.props.meetup, fillerStatus);
   }
 
-  //button methods
-  onRSVPPress() {
-    if (this.props.auth.loggedIn) {
-      if (!this.props.user.meetups[this.props.meetup.uid]) {
-        Actions.rsvp({ meetup: this.props.meetup });
-      } else {
-        Actions.rsvpEdit({ meetup: this.props.meetup });
-      }
-    } else {
-      Actions.login();
-    }
-  }
-
-  onInvitePress() {
-    const { start } = this.props.meetup;
-    const day = moment(start).format('DD MMM YYYY');
-    const time = moment(start).format('h:mm a');
-    const urlAndroid = 'https://goo.gl/icDb9f';
-    const urlIOS = 'https://goo.gl/VSL6mJ';
-    Share.share({
-      message: `Want to join me for the ${this.props.meetup.name} meetup on ${day} at ${time}.
-      \nDescription: ${this.props.meetup.description}
-      \nSent from the "Meet In The Middle" app ... available on
-      \n   Google Play: ${urlAndroid}
-      \n   Apple iTunes: ${urlIOS}`,
-      title: `Join me at the ${this.props.meetup.name} meetup`,
-    });
-  }
-
-  onMapPress() {
-    Actions.map({ meetup: this.props.meetup });
-  }
-
-  onChatPress() {
-    if (this.props.auth.loggedIn) {
-      Actions.chat({ meetup: this.props.meetup });
-    } else {
-      Actions.login();
-    }
-  }
-
-  onVotePress() {
-    const votingArray = _.map(this.props.meetup.venues, (val, uid) => {
-      return { ...val, uid };
-    });
-    Actions.voting({ venues: votingArray });
-  }
-
   //render methods
   renderLocation(status) {
     if (status === 'set') {
@@ -159,7 +158,9 @@ class Meetup extends Component {
           <Text style={styles.textStyle}>Location: {location.name}</Text>
           <Text style={styles.textStyle}>Address: </Text>
           <View style={styles.addressView}>
-          {location.formattedAddress.map((line, i) => <Text style={styles.addressStyle} key={i}>{line}</Text>)}
+          {location.formattedAddress.map((line, i) => {
+            return <Text style={styles.addressStyle} key={i}>{line}</Text>;
+          })}
           </View>
         </CardSection>);
     }
@@ -240,8 +241,12 @@ class Meetup extends Component {
       <Card>
         <CardSection style={{ flexDirection: 'column' }}>
           <Text style={styles.titleStyle}>{meetup.name}</Text>
-          <Text style={styles.textStyle}>Start: {moment(meetup.start).format('MMMM Do YYYY, h:mm a')}</Text>
-          <Text style={styles.textStyle}>End: {moment(meetup.end).format('MMMM Do YYYY, h:mm a')}</Text>
+          <Text style={styles.textStyle}>
+            Start: {moment(meetup.start).format('MMMM Do YYYY, h:mm a')}
+          </Text>
+          <Text style={styles.textStyle}>
+            End: {moment(meetup.end).format('MMMM Do YYYY, h:mm a')}
+          </Text>
           <Text style={styles.textStyle}>Venue: {meetup.venue.name}</Text>
           <Text style={styles.textStyle}>Description: {meetup.description}</Text>
         </CardSection>

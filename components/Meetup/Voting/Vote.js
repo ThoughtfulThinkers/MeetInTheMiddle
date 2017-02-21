@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import firebase from 'firebase';
 import { Actions } from 'react-native-router-flux';
 import { Text, View, TouchableWithoutFeedback, Alert } from 'react-native';
 import { setVote, voteChange } from '../../../actions';

@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
-import moment from 'moment';
 import firebase from 'firebase';
 import _ from 'lodash';
-import { Text, View, Alert } from 'react-native';
+import { Text, Alert } from 'react-native';
 import DatePicker from 'react-native-datepicker';
-import VenuePicker from './Venues/VenuePicker';
 import {
   meetupChange,
   meetupEdit,
-  fetchMeetups,
   meetupsFetch,
   userMeetupsFetch,
   deleteMeetup } from '../../actions';

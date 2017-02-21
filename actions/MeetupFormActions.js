@@ -105,7 +105,7 @@ export const changeStatus = (meetup, status) => {
   export const deleteMeetup = (meetupId, users) => {
     return dispatch => {
       dispatch({ type: EDIT_MEETUP });
-      const { currentUser } = firebase.auth();
+      firebase.auth();
       const removeUsers = users.map(user => {
         return firebase.database().ref(`/users/${user}/meetups/${meetupId}`).remove(error => {
           if (error) {

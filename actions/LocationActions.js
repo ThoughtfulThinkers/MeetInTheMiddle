@@ -1,4 +1,3 @@
-import { Actions } from 'react-native-router-flux';
 import 'whatwg-fetch';
 import { GOOGLE_GEO_API_KEY } from '../envConfig';
 
