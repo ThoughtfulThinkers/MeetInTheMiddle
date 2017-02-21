@@ -136,7 +136,7 @@ class Meetup extends Component {
   }
 
   onChatPress() {
-    if (this.props.auth.loggedIn) {
+    if (this.props.auth.loggedIn && this.props.user.name !== '') {
       Actions.chat({ meetup: this.props.meetup });
     } else {
       Actions.login();
