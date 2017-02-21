@@ -2,7 +2,11 @@
   "extends": "rallycoding",
   "rules": {
     "arrow-body-style": 0,
+<<<<<<< HEAD
+    "semi": 0,
+=======
     # "semi": 0,
+>>>>>>> 6a0b29f09e7c30e40a1f1df5230dcfcd7d2a3f52
     "no-multiple-empty-lines": 0,
     "no-shadow": 0,
     "no-unused-vars": 0,
@@ -10,5 +14,9 @@
     "no-underscore-dangle": 0,
     "max-len": 0,
     "no-undef":0,
+<<<<<<< HEAD
+  "global-require": 0,
+=======
+>>>>>>> 6a0b29f09e7c30e40a1f1df5230dcfcd7d2a3f52
   }
 }
