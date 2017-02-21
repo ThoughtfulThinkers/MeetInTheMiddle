@@ -12,7 +12,7 @@ import {
 export const fetchGeoLocationByFullAddress = (street, city, state) => dispatch => {
   const fullAddress = `${street},${city},${state}`;
   const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${fullAddress}&key=${GOOGLE_GEO_API_KEY}`;
-  fetch(url)
+  return fetch(url)
     .then(response => response.json())
     .then(data => {
       // console.log('location: ', data.results[0].geometry.location);
