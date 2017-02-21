@@ -5,8 +5,9 @@ import {
   CHANGE_RSVP,
   SET_RSVP,
   SET_RSVP_SUCCESS,
-  DELETE_RSVP_SUCCESS
+  DELETE_RSVP_SUCCESS,
 } from '../actions/types';
+import { userMeetupsFetch } from './MeetupActions';
 
 const { apiKey } = googlePlacesConfig;
 
@@ -117,6 +118,7 @@ export const deleteRsvp = (meetup) => {
               const newMeetup = meetup;
               newMeetup.users = newUsers;
               dispatch({ type: DELETE_RSVP_SUCCESS, meetup: newMeetup, id: meetup.uid });
+              dispatch(userMeetupsFetch());
               Actions.meetups({ type: 'reset' });
             })
             .catch(err => console.log(err));

@@ -73,7 +73,7 @@ class MeetupLocationCreate extends Component {
         </Text>
         </View>
         <CardSection style={{ alignItems: 'center' }}>
-          <Text style={styles.pickerTextStyle}>Vote Start</Text>
+          <Text style={styles.pickerTextStyle}>RSVP Ends</Text>
           <DatePicker
             style={{ flex: 2 }}
             date={this.props.voteStart}
@@ -93,7 +93,7 @@ class MeetupLocationCreate extends Component {
         </Text>
         </View>
         <CardSection style={{ alignItems: 'center' }}>
-          <Text style={styles.pickerTextStyle}>Vote End</Text>
+          <Text style={styles.pickerTextStyle}>Location Selected</Text>
           <DatePicker
             style={{ flex: 2 }}
             date={this.props.voteEnd}

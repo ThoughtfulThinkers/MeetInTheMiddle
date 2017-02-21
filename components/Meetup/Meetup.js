@@ -176,10 +176,15 @@ class Meetup extends Component {
   }
 
   renderRsvp(status) {
+    const { auth, user, meetup } = this.props;
+    const { loggedIn } = auth;
+    const { meetups } = user;
+    const { uid } = meetup;
     if (status === 'created' || status === 'guests') {
+      const rsvpText = (loggedIn && meetups[uid]) ? 'Change RSVP' : 'RSVP';
       return (
               <Button onPress={this.onRSVPPress.bind(this)}>
-                RSVP
+                {rsvpText}
               </Button>);
     }
     return <Text />;
