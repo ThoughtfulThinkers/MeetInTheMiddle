@@ -25,7 +25,6 @@ const INITIAL_STATE = {
 };
 
 export default (state = INITIAL_STATE, action) => {
-
   switch (action.type) {
     case LOAD_AUTHENTICATED_USER_STATE_SUCCESS: {
       return { ...state, ...action.payload };
@@ -57,7 +56,7 @@ export default (state = INITIAL_STATE, action) => {
 
     case RESET_ERROR_STATE:
       return { ...state, error: '' };
-      
+
     case UPDATE_USER_SUCCESS: {
       return state;
     }

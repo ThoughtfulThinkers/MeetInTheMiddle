@@ -1,0 +1,170 @@
+exports[`meetupFormReducer add_meetup 1`] = `
+Object {
+  "description": "",
+  "end": "2017-02-21 14:27",
+  "loading": true,
+  "location": "",
+  "name": "",
+  "start": "2017-02-21 13:27",
+  "state": "New York",
+  "status": "created",
+  "venue": Object {
+    "id": "topPicks",
+    "name": "Top Picks",
+  },
+  "venues": Object {},
+  "voteEnd": "2017-02-21 12:27",
+  "voteStart": "2017-02-21 11:57",
+}
+`;
+
+exports[`meetupFormReducer add_meetup_success 1`] = `
+Object {
+  "description": "",
+  "end": "2017-02-21 14:27",
+  "location": "",
+  "name": "",
+  "start": "2017-02-21 13:27",
+  "state": "New York",
+  "status": "created",
+  "venue": Object {
+    "id": "topPicks",
+    "name": "Top Picks",
+  },
+  "venues": Object {},
+  "voteEnd": "2017-02-21 12:27",
+  "voteStart": "2017-02-21 11:57",
+}
+`;
+
+exports[`meetupFormReducer edit_meetup 1`] = `
+Object {
+  "description": "",
+  "end": "2017-02-21 14:27",
+  "loading": true,
+  "location": "",
+  "name": "",
+  "start": "2017-02-21 13:27",
+  "state": "New York",
+  "status": "created",
+  "venue": Object {
+    "id": "topPicks",
+    "name": "Top Picks",
+  },
+  "venues": Object {},
+  "voteEnd": "2017-02-21 12:27",
+  "voteStart": "2017-02-21 11:57",
+}
+`;
+
+exports[`meetupFormReducer edit_meetup_success 1`] = `
+Object {
+  "description": "",
+  "end": "2017-02-21 14:27",
+  "location": "",
+  "name": "",
+  "start": "2017-02-21 13:27",
+  "state": "New York",
+  "status": "created",
+  "venue": Object {
+    "id": "topPicks",
+    "name": "Top Picks",
+  },
+  "venues": Object {},
+  "voteEnd": "2017-02-21 12:27",
+  "voteStart": "2017-02-21 11:57",
+}
+`;
+
+exports[`meetupFormReducer meetupChange 1`] = `
+Object {
+  "description": "",
+  "end": "2017-02-21 14:27",
+  "location": "",
+  "name": "",
+  "start": "2017-02-21 13:27",
+  "state": "Pennsylvania",
+  "status": "created",
+  "venue": Object {
+    "id": "topPicks",
+    "name": "Top Picks",
+  },
+  "venues": Object {},
+  "voteEnd": "2017-02-21 12:27",
+  "voteStart": "2017-02-21 11:57",
+}
+`;
+
+exports[`meetupFormReducer resetMeetup 1`] = `
+Object {
+  "description": "",
+  "end": "2017-02-21 14:27",
+  "location": "",
+  "name": "",
+  "start": "2017-02-21 13:27",
+  "state": "New York",
+  "status": "created",
+  "venue": Object {
+    "id": "topPicks",
+    "name": "Top Picks",
+  },
+  "venues": Object {},
+  "voteEnd": "2017-02-21 12:27",
+  "voteStart": "2017-02-21 11:57",
+}
+`;
+
+exports[`meetupFormReducer set_vote 1`] = `
+Object {
+  "venues": Object {
+    "123": Object {
+      "name": "test",
+      "vote": 0,
+      "votes": 2,
+    },
+    "venue": Object {
+      "name": "test",
+      "vote": 0,
+      "votes": 2,
+    },
+  },
+}
+`;
+
+exports[`meetupFormReducer setCurrentMeetup 1`] = `
+Object {
+  "description": "test",
+  "end": "2017-02-21 14:27",
+  "location": "",
+  "name": "test",
+  "start": "2017-02-21 13:27",
+  "state": "New York",
+  "status": "created",
+  "venue": Object {
+    "id": "topPicks",
+    "name": "Top Picks",
+  },
+  "venues": Object {},
+  "voteEnd": "2017-02-21 12:27",
+  "voteStart": "2017-02-21 11:57",
+}
+`;
+
+exports[`meetupFormReducer undefined 1`] = `
+Object {
+  "description": "",
+  "end": "2017-02-21 14:27",
+  "location": "",
+  "name": "",
+  "start": "2017-02-21 13:27",
+  "state": "New York",
+  "status": "created",
+  "venue": Object {
+    "id": "topPicks",
+    "name": "Top Picks",
+  },
+  "venues": Object {},
+  "voteEnd": "2017-02-21 12:27",
+  "voteStart": "2017-02-21 11:57",
+}
+`;
