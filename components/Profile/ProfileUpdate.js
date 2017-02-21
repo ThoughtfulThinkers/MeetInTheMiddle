@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { View, ScrollView, Text } from 'react-native';
+import { ScrollView, Text } from 'react-native';
 import ProfileForm from './ProfileForm';
 import {
   Button, Card, CardSection,
-  Input, Spinner,
+  Spinner,
 } from '../common';
 
 import {

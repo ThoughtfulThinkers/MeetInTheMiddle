@@ -31,7 +31,7 @@ class MeetupListItem extends Component {
   }
 
   render() {
-    const { name, state, start, vote, uid, location, status, venues } = this.props.meetup;
+    const { name, state, start, location, status, venues } = this.props.meetup;
 
     return (
       <TouchableWithoutFeedback onPress={this.onRowPress.bind(this)}>

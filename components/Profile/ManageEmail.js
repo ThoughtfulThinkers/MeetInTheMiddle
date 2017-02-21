@@ -6,11 +6,10 @@
 **************************************************/
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Acttions } from 'react-native-router-flux';
-import { View, ScrollView, Text } from 'react-native';
+import { Text } from 'react-native';
 import {
   Button, Card, CardSection,
-  Input, Spinner
+  Input
 } from '../common';
 
 import {
@@ -68,12 +67,6 @@ class ManageEmail extends Component {
     );
   }
 }
-
-const styles = {
-  noticeStyle: {
-    fontSize: 15,
-  }
-};
 
 const mapStatetoProps = ({ auth }) => {
   const { email, newEmail, password, } = auth;

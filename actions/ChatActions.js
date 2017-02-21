@@ -1,6 +1,4 @@
 import firebase from 'firebase';
-import { Actions } from 'react-native-router-flux';
-import { fbConfig } from '../envConfig';
 
 import {
   FETCH_MESSAGES_BY_MEETUP_SUCCESS
@@ -9,7 +7,7 @@ import {
 
 export const sendMessageByMeetup = (id, message) => {
   // TODO: Check currentUser status
-  const { currentUser } = firebase.auth();
+  firebase.auth();
   // console.log('sendMessageByMeetup', message);
   const { text, user } = message[0];
   const createdAt = firebase.database.ServerValue.TIMESTAMP;
@@ -27,7 +25,7 @@ export const sendMessageByMeetup = (id, message) => {
 
 export const fetchMessagesByMeetup = id => {
   // TODO: if not current user, send to login page
-  const { currentUser } = firebase.auth();
+  firebase.auth();
   return dispatch => {
     // console.log('room id ', id);
     const messages = firebase.database().ref(`/chatrooms/${id}`).orderByKey();

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { connect } from 'react-redux';
-import { View, Text, TouchableOpacity, Alert } from 'react-native';
+import { Alert } from 'react-native';
 import { changeRSVP } from '../actions';
-import { Card, CardSection, Input } from './common';
 import { googlePlacesConfig } from '../envConfig';
 
 class LocationSelector extends Component {
@@ -37,13 +36,6 @@ class LocationSelector extends Component {
           );
         }
 }
-
-const styles = {
-  textStyle: {
-    fontSize: 18,
-    padding: 5
-  }
-};
 
 const mapStateToProps = state => {
   const { lat, lon, street } = state.user.location;

@@ -19,7 +19,8 @@ export const FETCH_MESSAGES_BY_MEETUP_SUCCESS = 'FETCH_MESSAGES_BY_MEETUP_SUCCES
 /******************************************************
   Location Actions
 ******************************************************/
-export const FETCH_GEOLOCATION_BY_FULL_ADDRESS_SUCCESS = 'FETCH_GEOLOCATION_BY_FULL_ADDRESS_SUCCESS';
+export const FETCH_GEOLOCATION_BY_FULL_ADDRESS_SUCCESS =
+  'FETCH_GEOLOCATION_BY_FULL_ADDRESS_SUCCESS';
 
 /******************************************************
   Filter Actions

@@ -1,5 +1,4 @@
 import firebase from 'firebase';
-import { fbConfig } from './envConfig';
 
 class Backend {
   uid = '';

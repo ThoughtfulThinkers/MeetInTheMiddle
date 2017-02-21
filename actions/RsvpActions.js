@@ -5,8 +5,9 @@ import {
   CHANGE_RSVP,
   SET_RSVP,
   SET_RSVP_SUCCESS,
-  DELETE_RSVP_SUCCESS
+  DELETE_RSVP_SUCCESS,
 } from '../actions/types';
+import { userMeetupsFetch } from './MeetupActions';
 
 const { apiKey } = googlePlacesConfig;
 
@@ -44,7 +45,6 @@ export const setRsvp = (lat, lon, meetupId, users, name) => {
       lat,
       lon
     };
-    const guests = { ...users, uid: guest };
 
     firebase.database().ref(`/meetups/${meetupId}/users/${currentUser.uid}`)
       .set(guest)
@@ -117,6 +117,7 @@ export const deleteRsvp = (meetup) => {
               const newMeetup = meetup;
               newMeetup.users = newUsers;
               dispatch({ type: DELETE_RSVP_SUCCESS, meetup: newMeetup, id: meetup.uid });
+              dispatch(userMeetupsFetch());
               Actions.meetups({ type: 'reset' });
             })
             .catch(err => console.log(err));
