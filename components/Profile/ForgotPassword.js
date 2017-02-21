@@ -10,12 +10,14 @@ import { Actions } from 'react-native-router-flux';
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { Button, Card, CardSection, Input, Spinner } from '../common';
 import {
-  emailChanged,
   emailPasswordReset,
   resetAuthErrorState,
 } from '../../actions';
 
 class ForgotPassword extends Component {
+  state = {
+    resetEmail: ''
+  }
 
   componentWillMount() {
     this.props.resetAuthErrorState();
@@ -25,24 +27,31 @@ class ForgotPassword extends Component {
     this.props.emailChanged(text);
   }
 
+  onResetEmailChange(text) {
+    this.setState({ resetEmail: text });
+  }
+
   onResetPasswordButtonPress() {
-    const { email, loading } = this.props;
-    console.log('ForgotPassword.js ', email);
-    if (!email) return;
-    this.props.emailPasswordReset(email);
+    const { loading } = this.props;
+    const resetEmail = this.state.resetEmail;
+    console.log('ForgotPassword.js ', resetEmail);
+    if (!resetEmail) return;
+    this.props.emailPasswordReset(resetEmail);
   }
 
   render() {
     console.log('ForgotPassword error', this.props.authError);
     return (
       <Card>
-        <Text>If the email address you enter is registered, you'll received link sent to that email address to to reset your password.</Text>
+        <CardSection>
+          <Text style={styles.noticeTextStyle}>If the email address you enter is registered, a link will be sent to that email address to to reset your password.</Text>
+        </CardSection>
         <CardSection>
           <Input
             label="Email"
-            placeholder="email@domain.com"
-            onChangeText={this.onEmailChange.bind(this)}
-            value={this.props.email}
+            placeholder="youremail@domain.com"
+            onChangeText={this.onResetEmailChange.bind(this)}
+            value={this.state.resetEmail}
           />
         </CardSection>
         <CardSection>
@@ -64,6 +73,13 @@ const styles = {
     paddingLeft: 10,
     paddingRight: 10
   },
+  noticeTextStyle: {
+    color: '#1ba6bd',
+    paddingLeft: 10,
+    paddingRight: 10,
+    fontSize: 15,
+    alignSelf: 'center',
+  }
 };
 
 const mapStateToProps = ({ auth, user }) => {
@@ -72,7 +88,6 @@ const mapStateToProps = ({ auth, user }) => {
 };
 
 export default connect(mapStateToProps, {
-  emailChanged,
   emailPasswordReset,
   resetAuthErrorState,
 })(ForgotPassword);
