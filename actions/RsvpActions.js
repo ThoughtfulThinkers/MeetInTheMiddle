@@ -14,7 +14,7 @@ const { apiKey } = googlePlacesConfig;
 export const changeRSVP = (lat, lon) => {
   return dispatch => {
     const search = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lon}&key=${apiKey}`;
-    fetch(search)
+    return fetch(search)
     .then(response => response.json())
     .then((data) => {
       const address = data.results[0].formatted_address;
