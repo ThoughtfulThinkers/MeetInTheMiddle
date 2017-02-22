@@ -5,11 +5,15 @@ import { connect } from 'react-redux';
 import { View, Text } from 'react-native';
 import { userMeetupsFetch } from '../../actions';
 import MeetupList from './MeetupList';
-import { CardSection, Spinner } from '../common';
+import { CardSection, Spinner, IconButton } from '../common';
 
 
 class UserMeetupListContainer extends Component {
   componentDidMount() {
+    this.props.userMeetupsFetch();
+  }
+
+  fetchMeetups() {
     this.props.userMeetupsFetch();
   }
 
@@ -18,9 +22,19 @@ class UserMeetupListContainer extends Component {
     if (this.props.loading) {
       textContent = <CardSection><Spinner size='small' /></CardSection>;
     } else if (this.props.meetups.length === 0) {
-      textContent = <Text style={styles.emptyTextStyle}>You have no meetups scheduled.</Text>;
+      textContent = (
+        <View style={styles.headerView}>
+          <Text style={styles.emptyTextStyle}>
+            You have no meetups scheduled.
+          </Text>
+          <IconButton name="ios-refresh" size={32} onPress={this.fetchMeetups.bind(this)} />
+        </View>);
     } else {
-      textContent = <Text style={styles.headerStyle}>Your Meetups</Text>;
+      textContent = (
+        <View style={styles.headerView}>
+            <Text style={styles.headerStyle}>Your Meetups</Text>
+            <IconButton name="ios-refresh" size={32} onPress={this.fetchMeetups.bind(this)} />
+        </View>);
     }
     return (
       <View style={styles.viewStyle}>
@@ -34,6 +48,11 @@ class UserMeetupListContainer extends Component {
 const styles = {
   viewStyle: {
     maxHeight: 200
+  },
+  headerView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   headerStyle: {
     fontSize: 20,

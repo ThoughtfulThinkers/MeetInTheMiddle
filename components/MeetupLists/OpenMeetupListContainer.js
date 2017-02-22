@@ -6,7 +6,7 @@ import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { meetupsFetch, setText, setLocation } from '../../actions';
 import MeetupList from './MeetupList';
-import { CardSection, Spinner, Input, Button } from '../common';
+import { CardSection, Spinner, Input, Button, IconButton } from '../common';
 
 
 class OpenMeetupListContainer extends Component {
@@ -19,21 +19,28 @@ class OpenMeetupListContainer extends Component {
     Actions.states();
   }
 
+  fetchMeetups() {
+    this.props.meetupsFetch(this.props.location);
+  }
+
   render() {
     let listContent;
     if (this.props.loading) {
       listContent = <CardSection><Spinner size='small' /></CardSection>;
     } else if (this.props.meetups.length === 0) {
       listContent = (
-        <Text style={styles.textStyle}>
-          There are no meetups scheduled in this state.
-        </Text>);
+          <Text style={styles.textStyle}>
+            There are no open meetups scheduled in this state.
+          </Text>);
     } else {
       listContent = <MeetupList meetups={this.props.meetups} />;
     }
     return (
       <View style={styles.viewStyle}>
-        <Text style={styles.headerStyle}>Open Meetups</Text>
+        <View style={styles.headerView}>
+            <Text style={styles.headerStyle}>Open Meetups</Text>
+            <IconButton name="ios-refresh" size={32} onPress={this.fetchMeetups.bind(this)} />
+        </View>
         <CardSection style={styles.filterStyle}>
           <Text style={styles.filterTextStyle}>Events in </Text><Text style={styles.stateTextStyle}>{this.props.location}</Text>
         </CardSection>
@@ -55,6 +62,11 @@ const styles = {
     alignSelf: 'center',
     padding: 5,
     color: 'black'
+  },
+  headerView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   filterStyle: {
     backgroundColor: '#1ba6bd',
@@ -84,9 +96,9 @@ const mapStateToProps = state => {
     const bDate = moment(b.start);
     return aDate.diff(bDate);
   });
-  const removeDate = moment().subtract(1, 'months');
   meetups = meetups.filter((a) => {
-    return moment(a.end).isAfter(removeDate);
+    console.log(a.status, a.status === 'created')
+    return a.status === 'created' && a.status === 'guests';
   });
   return {
     meetups,

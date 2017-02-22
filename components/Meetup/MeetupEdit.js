@@ -13,7 +13,9 @@ import {
   fetchMeetups,
   meetupsFetch,
   userMeetupsFetch,
-  deleteMeetup } from '../../actions';
+  deleteMeetup,
+  userInputChanged,
+  resetErrorState } from '../../actions';
 import { Card, CardSection, Input, Button, Spinner, DeleteButton } from '../common';
 
 class MeetupEdit extends Component {
@@ -32,7 +34,7 @@ class MeetupEdit extends Component {
 
   onButtonPress() {
     if (this.props.meetup.name === '' || this.props.meetup.description === '') {
-      Alert.alert('Please include a name and description.');
+      this.props.userInputChanged({ prop: 'error', value: 'Please include a name and description.' });
       return;
     }
     this.props.meetupEdit(this.props.meetup);
@@ -41,6 +43,7 @@ class MeetupEdit extends Component {
   }
 
   onChange(prop, value) {
+    this.props.resetErrorState();
     this.props.meetupChange(prop, value);
   }
 
@@ -177,6 +180,9 @@ class MeetupEdit extends Component {
           {button}
           {deleteButton}
         </CardSection>
+        <CardSection style={{ justifyContent: 'center' }}>
+          <Text style={styles.errorStyle}>{this.props.error}</Text>
+        </CardSection>
       </Card>
     );
   }
@@ -194,18 +200,28 @@ const styles = {
   deleteText: {
     color: 'white'
   },
+  errorStyle: {
+    color: 'red',
+    fontSize: 20,
+    textAlign: 'center',
+    paddingLeft: 10,
+    paddingRight: 10
+  },
 };
 
 const mapStateToProps = (state) => {
   const meetup = state.meetupForm;
   const location = state.filter.location;
   const loading = state.meetupForm.loading ? true : false;
+  const { error } = state.user;
   const { loggedIn } = state.auth;
-  return { meetup, loading, location, loggedIn };
+  return { meetup, loading, location, loggedIn, error };
 };
 
 export default connect(mapStateToProps, { meetupChange,
                                           meetupEdit,
                                           meetupsFetch,
                                           userMeetupsFetch,
-                                          deleteMeetup })(MeetupEdit);
+                                          deleteMeetup,
+                                          userInputChanged,
+                                          resetErrorState })(MeetupEdit);

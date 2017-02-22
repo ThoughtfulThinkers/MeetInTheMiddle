@@ -4,7 +4,13 @@ import Exponent from 'exponent';
 import { Text, Alert } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { setRsvp, changeRSVP, changeStatus, editRsvp, deleteRsvp } from '../../../actions';
+import { setRsvp,
+        changeRSVP,
+        changeStatus,
+        editRsvp,
+        deleteRsvp,
+        userInputChanged,
+        resetErrorState } from '../../../actions';
 import LocationSelector from '../../LocationSelector';
 import { CardSection, Card, Button, DeleteButton } from '../../common';
 
@@ -22,14 +28,16 @@ class RSVPEdit extends Component {
     const { uid, users } = meetup;
     const name = `${firstName} ${lastName}`;
     if (lat === 0 && lon === 0) {
-      Alert.alert('Invalid location.');
+      this.props.userInputChanged({ prop: 'error', value: 'Invalid location.' });
     } else {
+      this.props.resetErrorState();
       this.props.editRsvp(lat, lon, uid, users, name);
       Actions.pop();
     }
   }
 
   onCurrentLocationPress() {
+      this.props.resetErrorState();
       const { Location, Permissions } = Exponent;
       Permissions.askAsync(Permissions.LOCATION)
       .then(response => {
@@ -46,12 +54,14 @@ class RSVPEdit extends Component {
     }
 
     onPreferredLocationPress() {
+      this.props.resetErrorState();
       const { lat, lon } = this.props.user.location;
       this.props.changeRSVP(lat, lon);
       Alert.alert('Location set, please confirm RSVP.');
     }
 
     onDeletePress() {
+      this.props.resetErrorState();
       this.props.deleteRsvp(this.props.meetup);
       Actions.pop();
     }
@@ -87,6 +97,9 @@ class RSVPEdit extends Component {
             Delete RSVP
           </DeleteButton>
         </CardSection>
+        <CardSection style={{ justifyContent: 'center' }}>
+          <Text style={styles.errorStyle}>{this.props.error}</Text>
+        </CardSection>
       </Card>
     );
   }
@@ -95,15 +108,28 @@ class RSVPEdit extends Component {
 const styles = {
   titleStyle: {
     fontSize: 18
+  },
+  errorStyle: {
+    color: 'red',
+    fontSize: 20,
+    textAlign: 'center',
+    paddingLeft: 10,
+    paddingRight: 10
   }
 };
 
 const mapStateToProps = (state, props) => {
   const { rsvp, user, meetupForm } = state;
   const { lat, lon, address } = rsvp;
-  const { firstName, lastName } = user;
+  const { firstName, lastName, error } = user;
   const oldRSVP = user.meetups[props.meetup.uid];
-  return { lat, lon, firstName, lastName, user, address, oldRSVP, meetupForm };
+  return { lat, lon, firstName, lastName, user, address, oldRSVP, meetupForm, error };
 };
 
-export default connect(mapStateToProps, { setRsvp, changeRSVP, changeStatus, editRsvp, deleteRsvp })(RSVPEdit);
+export default connect(mapStateToProps, { setRsvp,
+                                          changeRSVP,
+                                          changeStatus,
+                                          editRsvp,
+                                          deleteRsvp,
+                                          userInputChanged,
+                                          resetErrorState })(RSVPEdit);

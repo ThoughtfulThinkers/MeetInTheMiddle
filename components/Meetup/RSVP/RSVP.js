@@ -4,7 +4,7 @@ import Exponent from 'exponent';
 import { Text, Alert } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { setRsvp, changeRSVP, changeStatus } from '../../../actions';
+import { setRsvp, changeRSVP, changeStatus, userInputChanged, resetErrorState } from '../../../actions';
 import LocationSelector from '../../LocationSelector';
 import { CardSection, Card, Button } from '../../common';
 
@@ -22,8 +22,9 @@ class RSVP extends Component {
     const { uid, users } = meetup;
     const name = `${firstName} ${lastName}`;
     if (lat === 0 && lon === 0) {
-      Alert.alert('Invalid location.');
+      this.props.userInputChanged({ prop: 'error', value: 'Invalid location.' });
     } else {
+      this.props.resetErrorState();
       this.props.setRsvp(lat, lon, uid, users, name);
       Actions.pop();
     }
@@ -78,6 +79,9 @@ class RSVP extends Component {
             Confirm RSVP
           </Button>
         </CardSection>
+        <CardSection style={{ justifyContent: 'center' }}>
+          <Text style={styles.errorStyle}>{this.props.error}</Text>
+        </CardSection>
       </Card>
     );
   }
@@ -86,13 +90,20 @@ class RSVP extends Component {
 const styles = {
   titleStyle: {
     fontSize: 18
+  },
+  errorStyle: {
+    color: 'red',
+    fontSize: 20,
+    textAlign: 'center',
+    paddingLeft: 10,
+    paddingRight: 10
   }
 };
 
 const mapStateToProps = ({ rsvp, user, meetupForm }) => {
   const { lat, lon, address } = rsvp;
-  const { firstName, lastName } = user;
-  return { lat, lon, firstName, lastName, user, address, meetupForm };
+  const { firstName, lastName, error } = user;
+  return { lat, lon, firstName, lastName, user, address, meetupForm, error };
 };
 
-export default connect(mapStateToProps, { setRsvp, changeRSVP, changeStatus })(RSVP);
+export default connect(mapStateToProps, { setRsvp, changeRSVP, changeStatus, userInputChanged, resetErrorState })(RSVP);

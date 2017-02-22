@@ -5,7 +5,7 @@ import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { Text, Alert } from 'react-native';
 import DatePicker from 'react-native-datepicker';
-import { meetupChange, resetMeetup } from '../../actions';
+import { meetupChange, resetMeetup, userInputChanged, resetErrorState } from '../../actions';
 import { Card, CardSection, Input, Button } from '../common';
 
 class MeetupCreate extends Component {
@@ -13,20 +13,21 @@ class MeetupCreate extends Component {
   componentDidMount() {
     if (!this.props.loggedIn) {
       Actions.login({ type: 'reset' });
-      return;
+    } else {
+      this.props.resetMeetup();
     }
-    this.props.resetMeetup();
   }
 
   onButtonPress() {
     if (this.props.name === '' || this.props.description === '') {
-      Alert.alert('Please include a name and description.');
-      return;
+      this.props.userInputChanged({ prop: 'error', value: 'Please include a name and description.' });
+    } else {
+      Actions.addLocation();
     }
-    Actions.addLocation();
   }
 
   onChange(prop, value) {
+    this.props.resetErrorState();
     this.props.meetupChange(prop, value);
   }
 
@@ -89,6 +90,9 @@ class MeetupCreate extends Component {
             Next
           </Button>
         </CardSection>
+        <CardSection style={{ justifyContent: 'center' }}>
+          <Text style={styles.errorStyle}>{this.props.error}</Text>
+        </CardSection>
       </Card>
     );
   }
@@ -99,13 +103,21 @@ const styles = {
     fontSize: 18,
     paddingLeft: 20,
     flex: 1
+  },
+  errorStyle: {
+    color: 'red',
+    fontSize: 20,
+    textAlign: 'center',
+    paddingLeft: 10,
+    paddingRight: 10
   }
 };
 
-const mapStateToProps = ({ meetupForm, auth }) => {
+const mapStateToProps = ({ meetupForm, auth, user }) => {
   const { name, description, start, end } = meetupForm;
   const { loggedIn } = auth;
-  return { name, description, start, end, loggedIn };
+  const { error } = user;
+  return { name, description, start, end, loggedIn, error };
 };
 
-export default connect(mapStateToProps, { meetupChange, resetMeetup })(MeetupCreate);
+export default connect(mapStateToProps, { meetupChange, resetMeetup, userInputChanged, resetErrorState })(MeetupCreate);
