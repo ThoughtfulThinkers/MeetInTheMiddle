@@ -16,7 +16,7 @@ export const createVoting = (lat, lon, meetup) => {
   const venueType = meetup.venue.id;
   return dispatch => {
     const search = `https://api.foursquare.com/v2/venues/explore?ll=${lat},${lon}&client_id=${ID}&client_secret=${SECRET}&sortByDistance=true&section=${venueType}&limit=10&v=20170201&m=foursquare`;
-    fetch(search)
+    return fetch(search)
     .then(response => response.json())
     .then(data => {
       let venues;
