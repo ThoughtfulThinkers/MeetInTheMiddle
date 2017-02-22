@@ -2,9 +2,9 @@ import 'whatwg-fetch';
 import firebase from 'firebase';
 import _ from 'lodash';
 import { Actions } from 'react-native-router-flux';
-import { changeStatus } from './MeetupFormActions';
 import { SET_CURRENT_MEETUP, SET_VOTE, MEETUP_CHANGED } from './types';
 import { foursquareConfig, googlePlacesConfig } from '../envConfig';
+import { setMeetup, firebaseUserVote, firebaseVenueVote, setLocation } from './firebase-functions/MapActions';
 
 const { ID, SECRET } = foursquareConfig;
 const { apiKey } = googlePlacesConfig;
@@ -43,8 +43,7 @@ export const createVoting = (lat, lon, meetup) => {
           venues = { 0: location };
           status = 'location';
           newMeetup = { ...meetup, status, venues };
-          firebase.database().ref(`/meetups/${meetup.uid}`)
-          .set(newMeetup)
+          setMeetup(newMeetup)
           .then(() => {
             dispatch({ type: SET_CURRENT_MEETUP, meetup: newMeetup });
             Actions.meetup({ type: 'refresh' });
@@ -61,8 +60,7 @@ export const createVoting = (lat, lon, meetup) => {
           venues[id] = { name, formattedAddress, lat: location.lat, lon: lng, votes: 0 };
         });
         newMeetup = { ...meetup, status, venues };
-        firebase.database().ref(`/meetups/${meetup.uid}`)
-        .set(newMeetup)
+        setMeetup(newMeetup)
         .then(() => {
           dispatch({ type: SET_CURRENT_MEETUP, meetup: newMeetup });
           Actions.meetup({ type: 'refresh' });
@@ -76,12 +74,9 @@ export const createVoting = (lat, lon, meetup) => {
 
 export const setVote = (meetupId, venueId, venueVote) => {
   return dispatch => {
-    const { currentUser } = firebase.auth();
-    firebase.database().ref(`/users/${currentUser.uid}/meetups/${meetupId}/vote`)
-    .set(venueId)
+    return firebaseUserVote(meetupId, venueId)
     .then(() => {
-      firebase.database().ref(`/meetups/${meetupId}/venues/${venueId}/votes`)
-      .set(venueVote)
+      firebaseVenueVote(meetupId, venueId, venueVote)
       .then(() => {
         dispatch({ type: SET_VOTE, venueId, vote: venueVote });
         Actions.meetup({ type: 'refresh' });
@@ -125,8 +120,7 @@ export const voteChange = (meetupId, venueId, venueVote) => {
 
 export const changeLocation = (location, meetupId) => {
   return (dispatch) => {
-    firebase.database().ref(`/meetups/${meetupId}/location`)
-    .set(location)
+    return setLocation(meetupId, location)
     .then(() => {
       dispatch({
         type: MEETUP_CHANGED,

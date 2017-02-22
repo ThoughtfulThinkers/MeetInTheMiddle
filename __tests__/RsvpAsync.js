@@ -10,7 +10,7 @@ describe('changeRsvp', () => {
     fetch.mockResponse(JSON.stringify({ results: [{ formatted_address: 'test' }] }));
 
     const expectedActions = [
-      {"address": "test", "lat": 0, "lon": 0, "type": "CHANGE_RSVP"}]
+      { "address": "test", "lat": 0, "lon": 0, "type": "CHANGE_RSVP" }]
     const store = mockStore();
 
     return store.dispatch(changeRSVP(0, 0))
