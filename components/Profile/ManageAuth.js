@@ -18,15 +18,27 @@ import {
 } from '../../actions';
 
 class ManageAuth extends Component {
+  state = {
+    msg: '',
+  }
+
+  componentDidMount() {
+    this.props.email = '';
+  }
 
   onSubmitUpdate() {
-    const { email, password, newPassword, confirmPassword } = this.props;
-
-    console.log('onSubmitUpdate: ', password, newPassword, confirmPassword);
+    let { password, newPassword, confirmPassword } = this.props;
+    password = password.trim();
+    newPassword = newPassword.trim();
+    confirmPassword = confirmPassword.trim();
     if (!password) {
-      console.log('ManageAuth: no pasword');
-      return;
+      this.setState({ msg: 'Password is required ' });
+    } else if (!newPassword) {
+      this.setState({ msg: 'New Password is required' });
+    } else if (!confirmPassword) {
+      this.setState({ msg: 'Confirm Password is required' });
     }
+    // console.log('onSubmitUpdate: ', password, newPassword, confirmPassword);
     if (newPassword && newPassword === confirmPassword) {
       ('ManageAuth: calling updateUserPassword');
       this.props.updateUserPassword(newPassword, password);

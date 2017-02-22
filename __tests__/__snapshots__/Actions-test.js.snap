@@ -95,3 +95,37 @@ Object {
   "type": "USER_LOCATION_INPUT_CHANGED",
 }
 `;
+
+exports[`test inputs AUTH_INPUT_CHANGED 1`] = `
+Object {
+  "payload": Object {
+    "prop": "newPassword",
+    "value": "test",
+  },
+  "type": "AUTH_INPUT_CHANGED",
+}
+`;
+
+exports[`test inputs AUTH_INPUT_CHANGED 2`] = `
+Object {
+  "payload": Object {
+    "prop": "confirmPassword",
+    "value": "test",
+  },
+  "type": "AUTH_INPUT_CHANGED",
+}
+`;
+
+exports[`test inputs EMAIL_CHANGED 1`] = `
+Object {
+  "payload": "user@test.com",
+  "type": "EMAIL_CHANGED",
+}
+`;
+
+exports[`test inputs PASSWORD_CHANGED 1`] = `
+Object {
+  "payload": "1NewUser",
+  "type": "PASSWORD_CHANGED",
+}
+`;

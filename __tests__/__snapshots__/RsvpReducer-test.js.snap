@@ -1,0 +1,34 @@
+exports[`rsvpReducer changeRsvp 1`] = `
+Object {
+  "location": "New York",
+  "text": "",
+}
+`;
+
+exports[`rsvpReducer delete Rsvp success 1`] = `
+Object {
+  "location": "New York",
+  "text": "",
+}
+`;
+
+exports[`rsvpReducer setRsvp 1`] = `
+Object {
+  "location": "New York",
+  "text": "",
+}
+`;
+
+exports[`rsvpReducer setRsvp success 1`] = `
+Object {
+  "location": "New York",
+  "text": "",
+}
+`;
+
+exports[`rsvpReducer undefined 1`] = `
+Object {
+  "location": "New York",
+  "text": "",
+}
+`;

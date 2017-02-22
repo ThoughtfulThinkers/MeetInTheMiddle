@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ListView } from 'react-native';
 import StateItem from './StateItem';
-import states from '../../states';
+import states from './states';
 
 class StateSelector extends Component {
   componentWillMount() {

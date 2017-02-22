@@ -1,6 +1,7 @@
 import {
   CREATE_USER_SUCCESS,
   FETCH_GEOLOCATION_BY_FULL_ADDRESS_SUCCESS,
+  GENERATE_ERROR_MESSAGE,
   LOAD_AUTHENTICATED_USER_STATE_SUCCESS,
   RESET_ERROR_STATE,
   USER_INPUT_CHANGED,
@@ -25,15 +26,23 @@ const INITIAL_STATE = {
 };
 
 export default (state = INITIAL_STATE, action) => {
-
   switch (action.type) {
-    case LOAD_AUTHENTICATED_USER_STATE_SUCCESS: {
-      return { ...state, ...action.payload };
+
+    case CREATE_USER_SUCCESS:
+      return state;
+
+    case FETCH_GEOLOCATION_BY_FULL_ADDRESS_SUCCESS: {
+      const lat = action.payload.lat;
+      const lon = action.payload.lon;
+      const location = { ...state.location, lon, lat };
+      return { ...state, location };
     }
 
-    case CREATE_USER_SUCCESS: {
-      return state;
-    }
+    case LOAD_AUTHENTICATED_USER_STATE_SUCCESS:
+      return { ...state, ...action.payload };
+
+    case RESET_ERROR_STATE:
+      return { ...state, error: '' };
 
     case USER_INPUT_CHANGED: {
       // example: action.payload = {prop: 'name', value: 'Will Smith'}
@@ -48,19 +57,8 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, location };
     }
 
-    case FETCH_GEOLOCATION_BY_FULL_ADDRESS_SUCCESS: {
-      const lat = action.payload.lat;
-      const lon = action.payload.lon;
-      const location = { ...state.location, lon, lat };
-      return { ...state, location };
-    }
-
-    case RESET_ERROR_STATE:
-      return { ...state, error: '' };
-      
-    case UPDATE_USER_SUCCESS: {
+    case UPDATE_USER_SUCCESS:
       return state;
-    }
 
     default: {
       return state;
