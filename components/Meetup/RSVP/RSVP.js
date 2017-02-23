@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { setRsvp, changeRSVP, changeStatus, userInputChanged, resetErrorState } from '../../../actions';
 import LocationSelector from '../../LocationSelector';
-import { CardSection, Card, Button } from '../../common';
+import { CardSection, Card, Button, DeleteButton } from '../../common';
 
 class RSVP extends Component {
 
@@ -28,6 +28,10 @@ class RSVP extends Component {
       this.props.setRsvp(lat, lon, uid, users, name);
       Actions.pop();
     }
+  }
+
+  onDeletePress() {
+    Actions.meetup({ meetup: this.props.meetup, type: 'reset' });
   }
 
   onCurrentLocationPress() {
@@ -75,9 +79,12 @@ class RSVP extends Component {
           <Text style={styles.titleStyle}>Location: {this.props.address}</Text>
         </CardSection>
         <CardSection>
-          <Button onPress={this.onPress.bind(this)}>
-            Confirm RSVP
-          </Button>
+        <Button onPress={this.onPress.bind(this)}>
+          Confirm RSVP
+        </Button>
+        <DeleteButton onPress={this.onDeletePress.bind(this)}>
+          Not Attending
+        </DeleteButton>
         </CardSection>
         <CardSection style={{ justifyContent: 'center' }}>
           <Text style={styles.errorStyle}>{this.props.error}</Text>

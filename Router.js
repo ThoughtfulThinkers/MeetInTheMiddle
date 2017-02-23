@@ -55,7 +55,7 @@ const RouterComponent = () => {
         <Scene key="meetup" component={Meetup} title="Meetup" rightButtonImage={require('./assets/images/edit.png')} onRight={() => Actions.edit()} leftButtonImage={require('./assets/images/house.png')} onLeft={() => Actions.meetups({ type: 'reset' })} />
         <Scene key="profileCreate" component={ProfileCreate} title="Create Account" leftButtonImage={require('./assets/images/house.png')} onLeft={() => Actions.meetups({ type: 'reset' })} />
         <Scene key="profileUpdate" component={ProfileUpdate} title="Update Profile" leftButtonImage={require('./assets/images/house.png')} onLeft={() => Actions.meetups({ type: 'reset' })} />
-        <Scene key="rsvp" component={RSVP} title="RSVP" />
+        <Scene key="rsvp" component={RSVP} title="RSVP" leftButtonImage={require('./assets/images/house.png')} onLeft={() => Actions.meetups({ type: 'reset' })} />
         <Scene key="rsvpEdit" component={RSVPEdit} title="Edit RSVP" />
         <Scene key="searchLocation" component={LocationSelector} title="Choose Location" />
         <Scene key="states" component={StateSelector} title="Choose State" />
