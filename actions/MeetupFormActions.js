@@ -40,7 +40,7 @@ export const addMeetup = (meetupDetails) => {
       dispatch({ type: ADD_MEETUP_SUCCESS });
       meetup.uid = key;
       dispatch(setCurrentMeetup(meetup));
-      Actions.meetup({ type: 'reset' });
+      Actions.rsvp({ type: 'reset', meetup });
     })
     .catch((err) => console.log(err));
   };

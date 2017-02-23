@@ -94,7 +94,7 @@ class RSVPEdit extends Component {
             Confirm RSVP
           </Button>
           <DeleteButton onPress={this.onDeletePress.bind(this)}>
-            Delete RSVP
+            Not Attending
           </DeleteButton>
         </CardSection>
         <CardSection style={{ justifyContent: 'center' }}>
