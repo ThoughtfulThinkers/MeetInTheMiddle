@@ -10,6 +10,11 @@ export const setGuest = (meetupId, userId, guest) => {
     .set(guest);
 };
 
+export const setAttending = (meetupId, userId, name) => {
+  return firebase.database().ref(`/meetups/${meetupId}/attendingNames/${userId}`)
+    .set(name);
+};
+
 export const setMeetup = (userId, meetup) => {
   return firebase.database().ref(`/users/${userId}/meetups/${meetup.uid}`)
   .set(meetup);
@@ -32,6 +37,11 @@ export const removeGuest = (meetupId, userId) => {
 
 export const removeMeetup = (meetupId, userId) => {
   return firebase.database().ref(`/users/${userId}/meetups/${meetupId}`)
+    .remove();
+};
+
+export const removeAttending = (meetupId, userId) => {
+  return firebase.database().ref(`/meetups/${meetupId}/attendingNames/${userId}`)
     .remove();
 };
 

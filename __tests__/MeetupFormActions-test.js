@@ -25,12 +25,12 @@ describe('addMeetup', () => {
   it('dispatches the correct actions on successful request', () => {
     getUser.mockReturnValue({ uid: 1 });
     pushMeetup.mockReturnValue(new Promise((resolve, reject) => resolve({ key: 1 })));
-    const expectedActions = [{ "type": "ADD_MEETUP"},
-          {"type": "ADD_MEETUP_SUCCESS"},
-          {"meetup": {"chat": {}, "location": "",
-          "name": "meetup", "status": "created", "uid": 1,
-          "user": 1, "users": {}, "vote": {}},
-          "type": "SET_CURRENT_MEETUP" }];
+    const expectedActions = [{"type": "ADD_MEETUP"},
+        {"type": "ADD_MEETUP_SUCCESS"},
+        {"meetup": {"attendingNames": {},
+        "chat": {}, "location": "", "name": "meetup",
+        "status": "created", "uid": 1, "user": 1,
+        "users": {}, "vote": {}}, "type": "SET_CURRENT_MEETUP"}];
     const store = mockStore();
     return store.dispatch(addMeetup({ name: 'meetup' }))
       .then(() => {

@@ -6,7 +6,7 @@ import GuestList from '../components/Meetup/GuestList/GuestList';
 
 test('renders GuestList correctly', () => {
   const tree = renderer.create(
-    <GuestList guests={[{ name: 'Test User' }, { name: 'Test Two' }]} />
+    <GuestList guests={['Test User', 'Test Two']} />
   ).toJSON();
   expect(tree).toMatchSnapshot();
 });

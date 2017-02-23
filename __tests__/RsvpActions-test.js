@@ -17,6 +17,7 @@ import {
           removeGuest,
           removeMeetup,
           updateStatus,
+          setAttending,
         } from '../actions/firebase-functions/RsvpActions';
 
 
@@ -52,6 +53,7 @@ describe('setRsvp', () => {
     getUser.mockReturnValue({ uid: 1 });
     setGuest.mockReturnValue(new Promise((resolve, reject) => resolve('ok')));
     setMeetup.mockReturnValue(new Promise((resolve, reject) => resolve('ok')));
+    setAttending.mockReturnValue(new Promise((resolve, reject) => resolve('ok')));
     const expectedActions = [{ "type": "SET_RSVP"}, {"type": "SET_RSVP_SUCCESS" }];
     const store = mockStore();
 

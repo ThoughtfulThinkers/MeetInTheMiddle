@@ -228,10 +228,7 @@ class Meetup extends Component {
     } else if (status === 'closed') {
       return <Text>This meetup is closed.</Text>;
     }
-    const guests = _.map(this.props.meetup.users, (val, uid) => {
-      return { ...val, uid };
-    });
-    return <GuestList guests={guests} />;
+    return <GuestList guests={this.props.names} />;
   }
 
 
@@ -289,10 +286,10 @@ const styles = {
   },
 };
 const mapStateToProps = state => {
-  const meetup = state.meetupForm;
-  const status = state.meetupForm.status;
-  const { auth, user } = state;
-  return { meetup, auth, user, status };
+  const { meetupForm, auth, user } = state;
+  const { status, attendingNames } = meetupForm;
+  const names = Object.keys(attendingNames).map(key => attendingNames[key]);
+  return { meetup: meetupForm, auth, user, status, names };
 };
 
 export default connect(mapStateToProps, { changeStatus, createVoting, changeLocation })(Meetup);

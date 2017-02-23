@@ -36,7 +36,8 @@ export const addMeetup = (meetupDetails) => {
     users: {},
     location: '',
     status: 'created',
-    user: userId
+    user: userId,
+    attendingNames: {},
   };
   return pushMeetup(meetup)
     .then(({ key }) => {

@@ -4,11 +4,10 @@ import { CardSection } from '../../common';
 
 class GuestListItem extends Component {
   render() {
-    const { name } = this.props.guest;
     return (
       <CardSection style={{ justifyContent: 'center' }}>
         <Text style={styles.titleStyle}>
-          {name}
+          {this.props.guest}
         </Text>
       </CardSection>
     );

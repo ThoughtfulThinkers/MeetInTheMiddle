@@ -17,6 +17,8 @@ import {
           removeGuest,
           removeMeetup,
           updateStatus,
+          setAttending,
+          removeAttending
         } from './firebase-functions/RsvpActions';
 
 const { apiKey } = googlePlacesConfig;
@@ -58,15 +60,18 @@ export const setRsvp = (lat, lon, meetupId, users, name) => {
     };
 
     return setGuest(meetupId, userId, guest)
-      .then(() => {
-        const currentMeetup = { lat, lon, uid: meetupId };
-        return setMeetup(userId, currentMeetup)
-        .then(() => {
-          dispatch({ type: SET_RSVP_SUCCESS });
-          Actions.meetups({ type: 'reset' });
-        });
-      })
-      .catch((err) => console.log(err));
+    .then(() => {
+      const currentMeetup = { lat, lon, uid: meetupId };
+      return setMeetup(userId, currentMeetup);
+    })
+    .then(() => {
+      return setAttending(meetupId, userId, name);
+    })
+    .then(() => {
+      dispatch({ type: SET_RSVP_SUCCESS });
+      Actions.meetups({ type: 'reset' });
+    })
+    .catch((err) => console.log(err));
   };
 };
 
@@ -118,21 +123,22 @@ export const deleteRsvp = (meetup) => {
 
     return removeGuest(meetupId, userId)
       .then(() => {
-        return removeMeetup(meetupId, userId)
-          .then(() => {
-            return updateStatus(meetupId)
-            .then(() => {
-              const newUsers = meetup.users;
-              delete newUsers[userId];
-              const newMeetup = meetup;
-              newMeetup.users = newUsers;
-              dispatch({ type: DELETE_RSVP_SUCCESS, meetup: newMeetup, id: meetupId });
-              Actions.meetups({ type: 'reset' });
-            })
-            .catch(err => console.log(err));
-          })
-          .catch(err => console.log(err));
-        })
-    .catch((err) => console.log(err));
+        return removeMeetup(meetupId, userId);
+      })
+      .then(() => {
+        return updateStatus(meetupId);
+      })
+      .then(() => {
+        return removeAttending(meetupId, userId);
+      })
+      .then(() => {
+        const newUsers = meetup.users;
+        delete newUsers[userId];
+        const newMeetup = meetup;
+        newMeetup.users = newUsers;
+        dispatch({ type: DELETE_RSVP_SUCCESS, meetup: newMeetup, id: meetupId });
+        Actions.meetups({ type: 'reset' });
+      })
+      .catch(err => console.log(err));
+    };
   };
-};
