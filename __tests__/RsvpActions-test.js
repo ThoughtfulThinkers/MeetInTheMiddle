@@ -8,6 +8,7 @@ import {
         editRsvp,
         deleteRsvp,
       } from '../actions';
+
 import {
           getUser,
           setGuest,
@@ -46,7 +47,6 @@ describe('changeRsvp', () => {
       });
     });
 });
-
 
 describe('setRsvp', () => {
   it('dispatches the correct actions on successful request', () => {
