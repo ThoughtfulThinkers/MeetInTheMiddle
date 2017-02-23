@@ -26,7 +26,6 @@ class RSVP extends Component {
     } else {
       this.props.resetErrorState();
       this.props.setRsvp(lat, lon, uid, users, name);
-      Actions.pop();
     }
   }
 

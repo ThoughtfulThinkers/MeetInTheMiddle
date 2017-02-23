@@ -77,6 +77,7 @@ export default class Map extends React.Component {
           longitudeDelta: 0.0421,
         }}
         loadingEnabled
+        loadingBackgroundColor="#1ba6bd"
       >
         <Components.MapView.Marker
           coordinate={{

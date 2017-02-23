@@ -32,7 +32,6 @@ class RSVPEdit extends Component {
     } else {
       this.props.resetErrorState();
       this.props.editRsvp(lat, lon, uid, users, name);
-      Actions.pop();
     }
   }
 
