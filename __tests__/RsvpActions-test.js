@@ -49,7 +49,7 @@ describe('changeRsvp', () => {
 
 describe('setRsvp', () => {
   it('dispatches the correct actions on successful request', () => {
-    getUser.mockReturnValue(new Promise((resolve, reject) => resolve({ uid: 1 })));
+    getUser.mockReturnValue({ uid: 1 });
     setGuest.mockReturnValue(new Promise((resolve, reject) => resolve('ok')));
     setMeetup.mockReturnValue(new Promise((resolve, reject) => resolve('ok')));
     const expectedActions = [{ "type": "SET_RSVP"}, {"type": "SET_RSVP_SUCCESS" }];
@@ -64,7 +64,7 @@ describe('setRsvp', () => {
 
 describe('editRsvp', () => {
   it('dispatches the correct actions on successful request', () => {
-    getUser.mockReturnValue(new Promise((resolve, reject) => resolve({ uid: 1 })));
+    getUser.mockReturnValue({ uid: 1 });
     updateGuest.mockReturnValue(new Promise((resolve, reject) => resolve('ok')));
     updateMeetup.mockReturnValue(new Promise((resolve, reject) => resolve('ok')));
 
@@ -79,15 +79,14 @@ describe('editRsvp', () => {
 
 describe('deleteRsvp', () => {
   it('dispatches the correct actions on successful request', () => {
-    getUser.mockReturnValue(new Promise((resolve, reject) => resolve({ uid: 1 })));
+    getUser.mockReturnValue({ uid: 1 });
     removeGuest.mockReturnValue(new Promise((resolve, reject) => resolve('ok')));
     removeMeetup.mockReturnValue(new Promise((resolve, reject) => resolve('ok')));
     updateStatus.mockReturnValue(new Promise((resolve, reject) => resolve('ok')));
 
-    const expectedActions = [
-      { "type": "SET_RSVP"}, 
-      {"id": 42, "meetup": {"name": "name", "uid": 42, "users": {"1": ""}},
-      "type": "DELETE_RSVP_SUCCESS" }];
+    const expectedActions = [{ "type": "SET_RSVP"},
+        {"id": 42, "meetup": {"name": "name", "uid": 42,
+        "users": {}}, "type": "DELETE_RSVP_SUCCESS" }];
     const store = mockStore();
     return store.dispatch(deleteRsvp({ name: 'name', uid: 42, users: { 1: '' } }))
       .then(() => {
