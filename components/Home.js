@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { View } from 'react-native';
 import UserMeetupListContainer from './MeetupLists/UserMeetupListContainer';
 import OpenMeetupListContainer from './MeetupLists/OpenMeetupListContainer';
+import GetMeetup from './GetMeetup';
 
 import {
   loadAuthenticatedUserState,
@@ -26,9 +27,11 @@ class Home extends Component {
       }
     });
   }
+
   render() {
     return (
       <View>
+        <GetMeetup />
         <UserMeetupListContainer />
         <OpenMeetupListContainer />
       </View>

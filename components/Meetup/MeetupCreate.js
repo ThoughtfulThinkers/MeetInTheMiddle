@@ -3,10 +3,10 @@ import firebase from 'firebase';
 import moment from 'moment';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
-import { Text, Alert } from 'react-native';
+import { Text, Alert, View } from 'react-native';
 import DatePicker from 'react-native-datepicker';
 import { meetupChange, resetMeetup, userInputChanged, resetErrorState } from '../../actions';
-import { Card, CardSection, Input, Button } from '../common';
+import { Card, CardSection, Input, Button, IconButton } from '../common';
 
 class MeetupCreate extends Component {
 
@@ -29,6 +29,29 @@ class MeetupCreate extends Component {
   onChange(prop, value) {
     this.props.resetErrorState();
     this.props.meetupChange(prop, value);
+  }
+
+  setPrivacy() {
+    this.props.resetErrorState();
+    const value = this.props.privacy ? false : true;
+    this.props.meetupChange('privacy', value);
+  }
+
+  renderPrivacy() {
+    if (this.props.privacy) {
+      return (
+        <CardSection style={styles.privacyStyle}>
+              <IconButton name="md-checkbox-outline" size={32} onPress={this.setPrivacy.bind(this)} />
+              <Text>Private Meetup</Text>
+        </CardSection>
+      );
+    }
+    return (
+      <CardSection style={styles.privacyStyle}>
+            <IconButton name="md-square-outline" size={32} onPress={this.setPrivacy.bind(this)} />
+            <Text style={styles.pickerTextStyle}>Private Meetup</Text>
+      </CardSection>
+    );
   }
 
   render() {
@@ -82,7 +105,7 @@ class MeetupCreate extends Component {
             onDateChange={(value) => this.onChange('end', value)}
           />
         </CardSection>
-
+        {this.renderPrivacy()}
         <CardSection>
           <Button
             onPress={this.onButtonPress.bind(this)}
@@ -110,14 +133,19 @@ const styles = {
     textAlign: 'center',
     paddingLeft: 10,
     paddingRight: 10
-  }
+  },
+  privacyStyle: {
+    paddingLeft: 20,
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
 };
 
 const mapStateToProps = ({ meetupForm, auth, user }) => {
-  const { name, description, start, end } = meetupForm;
+  const { name, description, start, end, privacy } = meetupForm;
   const { loggedIn } = auth;
   const { error } = user;
-  return { name, description, start, end, loggedIn, error };
+  return { name, description, start, end, loggedIn, error, privacy };
 };
 
 export default connect(mapStateToProps, { meetupChange, resetMeetup, userInputChanged, resetErrorState })(MeetupCreate);
