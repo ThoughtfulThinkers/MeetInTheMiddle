@@ -127,7 +127,6 @@ export const deleteRsvp = (meetup) => {
               const newMeetup = meetup;
               newMeetup.users = newUsers;
               dispatch({ type: DELETE_RSVP_SUCCESS, meetup: newMeetup, id: meetupId });
-              dispatch(userMeetupsFetch());
               Actions.meetups({ type: 'reset' });
             })
             .catch(err => console.log(err));
