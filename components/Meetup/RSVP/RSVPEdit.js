@@ -10,7 +10,8 @@ import { setRsvp,
         editRsvp,
         deleteRsvp,
         userInputChanged,
-        resetErrorState } from '../../../actions';
+        resetErrorState,
+        userMeetupsFetch } from '../../../actions';
 import LocationSelector from '../../LocationSelector';
 import { CardSection, Card, Button, DeleteButton } from '../../common';
 
@@ -32,7 +33,7 @@ class RSVPEdit extends Component {
     } else {
       this.props.resetErrorState();
       this.props.editRsvp(lat, lon, uid, users, name);
-      Actions.pop();
+      this.props.userMeetupsFetch();
     }
   }
 
@@ -63,6 +64,7 @@ class RSVPEdit extends Component {
     onDeletePress() {
       this.props.resetErrorState();
       this.props.deleteRsvp(this.props.meetup);
+      this.props.userMeetupsFetch();
       Actions.pop();
     }
 
@@ -94,7 +96,7 @@ class RSVPEdit extends Component {
             Confirm RSVP
           </Button>
           <DeleteButton onPress={this.onDeletePress.bind(this)}>
-            Delete RSVP
+            Not Attending
           </DeleteButton>
         </CardSection>
         <CardSection style={{ justifyContent: 'center' }}>
@@ -132,4 +134,5 @@ export default connect(mapStateToProps, { setRsvp,
                                           editRsvp,
                                           deleteRsvp,
                                           userInputChanged,
-                                          resetErrorState })(RSVPEdit);
+                                          resetErrorState,
+                                          userMeetupsFetch })(RSVPEdit);

@@ -17,8 +17,8 @@ class MeetupLocationCreate extends Component {
   }
 
   onButtonPress() {
-    const { name, description, start, end, state, venue, voteStart, voteEnd } = this.props;
-    this.props.addMeetup({ name, description, start, end, state, venue, voteStart, voteEnd });
+    const { name, description, start, end, state, venue, voteStart, voteEnd, privacy } = this.props;
+    this.props.addMeetup({ name, description, start, end, state, venue, voteStart, voteEnd, privacy });
   }
 
   onStatePress() {
@@ -128,10 +128,10 @@ const styles = {
 };
 
 const mapStateToProps = ({ meetupForm, filter }) => {
-  const { name, description, start, end, state, venue, voteStart, voteEnd } = meetupForm;
+  const { name, description, start, end, state, venue, voteStart, voteEnd, privacy } = meetupForm;
   const { location } = filter;
   const loading = meetupForm.loading ? true : false;
-  return { name, description, start, end, state, venue, voteStart, voteEnd, loading, location };
+  return { name, description, start, end, state, venue, voteStart, voteEnd, loading, location, privacy };
 };
 
 export default connect(mapStateToProps, {

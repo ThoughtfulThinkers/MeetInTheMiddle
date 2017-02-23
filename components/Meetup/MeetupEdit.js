@@ -60,7 +60,9 @@ class MeetupEdit extends Component {
       return uid;
     });
     this.props.deleteMeetup(this.props.meetup.uid, guests);
-    Actions.meetups({ type: 'refresh' });
+    this.props.meetupsFetch(this.props.location);
+    this.props.userMeetupsFetch();
+    Actions.meetups({ type: 'reset' });
   }
 
   render() {

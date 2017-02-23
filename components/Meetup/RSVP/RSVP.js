@@ -4,9 +4,9 @@ import Exponent from 'exponent';
 import { Text, Alert } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { setRsvp, changeRSVP, changeStatus, userInputChanged, resetErrorState } from '../../../actions';
+import { setRsvp, changeRSVP, changeStatus, userInputChanged, resetErrorState, userMeetupsFetch } from '../../../actions';
 import LocationSelector from '../../LocationSelector';
-import { CardSection, Card, Button } from '../../common';
+import { CardSection, Card, Button, DeleteButton } from '../../common';
 
 class RSVP extends Component {
 
@@ -26,8 +26,13 @@ class RSVP extends Component {
     } else {
       this.props.resetErrorState();
       this.props.setRsvp(lat, lon, uid, users, name);
-      Actions.pop();
+      this.props.userMeetupsFetch();
     }
+  }
+
+  onDeletePress() {
+    this.props.userMeetupsFetch();
+    Actions.meetup({ meetup: this.props.meetup, type: 'reset' });
   }
 
   onCurrentLocationPress() {
@@ -75,9 +80,12 @@ class RSVP extends Component {
           <Text style={styles.titleStyle}>Location: {this.props.address}</Text>
         </CardSection>
         <CardSection>
-          <Button onPress={this.onPress.bind(this)}>
-            Confirm RSVP
-          </Button>
+        <Button onPress={this.onPress.bind(this)}>
+          Confirm RSVP
+        </Button>
+        <DeleteButton onPress={this.onDeletePress.bind(this)}>
+          Not Attending
+        </DeleteButton>
         </CardSection>
         <CardSection style={{ justifyContent: 'center' }}>
           <Text style={styles.errorStyle}>{this.props.error}</Text>
@@ -103,7 +111,7 @@ const styles = {
 const mapStateToProps = ({ rsvp, user, meetupForm }) => {
   const { lat, lon, address } = rsvp;
   const { firstName, lastName, error } = user;
-  return { lat, lon, firstName, lastName, user, address, meetupForm, error };
+  return { lat, lon, firstName, lastName, user, address, meetupForm, error, userMeetupsFetch };
 };
 
 export default connect(mapStateToProps, { setRsvp, changeRSVP, changeStatus, userInputChanged, resetErrorState })(RSVP);

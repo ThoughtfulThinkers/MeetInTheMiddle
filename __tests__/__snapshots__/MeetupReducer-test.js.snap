@@ -2,6 +2,9 @@ exports[`filterReducer default 1`] = `
 Object {
   "cityLoading": true,
   "cityMeetups": Object {},
+  "search": "",
+  "searchLoading": false,
+  "searchMeetups": Object {},
   "userLoading": true,
   "userMeetups": Object {},
 }
@@ -11,6 +14,9 @@ exports[`filterReducer delete rsvp success 1`] = `
 Object {
   "cityLoading": true,
   "cityMeetups": Object {},
+  "search": "",
+  "searchLoading": false,
+  "searchMeetups": Object {},
   "userLoading": true,
   "userMeetups": Object {
     "1": Object {
@@ -30,6 +36,9 @@ Object {
       "name": "test",
     },
   },
+  "search": "",
+  "searchLoading": false,
+  "searchMeetups": Object {},
   "userLoading": true,
   "userMeetups": Object {},
 }
@@ -39,6 +48,9 @@ exports[`filterReducer fetch user meetups 1`] = `
 Object {
   "cityLoading": true,
   "cityMeetups": Object {},
+  "search": "",
+  "searchLoading": false,
+  "searchMeetups": Object {},
   "userLoading": true,
   "userMeetups": Object {},
 }
@@ -48,6 +60,9 @@ exports[`filterReducer fetch user meetups success 1`] = `
 Object {
   "cityLoading": true,
   "cityMeetups": Object {},
+  "search": "",
+  "searchLoading": false,
+  "searchMeetups": Object {},
   "userLoading": false,
   "userMeetups": Object {
     "5321673": Object {
@@ -61,6 +76,9 @@ exports[`filterReducer fetch_meetups 1`] = `
 Object {
   "cityLoading": true,
   "cityMeetups": Object {},
+  "search": "",
+  "searchLoading": false,
+  "searchMeetups": Object {},
   "userLoading": true,
   "userMeetups": Object {},
 }

@@ -124,6 +124,7 @@ class Meetup extends Component {
     Share.share({
       message: `Want to join me for the ${this.props.meetup.name} meetup on ${day} at ${time}.
       \nDescription: ${this.props.meetup.description}
+      \nInvite code: ${this.props.meetup.uid}
       \nSent from the "Meet In The Middle" app ... available on
       \n   Google Play: ${urlAndroid}
       \n   Apple iTunes: ${urlIOS}`,
