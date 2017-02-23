@@ -42,7 +42,7 @@ class MeetupCreate extends Component {
       return (
         <CardSection style={styles.privacyStyle}>
               <IconButton name="md-checkbox-outline" size={32} onPress={this.setPrivacy.bind(this)} />
-              <Text>Private Meetup</Text>
+              <Text style={styles.pickerTextStyle}>Private Meetup</Text>
         </CardSection>
       );
     }

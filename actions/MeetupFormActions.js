@@ -9,6 +9,7 @@ import {
   EDIT_MEETUP_SUCCESS,
   RESET_MEETUP
 } from './types';
+import { getUser, pushMeetup, updateMeetup, setStatus, removeGuest, removeMeetup } from './firebase-functions/MeetupFormActions';
 
 export const meetupChange = (prop, value) => {
   return {
@@ -21,10 +22,13 @@ export const meetupChange = (prop, value) => {
 export const addMeetup = (meetupDetails) => {
   return (dispatch) => {
   dispatch({ type: ADD_MEETUP });
-  const { currentUser } = firebase.auth();
+
+  const currentUser = getUser();
   if (!currentUser) {
     return Actions.login();
   }
+  const userId = currentUser.uid;
+
   const meetup = {
     ...meetupDetails,
     chat: {},
@@ -32,10 +36,9 @@ export const addMeetup = (meetupDetails) => {
     users: {},
     location: '',
     status: 'created',
-    user: currentUser.uid
+    user: userId
   };
-  firebase.database().ref('/meetups')
-    .push(meetup)
+  return pushMeetup(meetup)
     .then(({ key }) => {
       dispatch({ type: ADD_MEETUP_SUCCESS });
       meetup.uid = key;
@@ -69,8 +72,7 @@ export const meetupEdit = (meetup) => {
   updates['/voteEnd'] = voteEnd;
   updates['/status'] = 'created';
 
-  firebase.database().ref(`/meetups/${meetup.uid}`)
-    .update(updates)
+  return updateMeetup(meetup.uid, updates)
     .then(() => {
       dispatch({ type: EDIT_MEETUP_SUCCESS });
       Actions.meetups({ type: 'reset' });
@@ -81,8 +83,7 @@ export const meetupEdit = (meetup) => {
 
 export const changeStatus = (meetup, status) => {
   return (dispatch) => {
-    firebase.database().ref(`/meetups/${meetup.uid}/status`)
-      .set(status)
+    return setStatus(meetup.uid, status)
       .then(() => {
         dispatch({
             type: MEETUP_CHANGED,
@@ -105,23 +106,16 @@ export const changeStatus = (meetup, status) => {
   export const deleteMeetup = (meetupId, users) => {
     return dispatch => {
       dispatch({ type: EDIT_MEETUP });
-      const { currentUser } = firebase.auth();
+
       const removeUsers = users.map(user => {
-        return firebase.database().ref(`/users/${user}/meetups/${meetupId}`).remove(error => {
-          if (error) {
-            console.log(error);
-          }
-        });
+        return removeGuest(meetupId, user);
       });
-      Promise.all(removeUsers)
+      return Promise.all(removeUsers)
       .then(() => {
-        firebase.database().ref(`/meetups/${meetupId}`).remove((error) => {
-          if (error) {
-            console.log(error);
-          } else {
+        return removeMeetup(meetupId)
+        .then(() => {
             dispatch({ type: RESET_MEETUP });
-          }
-        });
+          });
       });
     };
   };
