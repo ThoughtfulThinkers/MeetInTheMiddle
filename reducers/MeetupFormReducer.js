@@ -46,9 +46,8 @@ export default (state = INITIAL_STATE, action) => {
     case EDIT_MEETUP_SUCCESS:
       return INITIAL_STATE;
     case SET_VOTE: {
-      const venue = state.venues[action.venueId];
-      venue.votes = action.vote;
-      const venues = { ...state.venues, venue };
+      const venues = state.venues;
+      venues[action.venueId].votes = action.vote;
       return { ...state, venues };
     }
     case RESET_MEETUP:

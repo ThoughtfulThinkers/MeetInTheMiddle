@@ -143,7 +143,7 @@ export const deleteRsvp = (meetup) => {
     };
   };
 
-  export const rsvpLate = (meetupId, users, name) => {
+  export const rsvpLate = (meetupId, name) => {
     return (dispatch) => {
       dispatch({ type: SET_RSVP });
 
@@ -168,6 +168,30 @@ export const deleteRsvp = (meetup) => {
     };
   };
 
-export const deleteRsvpLate = () => {
+export const deleteRsvpLate = (meetup) => {
+  return (dispatch) => {
+    dispatch({ type: SET_RSVP });
 
+    const currentUser = getUser();
+    if (!currentUser) {
+      Actions.login();
+      return;
+    }
+    const meetupId = meetup.uid;
+    const userId = currentUser.uid;
+
+    return removeMeetup(meetupId, userId)
+      .then(() => {
+        return removeAttending(meetupId, userId);
+      })
+      .then(() => {
+        const newAttend = meetup.attendingNames;
+        delete newAttend[userId];
+        const newMeetup = meetup;
+        newMeetup.attendingNames = newAttend;
+        dispatch({ type: DELETE_RSVP_SUCCESS, meetup: newMeetup, id: meetupId });
+        Actions.meetups({ type: 'reset' });
+      })
+      .catch(err => console.log(err));
+    };
 };

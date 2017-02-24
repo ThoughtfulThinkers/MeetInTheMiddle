@@ -4,7 +4,7 @@ import _ from 'lodash';
 import { Actions } from 'react-native-router-flux';
 import moment from 'moment';
 import { Text, View, Share, TouchableWithoutFeedback, Alert } from 'react-native';
-import { changeStatus, createVoting, changeLocation } from '../../actions';
+import { changeStatus, createVoting, changeLocation, rsvpLate, deleteRsvpLate } from '../../actions';
 
 import GuestList from './GuestList/GuestList';
 import VotingList from './Voting/VotingList';
@@ -105,10 +105,19 @@ class Meetup extends Component {
   //button methods
   onRSVPPress() {
     if (this.props.auth.loggedIn) {
-      if (!this.props.user.meetups[this.props.meetup.uid]) {
-        Actions.rsvp({ meetup: this.props.meetup });
+      const rsvped = this.props.user.meetups[this.props.meetup.uid];
+      const { status, meetup } = this.props;
+      const rsvpOpen = (status === 'created' || status === 'guests');
+      const { firstName, lastName } = this.props.user;
+      const name = `${firstName} ${lastName}`;
+      if (!rsvped && rsvpOpen) {
+        Actions.rsvp({ meetup });
+      } else if (rsvped && rsvpOpen) {
+        Actions.rsvpEdit({ meetup });
+      } else if (!rsvped && !rsvpOpen) {
+        this.props.rsvpLate(meetup.uid, name);
       } else {
-        Actions.rsvpEdit({ meetup: this.props.meetup });
+        this.props.deleteRsvpLate(meetup);
       }
     } else {
       Actions.login();
@@ -182,14 +191,14 @@ class Meetup extends Component {
     const { loggedIn } = auth;
     const { meetups } = user;
     const { uid } = meetup;
-    if (status === 'created' || status === 'guests') {
-      const rsvpText = (loggedIn && meetups[uid]) ? 'Change RSVP' : 'RSVP';
-      return (
-              <Button onPress={this.onRSVPPress.bind(this)}>
-                {rsvpText}
-              </Button>);
+    if (status === 'closed') {
+      return <Text />;
     }
-    return <Text />;
+    const rsvpText = (loggedIn && meetups[uid]) ? 'Change RSVP' : 'RSVP';
+    return (
+            <Button onPress={this.onRSVPPress.bind(this)}>
+              {rsvpText}
+            </Button>);
   }
 
   renderInvite(status) {
@@ -292,4 +301,5 @@ const mapStateToProps = state => {
   return { meetup: meetupForm, auth, user, status, names };
 };
 
-export default connect(mapStateToProps, { changeStatus, createVoting, changeLocation })(Meetup);
+export default connect(mapStateToProps, {
+  changeStatus, createVoting, changeLocation, deleteRsvpLate, rsvpLate })(Meetup);
