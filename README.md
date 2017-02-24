@@ -13,26 +13,14 @@ Schedule an event and invite your friends. Meetup in the Middle will select a lo
 
 ### Main Page
 
-####IOS
-![Main Page](/assets/images/mainPage.png)
-
-####Android
-![Main Page](/assets/images/mainPage.png)
+![Main Page](/assets/images/mainPageIOS.png)
 
 ### Meetup
 
-####IOS
-![Meetup](/assets/images/meetup.png)
-
-####Android
 ![Meetup](/assets/images/meetup.png)
 
 ### Login
 
-####IOS
-![Login](/assets/images/login.png)
-
-####Android
 ![Login](/assets/images/login.png)
 
 ## Testing
