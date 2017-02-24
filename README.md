@@ -1,8 +1,9 @@
 #Meetup in the Middle [![Build Status](https://travis-ci.org/ThoughtfulThinkers/MeetInTheMiddle.svg?branch=master)](https://travis-ci.org/ThoughtfulThinkers/MeetInTheMiddle)
 ![Meetup in the Middle](/assets/images/MeetInTheMiddleLogo.png)
 
-Google Play: https://play.google.com/store/apps/details?id=io.nickcoleman.meetinthemiddle
-App Store: 
+[Android]( https://play.google.com/store/apps/details?id=io.nickcoleman.meetinthemiddle "Android")
+
+[IOS]() 
 
 ## Description
 
@@ -28,6 +29,7 @@ Schedule an event and invite your friends. Meetup in the Middle will select a lo
 
 #### `chatrooms`
 
+" ```
 - {
 
   id: {
@@ -51,6 +53,7 @@ Schedule an event and invite your friends. Meetup in the Middle will select a lo
    }
    
 }
+``` "
 
 #### `users`
 
