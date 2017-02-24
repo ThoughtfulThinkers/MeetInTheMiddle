@@ -28,7 +28,7 @@ Schedule an event and invite your friends. Meetup in the Middle will select a lo
 
 #### `chatrooms`
 
-{
+- {
 
   -id: {
   
