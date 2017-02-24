@@ -30,33 +30,57 @@ Schedule an event and invite your friends. Meetup in the Middle will select a lo
 #### `chatrooms`
 
 ```
-- {
+  abc123: {
+    321efg: {
+      createdAt: 1487360561315
+      text: "Can't wait to see you!"
+      user: {
+        _id: 123abcd45ef
+        name: "chat"
+        }
+      }
+   }
+```
+
+#### `users`
+
+```
 
   id: {
-  
-    id: {
-    
-      createdAt: 1487360561315
+
+      firstName: "Joe"
       
-      text: 'Can't wait to see you!'
+      lastName: "User"
       
-      user: {
+      location: {
       
         _id: r327t2r73rg
         
         name: "chat"
         
         }
+       
+       meetups: {
+       
+        - abc123: {
+        
+          lat: 39.9524
+          
+          lon: 75.1636
+          
+          uid: abc123
+          
+          }
+          
+        }
+        
+        uid: 123abcd45ef
         
       }
       
    }
    
-}
-```
-
-#### `users`
-
+ ```
 
 #### `meetups`
 
