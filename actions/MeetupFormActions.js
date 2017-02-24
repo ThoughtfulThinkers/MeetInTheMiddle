@@ -109,6 +109,7 @@ export const changeStatus = (meetup, status) => {
       dispatch({ type: EDIT_MEETUP });
 
       const removeUsers = users.map(user => {
+        console.log(user);
         return removeGuest(meetupId, user);
       });
       return Promise.all(removeUsers)
