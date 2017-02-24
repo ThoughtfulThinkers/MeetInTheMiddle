@@ -1,6 +1,8 @@
 ![Meetup in the Middle](/assets/images/MeetInTheMiddleLogoSmall.png) 
 #Meetup in the Middle [![Build Status](https://travis-ci.org/ThoughtfulThinkers/MeetInTheMiddle.svg?branch=master)](https://travis-ci.org/ThoughtfulThinkers/MeetInTheMiddle)
 
+##Download App
+
 [Android]( https://play.google.com/store/apps/details?id=io.nickcoleman.meetinthemiddle "Android")
 
 [IOS](https://itunes.apple.com/us/app/meetup-in-the-middle/id1207356166 "IOS")
