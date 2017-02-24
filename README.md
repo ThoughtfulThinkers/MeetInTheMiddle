@@ -45,41 +45,23 @@ Schedule an event and invite your friends. Meetup in the Middle will select a lo
 #### `users`
 
 ```
-
   id: {
-
       firstName: "Joe"
-      
       lastName: "User"
-      
       location: {
-      
         _id: r327t2r73rg
-        
         name: "chat"
-        
         }
-       
        meetups: {
-       
         - abc123: {
-        
           lat: 39.9524
-          
           lon: 75.1636
-          
           uid: abc123
-          
           }
-          
         }
-        
         uid: 123abcd45ef
-        
       }
-      
-   }
-   
+   } 
  ```
 
 #### `meetups`
