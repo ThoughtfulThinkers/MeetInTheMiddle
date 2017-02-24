@@ -1,7 +1,6 @@
 import firebase from 'firebase';
 import _ from 'lodash';
 import { Actions } from 'react-native-router-flux';
-
 import {
   FETCH_MEETUPS,
   FETCH_MEETUPS_SUCCESS,
@@ -10,7 +9,8 @@ import {
   FETCH_MEETUP_SUCCESS,
   FETCH_SEARCH_MEETUPS,
   FETCH_SEARCH_MEETUPS_SUCCESS,
-  CHANGE_SEARCH
+  CHANGE_SEARCH,
+  USER_INPUT_CHANGED,
 } from './types';
 
 export const meetupsFetch = (city) => {
@@ -27,7 +27,7 @@ export const meetupsFetch = (city) => {
 export const userMeetupsFetch = () => {
     return (dispatch) => {
       dispatch({ type: FETCH_USER_MEETUPS });
-      
+
       //return empty object if user not logged in
       const { currentUser } = firebase.auth();
 
@@ -61,11 +61,19 @@ export const userMeetupsFetch = () => {
       dispatch({ type: FETCH_SEARCH_MEETUPS });
 
       const ref = firebase.database().ref('/meetups');
-      ref.orderByKey().equalTo(id).on('value', (snapshot) => {
+      ref.orderByKey().equalTo(id).once('value')
+      .then((snapshot) => {
         const response = snapshot.val();
-        const meetup = response[id];
-        dispatch({ type: FETCH_SEARCH_MEETUPS_SUCCESS, payload: meetup });
-        Actions.meetup();
+        if (!response) {
+          dispatch({
+            type: USER_INPUT_CHANGED,
+            payload: { prop: 'error', value: 'Meetup not found.' }
+          });
+        } else {
+          const meetup = { ...response[id], uid: id };
+          dispatch({ type: FETCH_SEARCH_MEETUPS_SUCCESS, payload: meetup });
+          Actions.meetup();
+        }
       });
     };
   };

@@ -50,30 +50,25 @@ class MeetupLocationCreate extends Component {
 
     return (
       <Card>
-        <View><Text>1. What state will your event be in?</Text></View>
+        <View><Text style={styles.descriptionStyle}>1. What state will your event be in?</Text></View>
         <CardSection>
           <Text style={styles.pickerTextStyle}>{this.props.location}</Text>
           <Button onPress={this.onStatePress.bind(this)}>Change State</Button>
         </CardSection>
 
-        <View><Text>2. What kind of place do you want your event to be in?</Text></View>
+        <View><Text style={styles.descriptionStyle}>2. What kind of place do you want your event to be in?</Text></View>
         <CardSection style={{ alignItems: 'center' }}>
           <Text style={styles.pickerTextStyle}>{venue}</Text>
           <Button onPress={this.onVenuePress.bind(this)}>Change Venue</Button>
         </CardSection>
 
         <View>
-        <Text>
-          3. We will find some great locations
-          for you that will let everyone meet in the middle.
-          When do you want to start voting on which is the best?
-        </Text>
-        <Text style={styles.importantText}>
-          No guests can RSVP after this time.
+        <Text style={styles.descriptionStyle}>
+          3. When do you want to start voting on the location? People who RSVP after this date will not be able to influence the central location.
         </Text>
         </View>
         <CardSection style={{ alignItems: 'center' }}>
-          <Text style={styles.pickerTextStyle}>RSVP Ends</Text>
+          <Text style={styles.pickerTextStyle}>Voting Starts</Text>
           <DatePicker
             style={{ flex: 2 }}
             date={this.props.voteStart}
@@ -88,7 +83,7 @@ class MeetupLocationCreate extends Component {
         </CardSection>
 
         <View>
-        <Text>
+        <Text style={styles.descriptionStyle}>
           {'4. When do you want voting to end? The location will be locked after this time.'}
         </Text>
         </View>
@@ -122,8 +117,10 @@ const styles = {
     flex: 1,
     alignSelf: 'center'
   },
-  importantText: {
-    fontWeight: 'bold'
+  descriptionStyle: {
+    fontSize: 15,
+    padding: 10,
+    lineHeight: 22
   }
 };
 

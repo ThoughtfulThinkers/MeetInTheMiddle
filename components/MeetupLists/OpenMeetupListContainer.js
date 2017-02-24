@@ -97,7 +97,7 @@ const mapStateToProps = state => {
     return aDate.diff(bDate);
   });
   meetups = meetups.filter((a) => {
-    return (a.status === 'created' || a.status === 'guests') && !a.privacy;
+    return (a.status !== 'closed') && !a.privacy;
   });
   return {
     meetups,

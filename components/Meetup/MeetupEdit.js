@@ -56,7 +56,7 @@ class MeetupEdit extends Component {
   }
 
   onDeletePress() {
-    const guests = _.map(this.props.meetup.users, (val, uid) => {
+    const guests = _.map(this.props.meetup.attendingNames, (val, uid) => {
       return uid;
     });
     this.props.deleteMeetup(this.props.meetup.uid, guests);

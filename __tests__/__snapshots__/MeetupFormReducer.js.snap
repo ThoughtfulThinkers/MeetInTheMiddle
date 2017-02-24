@@ -65,11 +65,6 @@ Object {
       "vote": 0,
       "votes": 2,
     },
-    "venue": Object {
-      "name": "test",
-      "vote": 0,
-      "votes": 2,
-    },
   },
 }
 `;
