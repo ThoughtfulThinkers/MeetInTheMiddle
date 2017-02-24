@@ -1,4 +1,4 @@
-![Meetup in the Middle](/assets/images/MeetInTheMiddleLogoSmall.png)
+![Meetup in the Middle](/assets/images/MeetInTheMiddleLogoSmall.png) 
 #Meetup in the Middle [![Build Status](https://travis-ci.org/ThoughtfulThinkers/MeetInTheMiddle.svg?branch=master)](https://travis-ci.org/ThoughtfulThinkers/MeetInTheMiddle)
 
 [Android]( https://play.google.com/store/apps/details?id=io.nickcoleman.meetinthemiddle "Android")
