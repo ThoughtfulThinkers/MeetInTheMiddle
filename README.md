@@ -30,9 +30,9 @@ Schedule an event and invite your friends. Meetup in the Middle will select a lo
 
 - {
 
-  -id: {
+  id: {
   
-    -id: {
+    id: {
     
       createdAt: 1487360561315
       
