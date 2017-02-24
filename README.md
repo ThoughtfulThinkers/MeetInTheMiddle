@@ -27,17 +27,29 @@ Schedule an event and invite your friends. Meetup in the Middle will select a lo
 ## Database Structure
 
 #### `chatrooms`
+
 {
+
   -id: {
+  
     -id: {
+    
       createdAt: 1487360561315
+      
       text: 'Can't wait to see you!'
+      
       user: {
+      
         _id: r327t2r73rg
+        
         name: "chat"
+        
         }
+        
       }
+      
    }
+   
 }
 
 #### `users`
