@@ -142,11 +142,32 @@ export const deleteRsvp = (meetup) => {
       .catch(err => console.log(err));
     };
   };
-//
-// export const rsvpLate = () => {
-//
-// };
-//
-// export const deleteRsvpLate = () => {
-//
-// };
+
+  export const rsvpLate = (meetupId, users, name) => {
+    return (dispatch) => {
+      dispatch({ type: SET_RSVP });
+
+      const currentUser = getUser();
+      if (!currentUser) {
+        Actions.login();
+        return;
+      }
+
+      const userId = currentUser.uid;
+
+      const currentMeetup = { uid: meetupId };
+      return setMeetup(userId, currentMeetup)
+      .then(() => {
+        return setAttending(meetupId, userId, name);
+      })
+      .then(() => {
+        dispatch({ type: SET_RSVP_SUCCESS });
+        Actions.meetups({ type: 'reset' });
+      })
+      .catch((err) => console.log(err));
+    };
+  };
+
+export const deleteRsvpLate = () => {
+
+};

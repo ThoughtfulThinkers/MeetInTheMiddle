@@ -27,7 +27,7 @@ export const meetupsFetch = (city) => {
 export const userMeetupsFetch = () => {
     return (dispatch) => {
       dispatch({ type: FETCH_USER_MEETUPS });
-      
+
       //return empty object if user not logged in
       const { currentUser } = firebase.auth();
 
@@ -57,13 +57,17 @@ export const userMeetupsFetch = () => {
   };
 
   export const meetupById = (id) => {
+    console.log(1, id);
     return (dispatch) => {
+      console.log(id);
       dispatch({ type: FETCH_SEARCH_MEETUPS });
 
       const ref = firebase.database().ref('/meetups');
       ref.orderByKey().equalTo(id).on('value', (snapshot) => {
         const response = snapshot.val();
+        console.log(response);
         const meetup = response[id];
+        console.log(meetup);
         dispatch({ type: FETCH_SEARCH_MEETUPS_SUCCESS, payload: meetup });
         Actions.meetup();
       });
