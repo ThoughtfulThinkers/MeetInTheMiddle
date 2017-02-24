@@ -64,7 +64,7 @@ class MeetupLocationCreate extends Component {
 
         <View>
         <Text style={styles.descriptionStyle}>
-          3. When do you want to start voting on the location? People who RSVP after this date will not be able to influence the location.
+          3. When do you want to start voting on the location? People who RSVP after this date will not be able to influence the central location.
         </Text>
         </View>
         <CardSection style={{ alignItems: 'center' }}>
