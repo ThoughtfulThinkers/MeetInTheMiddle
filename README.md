@@ -3,7 +3,7 @@
 
 [Android]( https://play.google.com/store/apps/details?id=io.nickcoleman.meetinthemiddle "Android")
 
-[IOS]() 
+[IOS](https://itunes.apple.com/us/app/meetup-in-the-middle/id1207356166 "IOS")
 
 ## Description
 
@@ -13,15 +13,33 @@ Schedule an event and invite your friends. Meetup in the Middle will select a lo
 
 ### Main Page
 
+####IOS
+![Main Page](/assets/images/mainPage.png)
+
+####Android
+![Main Page](/assets/images/mainPage.png)
+
 ### Meetup
+
+####IOS
+![Meetup](/assets/images/meetup.png)
+
+####Android
+![Meetup](/assets/images/meetup.png)
 
 ### Login
 
+####IOS
+![Login](/assets/images/login.png)
+
+####Android
+![Login](/assets/images/login.png)
+
 ## Testing
 
-Pull the repository, run `npm install`, and then `npm test`. 
+Pull the repository, run `npm install`, and then `npm test`.
 
-Note that if you use Genymotion to simulate Meetup in the Middle for Android that Genymotion requires extra configuration to [enable Google Play Services](https://www.genymotion.com/help/desktop/faq/#google-play-services "enable Google Play Services"). 
+Note that if you use Genymotion to simulate Meetup in the Middle for Android that Genymotion requires extra configuration to [enable Google Play Services](https://www.genymotion.com/help/desktop/faq/#google-play-services "enable Google Play Services").
 
 ## Tech Stack
 
@@ -69,7 +87,7 @@ Note that if you use Genymotion to simulate Meetup in the Middle for Android tha
         }
         uid: 123abcd45ef
       }
-   } 
+   }
  ```
 
 #### `meetups`
@@ -90,7 +108,7 @@ Note that if you use Genymotion to simulate Meetup in the Middle for Android tha
     }
   venues: {
     -987zyx: {
-      formattedAddress: 
+      formattedAddress:
       lat: 39.9522
       lon: 75.1635
       name: "Art Studio"
@@ -100,7 +118,7 @@ Note that if you use Genymotion to simulate Meetup in the Middle for Android tha
   location: ""
   attendingNames: {
     123abcd45ef: "Joe User"
-    345abc765ab: "Sam LateRsvp" 
+    345abc765ab: "Sam LateRsvp"
   }
   users: {
     123abcd45ef: {
