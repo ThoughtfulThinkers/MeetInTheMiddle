@@ -1,5 +1,6 @@
 node_modules/**/*
 .exponent/*
+gulpfile.js
 npm-debug.*
 envConfig.js
 yarn.lock

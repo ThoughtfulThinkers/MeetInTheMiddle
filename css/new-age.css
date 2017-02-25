@@ -1,6 +1,6 @@
 /*!
- * Start Bootstrap - New Age v3.3.7 (http://startbootstrap.com/template-overviews/new-age)
- * Copyright 2013-2016 Start Bootstrap
+ * Start Bootstrap - Meetup In the Middle v3.3.7 (http://nickcoleman.io)
+ * Copyright 2013-2017 Nick Coleman
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
 .heading-font {
@@ -368,6 +368,18 @@ section.contact ul.list-social li.social-google-plus a {
 }
 section.contact ul.list-social li.social-google-plus a:hover {
   background-color: #d73925;
+}
+section.contact ul.list-social li.social-linkedin a {
+  background-color: #0077b5;
+}
+section.contact ul.list-social li.social-linkedin a:hover {
+  background-color: #00324d;
+}
+section.contact ul.list-social li.social-github a {
+  background-color:#000000
+}
+section.contact ul.list-social li.social-github a:hover {
+  background-color:#404040
 }
 footer {
   background-color: #222222;
