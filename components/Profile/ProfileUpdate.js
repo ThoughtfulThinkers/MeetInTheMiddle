@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { View, ScrollView, Text } from 'react-native';
+import { KeyboardAvoidingView, View, ScrollView, Text } from 'react-native';
 import ProfileForm from './ProfileForm';
 import {
   Button, Card, CardSection,
@@ -63,6 +63,7 @@ class ProfileUpdate extends Component {
 
   render() {
     return (
+      <KeyboardAvoidingView behavior='padding' style={styles.kbAvoidingViewStyle}>
       <ScrollView>
       <Card>
         <CardSection>
@@ -88,11 +89,15 @@ class ProfileUpdate extends Component {
         </CardSection>
       </Card>
       </ScrollView>
+      </KeyboardAvoidingView>
     );
   }
 }
 
 const styles = {
+  kbAvoidingViewStyle: {
+    flex: 1,
+  },
   errorTextStyle: {
     color: 'red',
     fontSize: 20,
