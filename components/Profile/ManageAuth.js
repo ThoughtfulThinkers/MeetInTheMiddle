@@ -55,8 +55,8 @@ class ManageAuth extends Component {
             <CardSection>
               <Input
                 secureTextEntry
-                label="New Password"
-                placeholder="new password"
+                label="New"
+                placeholder="password"
                 value={this.props.newPassword}
                 onChangeText={value => this.props.authInputChanged({ prop: 'newPassword', value })}
               />
@@ -64,8 +64,8 @@ class ManageAuth extends Component {
             <CardSection>
               <Input
                 secureTextEntry
-                label="Confim Password"
-                placeholder="new password"
+                label="Confirm"
+                placeholder="password"
                 value={this.props.confirmPassword}
                 onChangeText={value => this.props.authInputChanged({ prop: 'confirmPassword', value })}
               />
@@ -80,8 +80,8 @@ class ManageAuth extends Component {
           <CardSection>
             <Input
             secureTextEntry
-            label="Password"
-            placeholder="current password"
+            label="Current"
+            placeholder="password"
             value={this.props.password}
             onChangeText={value => this.props.authInputChanged({ prop: 'password', value })}
             />
