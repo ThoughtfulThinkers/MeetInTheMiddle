@@ -4,3 +4,4 @@ npm-debug.*
 envConfig.js
 yarn.lock
 *.ipa
+*.cer
