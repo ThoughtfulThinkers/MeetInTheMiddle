@@ -24,7 +24,7 @@
  },
   "android": {
     "package": "io.nickcoleman.meetinthemiddle",
-    "versionCode": 5.1,
+    "versionCode": 6,
     "config": {
       "googleMaps": {
         "apiKey": "AIzaSyD3M7ujMrm0FDHqNpfWQN9QVqkvaJ3Wws0"
