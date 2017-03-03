@@ -2,22 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { KeyboardAvoidingView, View, ScrollView, Text } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import ProfileForm from './ProfileForm';
 import {
   Button, Card, CardSection,
   Input, Spinner,
 } from '../common';
 
-import {
-  authError,
-  createNewUserAccount,
-  emailChanged,
-  fetchGeoLocationByFullAddress,
-  loginUser,
-  passwordChanged,
-  userInputChanged,
-  userLocationInputChanged,
-} from '../../actions';
+import * as actions from '../../actions';
 
 class ProfileCreate extends Component {
   state = {
@@ -64,6 +56,10 @@ class ProfileCreate extends Component {
     }
   }
 
+  _scrollToInput(reactNode: any) {
+    // Add a 'scroll' ref to your ScrollView
+    this.refs.scroll.scrollToFocusedInput(reactNode);
+  }
 
   renderCreateAccountButton() {
     if (this.props.loading) {
@@ -78,13 +74,13 @@ class ProfileCreate extends Component {
 
   render() {
     return (
-      <KeyboardAvoidingView behavior='padding' style={styles.kbAvoidingViewStyle}>
-      <ScrollView>
+      <KeyboardAwareScrollView ref='scroll'>
       <Card>
         <CardSection>
           <Input
             label="Email"
             placeholder="email@domain.com"
+            onFocus={(event: Event) => this._scrollToInput(ReactNative.findNodeHandle(event.target))}
             onChangeText={this.onEmailChange.bind(this)}
             value={this.props.email}
           />
@@ -93,12 +89,74 @@ class ProfileCreate extends Component {
           <Input
           secureTextEntry
           label="Password"
+          onFocus={(event: Event) => this._scrollToInput(ReactNative.findNodeHandle(event.target))}
           placeholder="password"
           onChangeText={this.onPasswordChange.bind(this)}
           value={this.props.password}
           />
         </CardSection>
-        <ProfileForm />
+        <CardSection>
+          <Input
+            label="First Name"
+            placeholder="William"
+            onFocus={(event: Event) => this._scrollToInput(ReactNative.findNodeHandle(event.target))}
+            value={this.props.firstName}
+            onChangeText={value => this.props.userInputChanged({ prop: 'firstName', value })}
+          />
+        </CardSection>
+        <CardSection>
+          <Input
+            label="Last Name"
+            placeholder="Tell"
+            onFocus={(event: Event) => this._scrollToInput(ReactNative.findNodeHandle(event.target))}
+            value={this.props.lastName}
+            onChangeText={value => this.props.userInputChanged({ prop: 'lastName', value })}
+          />
+        </CardSection>
+        <CardSection>
+          <Input
+            label="Street"
+            placeholder="123 Main St"
+            value={this.props.location.street}
+            onFocus={(event: Event) => this._scrollToInput(ReactNative.findNodeHandle(event.target))}
+            onChangeText={
+              value => this.props.userLocationInputChanged({ prop: 'street', value })
+            }
+          />
+        </CardSection>
+        <CardSection>
+          <Input
+            label="City"
+            placeholder="Salt Lake City"
+            onFocus={(event: Event) => this._scrollToInput(ReactNative.findNodeHandle(event.target))}
+            value={this.props.location.city}
+            onChangeText={
+              value => this.props.userLocationInputChanged({ prop: 'city', value })
+            }
+          />
+        </CardSection>
+        <CardSection>
+          <Input
+            label="State"
+            placeholder="UT"
+            onFocus={(event: Event) => this._scrollToInput(ReactNative.findNodeHandle(event.target))}
+            value={this.props.location.state}
+            onChangeText={
+              value => this.props.userLocationInputChanged({ prop: 'state', value })
+            }
+          />
+        </CardSection>
+        <CardSection>
+          <Input
+            label="ZipCode"
+            placeholder="84111"
+            onFocus={(event: Event) => this._scrollToInput(ReactNative.findNodeHandle(event.target))}
+            value={this.props.location.zipcode}
+            onChangeText={
+              value => this.props.userLocationInputChanged({ prop: 'zipcode', value })
+            }
+          />
+        </CardSection>
         <CardSection>
           <Text style={styles.errorTextStyle} >{this.state.msg}</Text>
           <Text style={styles.errorTextStyle}>{this.props.authError}</Text>
@@ -107,8 +165,7 @@ class ProfileCreate extends Component {
           {this.renderCreateAccountButton()}
         </CardSection>
       </Card>
-      </ScrollView>
-      </KeyboardAvoidingView>
+      </KeyboardAwareScrollView>
     );
   }
 }
@@ -143,13 +200,4 @@ const mapStateToProps = ({ auth, user }) => {
   };
 };
 
-export default connect(mapStateToProps, {
-  authError,
-  createNewUserAccount,
-  emailChanged,
-  fetchGeoLocationByFullAddress,
-  loginUser,
-  passwordChanged,
-  userInputChanged,
-  userLocationInputChanged,
-})(ProfileCreate);
+export default connect(mapStateToProps, actions)(ProfileCreate);
