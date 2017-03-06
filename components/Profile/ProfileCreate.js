@@ -4,6 +4,7 @@ import { Actions } from 'react-native-router-flux';
 import { KeyboardAvoidingView, View, ScrollView, Text } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import ProfileForm from './ProfileForm';
+import { styles } from '../../assets/Styles';
 import {
   Button, Card, CardSection,
   Input, Spinner,
@@ -169,19 +170,6 @@ class ProfileCreate extends Component {
     );
   }
 }
-
-const styles = {
-  kbAvoidingViewStyle: {
-    flex: 1,
-  },
-  errorTextStyle: {
-    color: 'red',
-    fontSize: 20,
-    alignSelf: 'center',
-    paddingLeft: 10,
-    paddingRight: 10
-  }
-};
 
 const mapStateToProps = ({ auth, user }) => {
   const { email, password, error, loading } = auth;

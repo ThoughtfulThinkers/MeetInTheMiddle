@@ -38,13 +38,6 @@ class LocationSelector extends Component {
         }
 }
 
-const styles = {
-  textStyle: {
-    fontSize: 18,
-    padding: 5
-  }
-};
-
 const mapStateToProps = state => {
   const { lat, lon, street } = state.user.location;
   return { lat, lon, street };

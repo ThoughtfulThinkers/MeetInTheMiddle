@@ -8,6 +8,7 @@ import firebase from 'firebase';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { styles } from '../../assets/Styles';
 import { Button, Card, CardSection, Input, Spinner } from '../common';
 import {
   emailPasswordReset,
@@ -64,23 +65,6 @@ class ForgotPassword extends Component {
     );
   }
 }
-
-const styles = {
-  errorTextStyle: {
-    color: 'red',
-    fontSize: 20,
-    alignSelf: 'center',
-    paddingLeft: 10,
-    paddingRight: 10
-  },
-  noticeTextStyle: {
-    color: '#1ba6bd',
-    paddingLeft: 10,
-    paddingRight: 10,
-    fontSize: 15,
-    alignSelf: 'center',
-  }
-};
 
 const mapStateToProps = ({ auth, user }) => {
   const { email, loading, authError } = auth;

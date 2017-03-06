@@ -4,6 +4,7 @@ import { Actions } from 'react-native-router-flux';
 import { KeyboardAvoidingView, View, ScrollView, Text } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import ProfileForm from './ProfileForm';
+import { styles } from '../../assets/Styles';
 import {
   Button, Card, CardSection,
   Input, Spinner,
@@ -64,7 +65,7 @@ class ProfileUpdate extends Component {
       <KeyboardAwareScrollView ref='scroll'>
       <Card>
         <CardSection>
-          <Text>Current email: {this.props.email}</Text>
+          <Text style={styles.profileNotice}>Current email: {this.props.email}</Text>
         </CardSection>
         <CardSection>
           <Button onPress={() => Actions.manageEmail()} >
@@ -139,7 +140,7 @@ class ProfileUpdate extends Component {
           />
         </CardSection>
         <CardSection>
-          <Text style={styles.errorTextStyle} >{this.state.msg}</Text>
+          <Text style={styles.errorTextStyle}>{this.state.msg}</Text>
           <Text style={styles.errorTextStyle}>{this.props.authError}</Text>
         </CardSection>
         <CardSection>
@@ -150,19 +151,6 @@ class ProfileUpdate extends Component {
     );
   }
 }
-
-const styles = {
-  kbAvoidingViewStyle: {
-    flex: 1,
-  },
-  errorTextStyle: {
-    color: 'red',
-    fontSize: 20,
-    alignSelf: 'center',
-    paddingLeft: 10,
-    paddingRight: 10
-  },
-};
 
 const mapStateToProps = ({ auth, user }) => {
   const { email, password, error, loading } = auth;

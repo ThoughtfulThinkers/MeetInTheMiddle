@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Acttions } from 'react-native-router-flux';
 import { View, ScrollView, Text } from 'react-native';
+import { styles } from '../../assets/Styles';
 import {
   Button, Card, CardSection,
   Input, Spinner
@@ -73,7 +74,7 @@ class ManageAuth extends Component {
           </Card>
         <Card>
           <CardSection>
-            <Text style={styles.noticeStyle}>
+            <Text style={styles.profileNotice}>
               Current Password Required
             </Text>
           </CardSection>
@@ -98,12 +99,6 @@ class ManageAuth extends Component {
     );
   }
 }
-
-const styles = {
-  noticeStyle: {
-    fontSize: 15,
-  }
-};
 
 const mapStateToProps = ({ auth }) => {
   const { password, newPassword, confirmPassword, } = auth;

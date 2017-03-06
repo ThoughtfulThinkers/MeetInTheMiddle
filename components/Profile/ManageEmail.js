@@ -8,6 +8,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Acttions } from 'react-native-router-flux';
 import { View, ScrollView, Text } from 'react-native';
+import { styles } from '../../assets/Styles';
 import {
   Button, Card, CardSection,
   Input, Spinner
@@ -51,7 +52,7 @@ class ManageEmail extends Component {
       <Card>
         <Card>
           <CardSection>
-            <Text>Current Email {this.props.email}</Text>
+            <Text style={styles.profileNotice}>Current Email {this.props.email}</Text>
           </CardSection>
           <CardSection>
             <Input
@@ -84,18 +85,6 @@ class ManageEmail extends Component {
   }
 }
 
-const styles = {
-  noticeStyle: {
-    fontSize: 15,
-  },
-  errorTextStyle: {
-    color: 'red',
-    fontSize: 20,
-    alignSelf: 'center',
-    paddingLeft: 10,
-    paddingRight: 10
-  }
-};
 
 const mapStatetoProps = ({ auth }) => {
   const { email, newEmail, password, } = auth;
