@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { Text, View, TouchableWithoutFeedback } from 'react-native';
-import { setLocation, meetupsFetch, meetupChange } from '../../actions';
+import * as actions from '../../actions';
 import { CardSection } from '../common';
 
 class StateItem extends Component {
@@ -36,4 +36,4 @@ const styles = {
   }
 };
 
-export default connect(null, { setLocation, meetupsFetch, meetupChange })(StateItem);
+export default connect(null, actions)(StateItem);

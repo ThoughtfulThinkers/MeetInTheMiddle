@@ -11,10 +11,7 @@ import {
   Input,
 } from '../common';
 
-import {
-  userInputChanged,
-  userLocationInputChanged,
-} from '../../actions';
+import * as actions from '../../actions';
 
 class ProfileForm extends Component {
   render() {
@@ -86,10 +83,7 @@ const mapStateToProps = ({ user }) => {
   return { firstName, lastName, location };
 };
 
-export default connect(mapStateToProps, {
-  userInputChanged,
-  userLocationInputChanged,
-})(ProfileForm);
+export default connect(mapStateToProps, actions)(ProfileForm);
 
 ProfileForm.propTypes = {
   firstName: React.PropTypes.string,
