@@ -3,7 +3,7 @@ import _ from 'lodash';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import { View, Text } from 'react-native';
-import { userMeetupsFetch } from '../../actions';
+import * as actions from '../../actions';
 import MeetupList from './MeetupList';
 import { CardSection, Spinner, IconButton } from '../common';
 
@@ -71,6 +71,7 @@ const styles = {
 };
 
 const mapStateToProps = state => {
+  // map over to pull UID off the userMeetups Object
   let meetups = _.map(state.meetups.userMeetups, (val, uid) => {
     return { ...val, uid };
   });
@@ -86,4 +87,4 @@ const mapStateToProps = state => {
   return { meetups, loading: state.meetups.userLoading };
 };
 
-export default connect(mapStateToProps, { userMeetupsFetch })(UserMeetupListContainer);
+export default connect(mapStateToProps, actions)(UserMeetupListContainer);

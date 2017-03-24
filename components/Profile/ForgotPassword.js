@@ -9,10 +9,7 @@ import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { Button, Card, CardSection, Input, Spinner } from '../common';
-import {
-  emailPasswordReset,
-  resetAuthErrorState,
-} from '../../actions';
+import * as actions from '../../actions';
 
 class ForgotPassword extends Component {
   state = {
@@ -87,7 +84,4 @@ const mapStateToProps = ({ auth, user }) => {
   return { authError, email, loading };
 };
 
-export default connect(mapStateToProps, {
-  emailPasswordReset,
-  resetAuthErrorState,
-})(ForgotPassword);
+export default connect(mapStateToProps, actions)(ForgotPassword);

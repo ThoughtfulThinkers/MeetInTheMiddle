@@ -5,11 +5,7 @@ import { GiftedChat } from 'react-native-gifted-chat';
 import { View } from 'react-native';
 // import Backend from '../../Backend';
 import { fbConfig } from '../../envConfig';
-import {
-  closeMeetUpChat,
-  fetchMessagesByMeetup,
-  sendMessageByMeetup,
-} from '../../actions';
+import * as actions from '../../actions';
 
 class ChatRoom extends Component {
   state = {
@@ -76,11 +72,7 @@ const mapStateToProps = ({ chat, user }) => {
   return { messages, firstName, lastName };
 };
 
-export default connect(mapStateToProps, {
-  closeMeetUpChat,
-  fetchMessagesByMeetup,
-  sendMessageByMeetup,
-})(ChatRoom);
+export default connect(mapStateToProps, actions)(ChatRoom);
 
 ChatRoom.defaultProps = {
   name: 'John Doe',

@@ -4,16 +4,8 @@ import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { Button, Card, CardSection, Input, Spinner } from './common';
-import {
-  createNewUserAccount,
-  emailChanged,
-  loginUser,
-  logoutUser,
-  passwordChanged,
-  resetAuthErrorState,
-  resetErrorState,
-  setLoginStatus,
-} from '../actions';
+import * as actions from '../actions';
+
 import MeetupList from './MeetupLists/MeetupList';
 
 class LoginForm extends Component {
@@ -164,13 +156,4 @@ const mapStateToProps = ({ auth, user }) => {
   };
 };
 
-export default connect(mapStateToProps, {
-  createNewUserAccount,
-  emailChanged,
-  loginUser,
-  logoutUser,
-  passwordChanged,
-  resetAuthErrorState,
-  resetErrorState,
-  setLoginStatus,
-})(LoginForm);
+export default connect(mapStateToProps, actions)(LoginForm);

@@ -7,15 +7,7 @@ import _ from 'lodash';
 import { Text, View, Alert } from 'react-native';
 import DatePicker from 'react-native-datepicker';
 import VenuePicker from './Venues/VenuePicker';
-import {
-  meetupChange,
-  meetupEdit,
-  fetchMeetups,
-  meetupsFetch,
-  userMeetupsFetch,
-  deleteMeetup,
-  userInputChanged,
-  resetErrorState } from '../../actions';
+import * as actions from '../../actions';
 import { Card, CardSection, Input, Button, Spinner, DeleteButton } from '../common';
 
 class MeetupEdit extends Component {
@@ -220,10 +212,4 @@ const mapStateToProps = (state) => {
   return { meetup, loading, location, loggedIn, error };
 };
 
-export default connect(mapStateToProps, { meetupChange,
-                                          meetupEdit,
-                                          meetupsFetch,
-                                          userMeetupsFetch,
-                                          deleteMeetup,
-                                          userInputChanged,
-                                          resetErrorState })(MeetupEdit);
+export default connect(mapStateToProps, actions)(MeetupEdit);

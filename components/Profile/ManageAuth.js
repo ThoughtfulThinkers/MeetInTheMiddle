@@ -7,15 +7,7 @@ import {
   Input, Spinner
 } from '../common';
 
-import {
-  authInputChanged,
-  emailChanged,
-  loginUser,
-  passwordChanged,
-  updateUserEmail,
-  updateUserPassword,
-  userInputChanged,
-} from '../../actions';
+import * as actions from '../../actions';
 
 class ManageAuth extends Component {
   state = {
@@ -110,18 +102,4 @@ const mapStateToProps = ({ auth }) => {
   return { password, newPassword, confirmPassword, };
 };
 
-export default connect(mapStateToProps, {
-  authInputChanged,
-  emailChanged,
-  loginUser,
-  passwordChanged,
-  updateUserEmail,
-  updateUserPassword,
-  userInputChanged,
-})(ManageAuth);
-
-
-// ManageAuth.propTypes = {
-//   email: React.PropTypes.string,
-//   password: React.PropTypes.string,
-// };
+export default connect(mapStateToProps, actions)(ManageAuth);

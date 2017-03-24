@@ -223,7 +223,7 @@ export const updateUserEmail = (emailAddress, password) => dispatch => {
   user.reauthenticate(credential)
     .then(() => {
       user.updateEmail(emailAddress)
-        .then(dispatch(Actions.profileUpdate({ type: 'reset' })))
+        .then(dispatch(Actions.profileUpdate({ type: 'reset' })));
     })
     .catch(error => console.log(error.message));
 };

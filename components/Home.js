@@ -6,11 +6,7 @@ import UserMeetupListContainer from './MeetupLists/UserMeetupListContainer';
 import OpenMeetupListContainer from './MeetupLists/OpenMeetupListContainer';
 import GetMeetup from './GetMeetup';
 
-import {
-  loadAuthenticatedUserState,
-  setLoginStatus,
-  userMeetupsFetch
-} from '../actions';
+import * as actions from '../actions';
 
 class Home extends Component {
   componentWillMount() {
@@ -39,8 +35,4 @@ class Home extends Component {
   }
 }
 
-export default connect(null, {
-  loadAuthenticatedUserState,
-  setLoginStatus,
-  userMeetupsFetch,
-})(Home);
+export default connect(null, actions)(Home);

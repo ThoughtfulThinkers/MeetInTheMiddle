@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { View, Text } from 'react-native';
 import { CardSection, Button, Input } from './common';
 
-import { meetupById, changeSearch, resetErrorState } from '../actions';
+import * as actions from '../actions';
 
 class GetMeetup extends Component {
 
@@ -40,6 +40,4 @@ mapStateToProps = state => {
   return { search: state.meetups.search, error: state.user.error };
 };
 
-export default connect(mapStateToProps, {
-  meetupById, changeSearch, resetErrorState
-})(GetMeetup);
+export default connect(mapStateToProps, actions)(GetMeetup);

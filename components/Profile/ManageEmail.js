@@ -13,15 +13,7 @@ import {
   Input, Spinner
 } from '../common';
 
-import {
-  authInputChanged,
-  emailChanged,
-  loginUser,
-  passwordChanged,
-  updateUserEmail,
-  updateUserPassword,
-  userInputChanged,
-} from '../../actions';
+import * as actions from '../../actions';
 
 class ManageEmail extends Component {
   state = {
@@ -102,12 +94,4 @@ const mapStatetoProps = ({ auth }) => {
   return { email, newEmail, password, };
 };
 
-export default connect(mapStatetoProps, {
-  authInputChanged,
-  emailChanged,
-  loginUser,
-  passwordChanged,
-  updateUserEmail,
-  updateUserPassword,
-  userInputChanged,
-})(ManageEmail);
+export default connect(mapStatetoProps, actions)(ManageEmail);

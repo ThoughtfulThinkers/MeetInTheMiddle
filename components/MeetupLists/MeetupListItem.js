@@ -4,7 +4,7 @@ import _ from 'lodash';
 import moment from 'moment';
 import { Actions } from 'react-native-router-flux';
 import { Text, View, TouchableWithoutFeedback } from 'react-native';
-import { setCurrentMeetup } from '../../actions';
+import * as actions from '../../actions';
 import { CardSection } from '../common';
 
 class MeetupListItem extends Component {
@@ -81,4 +81,4 @@ const styles = {
   }
 };
 
-export default connect(null, { setCurrentMeetup })(MeetupListItem);
+export default connect(null, actions)(MeetupListItem);

@@ -2,24 +2,24 @@ import firebase from 'firebase';
 import { Actions } from 'react-native-router-flux';
 import { googlePlacesConfig } from '../envConfig';
 import {
-        CHANGE_RSVP,
-        SET_RSVP,
-        SET_RSVP_SUCCESS,
-        DELETE_RSVP_SUCCESS,
-        } from '../actions/types';
+  CHANGE_RSVP,
+  SET_RSVP,
+  SET_RSVP_SUCCESS,
+  DELETE_RSVP_SUCCESS,
+  } from '../actions/types';
 import { userMeetupsFetch } from './MeetupActions';
 import {
-          getUser,
-          setGuest,
-          setMeetup,
-          updateGuest,
-          updateMeetup,
-          removeGuest,
-          removeMeetup,
-          updateStatus,
-          setAttending,
-          removeAttending
-        } from './firebase-functions/RsvpActions';
+  setGuest,
+  getUser,
+  removeGuest,
+  removeAttending,
+  removeMeetup,
+  setAttending,
+  setMeetup,
+  updateGuest,
+  updateMeetup,
+  updateStatus,
+} from './firebase-functions/RsvpActions';
 
 const { apiKey } = googlePlacesConfig;
 

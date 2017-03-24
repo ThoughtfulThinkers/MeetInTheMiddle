@@ -5,7 +5,7 @@ import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { Text, Alert, View } from 'react-native';
 import DatePicker from 'react-native-datepicker';
-import { meetupChange, resetMeetup, userInputChanged, resetErrorState } from '../../actions';
+import * as actions from '../../actions';
 import { Card, CardSection, Input, Button, IconButton } from '../common';
 
 class MeetupCreate extends Component {
@@ -148,4 +148,4 @@ const mapStateToProps = ({ meetupForm, auth, user }) => {
   return { name, description, start, end, loggedIn, error, privacy };
 };
 
-export default connect(mapStateToProps, { meetupChange, resetMeetup, userInputChanged, resetErrorState })(MeetupCreate);
+export default connect(mapStateToProps, actions)(MeetupCreate);
