@@ -25,21 +25,21 @@ export const FETCH_GEOLOCATION_BY_FULL_ADDRESS_SUCCESS = 'FETCH_GEOLOCATION_BY_F
 /******************************************************
   Filter Actions
 ******************************************************/
-export const SET_TEXT = 'SET_TEXT';
 export const SET_LOCATION = 'SET_LOCATION';
+export const SET_TEXT = 'SET_TEXT';
 
 /******************************************************
   Meetup Actions
 ******************************************************/
-export const FETCH_MEETUPS = 'FETCH_MEETUPS';
-export const FETCH_MEETUPS_SUCCESS = 'FETCH_MEETUPS_SUCCESS';
-export const FETCH_USER_MEETUPS = 'FETCH_USER_MEETUPS';
-export const FETCH_USER_MEETUPS_SUCCESS = 'FETCH_USER_MEETUPS_SUCCESS';
 export const FETCH_MEETUP = 'FETCH_MEETUPS';
 export const FETCH_MEETUP_SUCCESS = 'FETCH_MEETUPS_SUCCESS';
+export const FETCH_MEETUPS = 'FETCH_MEETUPS';
+export const FETCH_MEETUPS_SUCCESS = 'FETCH_MEETUPS_SUCCESS';
 export const FETCH_SEARCH_MEETUPS = 'FETCH_SEARCH_MEETUPS';
 export const FETCH_SEARCH_MEETUPS_SUCCESS = 'FETCH_SEARCH_MEETUPS_SUCCESS';
 export const CHANGE_SEARCH = 'CHANGE_SEARCH';
+export const FETCH_USER_MEETUPS = 'FETCH_USER_MEETUPS';
+export const FETCH_USER_MEETUPS_SUCCESS = 'FETCH_USER_MEETUPS_SUCCESS';
 
 /******************************************************
   User Actions
@@ -54,19 +54,20 @@ export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS';
 /******************************************************
   Meetup Form Actions
 ******************************************************/
-export const MEETUP_CHANGED = 'MEETUP_CHANGED';
 export const ADD_MEETUP = 'ADD_MEETUP';
 export const ADD_MEETUP_SUCCESS = 'ADD_MEETUP_SUCCESS';
-export const SET_CURRENT_MEETUP = 'SET_CURRENT_MEETUP';
+export const CREATE_VOTING_SUCCESS = 'CREATE_VOTING_SUCCESS';
 export const EDIT_MEETUP = 'EDIT_MEETUP';
 export const EDIT_MEETUP_SUCCESS = 'EDIT_MEETUP_SUCCESS';
-export const CREATE_VOTING_SUCCESS = 'CREATE_VOTING_SUCCESS';
-export const SET_VOTE = 'SET_VOTE';
+export const MEETUP_CHANGED = 'MEETUP_CHANGED';
 export const RESET_MEETUP = 'RESET_MEETUP';
+export const SET_CURRENT_MEETUP = 'SET_CURRENT_MEETUP';
+export const SET_VOTE = 'SET_VOTE';
+
 /******************************************************
   Rsvp Actions
 ******************************************************/
 export const CHANGE_RSVP = 'CHANGE_RSVP';
+export const DELETE_RSVP_SUCCESS = 'DELETE_RSVP_SUCCESS';
 export const SET_RSVP = 'SET_RSVP';
 export const SET_RSVP_SUCCESS = 'SET_RSVP_SUCCESS';
-export const DELETE_RSVP_SUCCESS = 'DELETE_RSVP_SUCCESS';

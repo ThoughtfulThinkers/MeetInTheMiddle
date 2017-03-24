@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import { ListView } from 'react-native';
-import { meetupsFetch } from '../../actions';
+import * as actions from '../../actions';
 import MeetupListItem from './MeetupListItem';
 
 class MeetupList extends Component {

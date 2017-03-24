@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import firebase from 'firebase';
 import { Actions } from 'react-native-router-flux';
 import { Text, View, TouchableWithoutFeedback, Alert } from 'react-native';
-import { setVote, voteChange } from '../../../actions';
+import * as actions from '../../../actions';
 import { CardSection } from '../../common';
 
 class Vote extends Component {
@@ -61,4 +61,4 @@ const mapStateToProps = state => {
   return { meetupForm, user, meetups, uid };
 };
 
-export default connect(mapStateToProps, { setVote, voteChange })(Vote);
+export default connect(mapStateToProps, actions)(Vote);

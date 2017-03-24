@@ -1,15 +1,21 @@
 import firebase from 'firebase';
 import { Actions } from 'react-native-router-flux';
 import {
-  MEETUP_CHANGED,
   ADD_MEETUP,
   ADD_MEETUP_SUCCESS,
-  SET_CURRENT_MEETUP,
   EDIT_MEETUP,
   EDIT_MEETUP_SUCCESS,
-  RESET_MEETUP
+  MEETUP_CHANGED,
+  RESET_MEETUP,
+  SET_CURRENT_MEETUP,
 } from './types';
-import { getUser, pushMeetup, updateMeetup, setStatus, removeGuest, removeMeetup } from './firebase-functions/MeetupFormActions';
+import { getUser,
+  pushMeetup,
+  removeGuest,
+  removeMeetup,
+  setStatus,
+  updateMeetup,
+} from './firebase-functions/MeetupFormActions';
 
 export const meetupChange = (prop, value) => {
   return {
@@ -19,8 +25,7 @@ export const meetupChange = (prop, value) => {
   };
 };
 
-export const addMeetup = (meetupDetails) => {
-  return (dispatch) => {
+export const addMeetup = meetupDetails => dispatch => {
   dispatch({ type: ADD_MEETUP });
 
   const currentUser = getUser();
@@ -39,6 +44,7 @@ export const addMeetup = (meetupDetails) => {
     user: userId,
     attendingNames: {},
   };
+
   return pushMeetup(meetup)
     .then(({ key }) => {
       dispatch({ type: ADD_MEETUP_SUCCESS });
@@ -47,18 +53,16 @@ export const addMeetup = (meetupDetails) => {
       Actions.rsvp({ type: 'reset', meetup });
     })
     .catch((err) => console.log(err));
-  };
 };
 
-export const setCurrentMeetup = (meetup) => {
+export const setCurrentMeetup = meetup => {
   return {
     type: SET_CURRENT_MEETUP,
     meetup
   };
 };
 
-export const meetupEdit = (meetup) => {
-  return (dispatch) => {
+export const meetupEdit = meetup => dispatch => {
   dispatch({ type: EDIT_MEETUP });
   //const { currentUser } = firebase.auth();
   const { name, description, start, end, state, venue, voteStart, voteEnd } = meetup;
@@ -79,11 +83,9 @@ export const meetupEdit = (meetup) => {
       Actions.meetups({ type: 'reset' });
     })
     .catch((err) => console.log(err));
-  };
 };
 
-export const changeStatus = (meetup, status) => {
-  return (dispatch) => {
+export const changeStatus = (meetup, status) => dispatch => {
     return setStatus(meetup.uid, status)
       .then(() => {
         dispatch({
@@ -95,7 +97,6 @@ export const changeStatus = (meetup, status) => {
         Actions.meetup({ type: 'refresh' });
       })
       .catch((err) => console.log(err));
-    };
   };
 
   export const resetMeetup = () => {
@@ -104,8 +105,7 @@ export const changeStatus = (meetup, status) => {
     };
   };
 
-  export const deleteMeetup = (meetupId, users) => {
-    return dispatch => {
+  export const deleteMeetup = (meetupId, users) => dispatch => {
       dispatch({ type: EDIT_MEETUP });
 
       const removeUsers = users.map(user => {
@@ -118,5 +118,4 @@ export const changeStatus = (meetup, status) => {
             dispatch({ type: RESET_MEETUP });
           });
       });
-    };
   };

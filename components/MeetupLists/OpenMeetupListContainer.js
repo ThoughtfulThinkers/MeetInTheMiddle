@@ -4,7 +4,7 @@ import { View, Text } from 'react-native';
 import moment from 'moment';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
-import { meetupsFetch, setText, setLocation } from '../../actions';
+import * as actions from '../../actions';
 import MeetupList from './MeetupList';
 import { CardSection, Spinner, Input, Button, IconButton } from '../common';
 
@@ -107,4 +107,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { meetupsFetch, setLocation, setText })(OpenMeetupListContainer);
+export default connect(mapStateToProps, actions)(OpenMeetupListContainer);

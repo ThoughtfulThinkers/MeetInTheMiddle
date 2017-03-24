@@ -4,7 +4,7 @@ import Exponent from 'exponent';
 import { Text, Alert } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { setRsvp, changeRSVP, changeStatus, userInputChanged, resetErrorState, userMeetupsFetch } from '../../../actions';
+import * as actions from '../../../actions';
 import LocationSelector from '../../LocationSelector';
 import { CardSection, Card, Button, DeleteButton } from '../../common';
 
@@ -41,12 +41,12 @@ class RSVP extends Component {
       .then(response => {
         if (response.status === 'granted') {
           Location.getCurrentPositionAsync({ enableHighAccuracy: true })
-          .then(data => {
-            const { latitude, longitude } = data.coords;
-            this.props.changeRSVP(latitude, longitude);
-          });
+            .then(data => {
+              const { latitude, longitude } = data.coords;
+              this.props.changeRSVP(latitude, longitude);
+            });
         }
-          throw new Error('Location permission not granted');
+        throw new Error('Location permission not granted');
       })
       .catch(err => console.log(err));
     }
@@ -114,4 +114,4 @@ const mapStateToProps = ({ rsvp, user, meetupForm }) => {
   return { lat, lon, firstName, lastName, user, address, meetupForm, error, userMeetupsFetch };
 };
 
-export default connect(mapStateToProps, { setRsvp, changeRSVP, changeStatus, userInputChanged, resetErrorState })(RSVP);
+export default connect(mapStateToProps, actions)(RSVP);

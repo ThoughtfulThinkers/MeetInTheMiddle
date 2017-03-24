@@ -4,7 +4,7 @@ import _ from 'lodash';
 import { Actions } from 'react-native-router-flux';
 import moment from 'moment';
 import { Text, View, Share, TouchableWithoutFeedback, Alert } from 'react-native';
-import { changeStatus, createVoting, changeLocation, rsvpLate, deleteRsvpLate } from '../../actions';
+import * as actions from '../../actions';
 
 import GuestList from './GuestList/GuestList';
 import VotingList from './Voting/VotingList';
@@ -301,5 +301,4 @@ const mapStateToProps = state => {
   return { meetup: meetupForm, auth, user, status, names };
 };
 
-export default connect(mapStateToProps, {
-  changeStatus, createVoting, changeLocation, deleteRsvpLate, rsvpLate })(Meetup);
+export default connect(mapStateToProps, actions)(Meetup);
