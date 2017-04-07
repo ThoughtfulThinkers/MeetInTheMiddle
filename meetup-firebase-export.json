@@ -1,0 +1,1944 @@
+{
+  "chatrooms" : {
+    "-KdCa0u3ogkt-lo2uWGI" : {
+      "-KdCaFyLDI5pm5beYLnW" : {
+        "createdAt" : 1487360561315,
+        "text" : "So excited! Who's bringing cakes and ale?",
+        "user" : {
+          "_id" : "9Ev0slaobXWmeWfaxpneD54aQXZ2",
+          "name" : "chat"
+        }
+      },
+      "-KdCmc26XyQnUhBRG4nq" : {
+        "createdAt" : 1487363801371,
+        "text" : "Ray said he would bring the ale.  I'll try to find some ale cakes",
+        "user" : {
+          "_id" : "WUwtW0V6zZXhxlWkWl31HzlBiop2",
+          "name" : "chat"
+        }
+      },
+      "-KdDN_92wXsbgiQjxU0P" : {
+        "createdAt" : 1487373751011,
+        "text" : "Running the app from my ipad",
+        "user" : {
+          "_id" : "WUwtW0V6zZXhxlWkWl31HzlBiop2",
+          "name" : "chat"
+        }
+      }
+    },
+    "-KdCc7-RY3dOUvbWSA9X" : {
+      "-KdD6DWqzWc9hcih5Ttf" : {
+        "createdAt" : 1487369201910,
+        "text" : "Hello",
+        "user" : {
+          "_id" : "WUwtW0V6zZXhxlWkWl31HzlBiop2",
+          "name" : "chat"
+        }
+      }
+    },
+    "-KdDOVMXHOpQe5OQzvIr" : {
+      "-KdDOl7kj-Z6Wa9vVXw5" : {
+        "createdAt" : 1487374064917,
+        "text" : "Come join us and learn to cod.  take a look at angular 2",
+        "user" : {
+          "_id" : "WUwtW0V6zZXhxlWkWl31HzlBiop2",
+          "name" : "chat"
+        }
+      }
+    },
+    "-KdRJSMj8NcHuw6whqc2" : {
+      "-KdS-ZoRQnIqwJKOwvJS" : {
+        "createdAt" : 1487619116365,
+        "text" : "Wow ... can't believe this is going to be over",
+        "user" : {
+          "_id" : "u3VWAleVKpaokLbC0UPfrpxNfqG3",
+          "name" : "chat"
+        }
+      },
+      "-KdS0JzThzIjmHbkPQYt" : {
+        "createdAt" : 1487619313772,
+        "text" : "it is never over",
+        "user" : {
+          "_id" : "OF8ZEh6U0oS8UGkZQpdr6dqdPd82",
+          "name" : "chat"
+        }
+      },
+      "-KdS0WcQ0Ol-a-I0xLzm" : {
+        "createdAt" : 1487619370066,
+        "text" : "True ... life's journey is just a series of steps",
+        "user" : {
+          "_id" : "u3VWAleVKpaokLbC0UPfrpxNfqG3",
+          "name" : "chat"
+        }
+      },
+      "-KdSddhZS-KIOA7qEGo8" : {
+        "createdAt" : 1487629884553,
+        "text" : "Deep thoughts",
+        "user" : {
+          "_id" : "OF8ZEh6U0oS8UGkZQpdr6dqdPd82",
+          "name" : "chat"
+        }
+      },
+      "-KdSdg-nrttogAUNEexZ" : {
+        "createdAt" : 1487629893755,
+        "text" : "Thoughtful Thinkers",
+        "user" : {
+          "_id" : "u3VWAleVKpaokLbC0UPfrpxNfqG3",
+          "name" : "chat"
+        }
+      },
+      "-KdXIA2AEAbW2DvapL2d" : {
+        "createdAt" : 1487707877661,
+        "text" : "The Washington Square hotel is pretty close ... should find out if it's any good",
+        "user" : {
+          "_id" : "xtC0JUBd2MPLbURp5Ji4EMVZH113",
+          "name" : "chat"
+        }
+      },
+      "-KdYAosRuqgNTlVAPl-s" : {
+        "createdAt" : 1487722729070,
+        "text" : "Maybe we can get some advice on the local hotels from Thinkful :nerd_face:",
+        "user" : {
+          "_id" : "u3VWAleVKpaokLbC0UPfrpxNfqG3",
+          "name" : "chat"
+        }
+      },
+      "-Kdl1ceTYqpSBbkFiE2F" : {
+        "createdAt" : 1487955200754,
+        "text" : "\uD83D\uDE0E",
+        "user" : {
+          "_id" : "u3VWAleVKpaokLbC0UPfrpxNfqG3",
+          "name" : "chat"
+        }
+      },
+      "-Kdls-6RDh4LwGcACIrH" : {
+        "createdAt" : 1487969190440,
+        "text" : "Babbo is awesome",
+        "user" : {
+          "_id" : "fTn08rXLfocZmJg7JBWPtJSEjft1",
+          "name" : "chat"
+        }
+      },
+      "-Kdls3FXFH9r6cJGQ6Nx" : {
+        "createdAt" : 1487969207478,
+        "text" : "Yea",
+        "user" : {
+          "_id" : "u3VWAleVKpaokLbC0UPfrpxNfqG3",
+          "name" : "chat"
+        }
+      }
+    },
+    "-KdT3QkG-8iSMnvysZau" : {
+      "-KdkiTUpI0k-of5kwWNf" : {
+        "createdAt" : 1487949916233,
+        "text" : "I'd like a slice of knowledge pie please",
+        "user" : {
+          "_id" : "u3VWAleVKpaokLbC0UPfrpxNfqG3",
+          "name" : "chat"
+        }
+      },
+      "-KeVDfutpkb6KmLrhM-q" : {
+        "createdAt" : 1488746888985,
+        "text" : "Min am",
+        "user" : {
+          "_id" : "mFVp4CcjkNUUE301bt4l4Cxffjv2",
+          "name" : "chat"
+        }
+      }
+    },
+    "-KdT4PQVVOoKYxNpp2Pc" : {
+      "-KdT5j3lbEFzNF94iZ6L" : {
+        "createdAt" : 1487637508483,
+        "text" : "Come to the GEEK side.... we have Pi!!!",
+        "user" : {
+          "_id" : "ncMuEQcxYHZN9kxgj9a2WmEgSKV2",
+          "name" : "chat"
+        }
+      },
+      "-KdT5nUR1BN5pFZtPXlO" : {
+        "createdAt" : 1487637526565,
+        "text" : "Do you like the Cowboy Bebop song?",
+        "user" : {
+          "_id" : "9Ev0slaobXWmeWfaxpneD54aQXZ2",
+          "name" : "chat"
+        }
+      },
+      "-KdT5qaD9DHmSw7c210S" : {
+        "createdAt" : 1487637539281,
+        "text" : "The point song",
+        "user" : {
+          "_id" : "9Ev0slaobXWmeWfaxpneD54aQXZ2",
+          "name" : "chat"
+        }
+      },
+      "-KdT5sT6zop26yH3dC82" : {
+        "createdAt" : 1487637546962,
+        "text" : "The pi* song :(",
+        "user" : {
+          "_id" : "9Ev0slaobXWmeWfaxpneD54aQXZ2",
+          "name" : "chat"
+        }
+      },
+      "-KdT6cEz7OCoxMAWkRfN" : {
+        "createdAt" : 1487637742668,
+        "text" : "I haven't seen cowboy bebop in like 10 yrs lol",
+        "user" : {
+          "_id" : "ncMuEQcxYHZN9kxgj9a2WmEgSKV2",
+          "name" : "chat"
+        }
+      },
+      "-KdT6jMgRioxjmHpDt1C" : {
+        "createdAt" : 1487637771838,
+        "text" : "3.14.15926 right",
+        "user" : {
+          "_id" : "9Ev0slaobXWmeWfaxpneD54aQXZ2",
+          "name" : "chat"
+        }
+      }
+    },
+    "-Kdm-pBYtSH1GqoCwM2Q" : {
+      "-Kdm3_8069PXeMqXTxDZ" : {
+        "createdAt" : 1487972487969,
+        "text" : "hey",
+        "user" : {
+          "_id" : "XT5uTBFrwyMXnLLdb0FByYFuA3z1",
+          "name" : "chat"
+        }
+      },
+      "-Kdm3f34_uhZrF1ByYtA" : {
+        "createdAt" : 1487972512233,
+        "text" : "hey does this work?",
+        "user" : {
+          "_id" : "XT5uTBFrwyMXnLLdb0FByYFuA3z1",
+          "name" : "chat"
+        }
+      }
+    },
+    "-Ke42HKj5uxE9rVLWqhA" : {
+      "-KfXG2wsEApu0rOrYegV" : {
+        "createdAt" : 1489854808016,
+        "text" : "gusihs",
+        "user" : {
+          "_id" : "u3VWAleVKpaokLbC0UPfrpxNfqG3",
+          "name" : "chat"
+        }
+      }
+    },
+    "-Kf-L81YD4CZghpONMM-" : {
+      "-Kf-LNBRkVXCvYWoW8rn" : {
+        "createdAt" : 1489285776251,
+        "text" : "hi",
+        "user" : {
+          "_id" : "ncMuEQcxYHZN9kxgj9a2WmEgSKV2",
+          "name" : "chat"
+        }
+      },
+      "-Kg6Md13PF3VhRhYu1-b" : {
+        "createdAt" : 1490477289905,
+        "text" : "hey",
+        "user" : {
+          "_id" : "ncMuEQcxYHZN9kxgj9a2WmEgSKV2",
+          "name" : "chat"
+        }
+      }
+    },
+    "-Kg1gJJ4e-ZjuHU-tsKt" : {
+      "-Kg1gkRY2oMg6PISBBXg" : {
+        "createdAt" : 1490398939036,
+        "text" : "I'm taking my Granddaughter is her new Easter dress \uD83D\uDC96",
+        "user" : {
+          "_id" : "u3VWAleVKpaokLbC0UPfrpxNfqG3",
+          "name" : "chat"
+        }
+      }
+    }
+  },
+  "meetups" : {
+    "-KdCa0u3ogkt-lo2uWGI" : {
+      "attendingNames" : {
+        "9Ev0slaobXWmeWfaxpneD54aQXZ2" : "Theresa Wilkin",
+        "ncMuEQcxYHZN9kxgj9a2WmEgSKV2" : "Jem/Jason Corraggio"
+      },
+      "description" : "Spring equinox",
+      "end" : "2017-03-20 22:00",
+      "location" : {
+        "formattedAddress" : [ "1585 Broadway (at W 47th St)", "New York, NY 10036", "United States" ],
+        "lat" : 40.75963,
+        "lon" : -73.98524,
+        "name" : "Starbucks",
+        "uid" : "4b5f42a1f964a52094b029e3",
+        "votes" : 0
+      },
+      "name" : "Ostara",
+      "start" : "2017-03-20 06:28",
+      "state" : "New York",
+      "status" : "closed",
+      "user" : "9Ev0slaobXWmeWfaxpneD54aQXZ2",
+      "users" : {
+        "9Ev0slaobXWmeWfaxpneD54aQXZ2" : {
+          "lat" : 40.004323,
+          "lon" : -75.294199,
+          "name" : "Theresa Wilkin",
+          "uid" : "9Ev0slaobXWmeWfaxpneD54aQXZ2"
+        },
+        "ncMuEQcxYHZN9kxgj9a2WmEgSKV2" : {
+          "lat" : 40.004323,
+          "lon" : -75.29419899999999,
+          "name" : "Jem/Jason Corraggio",
+          "uid" : "ncMuEQcxYHZN9kxgj9a2WmEgSKV2"
+        }
+      },
+      "venue" : {
+        "id" : "outdoors",
+        "name" : "Outdoors"
+      },
+      "voteEnd" : "2017-03-15 14:37",
+      "voteStart" : "2017-03-10 14:37"
+    },
+    "-KdDOVMXHOpQe5OQzvIr" : {
+      "description" : "Get together with other developers and learn to code",
+      "end" : "2017-02-25 12:00",
+      "location" : {
+        "formattedAddress" : [ "254 S Main St", "Salt Lake City, UT 84101", "United States" ],
+        "lat" : 40.763608631818826,
+        "lon" : -111.89102626466926,
+        "name" : "Coffee Garden",
+        "uid" : "4b42941df964a520eed625e3",
+        "votes" : 1
+      },
+      "name" : "Free Code Camp",
+      "start" : "2017-02-25 09:00",
+      "state" : "Utah",
+      "status" : "closed",
+      "uid" : "-KdDOVMXHOpQe5OQzvIr",
+      "user" : "WUwtW0V6zZXhxlWkWl31HzlBiop2",
+      "venue" : {
+        "id" : "coffee",
+        "name" : "Coffee"
+      },
+      "venues" : {
+        "4ad4f28ef964a52013fd20e3" : {
+          "formattedAddress" : [ "254 S 200 W (btwn W Broadway & W 200 S)", "Salt Lake City, UT 84101", "United States" ],
+          "lat" : 40.76366156082589,
+          "lon" : -111.89703941345215,
+          "name" : "Red Rock Brewing Co.",
+          "votes" : 0
+        },
+        "4ad4f290f964a520adfd20e3" : {
+          "formattedAddress" : [ "63 E South Temple", "Salt Lake City, UT 84150", "United States" ],
+          "lat" : 40.76981274930408,
+          "lon" : -111.88907325267792,
+          "name" : "The Lion House Pantry",
+          "votes" : 0
+        },
+        "4adccd10f964a520f42f21e3" : {
+          "formattedAddress" : [ "151 W 200 S", "Salt Lake City, UT 84101", "United States" ],
+          "lat" : 40.7648146804802,
+          "lon" : -111.895716078684,
+          "name" : "Toaster's",
+          "votes" : 0
+        },
+        "4b42941df964a520eed625e3" : {
+          "formattedAddress" : [ "254 S Main St", "Salt Lake City, UT 84101", "United States" ],
+          "lat" : 40.763608631818826,
+          "lon" : -111.89102626466926,
+          "name" : "Coffee Garden",
+          "votes" : 1
+        },
+        "4b479d88f964a520833726e3" : {
+          "formattedAddress" : [ "30 E Broadway", "Salt Lake City, UT 84111", "United States" ],
+          "lat" : 40.76264244383958,
+          "lon" : -111.89035088946386,
+          "name" : "Toaster's",
+          "votes" : 0
+        },
+        "4ba7dbdef964a5208fb939e3" : {
+          "formattedAddress" : [ "75 S West Temple", "Salt Lake City, UT 84101", "United States" ],
+          "lat" : 40.76748023888492,
+          "lon" : -111.89358220950105,
+          "name" : "Starbucks",
+          "votes" : 0
+        },
+        "500defade4b04d4cc21a3546" : {
+          "formattedAddress" : [ "215 W South Temple (at Radisson Hotel)", "Salt Lake City, UT 84101", "United States" ],
+          "lat" : 40.76915046953025,
+          "lon" : -111.89777418849569,
+          "name" : "Starbucks",
+          "votes" : 0
+        },
+        "50659f4de4b0bd91e00b97e0" : {
+          "formattedAddress" : [ "80 S. Main Street", "Salt Lake City, UT 84101", "United States" ],
+          "lat" : 40.76742,
+          "lon" : -111.89142,
+          "name" : "Starbucks",
+          "votes" : 0
+        },
+        "55e5f8d1498e35bdcdac9be8" : {
+          "formattedAddress" : [ "28 S State St #235", "Salt Lake City, UT 84111", "United States" ],
+          "lat" : 40.76847774412897,
+          "lon" : -111.88922720461419,
+          "name" : "Kneaders Bakery & Cafe",
+          "votes" : 0
+        },
+        "5869575a1b36d41b5b187ead" : {
+          "formattedAddress" : [ "Salt Lake City, UT", "United States" ],
+          "lat" : 40.765579,
+          "lon" : -111.891368,
+          "name" : "Three Pines Coffee",
+          "votes" : 0
+        }
+      },
+      "voteEnd" : "2017-02-21 22:05",
+      "voteStart" : "2017-02-18 08:16"
+    },
+    "-KdRJSMj8NcHuw6whqc2" : {
+      "attendingNames" : {
+        "OF8ZEh6U0oS8UGkZQpdr6dqdPd82" : "Cee Cee",
+        "u3VWAleVKpaokLbC0UPfrpxNfqG3" : "Nick Coleman"
+      },
+      "description" : "16 weeks of learning are done",
+      "end" : "2017-02-24 19:12",
+      "location" : {
+        "formattedAddress" : [ "110 Waverly Pl (btwn MacDougal Alley & 6th Ave)", "New York, NY 10011", "United States" ],
+        "lat" : 40.73231782204623,
+        "lon" : -73.99923652410507,
+        "name" : "Babbo Ristorante",
+        "uid" : "3fd66200f964a5206fe91ee3",
+        "votes" : 1
+      },
+      "name" : "Thinkful Graduation",
+      "start" : "2017-02-24 18:12",
+      "state" : "New York",
+      "status" : "closed",
+      "uid" : "-KdRJSMj8NcHuw6whqc2",
+      "user" : "u3VWAleVKpaokLbC0UPfrpxNfqG3",
+      "users" : {
+        "OF8ZEh6U0oS8UGkZQpdr6dqdPd82" : {
+          "lat" : 40.75901100000001,
+          "lon" : -73.9844722,
+          "name" : "Cee Cee",
+          "uid" : "OF8ZEh6U0oS8UGkZQpdr6dqdPd82"
+        },
+        "u3VWAleVKpaokLbC0UPfrpxNfqG3" : {
+          "lat" : 40.7060006,
+          "lon" : -74.00880099999999,
+          "name" : "Nick Coleman",
+          "uid" : "u3VWAleVKpaokLbC0UPfrpxNfqG3"
+        }
+      },
+      "venue" : {
+        "id" : "food",
+        "name" : "Food"
+      },
+      "venues" : {
+        "3fd66200f964a5206fe91ee3" : {
+          "formattedAddress" : [ "110 Waverly Pl (btwn MacDougal Alley & 6th Ave)", "New York, NY 10011", "United States" ],
+          "lat" : 40.73231782204623,
+          "lon" : -73.99923652410507,
+          "name" : "Babbo Ristorante",
+          "votes" : 1
+        },
+        "3fd66200f964a520c7f11ee3" : {
+          "formattedAddress" : [ "1 5th Ave (at E 8th St)", "New York, NY 10003", "United States" ],
+          "lat" : 40.73205608596082,
+          "lon" : -73.99608487193893,
+          "name" : "Otto Enoteca Pizzeria",
+          "votes" : 0
+        },
+        "3fd66200f964a520cae91ee3" : {
+          "formattedAddress" : [ "33 University Pl (at E 9th St.)", "New York, NY 10003", "United States" ],
+          "lat" : 40.73215319032559,
+          "lon" : -73.99442195892334,
+          "name" : "Knickerbocker Bar & Grill",
+          "votes" : 1
+        },
+        "49eb24a3f964a520a7661fe3" : {
+          "formattedAddress" : [ "51 University Pl (btw E 9th & 10th)", "New York, NY 10003", "United States" ],
+          "lat" : 40.732492170536126,
+          "lon" : -73.99420255115069,
+          "name" : "Bagel Bob's",
+          "votes" : 0
+        },
+        "4eefac5cb8f76a24a7b12202" : {
+          "formattedAddress" : [ "31 W 8th St (at MacDougal St)", "New York, NY 10011", "United States" ],
+          "lat" : 40.73281984465465,
+          "lon" : -73.99811267852782,
+          "name" : "Sticky's Finger Joint",
+          "votes" : 0
+        },
+        "5189ba90498e0dcfd576b61e" : {
+          "formattedAddress" : [ "21 W 9th St (btwn 5th & 6th Ave)", "New York, NY 10011", "United States" ],
+          "lat" : 40.733398259188,
+          "lon" : -73.99706045775723,
+          "name" : "Omar's La Ranita",
+          "votes" : 0
+        },
+        "53235762498e36c1448965bf" : {
+          "formattedAddress" : [ "1 W 8th St (Between 5th & 6th Avenue)", "New York, NY 10011", "United States" ],
+          "lat" : 40.732357551632674,
+          "lon" : -73.99674482759477,
+          "name" : "La Panineria",
+          "votes" : 1
+        },
+        "53701a3b498e9c94e8873c8e" : {
+          "formattedAddress" : [ "24 5th Ave (btwn W 9th & W 10th St)", "New York, NY 10011", "United States" ],
+          "lat" : 40.73313690961362,
+          "lon" : -73.99596691131592,
+          "name" : "Claudette",
+          "votes" : 1
+        },
+        "56e9d88d498e64c5d3506678" : {
+          "formattedAddress" : [ "48 W 8th St (Btwn 6th Ave & MacDougal)", "New York, NY 10011", "United States" ],
+          "lat" : 40.73328701677275,
+          "lon" : -73.99865581680476,
+          "name" : "Il Bambino",
+          "votes" : 0
+        },
+        "58324f3f9dc8d00516f64b6d" : {
+          "formattedAddress" : [ "21 W 8th St", "New York, NY 10011", "United States" ],
+          "lat" : 40.73275480550195,
+          "lon" : -73.99764060974121,
+          "name" : "Loring Place",
+          "votes" : 1
+        },
+        "null" : {
+          "votes" : -1
+        }
+      },
+      "voteEnd" : "2017-02-24 17:05",
+      "voteStart" : "2017-02-21 05:10"
+    },
+    "-KdT3QkG-8iSMnvysZau" : {
+      "attendingNames" : {
+        "9Ev0slaobXWmeWfaxpneD54aQXZ2" : "Theresa Wilkin",
+        "ncMuEQcxYHZN9kxgj9a2WmEgSKV2" : "Jem/Jason Corraggio"
+      },
+      "description" : "3.14159267.....",
+      "end" : "2017-03-14 16:00",
+      "location" : {
+        "formattedAddress" : [ "1585 Broadway (at W 47th St)", "New York, NY 10036", "United States" ],
+        "lat" : 40.75963,
+        "lon" : -73.98524,
+        "name" : "Starbucks",
+        "uid" : "4b5f42a1f964a52094b029e3",
+        "votes" : 0
+      },
+      "name" : "Pi Day",
+      "start" : "2017-03-14 08:00",
+      "state" : "New York",
+      "status" : "closed",
+      "user" : "ncMuEQcxYHZN9kxgj9a2WmEgSKV2",
+      "users" : {
+        "9Ev0slaobXWmeWfaxpneD54aQXZ2" : {
+          "lat" : 40.75901100000001,
+          "lon" : -73.9844722,
+          "name" : "Theresa Wilkin",
+          "uid" : "9Ev0slaobXWmeWfaxpneD54aQXZ2"
+        },
+        "ncMuEQcxYHZN9kxgj9a2WmEgSKV2" : {
+          "lat" : 40.004323,
+          "lon" : -75.29419899999999,
+          "name" : "Jem/Jason Corraggio",
+          "uid" : "ncMuEQcxYHZN9kxgj9a2WmEgSKV2"
+        }
+      },
+      "venue" : {
+        "id" : "food",
+        "name" : "Food"
+      },
+      "voteEnd" : "2017-02-27 19:20",
+      "voteStart" : "2017-02-27 19:30"
+    },
+    "-KdT4PQVVOoKYxNpp2Pc" : {
+      "attendingNames" : {
+        "OF8ZEh6U0oS8UGkZQpdr6dqdPd82" : "Cee Cee",
+        "ncMuEQcxYHZN9kxgj9a2WmEgSKV2" : "Jem/Jason Corraggio"
+      },
+      "description" : "3.14159267....",
+      "end" : "2017-03-14 04:00",
+      "location" : {
+        "formattedAddress" : [ "133 W Lancaster Ave (at Ardmore Ave)", "Ardmore, PA 19003", "United States" ],
+        "lat" : 40.00950186325579,
+        "lon" : -75.2937574481969,
+        "name" : "Chipotle Mexican Grill",
+        "uid" : "4af5f43cf964a5205bff21e3",
+        "votes" : 0
+      },
+      "name" : "Pi Day",
+      "privacy" : false,
+      "start" : "2017-03-14 08:00",
+      "state" : "Pennsylvania",
+      "status" : "closed",
+      "uid" : "-KdT4PQVVOoKYxNpp2Pc",
+      "user" : "ncMuEQcxYHZN9kxgj9a2WmEgSKV2",
+      "users" : {
+        "OF8ZEh6U0oS8UGkZQpdr6dqdPd82" : {
+          "lat" : 40.004323,
+          "lon" : -75.294199,
+          "name" : "Cee Cee",
+          "uid" : "OF8ZEh6U0oS8UGkZQpdr6dqdPd82"
+        },
+        "ncMuEQcxYHZN9kxgj9a2WmEgSKV2" : {
+          "lat" : 40.004323,
+          "lon" : -75.29419899999999,
+          "name" : "Jem/Jason Corraggio",
+          "uid" : "ncMuEQcxYHZN9kxgj9a2WmEgSKV2"
+        }
+      },
+      "venue" : {
+        "id" : "food",
+        "name" : "Food"
+      },
+      "venues" : {
+        "4af5f43cf964a5205bff21e3" : {
+          "formattedAddress" : [ "133 W Lancaster Ave (at Ardmore Ave)", "Ardmore, PA 19003", "United States" ],
+          "lat" : 40.00950186325579,
+          "lon" : -75.2937574481969,
+          "name" : "Chipotle Mexican Grill",
+          "votes" : 0
+        },
+        "4b5f318bf964a5205fac29e3" : {
+          "formattedAddress" : [ "2 E Athens Ave", "Ardmore, PA 19003", "United States" ],
+          "lat" : 40.006741,
+          "lon" : -75.292801,
+          "name" : "Jeannie's Deli",
+          "votes" : 0
+        },
+        "4b69b511f964a52011af2be3" : {
+          "formattedAddress" : [ "53 W Lancaster Ave", "Ardmore, PA 19003", "United States" ],
+          "lat" : 40.00842046902369,
+          "lon" : -75.29299736022949,
+          "name" : "A La Maison Bistro",
+          "votes" : 0
+        },
+        "4c462d5fdd35be9ad11bddd8" : {
+          "formattedAddress" : [ "49 E Lancaster Ave", "Ardmore, PA 19003", "United States" ],
+          "lat" : 40.00690838597654,
+          "lon" : -75.28956413269043,
+          "name" : "Hunan Restaurant",
+          "votes" : 0
+        },
+        "4d32320f6c7c721ee3b9ad56" : {
+          "formattedAddress" : [ "54 E Lancaster Ave (Rittenhouse Place)", "Ardmore, PA 19003", "United States" ],
+          "lat" : 40.00683370839625,
+          "lon" : -75.28907011838425,
+          "name" : "Firinji",
+          "votes" : 0
+        },
+        "4fd92414e4b0d5879e07ab22" : {
+          "formattedAddress" : [ "64 Rittenhouse Pl (Walton Ave)", "Ardmore, PA 19003", "United States" ],
+          "lat" : 40.00596230256917,
+          "lon" : -75.29147360300792,
+          "name" : "Barbacoa",
+          "votes" : 0
+        },
+        "5330b134498eebc4f77704a5" : {
+          "formattedAddress" : [ "4 Station Rd", "Ardmore, PA 19003", "United States" ],
+          "lat" : 40.00830974423077,
+          "lon" : -75.29060220177827,
+          "name" : "Snap Custom Pizza",
+          "votes" : 0
+        },
+        "53eaaee7498e796ff3e778a2" : {
+          "formattedAddress" : [ "39 W Lancaster Ave", "Ardmore, PA 19003", "United States" ],
+          "lat" : 40.00862258645917,
+          "lon" : -75.29229374083845,
+          "name" : "Local Wine & Kitchen",
+          "votes" : 0
+        },
+        "55464e03498e4eaf94d51bdf" : {
+          "formattedAddress" : [ "61 W Lancaster Ave (at Ardmore Ave)", "Ardmore, PA 19003", "United States" ],
+          "lat" : 40.009057446825736,
+          "lon" : -75.29308539751851,
+          "name" : "El Limon",
+          "votes" : 0
+        },
+        "55e1fcdf498e55dbeb1efa62" : {
+          "formattedAddress" : [ "5 E Lancaster Ave", "Ardmore, PA 19003", "United States" ],
+          "lat" : 40.00808980354077,
+          "lon" : -75.2909667100819,
+          "name" : "Maido",
+          "votes" : 0
+        }
+      },
+      "voteEnd" : "2017-03-06 19:30",
+      "voteStart" : "2017-02-27 19:30"
+    },
+    "-KdY1GLZytXFTVWnQ3Y-" : {
+      "attendingNames" : {
+        "YJM2z3GddicJBJXtQolT2LrOld92" : "Eli Mallon"
+      },
+      "description" : "True North blend",
+      "end" : "2017-02-22 08:54",
+      "location" : {
+        "formattedAddress" : [ "2052 NW Market St", "Seattle, WA 98107", "United States" ],
+        "lat" : 47.66883377427858,
+        "lon" : -122.38433718681335,
+        "name" : "Cupcake Royale and Verite Coffee",
+        "uid" : "49e94bfdf964a520ea651fe3",
+        "votes" : 0
+      },
+      "name" : "Eli Makes Coffee",
+      "privacy" : false,
+      "start" : "2017-02-22 08:46",
+      "state" : "Washington",
+      "status" : "closed",
+      "uid" : "-KdY1GLZytXFTVWnQ3Y-",
+      "user" : "YJM2z3GddicJBJXtQolT2LrOld92",
+      "users" : {
+        "YJM2z3GddicJBJXtQolT2LrOld92" : {
+          "lat" : 47.6750283,
+          "lon" : -122.3752805,
+          "name" : "Eli Mallon",
+          "uid" : "YJM2z3GddicJBJXtQolT2LrOld92"
+        }
+      },
+      "venue" : {
+        "id" : "coffee",
+        "name" : "Coffee"
+      },
+      "venues" : {
+        "49e94bfdf964a520ea651fe3" : {
+          "formattedAddress" : [ "2052 NW Market St", "Seattle, WA 98107", "United States" ],
+          "lat" : 47.66883377427858,
+          "lon" : -122.38433718681335,
+          "name" : "Cupcake Royale and Verite Coffee",
+          "votes" : 0
+        },
+        "49ec0ccbf964a52059671fe3" : {
+          "formattedAddress" : [ "1413 NW 70th St (14th Ave NW)", "Seattle, WA 98117", "United States" ],
+          "lat" : 47.67952524291576,
+          "lon" : -122.37470095530253,
+          "name" : "Rosellini's",
+          "votes" : 0
+        },
+        "4af21f56f964a52000e621e3" : {
+          "formattedAddress" : [ "1752 NW Market St", "Seattle, WA 98107", "United States" ],
+          "lat" : 47.66859535017505,
+          "lon" : -122.38117218017578,
+          "name" : "Sip and Ship",
+          "votes" : 0
+        },
+        "4dcc1b9145dd3831229482aa" : {
+          "formattedAddress" : [ "7001 15th Ave NW (at NW 70th St.)", "Seattle, WA 98117", "United States" ],
+          "lat" : 47.67965787381026,
+          "lon" : -122.37719637688637,
+          "name" : "Grumpy D's",
+          "votes" : 0
+        },
+        "4f635b0ee4b0bf1010d11088" : {
+          "formattedAddress" : [ "2060 NW Market St, Seattle, WA 98107", "Seattle, WA 98107", "United States" ],
+          "lat" : 47.66873773549794,
+          "lon" : -122.38452508818474,
+          "name" : "Ballard Coffee Works",
+          "votes" : 0
+        },
+        "5261bda811d2b9ed241653fa" : {
+          "formattedAddress" : [ "2001 NW Market St (N 20th Ave)", "Seattle, WA 98107", "United States" ],
+          "lat" : 47.66854648247554,
+          "lon" : -122.38206042036481,
+          "name" : "Bauhaus Books & Coffee",
+          "votes" : 0
+        },
+        "530a74ab498e2278805c45e2" : {
+          "formattedAddress" : [ "5221 15th Ave NW", "Seattle, WA 98107", "United States" ],
+          "lat" : 47.66693404,
+          "lon" : -122.3766776,
+          "name" : "Starbucks",
+          "votes" : 0
+        },
+        "53b7001f498ebfb1ade44a16" : {
+          "formattedAddress" : [ "5905 15th Ave NW", "Seattle, WA 98107", "United States" ],
+          "lat" : 47.67178278009242,
+          "lon" : -122.37637455054764,
+          "name" : "Morsel and Bean",
+          "votes" : 0
+        },
+        "55c6375d498eff6d5fd7256a" : {
+          "formattedAddress" : [ "1555 NW Market St (17th Ave NW)", "Seattle, WA 98107", "United States" ],
+          "lat" : 47.66848025396058,
+          "lon" : -122.37865776774827,
+          "name" : "Mighty-O Donuts",
+          "votes" : 0
+        },
+        "56c0c36bcd107f5cf53911bf" : {
+          "formattedAddress" : [ "6420 24th Ave NW (NW 65th St)", "Seattle, WA 98107", "United States" ],
+          "lat" : 47.67559634218154,
+          "lon" : -122.38738877745064,
+          "name" : "Royal Drummer",
+          "votes" : 0
+        }
+      },
+      "voteEnd" : "2017-02-21 16:33",
+      "voteStart" : "2017-02-21 16:06"
+    },
+    "-Kdki1LqghXYthU8ukYr" : {
+      "attendingNames" : {
+        "u3VWAleVKpaokLbC0UPfrpxNfqG3" : "Nick Coleman"
+      },
+      "description" : "Discuss release of app",
+      "end" : "2017-03-15 11:00",
+      "location" : {
+        "formattedAddress" : [ "1585 Broadway (at W 47th St)", "New York, NY 10036", "United States" ],
+        "lat" : 40.75963,
+        "lon" : -73.98524,
+        "name" : "Starbucks",
+        "uid" : "4b5f42a1f964a52094b029e3",
+        "votes" : 0
+      },
+      "name" : "News Conference",
+      "privacy" : false,
+      "start" : "2017-03-15 10:00",
+      "state" : "New York",
+      "status" : "closed",
+      "uid" : "-Kdki1LqghXYthU8ukYr",
+      "user" : "u3VWAleVKpaokLbC0UPfrpxNfqG3",
+      "users" : {
+        "u3VWAleVKpaokLbC0UPfrpxNfqG3" : {
+          "lat" : 40.75901100000001,
+          "lon" : -73.9844722,
+          "name" : "Nick Coleman",
+          "uid" : "u3VWAleVKpaokLbC0UPfrpxNfqG3"
+        }
+      },
+      "venue" : {
+        "id" : "outdoors",
+        "name" : "Outdoors"
+      },
+      "venues" : {
+        "4b5f42a1f964a52094b029e3" : {
+          "formattedAddress" : [ "1585 Broadway (at W 47th St)", "New York, NY 10036", "United States" ],
+          "lat" : 40.75963,
+          "lon" : -73.98524,
+          "name" : "Starbucks",
+          "votes" : 0
+        },
+        "4b671ef8f964a520003c2be3" : {
+          "formattedAddress" : [ "1211 Avenue of the Americas (at W 48th St.)", "New York, NY 10036", "United States" ],
+          "lat" : 40.758703478817964,
+          "lon" : -73.9828278904551,
+          "name" : "Fresh & Co",
+          "votes" : 0
+        },
+        "4bff9551369476b029fc8d1f" : {
+          "formattedAddress" : [ "1540 Broadway (btwn 45th & 46th St)", "New York, NY 10036", "United States" ],
+          "lat" : 40.75837750506866,
+          "lon" : -73.98525553606459,
+          "name" : "Forever 21",
+          "votes" : 0
+        },
+        "4c5c993585a1e21e71285711" : {
+          "formattedAddress" : [ "Broadway & 46th St.", "New York, NY", "United States" ],
+          "lat" : 40.758513464177994,
+          "lon" : -73.98532390594482,
+          "name" : "Max Neuhaus \"Times Square\"",
+          "votes" : 0
+        },
+        "4ca0ecff542b224b7a3c0aa0" : {
+          "formattedAddress" : [ "1585 Broadway", "New York, NY 10019", "United States" ],
+          "lat" : 40.75968810139275,
+          "lon" : -73.98507762454408,
+          "name" : "Morgan Stanley Gym",
+          "votes" : 0
+        },
+        "4ed711c60e6145a3906cfb7c" : {
+          "formattedAddress" : [ "btwn 46th & 47th St (btwn 7th Ave & Broadway)", "New York, NY 10036", "United States" ],
+          "lat" : 40.75908566112297,
+          "lon" : -73.98491119103699,
+          "name" : "Father Duffy Square",
+          "votes" : 0
+        },
+        "4f878440e4b0202c047f4f54" : {
+          "formattedAddress" : [ "760 8th Ave (Btwn 47th and 48th)", "New York, NY 10036", "United States" ],
+          "lat" : 40.760448074349696,
+          "lon" : -73.9857089227426,
+          "name" : "Times Square Terrace",
+          "votes" : 0
+        },
+        "4fc9352a00397219daa7f088" : {
+          "formattedAddress" : [ "132 W 47th St (btwn 6th Ave and 7th Ave)", "New York, NY 10036", "United States" ],
+          "lat" : 40.75848095717076,
+          "lon" : -73.98319959640503,
+          "name" : "Haven at the Sanctuary Hotel",
+          "votes" : 0
+        },
+        "503a43f2e4b022a04b87d65b" : {
+          "formattedAddress" : [ "Times Square (btwn Broadway & 7th Ave)", "New York, NY 10036", "United States" ],
+          "lat" : 40.759086237026466,
+          "lon" : -73.98510631996176,
+          "name" : "Red Stairs Times Square",
+          "votes" : 0
+        },
+        "51276681e4b07724f915ecde" : {
+          "formattedAddress" : [ "150 W 47th St (6/7)", "New York, NY 10036", "United States" ],
+          "lat" : 40.758372970031004,
+          "lon" : -73.98295415173953,
+          "name" : "Subway Sandwiches on 47TH",
+          "votes" : 0
+        }
+      },
+      "voteEnd" : "2017-03-15 10:00",
+      "voteStart" : "2017-03-07 18:00"
+    },
+    "-KdlrLFDO4ErvjhbiPve" : {
+      "attendingNames" : {
+        "fTn08rXLfocZmJg7JBWPtJSEjft1" : "Awesome Experience"
+      },
+      "description" : "adf",
+      "end" : "2017-02-25 15:40",
+      "location" : {
+        "formattedAddress" : [ "10 Columbus Cir Fl 3 (Time Warner Center)", "New York, NY 10019", "United States" ],
+        "lat" : 40.76873612928359,
+        "lon" : -73.98268461227417,
+        "name" : "Bouchon Bakery",
+        "uid" : "45040d24f964a520de381fe3",
+        "votes" : 0
+      },
+      "name" : "xyadf",
+      "privacy" : false,
+      "start" : "2017-02-25 14:40",
+      "state" : "New York",
+      "status" : "closed",
+      "uid" : "-KdlrLFDO4ErvjhbiPve",
+      "user" : "fTn08rXLfocZmJg7JBWPtJSEjft1",
+      "users" : {
+        "fTn08rXLfocZmJg7JBWPtJSEjft1" : {
+          "lat" : 40.75901100000001,
+          "lon" : -73.9844722,
+          "name" : "Awesome Experience",
+          "uid" : "fTn08rXLfocZmJg7JBWPtJSEjft1"
+        },
+        "u3VWAleVKpaokLbC0UPfrpxNfqG3" : {
+          "lat" : 40.7830603,
+          "lon" : -73.9712488,
+          "name" : "Awesome Experience",
+          "uid" : "u3VWAleVKpaokLbC0UPfrpxNfqG3"
+        }
+      },
+      "venue" : {
+        "id" : "coffee",
+        "name" : "Coffee"
+      },
+      "venues" : {
+        "45040d24f964a520de381fe3" : {
+          "formattedAddress" : [ "10 Columbus Cir Fl 3 (Time Warner Center)", "New York, NY 10019", "United States" ],
+          "lat" : 40.76873612928359,
+          "lon" : -73.98268461227417,
+          "name" : "Bouchon Bakery",
+          "votes" : 0
+        },
+        "4a808bb6f964a5208ff51fe3" : {
+          "formattedAddress" : [ "80 Columbus Cir", "New York, NY 10023", "United States" ],
+          "lat" : 40.768569745822454,
+          "lon" : -73.98228840948696,
+          "name" : "The Lobby Lounge at Mandarin Oriental, New York",
+          "votes" : 0
+        },
+        "4abb899bf964a520f18320e3" : {
+          "formattedAddress" : [ "1889 Broadway (at W 63rd St)", "New York, NY 10023", "United States" ],
+          "lat" : 40.77139241,
+          "lon" : -73.9824237,
+          "name" : "Starbucks",
+          "votes" : 0
+        },
+        "4b09cb91f964a520c31d23e3" : {
+          "formattedAddress" : [ "60 W 65th St (btw Broadway & Central Park W)", "New York, NY 10023", "United States" ],
+          "lat" : 40.772844,
+          "lon" : -73.981817,
+          "name" : "Le Pain Quotidien",
+          "votes" : 0
+        },
+        "4bb522772f70c9b6c8c98330" : {
+          "formattedAddress" : [ "Heckscher Ballfields, Central Park (65th St)", "New York, NY 10023", "United States" ],
+          "lat" : 40.77031245757512,
+          "lon" : -73.97590398788452,
+          "name" : "The Ballfield's Café",
+          "votes" : 0
+        },
+        "4bec28c161aca593a7e08500" : {
+          "formattedAddress" : [ "2 W 69th St (in Central Park)", "New York, NY 10023", "United States" ],
+          "lat" : 40.772932817473844,
+          "lon" : -73.97430539131165,
+          "name" : "Le Pain Quotidien",
+          "votes" : 0
+        },
+        "4dc3df7dfa76d685cdb763c2" : {
+          "formattedAddress" : [ "1900 Broadway (at W 64th St)", "New York, NY 10023", "United States" ],
+          "lat" : 40.77199456125419,
+          "lon" : -73.98217362610683,
+          "name" : "Épicerie Boulud",
+          "votes" : 0
+        },
+        "533591cc498e05d94121a375" : {
+          "formattedAddress" : [ "1841 Broadway (at W 60th St)", "New York, NY 10023", "United States" ],
+          "lat" : 40.769146,
+          "lon" : -73.98239,
+          "name" : "Starbucks",
+          "votes" : 0
+        },
+        "544e883b498e01e80f241740" : {
+          "formattedAddress" : [ "187 Columbus Ave (W 68th St)", "New York, NY 10023", "United States" ],
+          "lat" : 40.77517190556343,
+          "lon" : -73.98044612795582,
+          "name" : "Joe: The Art of Coffee",
+          "votes" : 0
+        },
+        "560e84e2498ee6bcb7ea28be" : {
+          "formattedAddress" : [ "ABC 77 West Cafe (47 W. 66th Street)", "New York, NY 10023", "United States" ],
+          "lat" : 40.77319085014831,
+          "lon" : -73.98075604571054,
+          "name" : "Starbucks",
+          "votes" : 0
+        }
+      },
+      "voteEnd" : "2017-02-25 13:40",
+      "voteStart" : "2017-02-25 03:10"
+    },
+    "-Kdm-75xJXelJC-WvMc3" : {
+      "description" : "Food and gabbing ",
+      "end" : "2017-03-26 01:55",
+      "location" : "",
+      "name" : "Mary and Tia's Lunch",
+      "privacy" : true,
+      "start" : "2017-03-26 12:00",
+      "state" : "New York",
+      "status" : "created",
+      "user" : "XT5uTBFrwyMXnLLdb0FByYFuA3z1",
+      "venue" : {
+        "id" : "food",
+        "name" : "Food"
+      },
+      "voteEnd" : "2017-02-24 17:12",
+      "voteStart" : "2017-02-24 16:42"
+    },
+    "-Kdm-pBYtSH1GqoCwM2Q" : {
+      "attendingNames" : {
+        "XT5uTBFrwyMXnLLdb0FByYFuA3z1" : "Mary ODonnell",
+        "x7ROWzjNfcahdjTS8aWSGMUVVrj2" : "Tia Wilkin"
+      },
+      "description" : "Food and gabbing ",
+      "end" : "2017-03-26 01:00",
+      "location" : {
+        "formattedAddress" : [ "927 S High St", "West Chester, PA 19382", "United States" ],
+        "lat" : 39.94240620164196,
+        "lon" : -75.59088215231901,
+        "name" : "McDonald's",
+        "uid" : "4b9b7eedf964a520130b36e3",
+        "votes" : 2
+      },
+      "name" : "Mary and Tia's Lunch",
+      "privacy" : true,
+      "start" : "2017-03-26 12:00",
+      "state" : "Pennsylvania",
+      "status" : "set",
+      "uid" : "-Kdm-pBYtSH1GqoCwM2Q",
+      "user" : "XT5uTBFrwyMXnLLdb0FByYFuA3z1",
+      "users" : {
+        "XT5uTBFrwyMXnLLdb0FByYFuA3z1" : {
+          "lat" : 39.8429371,
+          "lon" : -75.8055619,
+          "name" : "Mary ODonnell",
+          "uid" : "XT5uTBFrwyMXnLLdb0FByYFuA3z1"
+        },
+        "x7ROWzjNfcahdjTS8aWSGMUVVrj2" : {
+          "lat" : 40.004323,
+          "lon" : -75.29419899999999,
+          "name" : "Tia Wilkin",
+          "uid" : "x7ROWzjNfcahdjTS8aWSGMUVVrj2"
+        }
+      },
+      "venue" : {
+        "id" : "food",
+        "name" : "Food"
+      },
+      "venues" : {
+        "4b1074caf964a520d27023e3" : {
+          "formattedAddress" : [ "102 Painters Xing", "West Chester, PA 19382", "United States" ],
+          "lat" : 39.88333824890639,
+          "lon" : -75.54884223918766,
+          "name" : "Carrabba's Italian Grill",
+          "votes" : 0
+        },
+        "4b7610d1f964a520583a2ee3" : {
+          "formattedAddress" : [ "1390 Old Wilmington Pike", "West Chester, PA 19382", "United States" ],
+          "lat" : 39.899953332729716,
+          "lon" : -75.56723440105041,
+          "name" : "Dilworthtown Inn",
+          "votes" : 0
+        },
+        "4b9ad450f964a520e3d935e3" : {
+          "formattedAddress" : [ "275 Brintons Bridge Rd", "West Chester, PA 19382", "United States" ],
+          "lat" : 39.89981585252675,
+          "lon" : -75.56708659062922,
+          "name" : "Blue Pear Bistro",
+          "votes" : 0
+        },
+        "4b9b7eedf964a520130b36e3" : {
+          "formattedAddress" : [ "927 S High St", "West Chester, PA 19382", "United States" ],
+          "lat" : 39.94240620164196,
+          "lon" : -75.59088215231901,
+          "name" : "McDonald's",
+          "votes" : 2
+        },
+        "4bf469026a31d13aabbc952e" : {
+          "formattedAddress" : [ "1371 Wilmington Pike", "West Chester, PA 19382", "United States" ],
+          "lat" : 39.90372694155739,
+          "lon" : -75.5629933202311,
+          "name" : "Red Sombrero",
+          "votes" : 0
+        },
+        "4c0f747fd64c0f4722bc295d" : {
+          "formattedAddress" : [ "929 S High St (Parkway Center)", "West Chester, PA 19382", "United States" ],
+          "lat" : 39.94167616746483,
+          "lon" : -75.59035778045654,
+          "name" : "Country Bagel",
+          "votes" : 0
+        },
+        "4c8960476418a143df90d6ce" : {
+          "formattedAddress" : [ "100 Evergreen Dr Ste 129 (at The Shoppes at Brinton Lake)", "Glen Mills, PA 19342", "United States" ],
+          "lat" : 39.886354185168685,
+          "lon" : -75.53155621230309,
+          "name" : "PureBread Deli",
+          "votes" : 0
+        },
+        "4cbdd1dac7228cfae34d2cce" : {
+          "formattedAddress" : [ "1357 Dilworthtown Xing", "West Chester, PA 19382", "United States" ],
+          "lat" : 39.90338701446136,
+          "lon" : -75.56346518912692,
+          "name" : "Saladworks",
+          "votes" : 0
+        },
+        "4cfa66430df3236ac18cf3a9" : {
+          "formattedAddress" : [ "1507 Wilmington Pike", "West Chester, PA 19382", "United States" ],
+          "lat" : 39.89037818026425,
+          "lon" : -75.55402183964637,
+          "name" : "Jimmy John's Pipin' Hot Sandwiches",
+          "votes" : 0
+        },
+        "4cfa8f22d7206ea8b5b23969" : {
+          "formattedAddress" : [ "66 E Street Rd (at The Commons of Thornbury)", "West Chester, PA 19382", "United States" ],
+          "lat" : 39.92027581422545,
+          "lon" : -75.57458494040611,
+          "name" : "Shoo Mama's Farm Fresh Cafe",
+          "votes" : 0
+        }
+      },
+      "voteEnd" : "2017-02-24 17:12",
+      "voteStart" : "2017-02-24 16:42"
+    },
+    "-Ke42HKj5uxE9rVLWqhA" : {
+      "description" : "Meet other React Developers",
+      "end" : "2017-03-28 20:00",
+      "location" : {
+        "formattedAddress" : [ "390 E 1700 S", "Salt Lake City, UT 84115", "United States" ],
+        "lat" : 40.73318457042951,
+        "lon" : -111.87983016012102,
+        "name" : "Alchemy Coffee",
+        "uid" : "4b3fd63bf964a52015b025e3",
+        "votes" : 1
+      },
+      "name" : "ReactJS Utah",
+      "privacy" : false,
+      "start" : "2017-04-25 19:00",
+      "state" : "Utah",
+      "status" : "created",
+      "uid" : "-Ke42HKj5uxE9rVLWqhA",
+      "user" : "u3VWAleVKpaokLbC0UPfrpxNfqG3",
+      "users" : {
+        "u3VWAleVKpaokLbC0UPfrpxNfqG3" : {
+          "lat" : 40.725406,
+          "lon" : -111.8641202,
+          "name" : "Nick Coleman",
+          "uid" : "u3VWAleVKpaokLbC0UPfrpxNfqG3"
+        }
+      },
+      "venue" : {
+        "id" : "coffee",
+        "name" : "Coffee"
+      },
+      "venues" : {
+        "4b01e318f964a520444622e3" : {
+          "formattedAddress" : [ "2011 S 1100 E", "Salt Lake City, UT 84106", "United States" ],
+          "lat" : 40.72642741150688,
+          "lon" : -111.85904055833817,
+          "name" : "Sugar House Coffee",
+          "votes" : 0
+        },
+        "4b37eaf8f964a520944825e3" : {
+          "formattedAddress" : [ "1693 S 900 E", "Salt Lake City, UT 84105", "United States" ],
+          "lat" : 40.733805,
+          "lon" : -111.864836,
+          "name" : "Red Moose Coffee Company",
+          "votes" : 0
+        },
+        "4b3a7433f964a520b76725e3" : {
+          "formattedAddress" : [ "602 E 2100 S", "Salt Lake City, UT 84106", "United States" ],
+          "lat" : 40.7251777017266,
+          "lon" : -111.87365278586533,
+          "name" : "Caffé Expresso",
+          "votes" : 0
+        },
+        "4b3fd63bf964a52015b025e3" : {
+          "formattedAddress" : [ "390 E 1700 S", "Salt Lake City, UT 84115", "United States" ],
+          "lat" : 40.73318457042951,
+          "lon" : -111.87983016012102,
+          "name" : "Alchemy Coffee",
+          "votes" : 1
+        },
+        "4b5f993bf964a520c9c329e3" : {
+          "formattedAddress" : [ "2707 S Highland Dr", "Salt Lake City, UT 84106", "United States" ],
+          "lat" : 40.712530566666665,
+          "lon" : -111.855143,
+          "name" : "Beans & Brews",
+          "votes" : 0
+        },
+        "4b9701a7f964a52013f334e3" : {
+          "formattedAddress" : [ "701 E 2100 S", "Salt Lake City, UT 84106", "United States" ],
+          "lat" : 40.72563,
+          "lon" : -111.870759,
+          "name" : "Starbucks",
+          "votes" : 0
+        },
+        "4be70513d4f7c9b671582720" : {
+          "formattedAddress" : [ "Salt Lake City, UT 84106", "United States" ],
+          "lat" : 40.72464427622708,
+          "lon" : -111.85427056479999,
+          "name" : "Starbucks Coffee",
+          "votes" : 0
+        },
+        "4c3e2634b8b4be9a76bbcbef" : {
+          "formattedAddress" : [ "1855 S 700 E", "Salt Lake City, UT 84105", "United States" ],
+          "lat" : 40.72978892372186,
+          "lon" : -111.87078242903384,
+          "name" : "JitterBug",
+          "votes" : 0
+        },
+        "4cb4b963db32f04de2d8df4d" : {
+          "formattedAddress" : [ "653 E Simpson Ave", "Salt Lake City, UT 84106", "United States" ],
+          "lat" : 40.72232186794281,
+          "lon" : -111.87204658985138,
+          "name" : "Cafe Solstice",
+          "votes" : 0
+        },
+        "51c4a837498edb108cf32ceb" : {
+          "formattedAddress" : [ "2121 McClelland #105", "Sugarhouse, UT", "United States" ],
+          "lat" : 40.72480789685167,
+          "lon" : -111.8611233448386,
+          "name" : "Beyond Glaze Donuts",
+          "votes" : 0
+        }
+      },
+      "voteEnd" : "2017-03-31 19:00",
+      "voteStart" : "2017-02-28 07:36"
+    },
+    "-KeFL6bkidBjSTltM114" : {
+      "attendingNames" : {
+        "mFVp4CcjkNUUE301bt4l4Cxffjv2" : "Fly Flyerson"
+      },
+      "description" : "cake party",
+      "end" : "2017-03-02 18:00",
+      "location" : {
+        "formattedAddress" : [ "200 E 400 S", "Salt Lake City, UT 84111", "United States" ],
+        "lat" : 40.760205078831525,
+        "lon" : -111.88502939484194,
+        "name" : "Library Square",
+        "uid" : "4ad4f28ff964a5206ffd20e3",
+        "votes" : 0
+      },
+      "name" : "birthday",
+      "privacy" : false,
+      "start" : "2017-03-02 15:00",
+      "state" : "California",
+      "status" : "closed",
+      "uid" : "-KeFL6bkidBjSTltM114",
+      "user" : "mFVp4CcjkNUUE301bt4l4Cxffjv2",
+      "users" : {
+        "mFVp4CcjkNUUE301bt4l4Cxffjv2" : {
+          "lat" : 40.76649279999999,
+          "lon" : -111.8910161,
+          "name" : "Fly Flyerson",
+          "uid" : "mFVp4CcjkNUUE301bt4l4Cxffjv2"
+        }
+      },
+      "venue" : {
+        "id" : "topPicks",
+        "name" : "Top Picks"
+      },
+      "venues" : {
+        "4ad4f28ff964a5206ffd20e3" : {
+          "formattedAddress" : [ "200 E 400 S", "Salt Lake City, UT 84111", "United States" ],
+          "lat" : 40.760205078831525,
+          "lon" : -111.88502939484194,
+          "name" : "Library Square",
+          "votes" : 0
+        },
+        "4b4238cef964a52050cf25e3" : {
+          "formattedAddress" : [ "353 W 200 S", "Salt Lake City, UT 84101", "United States" ],
+          "lat" : 40.76484179223911,
+          "lon" : -111.90151785499003,
+          "name" : "Jade Market",
+          "votes" : 0
+        },
+        "4c47a78b96abd13a9ebb7101" : {
+          "formattedAddress" : [ "Temple Square", "Salt Lake City, UT 84101", "United States" ],
+          "lat" : 40.77096250474658,
+          "lon" : -111.89295341228477,
+          "name" : "Temple Square North Visitors' Center",
+          "votes" : 0
+        },
+        "4d719f2a3815f04d051b8167" : {
+          "formattedAddress" : [ "The Grand America Hotel (555 S Main St)", "Salt Lake City, UT 84111", "United States" ],
+          "lat" : 40.75738131625488,
+          "lon" : -111.89051391107512,
+          "name" : "Lobby Lounge",
+          "votes" : 0
+        },
+        "5009645ef2e7352ad7aceb46" : {
+          "formattedAddress" : [ "Salt Lake City, UT 84102", "United States" ],
+          "lat" : 40.76318936369429,
+          "lon" : -111.88595512578566,
+          "name" : "Waki Paki Food Truck",
+          "votes" : 0
+        },
+        "50ca02c7245f2d4aa8c2c99e" : {
+          "formattedAddress" : [ "255 S West Temple (Hilton Salt Lake City Center)", "Salt Lake City, UT 84101", "United States" ],
+          "lat" : 40.763823979434996,
+          "lon" : -111.89327945529769,
+          "name" : "Trofi Restaurant",
+          "votes" : 0
+        },
+        "5163639ee4b025f0d52c882a" : {
+          "formattedAddress" : [ "Salt Lake City, UT", "United States" ],
+          "lat" : 40.76914081714392,
+          "lon" : -111.88994915760908,
+          "name" : "Dexter's Dogs",
+          "votes" : 0
+        },
+        "51e4356a498e8fa6924b27fc" : {
+          "formattedAddress" : [ "51 S Main St", "Salt Lake City, UT 84111", "United States" ],
+          "lat" : 40.76864674872412,
+          "lon" : -111.89033389091497,
+          "name" : "ALEX AND ANI",
+          "votes" : 0
+        },
+        "52ab8344498e621e8842a197" : {
+          "formattedAddress" : [ "238 S Edison St", "Salt Lake City, UT 84111", "United States" ],
+          "lat" : 40.76387506738368,
+          "lon" : -111.88641508007927,
+          "name" : "diabolical records",
+          "votes" : 0
+        },
+        "57d5e241498e5a499911eaca" : {
+          "formattedAddress" : [ "131 S Main Street", "Salt Lake City, UT 84101", "United States" ],
+          "lat" : 40.76642666971693,
+          "lon" : -111.8906557559967,
+          "name" : "George S And Dolores Dore Eccles Theatre",
+          "votes" : 0
+        }
+      },
+      "voteEnd" : "2017-03-02 11:40",
+      "voteStart" : "2017-03-02 11:16"
+    },
+    "-Kf-L81YD4CZghpONMM-" : {
+      "attendingNames" : {
+        "ncMuEQcxYHZN9kxgj9a2WmEgSKV2" : "Jem/Jason Corraggio"
+      },
+      "description" : "bring games",
+      "end" : "2017-04-15 00:21",
+      "location" : "",
+      "name" : "game night",
+      "privacy" : false,
+      "start" : "2017-04-14 20:00",
+      "state" : "Pennsylvania",
+      "status" : "voting",
+      "user" : "ncMuEQcxYHZN9kxgj9a2WmEgSKV2",
+      "users" : {
+        "ncMuEQcxYHZN9kxgj9a2WmEgSKV2" : {
+          "lat" : 40.004323,
+          "lon" : -75.29419899999999,
+          "name" : "Jem/Jason Corraggio",
+          "uid" : "ncMuEQcxYHZN9kxgj9a2WmEgSKV2"
+        }
+      },
+      "venue" : {
+        "id" : "coffee",
+        "name" : "Coffee"
+      },
+      "voteEnd" : "2017-03-31 22:21",
+      "voteStart" : "2017-03-17 21:51"
+    },
+    "-KflltJ3VaFRJ3eGFw8V" : {
+      "attendingNames" : {
+        "5KWbwsNLRsYwyBAwOyIgBSoqsag2" : "Jane Doe"
+      },
+      "description" : "wear your frills!",
+      "end" : "2017-03-21 15:44",
+      "location" : "",
+      "name" : "Tea Party",
+      "privacy" : true,
+      "start" : "2017-03-21 13:15",
+      "state" : "Pennsylvania",
+      "status" : "voting",
+      "uid" : "-KflltJ3VaFRJ3eGFw8V",
+      "user" : "5KWbwsNLRsYwyBAwOyIgBSoqsag2",
+      "users" : {
+        "5KWbwsNLRsYwyBAwOyIgBSoqsag2" : {
+          "lat" : 39.8401393,
+          "lon" : -75.71009049999999,
+          "name" : "Jane Doe",
+          "uid" : "5KWbwsNLRsYwyBAwOyIgBSoqsag2"
+        }
+      },
+      "venue" : {
+        "id" : "coffee",
+        "name" : "Coffee"
+      },
+      "venues" : {
+        "4b0d828ef964a520da4923e3" : {
+          "formattedAddress" : [ "109 S Broad St", "Kennett Square, PA 19348", "United States" ],
+          "lat" : 39.846688,
+          "lon" : -75.710211,
+          "name" : "Cafe Lindo",
+          "votes" : 0
+        },
+        "4bd0a685a8b3a5937753645f" : {
+          "formattedAddress" : [ "108 N Union St (at State St.)", "Kennett Square, PA 19348", "United States" ],
+          "lat" : 39.846903,
+          "lon" : -75.7119704,
+          "name" : "Mrs. Robinson's Tea Shop",
+          "votes" : 0
+        },
+        "4be8196c88ed2d7fef6bcb1d" : {
+          "formattedAddress" : [ "934 E Baltimore Pike", "Kennett Square, PA 19348", "United States" ],
+          "lat" : 39.86465839959825,
+          "lon" : -75.67524406492414,
+          "name" : "Dunkin' Donuts",
+          "votes" : 0
+        },
+        "4bf6d5c75317a593c8e8fc7e" : {
+          "formattedAddress" : [ "8955 Gap Newport Pike (at Newark Rd)", "Avondale, PA 19311", "United States" ],
+          "lat" : 39.81002261270162,
+          "lon" : -75.75202279796164,
+          "name" : "APlus at Sunoco",
+          "votes" : 0
+        },
+        "4ccf45a748b8370479e4eade" : {
+          "formattedAddress" : [ "745 W Cypress St", "Kennett Square, PA 19348", "United States" ],
+          "lat" : 39.84305659992664,
+          "lon" : -75.72987195643537,
+          "name" : "Dunkin Donuts",
+          "votes" : 0
+        },
+        "4d87c88da98841bd5ed83055" : {
+          "formattedAddress" : [ "879 E Baltimore Pike (at The Shoppes at Longwood Village)", "Kennett Square, PA 19348", "United States" ],
+          "lat" : 39.86279636,
+          "lon" : -75.68332533,
+          "name" : "Starbucks",
+          "votes" : 0
+        },
+        "4dac5c22bd4197f68356acb5" : {
+          "formattedAddress" : [ "975 W Cypress St", "Kennett Square, PA 19348", "United States" ],
+          "lat" : 39.841146290838985,
+          "lon" : -75.73846354850275,
+          "name" : "APlus at Sunoco",
+          "votes" : 0
+        },
+        "4eef8f7977c82b92fa6b5506" : {
+          "formattedAddress" : [ "200 Exelon Way", "Kennett Square, PA 19348", "United States" ],
+          "lat" : 39.85456953728293,
+          "lon" : -75.69931172903978,
+          "name" : "Exelon Café",
+          "votes" : 0
+        },
+        "5200f618498e0dec4db82de4" : {
+          "formattedAddress" : [ "Kennett Square, PA", "United States" ],
+          "lat" : 39.846402,
+          "lon" : -75.713364,
+          "name" : "Nourish Juice Bar & Cafe",
+          "votes" : 0
+        },
+        "529a00c5498ede5ce27b2702" : {
+          "formattedAddress" : [ "111 W State St", "Kennett Square, PA 19348", "United States" ],
+          "lat" : 39.84671478609599,
+          "lon" : -75.71211930073217,
+          "name" : "Philter",
+          "votes" : 0
+        }
+      },
+      "voteEnd" : "2017-03-21 13:10",
+      "voteStart" : "2017-03-21 13:00"
+    },
+    "-KfrI_33aK-_EU77OQMV" : {
+      "attendingNames" : {
+        "u3VWAleVKpaokLbC0UPfrpxNfqG3" : "Nick Coleman"
+      },
+      "description" : "Utah JavaScript",
+      "end" : "2017-04-18 20:30",
+      "location" : "",
+      "name" : "Utah Js",
+      "privacy" : false,
+      "start" : "2017-04-18 18:30",
+      "state" : "Utah",
+      "status" : "guests",
+      "user" : "u3VWAleVKpaokLbC0UPfrpxNfqG3",
+      "users" : {
+        "u3VWAleVKpaokLbC0UPfrpxNfqG3" : {
+          "lat" : 40.74866165,
+          "lon" : -111.60868056,
+          "name" : "Nick Coleman",
+          "uid" : "u3VWAleVKpaokLbC0UPfrpxNfqG3"
+        }
+      },
+      "venue" : {
+        "id" : "topPicks",
+        "name" : "Top Picks"
+      },
+      "voteEnd" : "2017-04-05 13:33",
+      "voteStart" : "2017-03-22 13:03"
+    },
+    "-Kg1gJJ4e-ZjuHU-tsKt" : {
+      "attendingNames" : {
+        "u3VWAleVKpaokLbC0UPfrpxNfqG3" : "Nick Coleman"
+      },
+      "description" : "Grab your Easter bonnet and stroll along 5th Ave",
+      "end" : "2017-04-15 04:00",
+      "location" : "",
+      "name" : "Easter Parade",
+      "privacy" : false,
+      "start" : "2017-04-15 10:00",
+      "state" : "New York",
+      "status" : "voting",
+      "uid" : "-Kg1gJJ4e-ZjuHU-tsKt",
+      "user" : "u3VWAleVKpaokLbC0UPfrpxNfqG3",
+      "users" : {
+        "9HFasb9GPSNlBfKbufcSdeyciXu2" : {
+          "lat" : 40.7750534,
+          "lon" : -73.96515099999999,
+          "name" : "Cee Cee",
+          "uid" : "9HFasb9GPSNlBfKbufcSdeyciXu2"
+        },
+        "u3VWAleVKpaokLbC0UPfrpxNfqG3" : {
+          "lat" : 40.75901100000001,
+          "lon" : -73.9844722,
+          "name" : "Nick Coleman",
+          "uid" : "u3VWAleVKpaokLbC0UPfrpxNfqG3"
+        }
+      },
+      "venue" : {
+        "id" : "topPicks",
+        "name" : "Top Picks"
+      },
+      "venues" : {
+        "43d71050f964a520522e1fe3" : {
+          "formattedAddress" : [ "830 5th Ave (at East Dr)", "New York, NY 10065", "United States" ],
+          "lat" : 40.76789919751926,
+          "lon" : -73.97438049316406,
+          "name" : "Wollman Rink",
+          "votes" : 0
+        },
+        "4606997ef964a520cd441fe3" : {
+          "formattedAddress" : [ "40 Central Park S (btwn 5th & 6th Ave)", "New York, NY 10019", "United States" ],
+          "lat" : 40.765280281676084,
+          "lon" : -73.97545867908866,
+          "name" : "Sarabeth's",
+          "votes" : 0
+        },
+        "4a09f665f964a52077741fe3" : {
+          "formattedAddress" : [ "Central Park (btwn E 63rd & E 65th St)", "New York, NY 10009", "United States" ],
+          "lat" : 40.76744416223376,
+          "lon" : -73.97193431854248,
+          "name" : "Central Park Zoo",
+          "votes" : 0
+        },
+        "4a416369f964a52036a51fe3" : {
+          "formattedAddress" : [ "60th & 5th Avenue", "New York, NY 10003", "United States" ],
+          "lat" : 40.76500967581875,
+          "lon" : -73.97333510004495,
+          "name" : "Wafels & Dinges - Vedette Cart",
+          "votes" : 0
+        },
+        "4b36e468f964a520e03d25e3" : {
+          "formattedAddress" : [ "150 Central Park S (btw 6th and 7th Ave)", "New York, NY 10019", "United States" ],
+          "lat" : 40.7660539,
+          "lon" : -73.977934,
+          "name" : "Exhale Central Park South",
+          "votes" : 0
+        },
+        "4be55bbcbcef2d7f52ae03e5" : {
+          "formattedAddress" : [ "Central Park South", "New York, NY 10022", "United States" ],
+          "lat" : 40.765721095506336,
+          "lon" : -73.97614740239409,
+          "name" : "Simon Bolivar Statue",
+          "votes" : 0
+        },
+        "4c0b95eced259521e3541356" : {
+          "formattedAddress" : [ "59th St (6th Ave)", "New York, NY 10019", "United States" ],
+          "lat" : 40.7661469610871,
+          "lon" : -73.97580304104956,
+          "name" : "Central Park - Dog Square",
+          "votes" : 0
+        },
+        "4def7f02fa76c1ceac932900" : {
+          "formattedAddress" : [ "5th Ave. and E 61st St.", "New York, NY", "United States" ],
+          "lat" : 40.7658937830267,
+          "lon" : -73.97230773853029,
+          "name" : "Central Park - Wien Walk",
+          "votes" : 1
+        },
+        "4e0e02c28877936cb4011891" : {
+          "formattedAddress" : [ "5 Avenue A (at E 64th St)", "New York, NY 10009", "United States" ],
+          "lat" : 40.76777237577493,
+          "lon" : -73.97207242031662,
+          "name" : "Rouge Tomate Cart",
+          "votes" : 0
+        },
+        "4f5655a0e4b0f29665ac9497" : {
+          "formattedAddress" : [ "6th ave (Btwn 63rd st & 64h st)", "New York, NY 10024", "United States" ],
+          "lat" : 40.76841267522706,
+          "lon" : -73.9737425994621,
+          "name" : "Central Park - Cat Rock",
+          "votes" : 0
+        }
+      },
+      "voteEnd" : "2017-04-08 13:00",
+      "voteStart" : "2017-03-28 13:00"
+    }
+  },
+  "users" : {
+    "2JNmSNdOE1V9eFzfqH0zD21cDRJ2" : {
+      "firstName" : "Linell",
+      "lastName" : "Phillips",
+      "location" : {
+        "city" : "San Antonio",
+        "lat" : 29.4865858,
+        "lon" : -98.3312012,
+        "state" : "TX",
+        "street" : "6119 Ferrysage Dr",
+        "zipcode" : "78244"
+      },
+      "uid" : "2JNmSNdOE1V9eFzfqH0zD21cDRJ2"
+    },
+    "5KWbwsNLRsYwyBAwOyIgBSoqsag2" : {
+      "firstName" : "Jane",
+      "lastName" : "Doe",
+      "location" : {
+        "city" : "west chester",
+        "lat" : 39.8401393,
+        "lon" : -75.71009049999999,
+        "state" : "pa",
+        "street" : "100 south st",
+        "zipcode" : "19380"
+      },
+      "meetups" : {
+        "-KflltJ3VaFRJ3eGFw8V" : {
+          "lat" : 39.8401393,
+          "lon" : -75.71009049999999,
+          "uid" : "-KflltJ3VaFRJ3eGFw8V"
+        }
+      },
+      "uid" : "5KWbwsNLRsYwyBAwOyIgBSoqsag2"
+    },
+    "9Ev0slaobXWmeWfaxpneD54aQXZ2" : {
+      "firstName" : "Theresa",
+      "lastName" : "Wilkin",
+      "location" : {
+        "city" : "Ardmore",
+        "lat" : 40.004323,
+        "lon" : -75.29419899999999,
+        "state" : "PA",
+        "street" : "130 Elm Avenue",
+        "zipcode" : "19003"
+      },
+      "meetups" : {
+        "-KdCa0u3ogkt-lo2uWGI" : {
+          "lat" : 40.004323,
+          "lon" : -75.294199,
+          "uid" : "-KdCa0u3ogkt-lo2uWGI"
+        },
+        "-KdT3QkG-8iSMnvysZau" : {
+          "lat" : 40.75901100000001,
+          "lon" : -73.9844722,
+          "uid" : "-KdT3QkG-8iSMnvysZau"
+        }
+      },
+      "uid" : "9Ev0slaobXWmeWfaxpneD54aQXZ2"
+    },
+    "9HFasb9GPSNlBfKbufcSdeyciXu2" : {
+      "firstName" : "Cee",
+      "lastName" : "Cee",
+      "location" : {
+        "city" : "Salt Lake City",
+        "lat" : 40.7253712,
+        "lon" : -111.8702377,
+        "state" : "UT",
+        "street" : "714 E 2100 S",
+        "zipcode" : "84105"
+      },
+      "meetups" : {
+        "-Kg1gJJ4e-ZjuHU-tsKt" : {
+          "lat" : 40.7750534,
+          "lon" : -73.96515099999999,
+          "uid" : "-Kg1gJJ4e-ZjuHU-tsKt"
+        }
+      },
+      "uid" : "9HFasb9GPSNlBfKbufcSdeyciXu2"
+    },
+    "OF8ZEh6U0oS8UGkZQpdr6dqdPd82" : {
+      "firstName" : "Cee",
+      "lastName" : "Cee",
+      "location" : {
+        "city" : "Salt Lake City",
+        "lat" : 40.76649279999999,
+        "lon" : -111.8910161,
+        "state" : "UT",
+        "street" : "123 Main St",
+        "zipcode" : "84111"
+      },
+      "meetups" : {
+        "-KdRJSMj8NcHuw6whqc2" : {
+          "lat" : 40.75901100000001,
+          "lon" : -73.9844722,
+          "uid" : "-KdRJSMj8NcHuw6whqc2"
+        },
+        "-KdT4PQVVOoKYxNpp2Pc" : {
+          "lat" : 40.004323,
+          "lon" : -75.294199,
+          "uid" : "-KdT4PQVVOoKYxNpp2Pc"
+        }
+      },
+      "uid" : "OF8ZEh6U0oS8UGkZQpdr6dqdPd82"
+    },
+    "XT5uTBFrwyMXnLLdb0FByYFuA3z1" : {
+      "firstName" : "Mary",
+      "lastName" : "ODonnell",
+      "location" : {
+        "city" : "Avondale",
+        "lat" : 39.8429371,
+        "lon" : -75.8055619,
+        "state" : "PA",
+        "street" : "960 Gap Newport Pike Apt.2",
+        "zipcode" : "19311"
+      },
+      "meetups" : {
+        "-Kdm-pBYtSH1GqoCwM2Q" : {
+          "lat" : 39.8429371,
+          "lon" : -75.8055619,
+          "uid" : "-Kdm-pBYtSH1GqoCwM2Q",
+          "vote" : "4b9b7eedf964a520130b36e3"
+        }
+      },
+      "uid" : "XT5uTBFrwyMXnLLdb0FByYFuA3z1"
+    },
+    "XTcdEYbJTeaxha5yFLiYBLGcX0V2" : {
+      "firstName" : "Jack",
+      "lastName" : "Jill",
+      "location" : {
+        "city" : "Salt Lake City",
+        "lat" : 40.766458,
+        "lon" : -111.891617,
+        "state" : "UT",
+        "street" : "124 Main St",
+        "zipcode" : "84111"
+      },
+      "uid" : "XTcdEYbJTeaxha5yFLiYBLGcX0V2"
+    },
+    "YJM2z3GddicJBJXtQolT2LrOld92" : {
+      "firstName" : "Eli",
+      "lastName" : "Mallon",
+      "location" : {
+        "city" : "Seattle",
+        "lat" : 47.6750283,
+        "lon" : -122.3752805,
+        "state" : "WA",
+        "street" : "1433 NW 64th St",
+        "zipcode" : "98107"
+      },
+      "meetups" : {
+        "-KdY1GLZytXFTVWnQ3Y-" : {
+          "lat" : 47.6750283,
+          "lon" : -122.3752805,
+          "uid" : "-KdY1GLZytXFTVWnQ3Y-"
+        }
+      },
+      "uid" : "YJM2z3GddicJBJXtQolT2LrOld92"
+    },
+    "eiU8qaDxJPOgXxj0uaMJ4Qa1i1B2" : {
+      "firstName" : "alvaro",
+      "lastName" : "gomez",
+      "location" : {
+        "city" : "south jordan",
+        "lat" : 40.5461389,
+        "lon" : -111.980236,
+        "state" : "ut",
+        "street" : "3754 w periwinkle dr",
+        "zipcode" : "84095"
+      },
+      "uid" : "eiU8qaDxJPOgXxj0uaMJ4Qa1i1B2"
+    },
+    "fTn08rXLfocZmJg7JBWPtJSEjft1" : {
+      "firstName" : "Awesome",
+      "lastName" : "Experience",
+      "location" : {
+        "city" : "New York City",
+        "lat" : 40.7042755,
+        "lon" : -74.00632209999999,
+        "state" : "NY",
+        "street" : "123 Wall St",
+        "zipcode" : ""
+      },
+      "meetups" : {
+        "-KdRJSMj8NcHuw6whqc2" : {
+          "vote" : "3fd66200f964a5206fe91ee3"
+        },
+        "-KdlrLFDO4ErvjhbiPve" : {
+          "lat" : 40.75901100000001,
+          "lon" : -73.9844722,
+          "uid" : "-KdlrLFDO4ErvjhbiPve"
+        }
+      },
+      "uid" : "fTn08rXLfocZmJg7JBWPtJSEjft1"
+    },
+    "mFVp4CcjkNUUE301bt4l4Cxffjv2" : {
+      "firstName" : "Fly",
+      "lastName" : "Flyerson",
+      "location" : {
+        "city" : "Salt lake",
+        "lat" : 40.76649279999999,
+        "lon" : -111.8910161,
+        "state" : "ut",
+        "street" : "123 Main",
+        "zipcode" : "84111"
+      },
+      "meetups" : {
+        "-KeFL6bkidBjSTltM114" : {
+          "lat" : 40.76649279999999,
+          "lon" : -111.8910161,
+          "uid" : "-KeFL6bkidBjSTltM114"
+        }
+      },
+      "uid" : "mFVp4CcjkNUUE301bt4l4Cxffjv2"
+    },
+    "ncMuEQcxYHZN9kxgj9a2WmEgSKV2" : {
+      "firstName" : "Jem/Jason",
+      "lastName" : "Corraggio",
+      "location" : {
+        "city" : "Ardmore",
+        "lat" : 40.004323,
+        "lon" : -75.29419899999999,
+        "state" : "PA",
+        "street" : "130 Elm Ave",
+        "zipcode" : "19003"
+      },
+      "meetups" : {
+        "-KdCa0u3ogkt-lo2uWGI" : {
+          "lat" : 40.004323,
+          "lon" : -75.29419899999999,
+          "uid" : "-KdCa0u3ogkt-lo2uWGI"
+        },
+        "-KdT3QkG-8iSMnvysZau" : {
+          "lat" : 40.004323,
+          "lon" : -75.29419899999999,
+          "uid" : "-KdT3QkG-8iSMnvysZau"
+        },
+        "-KdT4PQVVOoKYxNpp2Pc" : {
+          "lat" : 40.004323,
+          "lon" : -75.29419899999999,
+          "uid" : "-KdT4PQVVOoKYxNpp2Pc"
+        },
+        "-Kf-L81YD4CZghpONMM-" : {
+          "lat" : 40.004323,
+          "lon" : -75.29419899999999,
+          "uid" : "-Kf-L81YD4CZghpONMM-"
+        }
+      },
+      "uid" : "ncMuEQcxYHZN9kxgj9a2WmEgSKV2"
+    },
+    "tgYglMEB06Val2x53aguUnzjbGr1" : {
+      "firstName" : "Howard",
+      "lastName" : "Gartenberg",
+      "location" : {
+        "city" : "Hackensack",
+        "lat" : 40.8964964,
+        "lon" : -74.04153339999999,
+        "state" : "NJ",
+        "street" : "50 Euclid Ave., Unit 1A",
+        "zipcode" : "07601"
+      },
+      "uid" : "tgYglMEB06Val2x53aguUnzjbGr1"
+    },
+    "u3VWAleVKpaokLbC0UPfrpxNfqG3" : {
+      "firstName" : "Nick",
+      "lastName" : "Coleman",
+      "location" : {
+        "city" : "Salt Lake City",
+        "lat" : 40.725406,
+        "lon" : -111.8641202,
+        "state" : "UT",
+        "street" : "2100 S 945 W",
+        "zipcode" : "84105"
+      },
+      "meetups" : {
+        "-KdRJSMj8NcHuw6whqc2" : {
+          "uid" : "-KdRJSMj8NcHuw6whqc2",
+          "vote" : "53701a3b498e9c94e8873c8e"
+        },
+        "-Kdki1LqghXYthU8ukYr" : {
+          "lat" : 40.75901100000001,
+          "lon" : -73.9844722,
+          "uid" : "-Kdki1LqghXYthU8ukYr"
+        },
+        "-KdlrLFDO4ErvjhbiPve" : {
+          "lat" : 40.7830603,
+          "lon" : -73.9712488,
+          "uid" : "-KdlrLFDO4ErvjhbiPve"
+        },
+        "-KfrI_33aK-_EU77OQMV" : {
+          "lat" : 40.74866165,
+          "lon" : -111.60868056,
+          "uid" : "-KfrI_33aK-_EU77OQMV"
+        },
+        "-Kg1gJJ4e-ZjuHU-tsKt" : {
+          "lat" : 40.75901100000001,
+          "lon" : -73.9844722,
+          "uid" : "-Kg1gJJ4e-ZjuHU-tsKt",
+          "vote" : "4def7f02fa76c1ceac932900"
+        }
+      },
+      "uid" : "u3VWAleVKpaokLbC0UPfrpxNfqG3"
+    },
+    "x7ROWzjNfcahdjTS8aWSGMUVVrj2" : {
+      "firstName" : "Tia",
+      "lastName" : "Wilkin",
+      "location" : {
+        "city" : "Ardmore",
+        "lat" : 40.004323,
+        "lon" : -75.29419899999999,
+        "state" : "PA",
+        "street" : "130 Elm Ave",
+        "zipcode" : "19003"
+      },
+      "meetups" : {
+        "-Kdm-pBYtSH1GqoCwM2Q" : {
+          "lat" : 40.004323,
+          "lon" : -75.29419899999999,
+          "uid" : "-Kdm-pBYtSH1GqoCwM2Q",
+          "vote" : "4b9b7eedf964a520130b36e3"
+        }
+      },
+      "uid" : "x7ROWzjNfcahdjTS8aWSGMUVVrj2"
+    },
+    "xtC0JUBd2MPLbURp5Ji4EMVZH113" : {
+      "firstName" : "Why",
+      "lastName" : "Not",
+      "location" : {
+        "city" : "Salt Lake City",
+        "lat" : 40.76649279999999,
+        "lon" : -111.8910161,
+        "state" : "UT",
+        "street" : "123 Main St",
+        "zipcode" : "84112"
+      },
+      "uid" : "xtC0JUBd2MPLbURp5Ji4EMVZH113"
+    }
+  }
+}
